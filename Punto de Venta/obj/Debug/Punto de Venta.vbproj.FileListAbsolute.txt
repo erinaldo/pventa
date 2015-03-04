@@ -1,0 +1,3 @@
+C:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.exe
+C:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.xml
+C:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.pdb

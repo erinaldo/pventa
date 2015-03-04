@@ -1,0 +1,9 @@
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\bin\Debug\PruebaTexto.exe
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\bin\Debug\PruebaTexto.pdb
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\bin\Debug\PruebaTexto.xml
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\obj\Debug\PruebaTexto.FormEmiteFac.resources
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\obj\Debug\PruebaTexto.Resources.resources
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\obj\Debug\Facturacion.vbproj.GenerateResource.Cache
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\obj\Debug\PruebaTexto.exe
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\obj\Debug\PruebaTexto.xml
+c:\users\dspinedi\documents\visual studio 2012\Projects\PruebaTexto\PruebaTexto\obj\Debug\PruebaTexto.pdb
