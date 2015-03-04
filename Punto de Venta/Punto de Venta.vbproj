@@ -70,6 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulos.vb" />
+    <Compile Include="FormBuscarArtFactu.Designer.vb">
+      <DependentUpon>FormBuscarArtFactu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormBuscarArtFactu.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormEmiteFac.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormBuscarArtFactu.resx">
+      <DependentUpon>FormBuscarArtFactu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEmiteFac.resx">
       <DependentUpon>FormEmiteFac.vb</DependentUpon>
     </EmbeddedResource>
