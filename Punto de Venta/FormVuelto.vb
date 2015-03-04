@@ -7,11 +7,11 @@
     End Sub
 
     Public Sub Abrir(dblTotFac As Double)
-        dstFormas = pwiFacturacion.obtenerFormasPago(My.Settings.cadena)
-        Cargar_Combobox(dstFormas.Tables(0), Me.cmbFormas)
+        'dstFormas = pwiFacturacion.obtenerFormasPago(My.Settings.cadena)
+        'Cargar_Combobox(dstFormas.Tables(0), Me.cmbFormas)
         Me.lblTot.Text = dblTotFac
-        Me.txtTotaldto.Value = dblTotFac
-        Me.textdto.Value = 0
+        Me.txttotaldto.Text = dblTotFac
+        Me.textdto.Text = 0
         ShowDialog()
 
     End Sub
@@ -27,7 +27,7 @@
 
     Private Sub txtprecio_TextChanged(sender As Object, e As EventArgs) Handles textdto.TextChanged
         If TextDto.Text <> "" Then
-            txttotaldto.Text = FormatNumber(CDbl(Me.lblTot.Text) - ((CDbl(Me.lblTot.Text) * CDbl(textdto.Value)) / 100), 2)
+            txttotaldto.Text = FormatNumber(CDbl(Me.lblTot.Text) - ((CDbl(Me.lblTot.Text) * CDbl(textdto.Text)) / 100), 2)
         Else
             txttotaldto.Text = FormatNumber(CDbl(lblTot.Text), 2)
         End If

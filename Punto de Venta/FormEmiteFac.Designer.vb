@@ -22,11 +22,11 @@ Partial Class FormEmiteFac
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GrillaArticulos = New System.Windows.Forms.DataGridView()
         Me.codart = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.descri = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -43,7 +43,7 @@ Partial Class FormEmiteFac
         Me.TextCantidad = New System.Windows.Forms.TextBox()
         Me.btnaceptar = New System.Windows.Forms.Button()
         Me.lblCantidad = New System.Windows.Forms.Label()
-        Me.textPCompra = New System.Windows.Forms.TextBox()
+        Me.TextPCompra = New System.Windows.Forms.TextBox()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TextCodigo = New System.Windows.Forms.TextBox()
@@ -62,16 +62,16 @@ Partial Class FormEmiteFac
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DtFechaEmi = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.textcodbar = New System.Windows.Forms.TextBox()
+        Me.TextCodBar = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TextPU = New System.Windows.Forms.TextBox()
         Me.Lbldescripcion = New System.Windows.Forms.Label()
-        CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.SuspendLayout()
+        CType(Me.GrillaArticulos,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox1.SuspendLayout
+        Me.GroupBox2.SuspendLayout
+        Me.SuspendLayout
         '
         'GrillaArticulos
         '
@@ -80,14 +80,14 @@ Partial Class FormEmiteFac
         Me.GrillaArticulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codart, Me.descri, Me.punitario, Me.Cantidad, Me.Total, Me.Codbar, Me.pcompra})
         Me.GrillaArticulos.Location = New System.Drawing.Point(28, 243)
         Me.GrillaArticulos.Name = "GrillaArticulos"
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle25.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GrillaArticulos.RowHeadersDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GrillaArticulos.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.GrillaArticulos.RowTemplate.Height = 100
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GrillaArticulos.Size = New System.Drawing.Size(785, 220)
@@ -95,8 +95,8 @@ Partial Class FormEmiteFac
         '
         'codart
         '
-        DataGridViewCellStyle21.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.codart.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.codart.DefaultCellStyle = DataGridViewCellStyle1
         Me.codart.HeaderText = "Código"
         Me.codart.Name = "codart"
         '
@@ -108,23 +108,23 @@ Partial Class FormEmiteFac
         '
         'punitario
         '
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.punitario.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.punitario.DefaultCellStyle = DataGridViewCellStyle2
         Me.punitario.HeaderText = "P.Unitario"
         Me.punitario.Name = "punitario"
         Me.punitario.Width = 120
         '
         'Cantidad
         '
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle3
         Me.Cantidad.HeaderText = "Cantidad"
         Me.Cantidad.Name = "Cantidad"
         '
         'Total
         '
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle4
         Me.Total.HeaderText = "Total"
         Me.Total.Name = "Total"
         Me.Total.Width = 140
@@ -133,13 +133,13 @@ Partial Class FormEmiteFac
         '
         Me.Codbar.HeaderText = "Codbar"
         Me.Codbar.Name = "Codbar"
-        Me.Codbar.Visible = False
+        Me.Codbar.Visible = false
         '
         'pcompra
         '
         Me.pcompra.HeaderText = "pcompra"
         Me.pcompra.Name = "pcompra"
-        Me.pcompra.Visible = False
+        Me.pcompra.Visible = false
         '
         'Button1
         '
@@ -148,13 +148,13 @@ Partial Class FormEmiteFac
         Me.Button1.Size = New System.Drawing.Size(24, 21)
         Me.Button1.TabIndex = 18
         Me.Button1.Text = "..."
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = true
         '
         'LblStock
         '
-        Me.LblStock.AutoSize = True
-        Me.LblStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblStock.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.LblStock.AutoSize = true
+        Me.LblStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.LblStock.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(0,Byte),Integer), CType(CType(192,Byte),Integer))
         Me.LblStock.Location = New System.Drawing.Point(121, 79)
         Me.LblStock.Name = "LblStock"
         Me.LblStock.Size = New System.Drawing.Size(0, 13)
@@ -162,8 +162,8 @@ Partial Class FormEmiteFac
         '
         'Label5
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.AutoSize = true
+        Me.Label5.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label5.Location = New System.Drawing.Point(15, 90)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(72, 15)
@@ -172,9 +172,9 @@ Partial Class FormEmiteFac
         '
         'LblTotalU
         '
-        Me.LblTotalU.AutoSize = True
-        Me.LblTotalU.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTotalU.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.LblTotalU.AutoSize = true
+        Me.LblTotalU.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.LblTotalU.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(0,Byte),Integer), CType(CType(192,Byte),Integer))
         Me.LblTotalU.Location = New System.Drawing.Point(670, 17)
         Me.LblTotalU.Name = "LblTotalU"
         Me.LblTotalU.Size = New System.Drawing.Size(0, 16)
@@ -182,8 +182,8 @@ Partial Class FormEmiteFac
         '
         'Label9
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.AutoSize = true
+        Me.Label9.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label9.Location = New System.Drawing.Point(628, 19)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(36, 15)
@@ -192,7 +192,7 @@ Partial Class FormEmiteFac
         '
         'TextCantidad
         '
-        Me.TextCantidad.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextCantidad.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.TextCantidad.Location = New System.Drawing.Point(573, 14)
         Me.TextCantidad.Name = "TextCantidad"
         Me.TextCantidad.Size = New System.Drawing.Size(49, 22)
@@ -205,12 +205,12 @@ Partial Class FormEmiteFac
         Me.btnaceptar.Size = New System.Drawing.Size(96, 27)
         Me.btnaceptar.TabIndex = 7
         Me.btnaceptar.Text = "Aceptar"
-        Me.btnaceptar.UseVisualStyleBackColor = True
+        Me.btnaceptar.UseVisualStyleBackColor = true
         '
         'lblCantidad
         '
-        Me.lblCantidad.AutoSize = True
-        Me.lblCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCantidad.AutoSize = true
+        Me.lblCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 18!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lblCantidad.ForeColor = System.Drawing.Color.Red
         Me.lblCantidad.Location = New System.Drawing.Point(866, 513)
         Me.lblCantidad.Name = "lblCantidad"
@@ -218,18 +218,18 @@ Partial Class FormEmiteFac
         Me.lblCantidad.TabIndex = 110
         Me.lblCantidad.Text = "Total"
         '
-        'textPCompra
+        'TextPCompra
         '
-        Me.textPCompra.Location = New System.Drawing.Point(503, 100)
-        Me.textPCompra.Name = "textPCompra"
-        Me.textPCompra.Size = New System.Drawing.Size(76, 20)
-        Me.textPCompra.TabIndex = 108
-        Me.textPCompra.Visible = False
+        Me.TextPCompra.Location = New System.Drawing.Point(503, 100)
+        Me.TextPCompra.Name = "TextPCompra"
+        Me.TextPCompra.Size = New System.Drawing.Size(76, 20)
+        Me.TextPCompra.TabIndex = 108
+        Me.TextPCompra.Visible = false
         '
         'lblTotal
         '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.AutoSize = true
+        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 18!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lblTotal.ForeColor = System.Drawing.Color.Red
         Me.lblTotal.Location = New System.Drawing.Point(665, 513)
         Me.lblTotal.Name = "lblTotal"
@@ -239,8 +239,8 @@ Partial Class FormEmiteFac
         '
         'Label7
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.AutoSize = true
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label7.Location = New System.Drawing.Point(683, 482)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(36, 13)
@@ -253,7 +253,7 @@ Partial Class FormEmiteFac
         Me.TextCodigo.Name = "TextCodigo"
         Me.TextCodigo.Size = New System.Drawing.Size(76, 20)
         Me.TextCodigo.TabIndex = 105
-        Me.TextCodigo.Visible = False
+        Me.TextCodigo.Visible = false
         '
         'cmdCancelar
         '
@@ -262,7 +262,7 @@ Partial Class FormEmiteFac
         Me.cmdCancelar.Size = New System.Drawing.Size(96, 27)
         Me.cmdCancelar.TabIndex = 104
         Me.cmdCancelar.Text = "Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
+        Me.cmdCancelar.UseVisualStyleBackColor = true
         '
         'cmdAceptar
         '
@@ -271,7 +271,7 @@ Partial Class FormEmiteFac
         Me.cmdAceptar.Size = New System.Drawing.Size(96, 27)
         Me.cmdAceptar.TabIndex = 103
         Me.cmdAceptar.Text = "Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
+        Me.cmdAceptar.UseVisualStyleBackColor = true
         '
         'cmdEliminar
         '
@@ -280,12 +280,12 @@ Partial Class FormEmiteFac
         Me.cmdEliminar.Size = New System.Drawing.Size(75, 23)
         Me.cmdEliminar.TabIndex = 111
         Me.cmdEliminar.Text = "Eliminar"
-        Me.cmdEliminar.UseVisualStyleBackColor = True
+        Me.cmdEliminar.UseVisualStyleBackColor = true
         '
         'Label11
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.AutoSize = true
+        Me.Label11.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label11.Location = New System.Drawing.Point(513, 18)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(60, 15)
@@ -295,7 +295,7 @@ Partial Class FormEmiteFac
         'cmbcliente
         '
         Me.cmbcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbcliente.FormattingEnabled = True
+        Me.cmbcliente.FormattingEnabled = true
         Me.cmbcliente.Location = New System.Drawing.Point(436, 10)
         Me.cmbcliente.Name = "cmbcliente"
         Me.cmbcliente.Size = New System.Drawing.Size(285, 23)
@@ -303,8 +303,8 @@ Partial Class FormEmiteFac
         '
         'Label10
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.AutoSize = true
+        Me.Label10.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label10.Location = New System.Drawing.Point(361, 18)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(91, 15)
@@ -313,8 +313,8 @@ Partial Class FormEmiteFac
         '
         'Label8
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.AutoSize = true
+        Me.Label8.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label8.Location = New System.Drawing.Point(15, 53)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(76, 15)
@@ -331,19 +331,19 @@ Partial Class FormEmiteFac
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.DtFechaEmi)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(28, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(759, 82)
         Me.GroupBox1.TabIndex = 112
-        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "Datos Generales"
         '
         'lblLista
         '
-        Me.lblLista.AutoSize = True
-        Me.lblLista.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLista.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblLista.AutoSize = true
+        Me.lblLista.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblLista.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(0,Byte),Integer), CType(CType(192,Byte),Integer))
         Me.lblLista.Location = New System.Drawing.Point(433, 51)
         Me.lblLista.Name = "lblLista"
         Me.lblLista.Size = New System.Drawing.Size(0, 16)
@@ -351,8 +351,8 @@ Partial Class FormEmiteFac
         '
         'Label6
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.AutoSize = true
+        Me.Label6.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label6.Location = New System.Drawing.Point(330, 52)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 15)
@@ -361,8 +361,8 @@ Partial Class FormEmiteFac
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.AutoSize = true
+        Me.Label4.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label4.Location = New System.Drawing.Point(380, 17)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(49, 15)
@@ -371,9 +371,9 @@ Partial Class FormEmiteFac
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Label3.AutoSize = true
+        Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(0,Byte),Integer), CType(CType(192,Byte),Integer))
         Me.Label3.Location = New System.Drawing.Point(134, 51)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(52, 16)
@@ -382,8 +382,8 @@ Partial Class FormEmiteFac
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.AutoSize = true
+        Me.Label2.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label2.Location = New System.Drawing.Point(15, 52)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(113, 15)
@@ -393,32 +393,32 @@ Partial Class FormEmiteFac
         'DtFechaEmi
         '
         Me.DtFechaEmi.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtFechaEmi.Location = New System.Drawing.Point(61, 19)
+        Me.DtFechaEmi.Location = New System.Drawing.Point(65, 21)
         Me.DtFechaEmi.Name = "DtFechaEmi"
         Me.DtFechaEmi.Size = New System.Drawing.Size(129, 21)
         Me.DtFechaEmi.TabIndex = 1
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.AutoSize = true
+        Me.Label1.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label1.Location = New System.Drawing.Point(15, 26)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 15)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Fecha:"
         '
-        'textcodbar
+        'TextCodBar
         '
-        Me.textcodbar.Location = New System.Drawing.Point(124, 15)
-        Me.textcodbar.Name = "textcodbar"
-        Me.textcodbar.Size = New System.Drawing.Size(165, 22)
-        Me.textcodbar.TabIndex = 0
+        Me.TextCodBar.Location = New System.Drawing.Point(124, 15)
+        Me.TextCodBar.Name = "TextCodBar"
+        Me.TextCodBar.Size = New System.Drawing.Size(165, 22)
+        Me.TextCodBar.TabIndex = 0
         '
         'Label14
         '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.AutoSize = true
+        Me.Label14.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label14.Location = New System.Drawing.Point(15, 18)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(103, 15)
@@ -427,8 +427,8 @@ Partial Class FormEmiteFac
         '
         'Label13
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.AutoSize = true
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label13.Location = New System.Drawing.Point(797, 482)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(191, 13)
@@ -449,18 +449,18 @@ Partial Class FormEmiteFac
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.Lbldescripcion)
         Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Controls.Add(Me.textcodbar)
+        Me.GroupBox2.Controls.Add(Me.TextCodBar)
         Me.GroupBox2.Controls.Add(Me.Label14)
-        Me.GroupBox2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(28, 117)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(759, 120)
         Me.GroupBox2.TabIndex = 101
-        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.TabStop = false
         '
         'TextPU
         '
-        Me.TextPU.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextPU.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.TextPU.Location = New System.Drawing.Point(458, 11)
         Me.TextPU.Name = "TextPU"
         Me.TextPU.Size = New System.Drawing.Size(49, 22)
@@ -468,9 +468,9 @@ Partial Class FormEmiteFac
         '
         'Lbldescripcion
         '
-        Me.Lbldescripcion.AutoSize = True
-        Me.Lbldescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Lbldescripcion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Lbldescripcion.AutoSize = true
+        Me.Lbldescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Lbldescripcion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(0,Byte),Integer), CType(CType(192,Byte),Integer))
         Me.Lbldescripcion.Location = New System.Drawing.Point(121, 42)
         Me.Lbldescripcion.Name = "Lbldescripcion"
         Me.Lbldescripcion.Size = New System.Drawing.Size(0, 13)
@@ -478,12 +478,12 @@ Partial Class FormEmiteFac
         '
         'FormEmiteFac
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1022, 569)
         Me.Controls.Add(Me.GrillaArticulos)
         Me.Controls.Add(Me.lblCantidad)
-        Me.Controls.Add(Me.textPCompra)
+        Me.Controls.Add(Me.TextPCompra)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TextCodigo)
@@ -495,15 +495,15 @@ Partial Class FormEmiteFac
         Me.Controls.Add(Me.GroupBox2)
         Me.Name = "FormEmiteFac"
         Me.Text = "Form1"
-        CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        CType(Me.GrillaArticulos,System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox1.ResumeLayout(false)
+        Me.GroupBox1.PerformLayout
+        Me.GroupBox2.ResumeLayout(false)
+        Me.GroupBox2.PerformLayout
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents GrillaArticulos As System.Windows.Forms.DataGridView
     Friend WithEvents codart As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents descri As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -520,7 +520,7 @@ Partial Class FormEmiteFac
     Friend WithEvents TextCantidad As System.Windows.Forms.TextBox
     Friend WithEvents btnaceptar As System.Windows.Forms.Button
     Friend WithEvents lblCantidad As System.Windows.Forms.Label
-    Friend WithEvents textPCompra As System.Windows.Forms.TextBox
+    Friend WithEvents TextPCompra As System.Windows.Forms.TextBox
     Friend WithEvents lblTotal As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TextCodigo As System.Windows.Forms.TextBox
@@ -539,7 +539,7 @@ Partial Class FormEmiteFac
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents DtFechaEmi As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents textcodbar As System.Windows.Forms.TextBox
+    Friend WithEvents TextCodBar As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox

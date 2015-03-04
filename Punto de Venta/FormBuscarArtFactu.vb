@@ -1,24 +1,52 @@
-﻿Public Class FormBuscarArtFactu
+﻿Imports System.IO
+
+Public Class FormBuscarArtFactu
+
+    Dim listaArt As New List(Of Articulos)
+    Dim objStreamReader As StreamReader
 
     Private Sub FormBuscarArtFactu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim dstArticulos As New DataSet
-        Dim idLista As Integer
-    Private Sub FormBuscarArtFactu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Try
+            objStreamReader = New StreamReader("C:\Prueba.txt")
+        Catch ex As Exception
+            Throw New Exception("Error " + "Cargando Archivo de Articulos" + "|" + ex.Message)
+        End Try
 
     End Sub
-    Public Sub Abrir(idlistaSeleccionada As Integer)
 
-        dstArticulos = pwiFacturacion.wflEmisionFactura_ObtenerListaArticulos(My.Settings.cadena, idlistaSeleccionada)
-        idLista = idlistaSeleccionada
-        If dstArticulos.Tables(0).Rows.Count > 0 Then
-            CargarGrillaArticulos()
-        End If
+    Public Sub abrirFormulario(ByVal intIdLista As Integer)
+
+        Dim strLine As String
+
+        Do While Not objStreamReader.EndOfStream
+
+            strLine = objStreamReader.ReadLine
+            If Split(strLine, ";")(4) = intIdLista Then
+                Dim Art As New Articulos
+                Art.Codigo = Split(strLine, ";")(0)
+                Art.Descripcion = Split(strLine, ";")(1)
+                Art.CodigoBarras = Split(strLine, ";")(2)
+                Art.PrecioCosto = Split(strLine, ";")(3)
+                Art.PrecioVenta = Split(strLine, ";")(4)
+                Art.IdLista = Split(strLine, ";")(5)
+                Art.Unidad = Split(strLine, ";")(6)
+                Art.CostoGranel = Split(strLine, ";")(7)
+                Art.UnidadGranel = Split(strLine, ";")(8)
+                listaArt.Add(art)
+            End If
+        Loop
+        CargarGrillaArticulos()
+
         Me.btnCodBar.Checked = False
         Me.txtCodbar.Visible = False
         Me.txtdescri.Visible = True
         Me.btnDescri.Checked = True
+
         ShowDialog()
+
     End Sub
+
     Private Sub CargarGrillaArticulos()
         Dim lngNroError As Long
 
@@ -27,9 +55,9 @@
             Dim i As Integer
 
             i = 1
-            If Not dstArticulos Is Nothing Then
-                For Each row In dstArticulos.Tables(0).Rows
-                    GrillaArticulos.Rows.Add(row("codart"), row("desc"), row("cod"), row("lpd_precioVta"))
+            If Not listaArt Is Nothing Then
+                For Each Art In listaArt
+                    GrillaArticulos.Rows.Add(Art.Codigo, Art.Descripcion, Art.CodigoBarras, Art.PrecioVenta)
                 Next
             End If
 
@@ -37,7 +65,6 @@
             Throw New Exception("Error " + "Cargar grilla" + "|" + ex.Message)
 
         End Try
-
 
     End Sub
 
@@ -179,5 +206,5 @@
             Me.Close()
         End If
     End Sub
-    End Sub
+
 End Class

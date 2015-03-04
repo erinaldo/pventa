@@ -1,4 +1,6 @@
-﻿Module ModuloGeneral
+﻿Imports System.IO
+
+Module ModuloGeneral
 
 
     Public Vuelto As Double
@@ -11,6 +13,9 @@
     Public Origen As String
     Public CodartBuscado As Integer
     Public CodigoBarrasBuscado As String
+    Public dblcantidad As Double
+    Public TotalPcompra As Double
+
     Public Sub InsertarFilasEnGrilla(codart As String, descri As String, precio As Double, _
                                            cantidad As Double, total As Double, codbarra As String, costo As Double, _
                                            ByVal grilla As DataGridView)
@@ -30,6 +35,19 @@
 
     End Sub
 
+    Public Function ConvertirPrecio(PrecioAux As String) As Double
+        Dim decimales As Double
+        Dim ParteEntera As Double
+
+        decimales = Val(Mid(PrecioAux, Len(PrecioAux) - 1, Len(PrecioAux)))
+        ParteEntera = Val(Mid(PrecioAux, 1, 3))
+
+        decimales = decimales / 100
+
+        ConvertirPrecio = ParteEntera + decimales
+
+    End Function
+
     Public Function MsgAtencion(strMensaje As String) As MsgBoxStyle
         MsgAtencion = MsgBox(strMensaje, vbCritical + vbOKOnly, "Aviso al operador")
     End Function
@@ -40,6 +58,36 @@
 
     Public Function MsgPregunta(strMensaje As String) As MsgBoxStyle
         MsgPregunta = MsgBox(strMensaje, vbQuestion + vbYesNoCancel, "Aviso al operador")
+    End Function
+
+    Public Function ObtenerClientes() As List(Of Clientes)
+        Try
+            Dim objStreamReader As StreamReader
+            Dim strLine As String
+
+            ObtenerClientes = New List(Of Clientes)
+
+            objStreamReader = New StreamReader("C:\Clientes.txt")
+
+            Do While Not objStreamReader.EndOfStream
+                Dim cli As New Clientes
+
+                strLine = objStreamReader.ReadLine
+                cli.IdCliente = Split(strLine, ";")(0)
+                cli.NombreFantasia = Split(strLine, ";")(1)
+                cli.IdLista = Split(strLine, ";")(2)
+                cli.ListaDescripcion = Split(strLine, ";")(3)
+                cli.IdSucursal = Split(strLine, ";")(4)
+                
+
+                ObtenerClientes.Add(cli)
+
+            Loop
+
+
+        Catch ex As Exception
+            Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
+        End Try
     End Function
 
     Public Sub ImprimirTicketFiscal()
@@ -63,4 +111,5 @@
         'FormEmiteFac.HASAR1.CerrarComprobanteFiscal()
         'FormEmiteFac.HASAR1.Finalizar()
     End Sub
+
 End Module

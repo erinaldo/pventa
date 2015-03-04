@@ -70,6 +70,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulos.vb" />
+    <Compile Include="Clientes.vb" />
+    <Compile Include="FormAtencion.Designer.vb">
+      <DependentUpon>FormAtencion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormAtencion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormBuscarArtFactu.Designer.vb">
       <DependentUpon>FormBuscarArtFactu.vb</DependentUpon>
     </Compile>
@@ -81,6 +88,12 @@
     </Compile>
     <Compile Include="FormEmiteFac.Designer.vb">
       <DependentUpon>FormEmiteFac.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPide.Designer.vb">
+      <DependentUpon>FormPide.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPide.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormVuelto.Designer.vb">
@@ -107,11 +120,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormAtencion.resx">
+      <DependentUpon>FormAtencion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBuscarArtFactu.resx">
       <DependentUpon>FormBuscarArtFactu.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEmiteFac.resx">
       <DependentUpon>FormEmiteFac.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPide.resx">
+      <DependentUpon>FormPide.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVuelto.resx">
       <DependentUpon>FormVuelto.vb</DependentUpon>
@@ -124,6 +143,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -133,6 +153,10 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Imagenes\atencion2.jpg" />
+    <Content Include="Imagenes\atention.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
