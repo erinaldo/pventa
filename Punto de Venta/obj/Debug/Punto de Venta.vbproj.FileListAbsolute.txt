@@ -15,3 +15,6 @@ C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.FormVuelto.resources
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.Resources.resources
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.GenerateResource.Cache
 C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PruebaTexto.exe.config
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.FormInicioSesion.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\Interop.FiscalPrinterLib.dll
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.ResolveComReference.cache

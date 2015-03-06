@@ -8,7 +8,7 @@
 
     Public Sub Abrir(dblTotFac As Double)
         'dstFormas = pwiFacturacion.obtenerFormasPago(My.Settings.cadena)
-        'Cargar_Combobox(dstFormas.Tables(0), Me.cmbFormas)
+        Cargar_Combobox(ObtenerFormasPago, Me.cmbFormas)
         Me.lblTot.Text = dblTotFac
         Me.txttotaldto.Text = dblTotFac
         Me.textdto.Text = 0
@@ -16,12 +16,12 @@
 
     End Sub
 
-    Public Function Cargar_Combobox(ByVal dt As DataTable, ByRef cbx As Windows.Forms.ComboBox)
-        If dt.Rows.Count > 0 Then
-            cbx.DataSource = dt
-            cbx.ValueMember = dt.Columns(0).ToString()
-            cbx.DisplayMember = dt.Columns(1).ToString()
-        End If
+    Public Function Cargar_Combobox(ByVal lstFormasPago As List(Of FormasPago), ByRef cbx As Windows.Forms.ComboBox)
+
+        cbx.DataSource = lstFormasPago
+        cbx.ValueMember = "IdFormaPago"
+        cbx.DisplayMember = "Descripcion"
+
         Return Nothing
     End Function
 
@@ -33,10 +33,8 @@
         End If
     End Sub
 
-    Private Sub btnAceptar_Click(sender As Object, e As EventArgs)
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If txttotaldto.Text <> "" Then
-
-
             Vuelto = 0
             Paga = 0
             Descuento = CDbl(textdto.Text)
@@ -45,13 +43,10 @@
             IdFormaPago = cmbFormas.SelectedValue
             AceptaPago = True
             Me.Close()
-
         Else
             MsgAtencion("Debe ingresar algun valor de pago")
             'txtP.SetFocus()
         End If
     End Sub
-    Private Sub FormVuelto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    End Sub
 End Class

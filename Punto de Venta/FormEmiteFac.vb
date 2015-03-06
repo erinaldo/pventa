@@ -2,7 +2,6 @@
 
 Public Class FormEmiteFac
 
-
     Dim listaArt As New List(Of Articulos)
     Dim listaCli As New List(Of Clientes)
     Dim Articulo As Articulos
@@ -10,7 +9,7 @@ Public Class FormEmiteFac
     Dim idListaSeleccionada As Integer
     Dim TotalPCompra As Double
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FormEmiteFac_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim objStreamReader As StreamReader
         Dim strLine As String
 
@@ -61,11 +60,9 @@ Public Class FormEmiteFac
 
     Public Function Cargar_Combobox(ByVal lista As List(Of Clientes), ByRef cbx As Windows.Forms.ComboBox)
 
-
         cbx.DataSource = lista
-        cbx.DisplayMember = ""
-        cbx.ValueMember = ""
-
+        cbx.DisplayMember = "NombreFantasia"
+        cbx.ValueMember = "IdCliente"
 
         Return Nothing
     End Function
@@ -219,12 +216,12 @@ Public Class FormEmiteFac
 
         If e.KeyCode = 73 Then 'Presiona I-> Graba el ticket e imprime en impresora comun
             Origen = "I"
-            'cmdAceptar_Click(sender, e)
+            cmdAceptar_Click(sender, e)
         End If
 
         If e.KeyCode = 70 Then 'Presiona F-> Graba el ticket e imprime en impresora fiscal
             Origen = "F"
-            'cmdAceptar_Click(sender, e)
+            cmdAceptar_Click(sender, e)
         End If
 
         'If KeyCode = vbKeyF5 Then
@@ -242,7 +239,7 @@ Public Class FormEmiteFac
         'End If
 
         If e.KeyCode = 46 Then
-            'cmdEliminar_Click(sender, e)
+            cmdEliminar_Click(sender, e)
         End If
 
         'If KeyCode = vbKeyF12 Then
@@ -269,103 +266,87 @@ Public Class FormEmiteFac
         End If
     End Sub
 
-    'Private Sub cmdAceptar_Click(sender As Object, e As EventArgs) Handles cmdAceptar.Click
-    '    Dim graba As Boolean
-    '    'Dim ultimonro As Long
-    '    'Dim Leyenda As String
-    '    Dim Pbase As Double
-    '    Dim Iva As Double
-    '    Dim dstComprobantesVenta As New DataSet
-    '    Dim dstComprobantesVentaDetalle As New DataSet
-    '    If Origen <> "" Then
-    '        If GrillaArticulos.Rows(0).Cells(0).Value <> "" Then
-    '            If CDbl(lblTotal.Text) > 0 Then
-    '                graba = False
-    '                AceptaPago = False
-    '                FormVuelto.Abrir(Me.lblTotal.Text)
-    '                If AceptaPago Then
+    Private Sub cmdAceptar_Click(sender As Object, e As EventArgs) Handles cmdAceptar.Click
+        Dim graba As Boolean
+        Dim Pbase As Double
+        Dim Iva As Double
+        Dim objStreamWriter As StreamWriter
 
-    '                    Pbase = CDbl(Me.lblTotal.Text) / (1 + (PorcIva / 100))
-    '                    Iva = CDbl(Me.lblTotal.Text) - Pbase
-    '                    'Cargo los datos generales del tiquet
-    '                    dstComprobantesVenta = pwiFacturacion.wflComprobantesVenta_obtenerRegistro(cadena, -1)
-    '                    dstComprobantesVenta.Tables(0).Rows.Add()
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_id") = -1
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_nrocom") = -1
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_tipcom") = 5 'lo fijo poruqe no se elije
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_idcliente") = cmbcliente.SelectedValue
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_fecha") = DtFechaEmi.Value
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_idcondiva") = 3
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_pbase") = Pbase
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_porciva") = PorcIva
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_totcom") = CDbl(Me.lblTotal.Text)
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_idusuario") = idUsuario
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_origen") = Origen
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_dto") = Descuento
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_totaldto") = TotalDto
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_formapago") = IdFormaPago
-    '                    'Campos que agregue para la facturacion libre
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_condicionventa") = 1
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_remito") = ""
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_impuestos") = 0
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_subtotalI") = 0
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_montoiva") = 0
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_nrofactura") = ""
-    '                    dstComprobantesVenta.Tables(0).Rows(0)("cvt_pagada") = 1
+        If Origen <> "" Then
+            If GrillaArticulos.Rows(0).Cells(0).Value <> "" Then
+                If CDbl(lblTotal.Text) > 0 Then
+                    graba = False
+                    AceptaPago = False
+                    FormVuelto.Abrir(Me.lblTotal.Text)
+                    If AceptaPago Then
+                        Dim intNroComprobante As Integer
+
+                        intNroComprobante = obtenerNroComprobante()
+
+                        objStreamWriter = New StreamWriter("C:\ComprobanteVenta.txt", True, System.Text.Encoding.Unicode)
+
+                        Dim strComprobanteVenta As String
+
+                        Pbase = CDbl(Me.lblTotal.Text) / (1 + (PorcIva / 100))
+                        Iva = CDbl(Me.lblTotal.Text) - FormatNumber(Pbase, 2)
+                        'Cargo los datos generales del tiquet
+
+                        strComprobanteVenta = intNroComprobante & ";" & "0001-" & intNroComprobante & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
+                            FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
+                            3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & "sgerra" & ";" & Origen & ";" & _
+                            FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & 1 & ";" & "" & ";" & 0 & ";" & 0 & ";" & 0 & ";" & _
+                            "" & ";" & 1
 
 
-    '                    'Cargo los elementos de la grilla
-    '                    dstComprobantesVentaDetalle = pwiFacturacion.wflComprobantesVentaDetalle_obtenerRegistro(cadena, -1)
-    '                    Dim j As Integer = 0
+                        objStreamWriter.WriteLine(strComprobanteVenta)
 
-    '                    For j = 0 To GrillaArticulos.Rows.Count - 2
+                        objStreamWriter.Close()
 
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows.Add()
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows(dstComprobantesVentaDetalle.Tables(0).Rows.Count - 1)("cvd_id") = -1
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows(dstComprobantesVentaDetalle.Tables(0).Rows.Count - 1)("cvd_nrocom") = -1
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows(dstComprobantesVentaDetalle.Tables(0).Rows.Count - 1)("cvd_codart") = GrillaArticulos.Rows(j).Cells("codart").Value
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows(dstComprobantesVentaDetalle.Tables(0).Rows.Count - 1)("cvd_descart") = GrillaArticulos.Rows(j).Cells("descri").Value
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows(dstComprobantesVentaDetalle.Tables(0).Rows.Count - 1)("cvd_cantidad") = GrillaArticulos.Rows(j).Cells("cantidad").Value
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows(dstComprobantesVentaDetalle.Tables(0).Rows.Count - 1)("cvd_precunit") = GrillaArticulos.Rows(j).Cells("punitario").Value
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows(dstComprobantesVentaDetalle.Tables(0).Rows.Count - 1)("cvd_totart") = GrillaArticulos.Rows(j).Cells("Total").Value
-    '                        dstArticulo = pwiFacturacion.ObtenerArticulo(GrillaArticulos.Rows(j).Cells("codart").Value, cadena)
-    '                        dstComprobantesVentaDetalle.Tables(0).Rows(dstComprobantesVentaDetalle.Tables(0).Rows.Count - 1)("cvd_idrubro") = dstArticulo.Tables(0).Rows(0)("rubro")
+                        'Cargo los elementos de la grilla
+                        Dim j As Integer = 0
+                        Dim strComprobanteVentaDetalle As String
 
-    '                    Next
+                        objStreamWriter = New StreamWriter("C:\ComprobanteVentaDetalle.txt", True, System.Text.Encoding.Unicode)
 
-    '                    graba = pwiFacturacion.wflEmisionFactura_GuardarComprobante(cadena, dstComprobantesVenta, dstComprobantesVentaDetalle, My.Settings.sucursal)
+                        For j = 0 To GrillaArticulos.Rows.Count - 2
 
-    '                    If graba Then
+                            strComprobanteVentaDetalle = intNroComprobante & ";" & "0001-" & intNroComprobante & ";" & GrillaArticulos.Rows(j).Cells("codart").Value & ";" & _
+                                GrillaArticulos.Rows(j).Cells("descri").Value & ";" & GrillaArticulos.Rows(j).Cells("cantidad").Value & ";" & _
+                                GrillaArticulos.Rows(j).Cells("punitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2) & ";" & _
+                                1
+                            objStreamWriter.WriteLine(strComprobanteVentaDetalle)
 
+                        Next
 
-    '                        If Origen = "F" Then
-    '                            '''ImprimirImpresoraComun()
-    '                            'ImprimirTicketFiscal
-    '                        Else
-
-    '                            'ImprimirImpresoraComun()
-    '                        End If
-    '                        LimpiarCajas()
-    '                        Me.lblCantidad.Text = "0"
-    '                        Me.lblTotal.Text = "0"
-    '                        GrillaArticulos.Rows.Clear()
-    '                        FormEmiteFac_Load(sender, e)
-    '                        '''''PrepararNuevoTicket()
-    '                    End If
-    '                End If
-    '            Else
-    '                MsgAtencion("Debe cargar al menos un articulo")
-    '            End If
-    '        Else
-    '            MsgAtencion("No se puede guardar una factura con importe negativo")
-    '        End If
+                        objStreamWriter.Close()
 
 
-    '    Else
-    '        MsgAtencion("Presione I o F para guardar")
-    '    End If
+                        If Origen = "F" Then
+                            'ImprimirImpresoraComun()
+                            ImprimirTicketFiscal(GrillaArticulos)
+                        Else
+                            'ImprimirImpresoraComun()
+                        End If
+                        LimpiarCajas()
+                        Me.lblCantidad.Text = "0"
+                        Me.lblTotal.Text = "0"
+                        GrillaArticulos.Rows.Clear()
+                        FormEmiteFac_Load(sender, e)
+                        '''''PrepararNuevoTicket()
 
-    'End Sub
+                    End If
+                Else
+                    MsgAtencion("Debe cargar al menos un articulo")
+                End If
+            Else
+                MsgAtencion("No se puede guardar una factura con importe negativo")
+            End If
+
+        Else
+            MsgAtencion("Presione I o F para guardar")
+        End If
+
+    End Sub
 
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
         Dim paso As Boolean
@@ -423,7 +404,18 @@ Public Class FormEmiteFac
     End Sub
 
     Private Sub cmbcliente_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbcliente.SelectionChangeCommitted
-        Me.lblLista.Text = "Consumidor Final" 'dstClientes.Tables(0).Rows(cmbcliente.SelectedIndex)("lpr_descripcion")
-        idListaSeleccionada = 1 ' dstClientes.Tables(0).Rows(cmbcliente.SelectedIndex)("cli_listaprecios")
+        Dim idCli As Integer
+
+        idCli = cmbcliente.SelectedValue
+
+        For Each cli In listaCli
+            If cli.IdCliente = idCli Then
+                Me.lblLista.Text = cli.ListaDescripcion
+                idListaSeleccionada = cli.IdLista
+                Exit For
+            End If
+        Next
+
     End Sub
+
 End Class

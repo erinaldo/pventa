@@ -15,6 +15,10 @@ Module ModuloGeneral
     Public CodigoBarrasBuscado As String
     Public dblcantidad As Double
     Public TotalPcompra As Double
+    Public PorcIva As Double = 21
+    Public idUsuario As Double '=4
+    Public NomUsuario As String '= "Administrador"
+    Public idPerfilUsuario As Integer
 
     Public Sub InsertarFilasEnGrilla(codart As String, descri As String, precio As Double, _
                                            cantidad As Double, total As Double, codbarra As String, costo As Double, _
@@ -45,6 +49,24 @@ Module ModuloGeneral
         decimales = decimales / 100
 
         ConvertirPrecio = ParteEntera + decimales
+    End Function
+
+    Public Function obtenerNroComprobante() As Integer
+        Dim objStreamReader As StreamReader
+
+        objStreamReader = New StreamReader("C:\Comprobante.txt")
+
+        obtenerNroComprobante = objStreamReader.ReadLine
+
+        objStreamReader.Close()
+
+        Dim objStreamWriter As StreamWriter
+
+        objStreamWriter = New StreamWriter("C:\Comprobante.txt", False)
+
+        objStreamWriter.WriteLine(obtenerNroComprobante + 1)
+
+        objStreamWriter.Close()
 
     End Function
 
@@ -78,38 +100,92 @@ Module ModuloGeneral
                 cli.IdLista = Split(strLine, ";")(2)
                 cli.ListaDescripcion = Split(strLine, ";")(3)
                 cli.IdSucursal = Split(strLine, ";")(4)
-                
 
                 ObtenerClientes.Add(cli)
 
             Loop
-
 
         Catch ex As Exception
             Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
         End Try
     End Function
 
-    Public Sub ImprimirTicketFiscal()
-        'FormEmiteFac.HASAR1.Puerto = 1
-        'FormEmiteFac.HASAR1.Comenzar()
-        'FormEmiteFac.HASAR1.AbrirComprobanteFiscal TICKET_C
+    Public Function ObtenerUsuarios(ByVal strNombreUsuario As String) As Usuarios
+        Try
+            Dim objStreamReader As StreamReader
+            Dim strLine As String
 
-        'filas = FormEmiteFac.GrillaArticulos.Rows - 2
+            ObtenerUsuarios = New Usuarios
 
-        'For i = 1 To filas
-        '    idrubro = BuscarRubro(FormEmiteFac.GrillaArticulos.TextMatrix(i, 2))
-        '    FormEmiteFac.HASAR1.ImprimirItem(Mid(FormEmiteFac.GrillaArticulos.TextMatrix(i, 3), 1, 15), FormEmiteFac.GrillaArticulos.TextMatrix(i, 5), FormEmiteFac.GrillaArticulos.TextMatrix(i, 4), 0, 0)
+            objStreamReader = New StreamReader("C:\Usuarios.txt")
 
-        'Next i
-        'If MontoDesc <> 0 Then
-        '    FormEmiteFac.HASAR1.DescuentoGeneral("Descuento", MontoDesc, True)
-        'End If
-        'FormEmiteFac.HASAR1.ImprimirPago("Pago con", Paga)
-        ''FormEmiteFac.HASAR1.ImprimirPago "Vuelto", Vuelto *** Linea que sacamos para 5 y 63 - 30/09/2010
+            Do While Not objStreamReader.EndOfStream
 
-        'FormEmiteFac.HASAR1.CerrarComprobanteFiscal()
-        'FormEmiteFac.HASAR1.Finalizar()
-    End Sub
+                strLine = objStreamReader.ReadLine
+                If Split(strLine, ";")(1) = strNombreUsuario Then
+                    ObtenerUsuarios.IdUsuario = Split(strLine, ";")(0)
+                    ObtenerUsuarios.Usuario = Split(strLine, ";")(1)
+                    ObtenerUsuarios.Password = Split(strLine, ";")(2)
+                    ObtenerUsuarios.IdSucursal = Split(strLine, ";")(3)
+                    Exit Do
+                End If
+
+            Loop
+
+        Catch ex As Exception
+            Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
+        End Try
+    End Function
+
+    Public Function ObtenerFormasPago() As List(Of FormasPago)
+        Try
+            Dim objStreamReader As StreamReader
+            Dim strLine As String
+
+            ObtenerFormasPago = New List(Of FormasPago)
+
+            objStreamReader = New StreamReader("C:\FormasPago.txt")
+
+            Do While Not objStreamReader.EndOfStream
+                Dim formPago As New FormasPago
+
+                strLine = objStreamReader.ReadLine
+                formPago.IdFormaPago = Split(strLine, ";")(0)
+                formPago.Descripcion = Split(strLine, ";")(1)
+
+                ObtenerFormasPago.Add(formPago)
+
+            Loop
+
+        Catch ex As Exception
+            Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
+        End Try
+    End Function
+
+    Public Function Decript(pass As String) As String
+
+
+        Dim pos As Long
+        Dim Key As Long
+        Dim temp As String
+        Dim i As Long
+        Dim temp1 As String = ""
+
+        pos = Int(Asc(Mid(pass, 1, 1))) - 150
+        Key = Asc(Mid(pass, pos + 2, 1))
+        temp = Mid(pass, 1, pos + 1)
+        pass = temp & Mid(pass, pos + 3, Len(pass))
+        pass = Mid(pass, 2, Len(pass))
+        For i = 1 To Len(pass)
+            If Asc(Mid(pass, i, 1)) <> Key Then
+                temp1 = temp1 & Chr(Key - CInt(Asc(Mid(pass, i, 1))))
+            Else
+                temp1 = temp1 & Chr(Asc(Mid(pass, i, 1)))
+            End If
+        Next
+        Decript = temp1
+    End Function
+
+
 
 End Module
