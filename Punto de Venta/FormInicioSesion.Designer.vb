@@ -53,7 +53,7 @@ Partial Class FormInicioSesion
         Me.textnombreusuario.Location = New System.Drawing.Point(110, 51)
         Me.textnombreusuario.Name = "textnombreusuario"
         Me.textnombreusuario.Size = New System.Drawing.Size(183, 20)
-        Me.textnombreusuario.TabIndex = 2
+        Me.textnombreusuario.TabIndex = 0
         Me.textnombreusuario.Text = "admin"
         '
         'textcontrasenia
@@ -61,16 +61,16 @@ Partial Class FormInicioSesion
         Me.textcontrasenia.Location = New System.Drawing.Point(110, 91)
         Me.textcontrasenia.Name = "textcontrasenia"
         Me.textcontrasenia.Size = New System.Drawing.Size(183, 20)
-        Me.textcontrasenia.TabIndex = 3
+        Me.textcontrasenia.TabIndex = 1
         Me.textcontrasenia.Text = "diego"
         Me.textcontrasenia.UseSystemPasswordChar = True
         '
         'cmdCancelar
         '
-        Me.cmdCancelar.Location = New System.Drawing.Point(110, 152)
+        Me.cmdCancelar.Location = New System.Drawing.Point(101, 152)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 23)
-        Me.cmdCancelar.TabIndex = 4
+        Me.cmdCancelar.TabIndex = 3
         Me.cmdCancelar.Text = "Cancelar"
         Me.cmdCancelar.UseVisualStyleBackColor = True
         '
@@ -79,7 +79,7 @@ Partial Class FormInicioSesion
         Me.cmdAceptar.Location = New System.Drawing.Point(191, 152)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(75, 23)
-        Me.cmdAceptar.TabIndex = 5
+        Me.cmdAceptar.TabIndex = 2
         Me.cmdAceptar.Text = "Aceptar"
         Me.cmdAceptar.UseVisualStyleBackColor = True
         '
@@ -87,7 +87,7 @@ Partial Class FormInicioSesion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(379, 203)
+        Me.ClientSize = New System.Drawing.Size(369, 203)
         Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.textcontrasenia)

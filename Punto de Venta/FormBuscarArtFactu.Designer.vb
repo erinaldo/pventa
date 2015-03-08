@@ -23,10 +23,6 @@ Partial Class FormBuscarArtFactu
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.btnCodBar = New System.Windows.Forms.RadioButton()
-        Me.Codart = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripción = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btncontinua = New System.Windows.Forms.Button()
@@ -36,6 +32,10 @@ Partial Class FormBuscarArtFactu
         Me.btnSeleccionar = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.GrillaArticulos = New System.Windows.Forms.DataGridView()
+        Me.Codart = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripción = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -43,34 +43,13 @@ Partial Class FormBuscarArtFactu
         'btnCodBar
         '
         Me.btnCodBar.AutoSize = True
-        Me.btnCodBar.Location = New System.Drawing.Point(60, 20)
+        Me.btnCodBar.Location = New System.Drawing.Point(33, 19)
         Me.btnCodBar.Name = "btnCodBar"
         Me.btnCodBar.Size = New System.Drawing.Size(176, 17)
         Me.btnCodBar.TabIndex = 0
         Me.btnCodBar.TabStop = True
         Me.btnCodBar.Text = "Búsqueda por código de barras:"
         Me.btnCodBar.UseVisualStyleBackColor = True
-        '
-        'Codart
-        '
-        Me.Codart.HeaderText = "Código"
-        Me.Codart.Name = "Codart"
-        '
-        'Descripción
-        '
-        Me.Descripción.HeaderText = "Descripción"
-        Me.Descripción.Name = "Descripción"
-        Me.Descripción.Width = 300
-        '
-        'Codbar
-        '
-        Me.Codbar.HeaderText = "Codigo de Barras"
-        Me.Codbar.Name = "Codbar"
-        '
-        'Precio
-        '
-        Me.Precio.HeaderText = "Precio"
-        Me.Precio.Name = "Precio"
         '
         'GroupBox1
         '
@@ -80,16 +59,16 @@ Partial Class FormBuscarArtFactu
         Me.GroupBox1.Controls.Add(Me.txtdescri)
         Me.GroupBox1.Controls.Add(Me.btnDescri)
         Me.GroupBox1.Controls.Add(Me.btnCodBar)
-        Me.GroupBox1.Location = New System.Drawing.Point(57, 35)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(726, 77)
+        Me.GroupBox1.Size = New System.Drawing.Size(679, 77)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Búsqueda de articulos"
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(580, 8)
+        Me.Button2.Location = New System.Drawing.Point(519, 16)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(134, 23)
         Me.Button2.TabIndex = 5
@@ -98,7 +77,7 @@ Partial Class FormBuscarArtFactu
         '
         'btncontinua
         '
-        Me.btncontinua.Location = New System.Drawing.Point(580, 40)
+        Me.btncontinua.Location = New System.Drawing.Point(519, 40)
         Me.btncontinua.Name = "btncontinua"
         Me.btncontinua.Size = New System.Drawing.Size(134, 23)
         Me.btncontinua.TabIndex = 4
@@ -107,7 +86,7 @@ Partial Class FormBuscarArtFactu
         '
         'txtCodbar
         '
-        Me.txtCodbar.Location = New System.Drawing.Point(185, 43)
+        Me.txtCodbar.Location = New System.Drawing.Point(94, 42)
         Me.txtCodbar.Name = "txtCodbar"
         Me.txtCodbar.Size = New System.Drawing.Size(293, 20)
         Me.txtCodbar.TabIndex = 3
@@ -115,7 +94,7 @@ Partial Class FormBuscarArtFactu
         '
         'txtdescri
         '
-        Me.txtdescri.Location = New System.Drawing.Point(185, 43)
+        Me.txtdescri.Location = New System.Drawing.Point(94, 42)
         Me.txtdescri.Name = "txtdescri"
         Me.txtdescri.Size = New System.Drawing.Size(293, 20)
         Me.txtdescri.TabIndex = 2
@@ -123,7 +102,7 @@ Partial Class FormBuscarArtFactu
         'btnDescri
         '
         Me.btnDescri.AutoSize = True
-        Me.btnDescri.Location = New System.Drawing.Point(390, 11)
+        Me.btnDescri.Location = New System.Drawing.Point(312, 19)
         Me.btnDescri.Name = "btnDescri"
         Me.btnDescri.Size = New System.Drawing.Size(151, 17)
         Me.btnDescri.TabIndex = 1
@@ -133,31 +112,61 @@ Partial Class FormBuscarArtFactu
         '
         'btnSeleccionar
         '
-        Me.btnSeleccionar.Location = New System.Drawing.Point(696, 243)
+        Me.btnSeleccionar.Location = New System.Drawing.Point(708, 243)
         Me.btnSeleccionar.Name = "btnSeleccionar"
-        Me.btnSeleccionar.Size = New System.Drawing.Size(75, 23)
+        Me.btnSeleccionar.Size = New System.Drawing.Size(75, 34)
         Me.btnSeleccionar.TabIndex = 6
         Me.btnSeleccionar.Text = "Seleccionar"
         Me.btnSeleccionar.UseVisualStyleBackColor = True
         '
         'btnCerrar
         '
-        Me.btnCerrar.Location = New System.Drawing.Point(324, 470)
+        Me.btnCerrar.Location = New System.Drawing.Point(325, 467)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCerrar.Size = New System.Drawing.Size(95, 35)
         Me.btnCerrar.TabIndex = 5
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'GrillaArticulos
         '
+        Me.GrillaArticulos.AllowUserToAddRows = False
+        Me.GrillaArticulos.AllowUserToDeleteRows = False
         Me.GrillaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaArticulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codart, Me.Descripción, Me.Codbar, Me.Precio})
-        Me.GrillaArticulos.Location = New System.Drawing.Point(15, 138)
+        Me.GrillaArticulos.Location = New System.Drawing.Point(12, 95)
         Me.GrillaArticulos.Name = "GrillaArticulos"
+        Me.GrillaArticulos.ReadOnly = True
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GrillaArticulos.Size = New System.Drawing.Size(662, 306)
+        Me.GrillaArticulos.Size = New System.Drawing.Size(679, 349)
         Me.GrillaArticulos.TabIndex = 4
+        '
+        'Codart
+        '
+        Me.Codart.HeaderText = "Código"
+        Me.Codart.Name = "Codart"
+        Me.Codart.ReadOnly = True
+        Me.Codart.Width = 90
+        '
+        'Descripción
+        '
+        Me.Descripción.HeaderText = "Descripción"
+        Me.Descripción.Name = "Descripción"
+        Me.Descripción.ReadOnly = True
+        Me.Descripción.Width = 320
+        '
+        'Codbar
+        '
+        Me.Codbar.HeaderText = "Codigo de Barras"
+        Me.Codbar.Name = "Codbar"
+        Me.Codbar.ReadOnly = True
+        Me.Codbar.Width = 110
+        '
+        'Precio
+        '
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
         '
         'FormBuscarArtFactu
         '
@@ -169,7 +178,7 @@ Partial Class FormBuscarArtFactu
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.GrillaArticulos)
         Me.Name = "FormBuscarArtFactu"
-        Me.Text = "FormBuscarArtFactu"
+        Me.Text = "Buscar Articulo"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -177,10 +186,6 @@ Partial Class FormBuscarArtFactu
 
     End Sub
     Friend WithEvents btnCodBar As System.Windows.Forms.RadioButton
-    Friend WithEvents Codart As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Descripción As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Codbar As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Precio As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents btncontinua As System.Windows.Forms.Button
@@ -190,4 +195,8 @@ Partial Class FormBuscarArtFactu
     Friend WithEvents btnSeleccionar As System.Windows.Forms.Button
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Friend WithEvents GrillaArticulos As System.Windows.Forms.DataGridView
+    Friend WithEvents Codart As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Descripción As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Codbar As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Precio As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

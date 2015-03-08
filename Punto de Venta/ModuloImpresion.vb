@@ -5,31 +5,77 @@
     Public Sub ImprimirTicketFiscal(ByVal grilla As DataGridView)
         miOCX = New FiscalPrinterLib.HASAR
 
-        miOCX.Puerto = 2
-        miOCX.Baudios = 9600
-        miOCX.AutodetectarControlador(2)
-        miOCX.AutodetectarModelo()
-        'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_615
-        miOCX.Finalizar()
+        miOCX.Puerto = 5
+        miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_615
         miOCX.Comenzar()
+        miOCX.TratarDeCancelarTodo()
         miOCX.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_C)
 
-        Dim filas As Integer = grilla.Rows.Count - 2
+        Dim filas As Integer = grilla.Rows.Count - 1
 
-        For i = 1 To filas
+        For i = 0 To filas
             'idrubro = 1
-            miOCX.ImprimirItem(Mid(grilla.Rows(i).Cells("descrip").Value(), 1, 15), grilla.Rows(i).Cells("cantidad").Value(), grilla.Rows(i).Cells("Total").Value(), 0, 0)
+            miOCX.ImprimirItem(Mid(grilla.Rows(i).Cells("descri").Value(), 1, 15), grilla.Rows(i).Cells("cantidad").Value(), grilla.Rows(i).Cells("punitario").Value(), 0, 0)
 
         Next i
         If MontoDesc <> 0 Then
             miOCX.DescuentoGeneral("Descuento", MontoDesc, True)
         End If
         miOCX.ImprimirPago("Pago con", Paga)
-        miOCX.ImprimirPago("Vuelto", Vuelto) '*** Linea que sacamos para 5 y 63 - 30/09/2010
+        'miOCX.ImprimirPago("Vuelto", Vuelto) '*** Linea que sacamos para 5 y 63 - 30/09/2010
 
         miOCX.CerrarComprobanteFiscal()
+        Dim NroFisc As Integer = miOCX.UltimoDocumentoFiscalBC()
         miOCX.Finalizar()
     End Sub
 
+    Function ImprimirReporteZ() As Boolean
+        Try
+
+            miOCX = New FiscalPrinterLib.HASAR
+
+            miOCX.Puerto = 5
+            miOCX.Comenzar()
+            miOCX.TratarDeCancelarTodo()
+            miOCX.ReporteZ()
+            miOCX.Finalizar()
+
+            ImprimirReporteZ = True
+        Catch ex As Exception
+            ImprimirReporteZ = False
+        End Try
+    End Function
+
+    Function ImprimirReporteX() As Boolean
+        Try
+
+            miOCX = New FiscalPrinterLib.HASAR
+
+            miOCX.Puerto = 5
+            miOCX.Comenzar()
+            miOCX.TratarDeCancelarTodo()
+            miOCX.ReporteX()
+            miOCX.Finalizar()
+
+            ImprimirReporteX = True
+        Catch ex As Exception
+            ImprimirReporteX = False
+        End Try
+    End Function
+
+    Function obtenerNroComprobanteFiscal() As Integer
+        Try
+
+            miOCX = New FiscalPrinterLib.HASAR
+
+            miOCX.Puerto = 5
+            miOCX.Comenzar()
+            obtenerNroComprobanteFiscal = miOCX.UltimoDocumentoFiscalBC()
+            miOCX.Finalizar()
+
+        Catch ex As Exception
+            obtenerNroComprobanteFiscal = -1
+        End Try
+    End Function
 
 End Module

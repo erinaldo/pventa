@@ -97,10 +97,22 @@
     <Compile Include="FormInicioSesion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormPedidos.Designer.vb">
+      <DependentUpon>FormPedidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPedidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormPide.Designer.vb">
       <DependentUpon>FormPide.vb</DependentUpon>
     </Compile>
     <Compile Include="FormPide.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrincipal.Designer.vb">
+      <DependentUpon>FormPrincipal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormVuelto.Designer.vb">
@@ -126,6 +138,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PedidosPendientes.vb" />
     <Compile Include="Usuarios.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -141,8 +154,14 @@
     <EmbeddedResource Include="FormInicioSesion.resx">
       <DependentUpon>FormInicioSesion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPedidos.resx">
+      <DependentUpon>FormPedidos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPide.resx">
       <DependentUpon>FormPide.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVuelto.resx">
       <DependentUpon>FormVuelto.vb</DependentUpon>

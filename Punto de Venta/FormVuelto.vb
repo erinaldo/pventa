@@ -12,6 +12,7 @@
         Me.lblTot.Text = dblTotFac
         Me.txttotaldto.Text = dblTotFac
         Me.textdto.Text = 0
+        Me.txtAbona.Text = 0
         ShowDialog()
 
     End Sub
@@ -34,7 +35,7 @@
     End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-        If txttotaldto.Text <> "" Then
+        If CDbl(txtAbona.Text) <> 0 Then
             Vuelto = 0
             Paga = 0
             Descuento = CDbl(textdto.Text)
@@ -42,11 +43,20 @@
             MontoDesc = CDbl(lblTot.Text) - CDbl(txttotaldto.Text)
             IdFormaPago = cmbFormas.SelectedValue
             AceptaPago = True
+            Paga = CDbl(txtAbona.Text)
             Me.Close()
         Else
-            MsgAtencion("Debe ingresar algun valor de pago")
-            'txtP.SetFocus()
+            MsgAtencion("Debe ingresar algun monto de pago")
+            txtAbona.Focus()
         End If
     End Sub
 
+    Private Sub txtAbona_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAbona.KeyUp
+        lblVuelto.Text = CDbl(txtAbona.Text) - CDbl(txttotaldto.Text)
+        If CDbl(lblVuelto.Text) < 0 Then
+            lblVuelto.ForeColor = Color.Red
+        Else
+            lblVuelto.ForeColor = Color.Green
+        End If
+    End Sub
 End Class

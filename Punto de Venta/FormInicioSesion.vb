@@ -16,7 +16,7 @@
                 clave = Usuario.Password
 
                 If Decript(clave) = textcontrasenia.Text Then
-                    FormEmiteFac.Show()
+                    FormPrincipal.Show()
                 Else
                     MsgAtencion("La contraseña está mal ingresada")
                     textcontrasenia.Focus()
@@ -32,24 +32,16 @@
         End If
 
     End Sub
+
     Private Function datosCompletos() As Boolean
         datosCompletos = (Trim(Me.textnombreusuario.Text) <> "") And (Trim(Me.textcontrasenia.Text) <> "")
     End Function
 
-    Private Sub FormInicioSesion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
     Private Sub textnombreusuario_KeyPress(sender As Object, e As KeyPressEventArgs) Handles textnombreusuario.KeyPress
-      
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
         End If
-    End Sub
-
-    Private Sub textnombreusuario_TextChanged(sender As Object, e As EventArgs) Handles textnombreusuario.TextChanged
-
     End Sub
 
     Private Sub textcontrasenia_KeyPress(sender As Object, e As KeyPressEventArgs) Handles textcontrasenia.KeyPress
@@ -59,7 +51,4 @@
         End If
     End Sub
 
-    Private Sub textcontrasenia_TextChanged(sender As Object, e As EventArgs) Handles textcontrasenia.TextChanged
-
-    End Sub
 End Class

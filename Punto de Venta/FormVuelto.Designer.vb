@@ -33,12 +33,16 @@ Partial Class FormVuelto
         Me.Label1 = New System.Windows.Forms.Label()
         Me.textdto = New System.Windows.Forms.TextBox()
         Me.txttotaldto = New System.Windows.Forms.TextBox()
+        Me.txtAbona = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblVuelto = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(261, 134)
+        Me.Label5.Location = New System.Drawing.Point(252, 138)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(15, 13)
         Me.Label5.TabIndex = 19
@@ -49,7 +53,7 @@ Partial Class FormVuelto
         Me.lblTot.AutoSize = True
         Me.lblTot.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTot.ForeColor = System.Drawing.Color.Red
-        Me.lblTot.Location = New System.Drawing.Point(139, 72)
+        Me.lblTot.Location = New System.Drawing.Point(139, 81)
         Me.lblTot.Name = "lblTot"
         Me.lblTot.Size = New System.Drawing.Size(120, 37)
         Me.lblTot.TabIndex = 18
@@ -65,7 +69,7 @@ Partial Class FormVuelto
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(101, 257)
+        Me.btnCancelar.Location = New System.Drawing.Point(73, 337)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelar.TabIndex = 16
@@ -74,7 +78,7 @@ Partial Class FormVuelto
         '
         'btnAceptar
         '
-        Me.btnAceptar.Location = New System.Drawing.Point(184, 257)
+        Me.btnAceptar.Location = New System.Drawing.Point(184, 337)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
         Me.btnAceptar.TabIndex = 15
@@ -119,23 +123,63 @@ Partial Class FormVuelto
         '
         'textdto
         '
-        Me.textdto.Location = New System.Drawing.Point(139, 138)
+        Me.textdto.Location = New System.Drawing.Point(146, 135)
         Me.textdto.Name = "textdto"
         Me.textdto.Size = New System.Drawing.Size(100, 20)
         Me.textdto.TabIndex = 20
         '
         'txttotaldto
         '
-        Me.txttotaldto.Location = New System.Drawing.Point(138, 186)
+        Me.txttotaldto.Location = New System.Drawing.Point(146, 186)
         Me.txttotaldto.Name = "txttotaldto"
         Me.txttotaldto.Size = New System.Drawing.Size(100, 20)
         Me.txttotaldto.TabIndex = 21
+        '
+        'txtAbona
+        '
+        Me.txtAbona.Location = New System.Drawing.Point(146, 232)
+        Me.txtAbona.Name = "txtAbona"
+        Me.txtAbona.Size = New System.Drawing.Size(100, 20)
+        Me.txtAbona.TabIndex = 0
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(70, 235)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(62, 13)
+        Me.Label6.TabIndex = 22
+        Me.Label6.Text = "Abona con:"
+        '
+        'lblVuelto
+        '
+        Me.lblVuelto.AutoSize = True
+        Me.lblVuelto.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVuelto.ForeColor = System.Drawing.Color.Red
+        Me.lblVuelto.Location = New System.Drawing.Point(139, 270)
+        Me.lblVuelto.Name = "lblVuelto"
+        Me.lblVuelto.Size = New System.Drawing.Size(120, 37)
+        Me.lblVuelto.TabIndex = 25
+        Me.lblVuelto.Text = "Label5"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(92, 284)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(40, 13)
+        Me.Label8.TabIndex = 24
+        Me.Label8.Text = "Vuelto:"
         '
         'FormVuelto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(338, 319)
+        Me.ClientSize = New System.Drawing.Size(338, 372)
+        Me.Controls.Add(Me.lblVuelto)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.txtAbona)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txttotaldto)
         Me.Controls.Add(Me.textdto)
         Me.Controls.Add(Me.Label5)
@@ -164,4 +208,8 @@ Partial Class FormVuelto
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents textdto As System.Windows.Forms.TextBox
     Friend WithEvents txttotaldto As System.Windows.Forms.TextBox
+    Friend WithEvents txtAbona As System.Windows.Forms.TextBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lblVuelto As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
 End Class

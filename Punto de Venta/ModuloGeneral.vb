@@ -26,7 +26,7 @@ Module ModuloGeneral
         Dim i As Integer
         Dim dt As New DataGridViewRow
 
-        i = grilla.Rows.Count - 1
+        i = grilla.Rows.Count
         dt.CreateCells(grilla)
         dt.Cells(0).Value = codart
         dt.Cells(1).Value = descri
@@ -54,7 +54,7 @@ Module ModuloGeneral
     Public Function obtenerNroComprobante() As Integer
         Dim objStreamReader As StreamReader
 
-        objStreamReader = New StreamReader("C:\Comprobante.txt")
+        objStreamReader = New StreamReader("C:\Users\Sergio\Documents\Comprobante.txt")
 
         obtenerNroComprobante = objStreamReader.ReadLine
 
@@ -62,7 +62,7 @@ Module ModuloGeneral
 
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("C:\Comprobante.txt", False)
+        objStreamWriter = New StreamWriter("C:\Users\Sergio\Documents\Comprobante.txt", False)
 
         objStreamWriter.WriteLine(obtenerNroComprobante + 1)
 

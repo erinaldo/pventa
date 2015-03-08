@@ -35,7 +35,7 @@ Partial Class FormPide
         Me.lbldescart.AutoSize = True
         Me.lbldescart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbldescart.ForeColor = System.Drawing.Color.Red
-        Me.lbldescart.Location = New System.Drawing.Point(104, 71)
+        Me.lbldescart.Location = New System.Drawing.Point(104, 69)
         Me.lbldescart.Name = "lbldescart"
         Me.lbldescart.Size = New System.Drawing.Size(55, 16)
         Me.lbldescart.TabIndex = 9
@@ -61,7 +61,7 @@ Partial Class FormPide
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(94, 213)
+        Me.btnCancelar.Location = New System.Drawing.Point(84, 191)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelar.TabIndex = 7
@@ -70,7 +70,7 @@ Partial Class FormPide
         '
         'btnaceptar
         '
-        Me.btnaceptar.Location = New System.Drawing.Point(200, 213)
+        Me.btnaceptar.Location = New System.Drawing.Point(204, 191)
         Me.btnaceptar.Name = "btnaceptar"
         Me.btnaceptar.Size = New System.Drawing.Size(75, 23)
         Me.btnaceptar.TabIndex = 5
@@ -88,7 +88,7 @@ Partial Class FormPide
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(423, 261)
+        Me.ClientSize = New System.Drawing.Size(364, 261)
         Me.Controls.Add(Me.txtprecio)
         Me.Controls.Add(Me.lbldescart)
         Me.Controls.Add(Me.Label2)
@@ -96,7 +96,7 @@ Partial Class FormPide
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnaceptar)
         Me.Name = "FormPide"
-        Me.Text = "FormPide"
+        Me.Text = "Ingrese Monto"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

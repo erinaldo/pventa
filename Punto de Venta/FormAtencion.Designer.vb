@@ -32,7 +32,7 @@ Partial Class FormAtencion
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(48, 273)
+        Me.Label1.Location = New System.Drawing.Point(48, 288)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(657, 31)
         Me.Label1.TabIndex = 0
@@ -55,6 +55,7 @@ Partial Class FormAtencion
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label1)
         Me.ForeColor = System.Drawing.Color.Red
+        Me.KeyPreview = True
         Me.Name = "FormAtencion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormAtencion"

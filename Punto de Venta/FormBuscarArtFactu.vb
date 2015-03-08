@@ -2,57 +2,31 @@
 
 Public Class FormBuscarArtFactu
 
-    Dim listaArt As New List(Of Articulos)
-    Dim objStreamReader As StreamReader
+    Private lista As List(Of Articulos)
 
-    Private Sub FormBuscarArtFactu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub abrirFormulario(ByVal listaArt As IList(Of Articulos), ByVal intIdLista As Integer)
 
-        Try
-            objStreamReader = New StreamReader("C:\Prueba.txt")
-        Catch ex As Exception
-            Throw New Exception("Error " + "Cargando Archivo de Articulos" + "|" + ex.Message)
-        End Try
 
-    End Sub
-
-    Public Sub abrirFormulario(ByVal intIdLista As Integer)
-
-        Dim strLine As String
-
-        Do While Not objStreamReader.EndOfStream
-
-            strLine = objStreamReader.ReadLine
-            If Split(strLine, ";")(4) = intIdLista Then
-                Dim Art As New Articulos
-                Art.Codigo = Split(strLine, ";")(0)
-                Art.Descripcion = Split(strLine, ";")(1)
-                Art.CodigoBarras = Split(strLine, ";")(2)
-                Art.PrecioCosto = Split(strLine, ";")(3)
-                Art.PrecioVenta = Split(strLine, ";")(4)
-                Art.IdLista = Split(strLine, ";")(5)
-                Art.Unidad = Split(strLine, ";")(6)
-                Art.CostoGranel = Split(strLine, ";")(7)
-                Art.UnidadGranel = Split(strLine, ";")(8)
-                listaArt.Add(art)
-            End If
-        Loop
-        CargarGrillaArticulos()
+        CargarGrillaArticulos(listaArt)
 
         Me.btnCodBar.Checked = False
         Me.txtCodbar.Visible = False
         Me.txtdescri.Visible = True
         Me.btnDescri.Checked = True
 
+        lista = listaArt
         ShowDialog()
 
     End Sub
 
-    Private Sub CargarGrillaArticulos()
+    Private Sub CargarGrillaArticulos(ByVal listaArt As List(Of Articulos))
         Dim lngNroError As Long
 
         Try
             lngNroError = 0
             Dim i As Integer
+
+            GrillaArticulos.Rows.Clear()
 
             i = 1
             If Not listaArt Is Nothing Then
@@ -68,31 +42,15 @@ Public Class FormBuscarArtFactu
 
     End Sub
 
-    Private Sub txtdescri_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtdescri.KeyPress
-        e.KeyChar = e.KeyChar.ToString.ToUpper
+    Private Sub txtdescri_KeyUp(sender As Object, e As KeyEventArgs) Handles txtdescri.KeyUp
+
+        Dim result As List(Of Articulos) = (From art In lista
+                                            Where art.Descripcion.Contains(txtdescri.Text.ToUpper)
+                                            Select art).ToList
+        CargarGrillaArticulos(result)
     End Sub
 
-    Private Sub txtdescri_TextChanged(sender As Object, e As EventArgs) Handles txtdescri.TextChanged
-        For i As Integer = 0 To Me.GrillaArticulos.Rows.Count - 2
-            'For x As Integer = 0 To Me.GrillaArticulos.ColumnCount - 1
-            If Me.GrillaArticulos.Rows(i).Cells(1).Value.ToString.Contains(Me.txtdescri.Text) Then
-                Me.GrillaArticulos.CurrentCell = Me.GrillaArticulos.Rows(i).Cells(1)
-                Exit Sub
-            End If
-            'Next x
-        Next i
-        ''If Filtro(txtdescri.Text).Rows.Count > 0 Then
-        ''    GrillaArticulos.DataSource = Filtro(txtdescri.Text)
-        ''End If
-    End Sub
 
-    'Private Function Filtro(txtbuscar As String) As DataTable
-    '    Dim dt As New DataTable
-    '    Dim str As String = "SELECT codart, [desc],cod,lpd_precioVta FROM ARTICULOS,Listaprecios_det WHERE codart=lpd_art_codart AND lpd_lpr_id=" & idLista & " AND [desc] like '%" & txtbuscar & "%'"
-    '    Dim da As New OleDb.OleDbDataAdapter(Str, My.Settings.cadena)
-    '    da.Fill(dt)
-    '    Return dt
-    'End Function
 
     Private Sub btncontinua_Click(sender As Object, e As EventArgs) Handles btncontinua.Click
         Dim strabuscar As String
@@ -105,9 +63,7 @@ Public Class FormBuscarArtFactu
                     Me.GrillaArticulos.CurrentCell = Me.GrillaArticulos.Rows(i).Cells(1)
                     Exit Sub
                 End If
-
             Next i
-
         Else
             strabuscar = (txtCodbar.Text).ToUpper
             For i As Integer = GrillaArticulos.CurrentRow.Index + 1 To Me.GrillaArticulos.Rows.Count - 2
@@ -115,13 +71,8 @@ Public Class FormBuscarArtFactu
                     Me.GrillaArticulos.CurrentCell = Me.GrillaArticulos.Rows(i).Cells(2)
                     Exit Sub
                 End If
-
             Next i
-
         End If
-
-
-
 
     End Sub
 
@@ -131,11 +82,15 @@ Public Class FormBuscarArtFactu
             Me.txtCodbar.Visible = False
             Me.txtdescri.Visible = True
             Me.btnDescri.Checked = True
+            Me.txtCodbar.Text = ""
+            Me.txtdescri.Focus()
         Else
             Me.btnCodBar.Checked = True
             Me.txtCodbar.Visible = True
             Me.txtdescri.Visible = False
             Me.btnDescri.Checked = False
+            Me.txtdescri.Text = ""
+            Me.txtCodbar.Focus()
         End If
     End Sub
 
@@ -145,28 +100,16 @@ Public Class FormBuscarArtFactu
             Me.txtCodbar.Visible = False
             Me.txtdescri.Visible = True
             Me.btnDescri.Checked = True
+            Me.txtCodbar.Text = ""
+            Me.txtdescri.Focus()
         Else
             Me.btnCodBar.Checked = True
             Me.txtCodbar.Visible = True
             Me.txtdescri.Visible = False
             Me.btnDescri.Checked = False
-
+            Me.txtdescri.Text = ""
+            Me.txtCodbar.Focus()
         End If
-    End Sub
-
-    Private Sub txtCodbar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodbar.KeyPress
-        e.KeyChar = e.KeyChar.ToString.ToUpper
-    End Sub
-
-    Private Sub txtCodbar_TextChanged(sender As Object, e As EventArgs) Handles txtCodbar.TextChanged
-        For i As Integer = 0 To Me.GrillaArticulos.Rows.Count - 2
-            'For x As Integer = 0 To Me.GrillaArticulos.ColumnCount - 1
-            If Me.GrillaArticulos.Rows(i).Cells(2).Value.ToString.Contains(Me.txtCodbar.Text) Then
-                Me.GrillaArticulos.CurrentCell = Me.GrillaArticulos.Rows(i).Cells(2)
-                Exit Sub
-            End If
-            'Next x
-        Next i
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -207,4 +150,15 @@ Public Class FormBuscarArtFactu
         End If
     End Sub
 
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
+
+    Private Sub txtCodbar_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCodbar.KeyUp
+        Dim result As List(Of Articulos) = (From art In lista
+                                    Where art.CodigoBarras.Contains(txtCodbar.Text.ToUpper)
+                                    Select art).ToList
+        CargarGrillaArticulos(result)
+    End Sub
 End Class

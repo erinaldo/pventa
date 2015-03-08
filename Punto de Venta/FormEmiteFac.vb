@@ -69,13 +69,13 @@ Public Class FormEmiteFac
 
     Private Sub LimpiarCajas()
         Me.textcodbar.Text = ""
-        Me.Lbldescripcion.Text = ""
-        Me.LblStock.Text = ""
-        Me.TextCantidad.Text = ""
+        'Me.Lbldescripcion.Text = ""
+        'Me.LblStock.Text = ""
+        'Me.TextCantidad.Text = ""
         Me.TextCodigo.Text = "0"
         Me.textPCompra.Text = "0"
-        Me.TextPU.Text = "0"
-        Me.LblTotalU.Text = "0"
+        'Me.TextPU.Text = "0"
+        'Me.LblTotalU.Text = "0"
         Me.textcodbar.Focus()
     End Sub
 
@@ -87,123 +87,117 @@ Public Class FormEmiteFac
         End If
     End Sub
 
-    Private Sub VolcarValoresArticulo()
-        Me.TextCodigo.Text = Articulo.Codigo
-        'Me.TextCantidad.Text = "1"
-        Me.Lbldescripcion.Text = Articulo.Descripcion
-        Me.TextPU.Text = Articulo.PrecioVenta
-        'Me.LblStock.Text = IIf(Not IsDBNull(dstArticuloFact.Tables(0).Rows(0)("stockactual")), dstArticuloFact.Tables(0).Rows(0)("stockactual"), "Sin datos")
-        Me.TextPCompra.Text = Articulo.PrecioCosto
-        Me.LblTotalU.Text = CDbl(Articulo.PrecioVenta * CDbl(Me.TextCantidad.Text))
-
-    End Sub
-
     Function BuscarArticulo(ByVal strCodBarra As String, ByVal intIdLista As Integer) As Articulos
 
         BuscarArticulo = New Articulos
 
-        For Each articulo As Articulos In listaArt
-            If articulo.CodigoBarras = strCodBarra And articulo.IdLista = intIdLista Then
-                BuscarArticulo.Codigo = articulo.Codigo
-                BuscarArticulo.Descripcion = articulo.Descripcion
-                BuscarArticulo.CodigoBarras = articulo.CodigoBarras
-                BuscarArticulo.PrecioCosto = articulo.PrecioCosto
-                BuscarArticulo.PrecioVenta = articulo.PrecioVenta
-                BuscarArticulo.IdLista = articulo.IdLista
-                BuscarArticulo.Unidad = articulo.Unidad
-                BuscarArticulo.CostoGranel = articulo.CostoGranel
-                BuscarArticulo.UnidadGranel = articulo.UnidadGranel
-                Exit For
-            End If
-        Next
+        BuscarArticulo = (From art In listaArt
+                          Where art.CodigoBarras = strCodBarra And art.IdLista = intIdLista
+                          Select art).First
+
+        'For Each articulo As Articulos In listaArt
+        '    If articulo.CodigoBarras = strCodBarra And articulo.IdLista = intIdLista Then
+        '        BuscarArticulo.Codigo = articulo.Codigo
+        '        BuscarArticulo.Descripcion = articulo.Descripcion
+        '        BuscarArticulo.CodigoBarras = articulo.CodigoBarras
+        '        BuscarArticulo.PrecioCosto = articulo.PrecioCosto
+        '        BuscarArticulo.PrecioVenta = articulo.PrecioVenta
+        '        BuscarArticulo.IdLista = articulo.IdLista
+        '        BuscarArticulo.Unidad = articulo.Unidad
+        '        BuscarArticulo.CostoGranel = articulo.CostoGranel
+        '        BuscarArticulo.UnidadGranel = articulo.UnidadGranel
+        '        Exit For
+        '    End If
+        'Next
 
     End Function
+
+    Private Sub agregarArticulo()
+        Dim intCantidad As Integer
+        Articulo = New Articulos
+        If TextCodBar.Text.Contains("*") Then
+            intCantidad = Mid(TextCodBar.Text, 1, InStr(TextCodBar.Text, "*", CompareMethod.Text) - 1)
+            CodigoBarrasBuscado = Mid(TextCodBar.Text, InStr(TextCodBar.Text, "*", CompareMethod.Text) + 1, Len(TextCodBar.Text))
+        Else
+            intCantidad = 1
+            CodigoBarrasBuscado = TextCodBar.Text
+        End If
+
+        If Mid(CodigoBarrasBuscado, 1, 1) <> "2" And Mid(CodigoBarrasBuscado, 2, 6) <> "900000" Then
+            Articulo = BuscarArticulo(CodigoBarrasBuscado, idListaSeleccionada)
+            If Not Articulo.CodigoBarras Is Nothing Then
+                '    inserto = False
+                If Len(CodigoBarrasBuscado) > 1 Then
+                    ''            'Inserta en la grilla los valores seleccionados
+                    'VolcarValoresArticulo()
+                    ModuloGeneral.InsertarFilasEnGrilla(Articulo.Codigo, Articulo.Descripcion, CDbl(Articulo.PrecioVenta), CDbl(intCantidad), CDbl(Articulo.PrecioVenta * intCantidad), Articulo.CodigoBarras, CDbl(Articulo.PrecioCosto), Me.GrillaArticulos)
+                    ''            'Actualizo el Total
+                    Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(Articulo.PrecioVenta * intCantidad)
+
+                    ''            'Lo calculo cuando lo guardo 
+                    TotalPCompra = TotalPCompra + (Val(TextPCompra.Text) * Val(intCantidad))
+                    ''            'HASAR1.ImprimirItem Lbldescripcion.Caption, CDbl(TextCantidad.Text), CDbl(lblTotal.Caption), 21, 0
+                    ContarArticulos(intCantidad)
+                    LimpiarCajas()
+                Else
+                    'Articulo = BuscarArticulo(TextCodBar.Text, idListaSeleccionada)
+                    dblcantidad = 1
+                    Dim auxTot = CDbl(Me.lblTotal.Text)
+                    FormPide.Cargar_Formulario(Articulo.Descripcion, Articulo.PrecioVenta, Articulo.Codigo, CodigoBarrasBuscado, Articulo.PrecioCosto, Me.GrillaArticulos, auxTot)
+                    Me.lblTotal.Text = FormatNumber(auxTot, 2)
+                    ContarArticulos(CDbl(dblcantidad))
+                    LimpiarCajas()
+                    TextCodBar.Focus()
+
+                    'TRAER ARTICULOS CANTIDAD
+
+                End If
+
+
+            Else
+                FormAtencion.ShowDialog()
+                Me.TextCodBar.Text = ""
+                Me.TextCodBar.Focus()
+
+
+
+            End If
+        Else
+            ' si el articulo es fiambre o producto propio
+            Dim PrecioFiambreAux As String
+            Dim CodigoFiambre As Integer
+            Dim preciofiambre As Double
+            CodigoFiambre = Mid(CodigoBarrasBuscado, 2, 6)
+            Articulo = BuscarArticulo(CodigoFiambre.ToString, idListaSeleccionada)
+            If Not Articulo Is Nothing Then
+                PrecioFiambreAux = Mid(CodigoBarrasBuscado, 8, 5)
+                preciofiambre = ConvertirPrecio(PrecioFiambreAux)
+                'Articulo = BuscarArticulo(Articulo.Codigo, idListaSeleccionada)
+                '--------------------------------
+                Me.TextCodigo.Text = Articulo.Codigo
+                intCantidad = 1
+                Me.TextPCompra.Text = Articulo.PrecioCosto
+
+                '-----------------------------------
+                ModuloGeneral.InsertarFilasEnGrilla(Articulo.Codigo, Articulo.Descripcion, CDbl(preciofiambre), CDbl(intCantidad), CDbl(preciofiambre * CDbl(intCantidad)), CodigoBarrasBuscado, CDbl(Articulo.PrecioCosto), Me.GrillaArticulos)
+                Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(preciofiambre * CDbl(intCantidad))
+                TotalPCompra = TotalPCompra + (CDbl(TextPCompra.Text) * CDbl(intCantidad))
+                ContarArticulos(CDbl(intCantidad))
+                'CalcularTotal
+                'HASAR1.ImprimirItem Lbldescripcion.Caption, CDbl(TextCantidad.Text), CDbl(lblTotal.Caption), 21, 0
+                LimpiarCajas()
+            Else
+                FormAtencion.ShowDialog()
+                Me.TextCodBar.Text = ""
+                Me.TextCodBar.Focus()
+            End If
+        End If
+    End Sub
     Private Sub TextCodBar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextCodBar.KeyPress
 
         If e.KeyChar = ChrW(Keys.Enter) Then
             If TextCodBar.Text <> "" Then
-                Articulo = New Articulos
-                If TextCodBar.Text.Contains("*") Then
-                    TextCantidad.Text = Mid(TextCodBar.Text, 1, InStr(TextCodBar.Text, "*", CompareMethod.Text) - 1)
-                    CodigoBarrasBuscado = Mid(TextCodBar.Text, InStr(TextCodBar.Text, "*", CompareMethod.Text) + 1, Len(TextCodBar.Text))
-                Else
-                    TextCantidad.Text = 1
-                    CodigoBarrasBuscado = TextCodBar.Text
-                End If
-
-                If Mid(CodigoBarrasBuscado, 1, 1) <> "2" And Mid(CodigoBarrasBuscado, 2, 6) <> "900000" Then
-                    Articulo = BuscarArticulo(CodigoBarrasBuscado, idListaSeleccionada)
-                    If Not Articulo.CodigoBarras Is Nothing Then
-                        '    inserto = False
-                        If Len(CodigoBarrasBuscado) > 1 Then
-                            ''            'Inserta en la grilla los valores seleccionados
-                            VolcarValoresArticulo()
-                            ModuloGeneral.InsertarFilasEnGrilla(Me.TextCodigo.Text, Me.Lbldescripcion.Text, CDbl(TextPU.Text), CDbl(Me.TextCantidad.Text), CDbl(Me.LblTotalU.Text), Me.TextCodBar.Text, CDbl(Me.TextPCompra.Text), Me.GrillaArticulos)
-                            ''            'Actualizo el Total
-                            Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(Me.LblTotalU.Text)
-
-                            ''            'Lo calculo cuando lo guardo 
-                            TotalPCompra = TotalPCompra + (Val(TextPCompra.Text) * Val(TextCantidad.Text))
-                            ''            'HASAR1.ImprimirItem Lbldescripcion.Caption, CDbl(TextCantidad.Text), CDbl(lblTotal.Caption), 21, 0
-                            ContarArticulos(CDbl(Me.TextCantidad.Text))
-                            LimpiarCajas()
-                        Else
-                            'Articulo = BuscarArticulo(TextCodBar.Text, idListaSeleccionada)
-                            dblcantidad = 1
-                            Dim auxTot = CDbl(Me.lblTotal.Text)
-                            FormPide.Cargar_Formulario(Articulo.Descripcion, Articulo.PrecioVenta, Articulo.Codigo, CodigoBarrasBuscado, Articulo.PrecioCosto, Me.GrillaArticulos, auxTot)
-                            Me.lblTotal.Text = FormatNumber(auxTot, 2)
-                            ContarArticulos(CDbl(dblcantidad))
-                            LimpiarCajas()
-                            TextCodBar.Focus()
-
-                            'TRAER ARTICULOS CANTIDAD
-
-                        End If
-
-
-                    Else
-                        FormAtencion.ShowDialog()
-                        Me.TextCodBar.Text = ""
-                        Me.TextCodBar.Focus()
-
-
-
-                    End If
-                Else
-                    ' si el articulo es fiambre o producto propio
-                    Dim PrecioFiambreAux As String
-                    Dim CodigoFiambre As String
-                    Dim preciofiambre As Double
-                    CodigoFiambre = Mid(CodigoBarrasBuscado, 2, 6)
-                    Articulo = BuscarArticulo(CodigoFiambre, idListaSeleccionada)
-                    If Not Articulo Is Nothing Then
-                        PrecioFiambreAux = Mid(CodigoBarrasBuscado, 8, 5)
-                        preciofiambre = ConvertirPrecio(PrecioFiambreAux)
-                        Articulo = BuscarArticulo(Articulo.Codigo, idListaSeleccionada)
-                        '--------------------------------
-                        Me.TextCodigo.Text = Articulo.Codigo
-                        Me.TextCantidad.Text = "1"
-                        Me.Lbldescripcion.Text = Articulo.Descripcion
-                        Me.TextPU.Text = preciofiambre
-                        'Me.LblStock.Text = dstArticuloFact.Tables(0).Rows(0)("stockactual")
-                        Me.TextPCompra.Text = Articulo.PrecioCosto
-                        Me.LblTotalU.Text = CDbl(preciofiambre * CDbl(Me.TextCantidad.Text))
-
-                        '-----------------------------------
-                        ModuloGeneral.InsertarFilasEnGrilla(Me.TextCodigo.Text, Me.Lbldescripcion.Text, CDbl(preciofiambre), CDbl(Me.TextCantidad.Text), CDbl(Me.LblTotalU.Text), CodigoBarrasBuscado, CDbl(Me.TextPCompra.Text), Me.GrillaArticulos)
-                        Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(Me.LblTotalU.Text)
-                        TotalPCompra = TotalPCompra + (CDbl(TextPCompra.Text) * CDbl(TextCantidad.Text))
-                        ContarArticulos(CDbl(Me.TextCantidad.Text))
-                        'CalcularTotal
-                        'HASAR1.ImprimirItem Lbldescripcion.Caption, CDbl(TextCantidad.Text), CDbl(lblTotal.Caption), 21, 0
-                        LimpiarCajas()
-                    Else
-                        FormAtencion.ShowDialog()
-                        Me.TextCodBar.Text = ""
-                        Me.TextCodBar.Focus()
-                    End If
-                End If
+                agregarArticulo()
             Else
                 Button1_Click(sender, e)
             End If
@@ -224,9 +218,9 @@ Public Class FormEmiteFac
             cmdAceptar_Click(sender, e)
         End If
 
-        'If KeyCode = vbKeyF5 Then
-        '    FormConsuPrecio.Show vbModal
-        'End If
+        If e.KeyCode = Keys.F5 Then
+            FormPedidos.ShowDialog()
+        End If
 
         'If KeyCode = vbKeyF2 Then 'F2 Graba el ticket
         '    FormVentaDiaria.Show vbModal
@@ -252,20 +246,6 @@ Public Class FormEmiteFac
 
     End Sub
 
-    Private Sub btnaceptar_Click(sender As Object, e As EventArgs) Handles btnaceptar.Click
-        If Me.TextCodBar.Text <> "" Then
-            InsertarFilasEnGrilla(Me.TextCodigo.Text, Me.Lbldescripcion.Text, CDbl(TextPU.Text), CDbl(Me.TextCantidad.Text), CDbl(Me.LblTotalU.Text), Me.TextCodBar.Text, CDbl(Me.TextPCompra.Text), Me.GrillaArticulos)
-            ''            'Actualizo el Total
-            Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(Me.LblTotalU.Text)
-
-            ''            'Lo calculo cuando lo guardo 
-            TotalPCompra = TotalPCompra + (Val(TextPCompra.Text) * Val(TextCantidad.Text))
-            ''            'HASAR1.ImprimirItem Lbldescripcion.Caption, CDbl(TextCantidad.Text), CDbl(lblTotal.Caption), 21, 0
-            ContarArticulos(CDbl(Me.TextCantidad.Text))
-            LimpiarCajas()
-        End If
-    End Sub
-
     Private Sub cmdAceptar_Click(sender As Object, e As EventArgs) Handles cmdAceptar.Click
         Dim graba As Boolean
         Dim Pbase As Double
@@ -280,10 +260,12 @@ Public Class FormEmiteFac
                     FormVuelto.Abrir(Me.lblTotal.Text)
                     If AceptaPago Then
                         Dim intNroComprobante As Integer
+                        Dim intNroComprobanteFiscal As Integer
 
                         intNroComprobante = obtenerNroComprobante()
+                        intNroComprobanteFiscal = obtenerNroComprobanteFiscal() + 1
 
-                        objStreamWriter = New StreamWriter("C:\ComprobanteVenta.txt", True, System.Text.Encoding.Unicode)
+                        objStreamWriter = New StreamWriter("C:\Users\Sergio\Documents\ComprobanteVenta.txt", True)
 
                         Dim strComprobanteVenta As String
 
@@ -291,9 +273,9 @@ Public Class FormEmiteFac
                         Iva = CDbl(Me.lblTotal.Text) - FormatNumber(Pbase, 2)
                         'Cargo los datos generales del tiquet
 
-                        strComprobanteVenta = intNroComprobante & ";" & "0001-" & intNroComprobante & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
+                        strComprobanteVenta = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
                             FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
-                            3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & "sgerra" & ";" & Origen & ";" & _
+                            3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
                             FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & 1 & ";" & "" & ";" & 0 & ";" & 0 & ";" & 0 & ";" & _
                             "" & ";" & 1
 
@@ -306,11 +288,11 @@ Public Class FormEmiteFac
                         Dim j As Integer = 0
                         Dim strComprobanteVentaDetalle As String
 
-                        objStreamWriter = New StreamWriter("C:\ComprobanteVentaDetalle.txt", True, System.Text.Encoding.Unicode)
+                        objStreamWriter = New StreamWriter("C:\Users\Sergio\Documents\ComprobanteVentaDetalle.txt", True)
 
-                        For j = 0 To GrillaArticulos.Rows.Count - 2
+                        For j = 0 To GrillaArticulos.Rows.Count - 1
 
-                            strComprobanteVentaDetalle = intNroComprobante & ";" & "0001-" & intNroComprobante & ";" & GrillaArticulos.Rows(j).Cells("codart").Value & ";" & _
+                            strComprobanteVentaDetalle = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & GrillaArticulos.Rows(j).Cells("codart").Value & ";" & _
                                 GrillaArticulos.Rows(j).Cells("descri").Value & ";" & GrillaArticulos.Rows(j).Cells("cantidad").Value & ";" & _
                                 GrillaArticulos.Rows(j).Cells("punitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2) & ";" & _
                                 1
@@ -360,6 +342,7 @@ Public Class FormEmiteFac
             paso = True
             '         HASAR1.CancelarComprobanteFiscal
             '        HASAR1.Finalizar
+            GrillaArticulos.Rows.Clear()
             Me.Close()
         End If
     End Sub
@@ -367,7 +350,9 @@ Public Class FormEmiteFac
     Private Sub cmdEliminar_Click(sender As Object, e As EventArgs) Handles cmdEliminar.Click
         Dim fila As Long = 0
         Dim codart As Long = 0
-
+        If GrillaArticulos.CurrentCell Is Nothing Then
+            Exit Sub
+        End If
         If GrillaArticulos.CurrentRow.Cells("codart").Value <> 0 Then
             If MsgPregunta("Está seguro de eliminar el producto") = 6 Then
                 If GrillaArticulos.CurrentRow.Cells.Count > 0 Then
@@ -378,12 +363,6 @@ Public Class FormEmiteFac
                     dblcantidad = GrillaArticulos.CurrentRow.Cells("cantidad").Value
                     GrillaArticulos.Rows.RemoveAt(sele)
 
-                    'Busco la unidad del articulo para descontar la cantidad o 1
-                    'If dstArticuloFact.Tables(0).Rows(0)("uni_id") <> 2 Then
-                    '    Me.lblCantidad.Text = CDbl(lblCantidad.Text) - CDbl(dblcantidad)
-                    'Else
-                    '    Me.lblCantidad.Text = CDbl(Me.lblCantidad.Text) - 1
-                    'End If
                     Me.TextCodBar.Focus()
                 End If
             End If
@@ -394,12 +373,13 @@ Public Class FormEmiteFac
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim frm As New FormBuscarArtFactu
         CodartBuscado = 0
-        frm.abrirFormulario(idListaSeleccionada)
+        CodigoBarrasBuscado = 0
+        frm.abrirFormulario(listaArt, idListaSeleccionada)
         If CodartBuscado <> 0 Then
             'dstArticuloFact = pwiFacturacion.obtenerArticuloFacturacion(cadena, CodartBuscado, idListaSeleccionada)
             'Inserta en la grilla los valores seleccionados
             Me.TextCodBar.Text = CodigoBarrasBuscado
-            VolcarValoresArticulo()
+            agregarArticulo()
         End If
     End Sub
 
