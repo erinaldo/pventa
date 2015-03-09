@@ -265,7 +265,7 @@ Public Class FormEmiteFac
                         intNroComprobante = obtenerNroComprobante()
                         intNroComprobanteFiscal = obtenerNroComprobanteFiscal() + 1
 
-                        objStreamWriter = New StreamWriter("C:\Users\Sergio\Documents\ComprobanteVenta.txt", True)
+                        objStreamWriter = New StreamWriter("C:\ComprobanteVenta.txt", True, System.Text.ASCIIEncoding.ASCII)
 
                         Dim strComprobanteVenta As String
 
@@ -276,7 +276,7 @@ Public Class FormEmiteFac
                         strComprobanteVenta = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
                             FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
                             3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
-                            FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & 1 & ";" & "" & ";" & 0 & ";" & 0 & ";" & 0 & ";" & _
+                            FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & FormaPago & ";" & 1 & ";" & "" & ";" & 0 & ";" & 0 & ";" & 0 & ";" & _
                             "" & ";" & 1
 
 
@@ -288,14 +288,14 @@ Public Class FormEmiteFac
                         Dim j As Integer = 0
                         Dim strComprobanteVentaDetalle As String
 
-                        objStreamWriter = New StreamWriter("C:\Users\Sergio\Documents\ComprobanteVentaDetalle.txt", True)
+                        objStreamWriter = New StreamWriter("C:\ComprobanteVentaDetalle.txt", True)
 
                         For j = 0 To GrillaArticulos.Rows.Count - 1
 
                             strComprobanteVentaDetalle = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & GrillaArticulos.Rows(j).Cells("codart").Value & ";" & _
                                 GrillaArticulos.Rows(j).Cells("descri").Value & ";" & GrillaArticulos.Rows(j).Cells("cantidad").Value & ";" & _
-                                GrillaArticulos.Rows(j).Cells("punitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2) & ";" & _
-                                1
+                                GrillaArticulos.Rows(j).Cells("punitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2)
+
                             objStreamWriter.WriteLine(strComprobanteVentaDetalle)
 
                         Next

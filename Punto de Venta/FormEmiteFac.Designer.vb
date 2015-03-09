@@ -161,11 +161,11 @@ Partial Class FormEmiteFac
         'lblCantidad
         '
         Me.lblCantidad.AutoSize = True
-        Me.lblCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCantidad.ForeColor = System.Drawing.Color.Red
-        Me.lblCantidad.Location = New System.Drawing.Point(790, 516)
+        Me.lblCantidad.Location = New System.Drawing.Point(769, 510)
         Me.lblCantidad.Name = "lblCantidad"
-        Me.lblCantidad.Size = New System.Drawing.Size(73, 29)
+        Me.lblCantidad.Size = New System.Drawing.Size(94, 37)
         Me.lblCantidad.TabIndex = 110
         Me.lblCantidad.Text = "Total"
         '
@@ -180,21 +180,21 @@ Partial Class FormEmiteFac
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotal.ForeColor = System.Drawing.Color.Red
-        Me.lblTotal.Location = New System.Drawing.Point(589, 516)
+        Me.lblTotal.Location = New System.Drawing.Point(577, 510)
         Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(73, 29)
+        Me.lblTotal.Size = New System.Drawing.Size(94, 37)
         Me.lblTotal.TabIndex = 107
         Me.lblTotal.Text = "Total"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(607, 485)
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(607, 476)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(36, 13)
+        Me.Label7.Size = New System.Drawing.Size(45, 17)
         Me.Label7.TabIndex = 106
         Me.Label7.Text = "Total"
         '
@@ -351,10 +351,10 @@ Partial Class FormEmiteFac
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(721, 485)
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(702, 476)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(191, 13)
+        Me.Label13.Size = New System.Drawing.Size(214, 15)
         Me.Label13.TabIndex = 109
         Me.Label13.Text = "Cantidad de articulos facturados"
         '

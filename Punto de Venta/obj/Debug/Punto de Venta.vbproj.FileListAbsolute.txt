@@ -1,21 +1,7 @@
 C:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.exe
 C:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.xml
 C:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.pdb
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.exe
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.xml
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.pdb
-C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PruebaTexto.exe
-C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PruebaTexto.pdb
-C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PruebaTexto.xml
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.FormAtencion.resources
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.FormBuscarArtFactu.resources
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.FormEmiteFac.resources
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.FormPide.resources
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.FormVuelto.resources
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.Resources.resources
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.GenerateResource.Cache
-C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PruebaTexto.exe.config
-C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PruebaTexto.FormInicioSesion.resources
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\Interop.FiscalPrinterLib.dll
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.ResolveComReference.cache
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\Interop.FiscalPrinterLib.dll
@@ -37,3 +23,19 @@ D:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.exe
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.xml
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.pdb
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PruebaTexto.FormPedidos.resources
+C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PuntoVenta.exe.config
+C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PuntoVenta.exe
+C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PuntoVenta.pdb
+C:\ProyectoPuntoVenta\Punto de Venta\bin\Debug\PuntoVenta.xml
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormAtencion.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormBuscarArtFactu.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormEmiteFac.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormInicioSesion.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormPedidos.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormPide.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormPrincipal.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormVuelto.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.Resources.resources
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.exe
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.xml
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.pdb

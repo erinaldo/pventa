@@ -42,6 +42,7 @@
             TotalDto = CDbl(txttotaldto.Text)
             MontoDesc = CDbl(lblTot.Text) - CDbl(txttotaldto.Text)
             IdFormaPago = cmbFormas.SelectedValue
+            FormaPago = cmbFormas.Text
             AceptaPago = True
             Paga = CDbl(txtAbona.Text)
             Me.Close()

@@ -14,9 +14,7 @@
         Dim filas As Integer = grilla.Rows.Count - 1
 
         For i = 0 To filas
-            'idrubro = 1
             miOCX.ImprimirItem(Mid(grilla.Rows(i).Cells("descri").Value(), 1, 15), grilla.Rows(i).Cells("cantidad").Value(), grilla.Rows(i).Cells("punitario").Value(), 0, 0)
-
         Next i
         If MontoDesc <> 0 Then
             miOCX.DescuentoGeneral("Descuento", MontoDesc, True)
@@ -25,7 +23,6 @@
         'miOCX.ImprimirPago("Vuelto", Vuelto) '*** Linea que sacamos para 5 y 63 - 30/09/2010
 
         miOCX.CerrarComprobanteFiscal()
-        Dim NroFisc As Integer = miOCX.UltimoDocumentoFiscalBC()
         miOCX.Finalizar()
     End Sub
 

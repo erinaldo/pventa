@@ -10,6 +10,7 @@ Module ModuloGeneral
     Public TotalDto As Double
     Public MontoDesc As Double
     Public IdFormaPago As Integer
+    Public FormaPago As String
     Public Origen As String
     Public CodartBuscado As Integer
     Public CodigoBarrasBuscado As String
@@ -54,7 +55,7 @@ Module ModuloGeneral
     Public Function obtenerNroComprobante() As Integer
         Dim objStreamReader As StreamReader
 
-        objStreamReader = New StreamReader("C:\Users\Sergio\Documents\Comprobante.txt")
+        objStreamReader = New StreamReader("C:\Comprobante.txt")
 
         obtenerNroComprobante = objStreamReader.ReadLine
 
@@ -62,7 +63,7 @@ Module ModuloGeneral
 
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("C:\Users\Sergio\Documents\Comprobante.txt", False)
+        objStreamWriter = New StreamWriter("C:\Comprobante.txt", False)
 
         objStreamWriter.WriteLine(obtenerNroComprobante + 1)
 
