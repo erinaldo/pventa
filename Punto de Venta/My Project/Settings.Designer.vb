@@ -56,7 +56,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Server=.\SQLExpress;Database=Facturacion;User Id=sa;Password=1935ab73;")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=138.36.236.215,1433;Network Library=DBMSSOCN;Initial Catalog=Prueba;U"& _ 
+            "ser ID=creatif;Password=CreatifS;")>  _
         Public Property cadena() As String
             Get
                 Return CType(Me("cadena"),String)
@@ -75,7 +76,7 @@ Namespace My
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
     Friend Module MySettingsProperty
         
-        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")> _
+        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
         Friend ReadOnly Property Settings() As Global.PuntoVenta.My.MySettings
             Get
                 Return Global.PuntoVenta.My.MySettings.Default

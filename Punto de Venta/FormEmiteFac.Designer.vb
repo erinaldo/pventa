@@ -29,13 +29,6 @@ Partial Class FormEmiteFac
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GrillaArticulos = New System.Windows.Forms.DataGridView()
-        Me.codart = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.descri = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.punitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.pcompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.lblCantidad = New System.Windows.Forms.Label()
         Me.TextPCompra = New System.Windows.Forms.TextBox()
@@ -58,6 +51,13 @@ Partial Class FormEmiteFac
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.CodigoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pcompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -77,7 +77,7 @@ Partial Class FormEmiteFac
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.GrillaArticulos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GrillaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GrillaArticulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codart, Me.descri, Me.punitario, Me.Cantidad, Me.Total, Me.Codbar, Me.pcompra})
+        Me.GrillaArticulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoArticulo, Me.DescripcionArticulo, Me.PrecioUnitario, Me.Cantidad, Me.Total, Me.Codbar, Me.pcompra})
         Me.GrillaArticulos.Location = New System.Drawing.Point(12, 174)
         Me.GrillaArticulos.Name = "GrillaArticulos"
         Me.GrillaArticulos.ReadOnly = True
@@ -93,61 +93,6 @@ Partial Class FormEmiteFac
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GrillaArticulos.Size = New System.Drawing.Size(900, 289)
         Me.GrillaArticulos.TabIndex = 102
-        '
-        'codart
-        '
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.codart.DefaultCellStyle = DataGridViewCellStyle2
-        Me.codart.HeaderText = "Código"
-        Me.codart.Name = "codart"
-        Me.codart.ReadOnly = True
-        '
-        'descri
-        '
-        Me.descri.HeaderText = "Descripción"
-        Me.descri.Name = "descri"
-        Me.descri.ReadOnly = True
-        Me.descri.Width = 370
-        '
-        'punitario
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.punitario.DefaultCellStyle = DataGridViewCellStyle3
-        Me.punitario.HeaderText = "P.Unitario"
-        Me.punitario.Name = "punitario"
-        Me.punitario.ReadOnly = True
-        Me.punitario.Width = 120
-        '
-        'Cantidad
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Cantidad.HeaderText = "Cantidad"
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.ReadOnly = True
-        '
-        'Total
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Width = 140
-        '
-        'Codbar
-        '
-        Me.Codbar.HeaderText = "Codbar"
-        Me.Codbar.Name = "Codbar"
-        Me.Codbar.ReadOnly = True
-        Me.Codbar.Visible = False
-        '
-        'pcompra
-        '
-        Me.pcompra.HeaderText = "pcompra"
-        Me.pcompra.Name = "pcompra"
-        Me.pcompra.ReadOnly = True
-        Me.pcompra.Visible = False
         '
         'Button1
         '
@@ -372,6 +317,61 @@ Partial Class FormEmiteFac
         Me.GroupBox2.TabIndex = 101
         Me.GroupBox2.TabStop = False
         '
+        'CodigoArticulo
+        '
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CodigoArticulo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.CodigoArticulo.HeaderText = "Código"
+        Me.CodigoArticulo.Name = "CodigoArticulo"
+        Me.CodigoArticulo.ReadOnly = True
+        '
+        'DescripcionArticulo
+        '
+        Me.DescripcionArticulo.HeaderText = "Descripción"
+        Me.DescripcionArticulo.Name = "DescripcionArticulo"
+        Me.DescripcionArticulo.ReadOnly = True
+        Me.DescripcionArticulo.Width = 370
+        '
+        'PrecioUnitario
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.PrecioUnitario.DefaultCellStyle = DataGridViewCellStyle3
+        Me.PrecioUnitario.HeaderText = "P.Unitario"
+        Me.PrecioUnitario.Name = "PrecioUnitario"
+        Me.PrecioUnitario.ReadOnly = True
+        Me.PrecioUnitario.Width = 120
+        '
+        'Cantidad
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Cantidad.HeaderText = "Cantidad"
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
+        '
+        'Total
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        Me.Total.Width = 140
+        '
+        'Codbar
+        '
+        Me.Codbar.HeaderText = "Codbar"
+        Me.Codbar.Name = "Codbar"
+        Me.Codbar.ReadOnly = True
+        Me.Codbar.Visible = False
+        '
+        'pcompra
+        '
+        Me.pcompra.HeaderText = "pcompra"
+        Me.pcompra.Name = "pcompra"
+        Me.pcompra.ReadOnly = True
+        Me.pcompra.Visible = False
+        '
         'FormEmiteFac
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -423,9 +423,9 @@ End Sub
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents codart As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents descri As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents punitario As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CodigoArticulo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DescripcionArticulo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PrecioUnitario As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Cantidad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Codbar As System.Windows.Forms.DataGridViewTextBoxColumn

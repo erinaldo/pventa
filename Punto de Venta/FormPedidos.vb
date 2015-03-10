@@ -48,6 +48,8 @@ Public Class FormPedidos
 
             Loop
 
+            objStreamReader.Close()
+
             objStreamReader = New StreamReader("C:\ComprobanteVentaDetalle.txt", System.Text.ASCIIEncoding.ASCII)
 
             Do While Not objStreamReader.EndOfStream
@@ -66,6 +68,8 @@ Public Class FormPedidos
                 listComprobanteVentaDetalle.Add(compVentDetalle)
 
             Loop
+
+            objStreamReader.Close()
 
             Dim result As List(Of ComprobanteVenta) = (From ped In listPedidosPendientes
                                                          Where ped.Origen = "I"
@@ -87,6 +91,7 @@ Public Class FormPedidos
                                                  Where comp.Comprobante = intComprobante
                                                  Select comp).First
 
+        
         result.Origen = "F"
 
         Dim objStreamWriter As StreamWriter

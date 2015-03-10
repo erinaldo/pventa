@@ -4,7 +4,7 @@ Public Class FormBuscarArtFactu
 
     Private lista As List(Of Articulos)
 
-    Public Sub abrirFormulario(ByVal listaArt As IList(Of Articulos), ByVal intIdLista As Integer)
+    Public Sub abrirFormulario(ByVal listaArt As List(Of Articulos), ByVal intIdLista As Integer)
 
 
         CargarGrillaArticulos(listaArt)
@@ -161,4 +161,5 @@ Public Class FormBuscarArtFactu
                                     Select art).ToList
         CargarGrillaArticulos(result)
     End Sub
+
 End Class

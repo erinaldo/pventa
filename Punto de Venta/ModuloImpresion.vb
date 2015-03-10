@@ -14,7 +14,7 @@
         Dim filas As Integer = grilla.Rows.Count - 1
 
         For i = 0 To filas
-            miOCX.ImprimirItem(Mid(grilla.Rows(i).Cells("descri").Value(), 1, 15), grilla.Rows(i).Cells("cantidad").Value(), grilla.Rows(i).Cells("punitario").Value(), 0, 0)
+            miOCX.ImprimirItem(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), grilla.Rows(i).Cells("Cantidad").Value(), grilla.Rows(i).Cells("PrecioUnitario").Value(), 0, 0)
         Next i
         If MontoDesc <> 0 Then
             miOCX.DescuentoGeneral("Descuento", MontoDesc, True)
