@@ -39,3 +39,6 @@ C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.Resources.resources
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.exe
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.xml
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.pdb
+D:\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.exe.config
+D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.xml
+D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.pdb

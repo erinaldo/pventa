@@ -83,6 +83,39 @@ Module ModuloGeneral
         MsgPregunta = MsgBox(strMensaje, vbQuestion + vbYesNoCancel, "Aviso al operador")
     End Function
 
+    Public Function ObtenerArticulos() As List(Of Articulos)
+        Try
+            Dim objStreamReader As StreamReader
+            Dim strLine As String
+
+            ObtenerArticulos = New List(Of Articulos)
+
+            objStreamReader = New StreamReader("C:\Articulos.txt")
+
+            Do While Not objStreamReader.EndOfStream
+                Dim art As New Articulos
+
+                strLine = objStreamReader.ReadLine
+                art.Codigo = Split(strLine, ";")(0)
+                art.Descripcion = Split(strLine, ";")(1)
+                art.CodigoBarras = Split(strLine, ";")(2)
+                art.PrecioCosto = Split(strLine, ";")(3)
+                art.PrecioVenta = Split(strLine, ";")(4)
+                art.IdLista = Split(strLine, ";")(5)
+                art.Unidad = Split(strLine, ";")(6)
+                art.CostoGranel = Split(strLine, ";")(7)
+                art.UnidadGranel = Split(strLine, ";")(8)
+
+                ObtenerArticulos.Add(art)
+            Loop
+
+            objStreamReader.Close()
+
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Obtener Articulos" + "|" + ex.Message)
+        End Try
+    End Function
+
     Public Function ObtenerClientes() As List(Of Clientes)
         Try
             Dim objStreamReader As StreamReader
@@ -103,11 +136,12 @@ Module ModuloGeneral
                 cli.IdSucursal = Split(strLine, ";")(4)
 
                 ObtenerClientes.Add(cli)
-
             Loop
 
+            objStreamReader.Close()
+
         Catch ex As Exception
-            Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General" + "Obtener Clientes" + "|" + ex.Message)
         End Try
     End Function
 
@@ -133,8 +167,10 @@ Module ModuloGeneral
 
             Loop
 
+            objStreamReader.Close()
+
         Catch ex As Exception
-            Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General" + "Obtener Usuarios" + "|" + ex.Message)
         End Try
     End Function
 
@@ -158,8 +194,43 @@ Module ModuloGeneral
 
             Loop
 
+            objStreamReader.Close()
+
         Catch ex As Exception
-            Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General" + "Obtener FormasPago" + "|" + ex.Message)
+        End Try
+    End Function
+
+    Public Function ObtenerCajaDiaria() As List(Of CajaDiaria)
+        Try
+            Dim objStreamReader As StreamReader
+            Dim strLine As String
+
+            ObtenerCajaDiaria = New List(Of CajaDiaria)
+
+            objStreamReader = New StreamReader("C:\CajaDiaria.txt")
+
+            Do While Not objStreamReader.EndOfStream
+                Dim caja As New CajaDiaria
+
+                strLine = objStreamReader.ReadLine
+                caja.Codigo = Split(strLine, ";")(0)
+                caja.Descripcion = Split(strLine, ";")(1)
+                caja.CodigoBarras = Split(strLine, ";")(2)
+                caja.PrecioCosto = Split(strLine, ";")(3)
+                caja.PrecioVenta = Split(strLine, ";")(4)
+                caja.IdLista = Split(strLine, ";")(5)
+                caja.Unidad = Split(strLine, ";")(6)
+                caja.CostoGranel = Split(strLine, ";")(7)
+                caja.UnidadGranel = Split(strLine, ";")(8)
+
+                ObtenerCajaDiaria.Add(caja)
+            Loop
+
+            objStreamReader.Close()
+
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Obtener CajaDiaria" + "|" + ex.Message)
         End Try
     End Function
 

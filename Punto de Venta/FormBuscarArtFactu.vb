@@ -55,7 +55,6 @@ Public Class FormBuscarArtFactu
     Private Sub btncontinua_Click(sender As Object, e As EventArgs) Handles btncontinua.Click
         Dim strabuscar As String
 
-
         If txtdescri.Visible = True Then
             strabuscar = (txtdescri.Text).ToUpper
             For i As Integer = GrillaArticulos.CurrentRow.Index + 1 To Me.GrillaArticulos.Rows.Count - 2
@@ -115,7 +114,6 @@ Public Class FormBuscarArtFactu
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim strabuscar As String
 
-
         If txtdescri.Visible = True Then
             strabuscar = (txtdescri.Text).ToUpper
             For i As Integer = GrillaArticulos.CurrentRow.Index - 1 To 0 Step -1
@@ -125,7 +123,6 @@ Public Class FormBuscarArtFactu
                 End If
 
             Next i
-
         Else
             strabuscar = (txtCodbar.Text).ToUpper
             For i As Integer = GrillaArticulos.CurrentRow.Index - 1 To 0
@@ -135,14 +132,12 @@ Public Class FormBuscarArtFactu
                 End If
 
             Next i
-
         End If
 
     End Sub
 
 
     Private Sub btnSeleccionar_Click(sender As Object, e As EventArgs) Handles btnSeleccionar.Click
-
         If GrillaArticulos.CurrentCell.Selected = True Then
             CodartBuscado = GrillaArticulos.Item(0, GrillaArticulos.CurrentCell.RowIndex).Value
             CodigoBarrasBuscado = GrillaArticulos.Item(2, GrillaArticulos.CurrentCell.RowIndex).Value

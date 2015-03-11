@@ -61,7 +61,7 @@ Partial Class FormPide
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(84, 191)
+        Me.btnCancelar.Location = New System.Drawing.Point(56, 191)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelar.TabIndex = 7
@@ -70,7 +70,7 @@ Partial Class FormPide
         '
         'btnaceptar
         '
-        Me.btnaceptar.Location = New System.Drawing.Point(204, 191)
+        Me.btnaceptar.Location = New System.Drawing.Point(178, 191)
         Me.btnaceptar.Name = "btnaceptar"
         Me.btnaceptar.Size = New System.Drawing.Size(75, 23)
         Me.btnaceptar.TabIndex = 5
@@ -88,7 +88,7 @@ Partial Class FormPide
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(364, 261)
+        Me.ClientSize = New System.Drawing.Size(327, 261)
         Me.Controls.Add(Me.txtprecio)
         Me.Controls.Add(Me.lbldescart)
         Me.Controls.Add(Me.Label2)

@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 
 Public Class FormPrincipal
+    Dim listaCajaDia As New List(Of CajaDiaria)
+
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         Me.Close()
@@ -25,9 +27,7 @@ Public Class FormPrincipal
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim objStreamReader As StreamReader
         Dim strLine As String
-        Dim listPedidosPendientes As List(Of ComprobanteVenta)
-
-        listPedidosPendientes = New List(Of ComprobanteVenta)
+        Dim listPedidosPendientes As New List(Of ComprobanteVenta)
 
 
         objStreamReader = New StreamReader("C:\ComprobanteVenta.txt", System.Text.ASCIIEncoding.ASCII)
@@ -67,5 +67,9 @@ Public Class FormPrincipal
         objStreamReader.Close()
 
         ActualizarComprobanteVenta(listPedidosPendientes)
+    End Sub
+
+    Private Sub FormPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        listaCajaDia = ObtenerCajaDiaria()
     End Sub
 End Class

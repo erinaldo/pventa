@@ -69,6 +69,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CajaDiaria.vb" />
     <Compile Include="ModuloActualizacionBase.vb" />
     <Compile Include="Articulos.vb" />
     <Compile Include="Clientes.vb" />
@@ -188,8 +189,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagenes\abierto.png" />
     <Content Include="Imagenes\atencion2.jpg" />
     <Content Include="Imagenes\atention.png" />
+    <Content Include="Imagenes\cerrado.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="FiscalPrinterLib">

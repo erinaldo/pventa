@@ -24,6 +24,9 @@
     Private Sub btnaceptar_Click(sender As Object, e As EventArgs) Handles btnaceptar.Click
         Dim Pingresado As Double
         Dim PTotal As Double
+        If CDbl(txtprecio.Text) < 0 Then
+            Exit Sub
+        End If
         ModuloGeneral.InsertarFilasEnGrilla(codigo, descart, CDbl(txtprecio.Text), dblcantidad, FormatNumber(CDbl(txtprecio.Text) * dblcantidad, 2), CodBarras, pcompra, gri)
         TotalPcompra = TotalPcompra + (pcompra * dblcantidad)
         Pingresado = CDbl(txtprecio.Text) * dblcantidad
@@ -31,7 +34,6 @@
         tot = FormatNumber(PTotal + Pingresado, 2)
 
         Me.Close()
-
     End Sub
 
     Private Sub txtprecio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtprecio.KeyPress

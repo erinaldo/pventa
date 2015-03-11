@@ -89,7 +89,7 @@ Partial Class FormBuscarArtFactu
         Me.txtCodbar.Location = New System.Drawing.Point(94, 42)
         Me.txtCodbar.Name = "txtCodbar"
         Me.txtCodbar.Size = New System.Drawing.Size(293, 20)
-        Me.txtCodbar.TabIndex = 3
+        Me.txtCodbar.TabIndex = 1
         Me.txtCodbar.Visible = False
         '
         'txtdescri
@@ -97,7 +97,7 @@ Partial Class FormBuscarArtFactu
         Me.txtdescri.Location = New System.Drawing.Point(94, 42)
         Me.txtdescri.Name = "txtdescri"
         Me.txtdescri.Size = New System.Drawing.Size(293, 20)
-        Me.txtdescri.TabIndex = 2
+        Me.txtdescri.TabIndex = 0
         '
         'btnDescri
         '

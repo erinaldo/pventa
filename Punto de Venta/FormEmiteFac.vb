@@ -10,36 +10,15 @@ Public Class FormEmiteFac
     Dim TotalPCompra As Double
 
     Private Sub FormEmiteFac_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim objStreamReader As StreamReader
-        Dim strLine As String
 
-
-        objStreamReader = New StreamReader("C:\Articulos.txt")
-
-        Do While Not objStreamReader.EndOfStream
-            Dim art As New Articulos
-
-            strLine = objStreamReader.ReadLine
-            art.Codigo = Split(strLine, ";")(0)
-            art.Descripcion = Split(strLine, ";")(1)
-            art.CodigoBarras = Split(strLine, ";")(2)
-            art.PrecioCosto = Split(strLine, ";")(3)
-            art.PrecioVenta = Split(strLine, ";")(4)
-            art.IdLista = Split(strLine, ";")(5)
-            art.Unidad = Split(strLine, ";")(6)
-            art.CostoGranel = Split(strLine, ";")(7)
-            art.UnidadGranel = Split(strLine, ";")(8)
-
-            listaArt.Add(art)
-
-        Loop
+        listaArt = ObtenerArticulos()
 
         AbrirFormulario()
 
     End Sub
 
     Public Sub AbrirFormulario()
-        'cadena = My.Settings.cadena
+
 
         'If pwiFacturacion.wflEmisionFactura_ExisteCajaAbierta(My.Settings.cadena, idUsuario, My.Settings.sucursal) Then
         GrillaArticulos.Font = New Font("Arial ", 16, FontStyle.Regular)
@@ -95,21 +74,6 @@ Public Class FormEmiteFac
                           Where art.CodigoBarras = strCodBarra And art.IdLista = intIdLista
                           Select art).First
 
-        'For Each articulo As Articulos In listaArt
-        '    If articulo.CodigoBarras = strCodBarra And articulo.IdLista = intIdLista Then
-        '        BuscarArticulo.Codigo = articulo.Codigo
-        '        BuscarArticulo.Descripcion = articulo.Descripcion
-        '        BuscarArticulo.CodigoBarras = articulo.CodigoBarras
-        '        BuscarArticulo.PrecioCosto = articulo.PrecioCosto
-        '        BuscarArticulo.PrecioVenta = articulo.PrecioVenta
-        '        BuscarArticulo.IdLista = articulo.IdLista
-        '        BuscarArticulo.Unidad = articulo.Unidad
-        '        BuscarArticulo.CostoGranel = articulo.CostoGranel
-        '        BuscarArticulo.UnidadGranel = articulo.UnidadGranel
-        '        Exit For
-        '    End If
-        'Next
-
     End Function
 
     Private Sub agregarArticulo()
@@ -148,18 +112,13 @@ Public Class FormEmiteFac
                     ContarArticulos(CDbl(dblcantidad))
                     LimpiarCajas()
                     TextCodBar.Focus()
-
                     'TRAER ARTICULOS CANTIDAD
-
                 End If
-
 
             Else
                 FormAtencion.ShowDialog()
                 Me.TextCodBar.Text = ""
                 Me.TextCodBar.Focus()
-
-
 
             End If
         Else
@@ -172,7 +131,7 @@ Public Class FormEmiteFac
             If Not Articulo Is Nothing Then
                 PrecioFiambreAux = Mid(CodigoBarrasBuscado, 8, 5)
                 preciofiambre = ConvertirPrecio(PrecioFiambreAux)
-                'Articulo = BuscarArticulo(Articulo.Codigo, idListaSeleccionada)
+
                 '--------------------------------
                 Me.TextCodigo.Text = Articulo.Codigo
                 intCantidad = 1
@@ -183,8 +142,7 @@ Public Class FormEmiteFac
                 Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(preciofiambre * CDbl(intCantidad))
                 TotalPCompra = TotalPCompra + (CDbl(TextPCompra.Text) * CDbl(intCantidad))
                 ContarArticulos(CDbl(intCantidad))
-                'CalcularTotal
-                'HASAR1.ImprimirItem Lbldescripcion.Caption, CDbl(TextCantidad.Text), CDbl(lblTotal.Caption), 21, 0
+
                 LimpiarCajas()
             Else
                 FormAtencion.ShowDialog()
@@ -279,7 +237,6 @@ Public Class FormEmiteFac
                             FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & FormaPago & ";" & 1 & ";" & "" & ";" & 0 & ";" & 0 & ";" & 0 & ";" & _
                             "" & ";" & 1
 
-
                         objStreamWriter.WriteLine(strComprobanteVenta)
 
                         objStreamWriter.Close()
@@ -335,13 +292,8 @@ Public Class FormEmiteFac
 
         paso = False
 
-        ' Guardar en tablas que emulan facturación
-        'GrabarFactura_Emulada(True, 1, HASAR1)
-
         If MsgPregunta("ATENCION: Esta operación CANCELARA el ticket. CANCELA ?") = vbYes Then
             paso = True
-            '         HASAR1.CancelarComprobanteFiscal
-            '        HASAR1.Finalizar
             GrillaArticulos.Rows.Clear()
             Me.Close()
         End If
@@ -376,8 +328,6 @@ Public Class FormEmiteFac
         CodigoBarrasBuscado = 0
         frm.abrirFormulario(listaArt, idListaSeleccionada)
         If CodartBuscado <> 0 Then
-            'dstArticuloFact = pwiFacturacion.obtenerArticuloFacturacion(cadena, CodartBuscado, idListaSeleccionada)
-            'Inserta en la grilla los valores seleccionados
             Me.TextCodBar.Text = CodigoBarrasBuscado
             agregarArticulo()
         End If

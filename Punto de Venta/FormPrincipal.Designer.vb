@@ -22,6 +22,7 @@ Partial Class FormPrincipal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormPrincipal))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -34,15 +35,20 @@ Partial Class FormPrincipal
         '
         'Button1
         '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.Location = New System.Drawing.Point(104, 68)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(160, 160)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Abrir Caja"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
+        Me.Button2.Enabled = False
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(305, 68)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(160, 160)
@@ -52,6 +58,8 @@ Partial Class FormPrincipal
         '
         'Button3
         '
+        Me.Button3.Enabled = False
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Location = New System.Drawing.Point(505, 68)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(160, 160)
@@ -61,6 +69,8 @@ Partial Class FormPrincipal
         '
         'Button4
         '
+        Me.Button4.Enabled = False
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Location = New System.Drawing.Point(703, 68)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(160, 160)
@@ -70,15 +80,20 @@ Partial Class FormPrincipal
         '
         'Button5
         '
+        Me.Button5.Enabled = False
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
         Me.Button5.Location = New System.Drawing.Point(104, 249)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(160, 160)
         Me.Button5.TabIndex = 4
         Me.Button5.Text = "Cerrar Caja"
+        Me.Button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button5.UseVisualStyleBackColor = True
         '
         'Button6
         '
+        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.Location = New System.Drawing.Point(305, 249)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(160, 160)
@@ -88,6 +103,7 @@ Partial Class FormPrincipal
         '
         'Button7
         '
+        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button7.Location = New System.Drawing.Point(505, 249)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(160, 160)
@@ -97,6 +113,7 @@ Partial Class FormPrincipal
         '
         'Button8
         '
+        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button8.Location = New System.Drawing.Point(703, 249)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(160, 160)
