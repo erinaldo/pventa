@@ -42,7 +42,7 @@ Module ModuloActualizacionBase
             drCurrent("cvt_montoiva") = compVent.MontoIva
             drCurrent("cvt_nrofactura") = compVent.NroFactura
             drCurrent("cvt_pagada") = compVent.Pagada
-            drCurrent("cvt_idsucursal") = 1
+            drCurrent("cvt_idsucursal") = My.Settings.sucursal
 
             'Pass that new object into the Add method of the DataTable.Rows collection.
             tblCompVenta.Rows.Add(drCurrent)

@@ -23,73 +23,73 @@ Partial Class FormPrincipal
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormPrincipal))
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.btnAbrirCaja = New System.Windows.Forms.Button()
+        Me.btnFacturacion = New System.Windows.Forms.Button()
+        Me.btnIngresoDinero = New System.Windows.Forms.Button()
+        Me.btnRetiroDinero = New System.Windows.Forms.Button()
+        Me.btnCerrarCaja = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'btnAbrirCaja
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(104, 68)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(160, 160)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Abrir Caja"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnAbrirCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAbrirCaja.Image = CType(resources.GetObject("btnAbrirCaja.Image"), System.Drawing.Image)
+        Me.btnAbrirCaja.Location = New System.Drawing.Point(104, 68)
+        Me.btnAbrirCaja.Name = "btnAbrirCaja"
+        Me.btnAbrirCaja.Size = New System.Drawing.Size(160, 160)
+        Me.btnAbrirCaja.TabIndex = 0
+        Me.btnAbrirCaja.Text = "Abrir Caja"
+        Me.btnAbrirCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnAbrirCaja.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnFacturacion
         '
-        Me.Button2.Enabled = False
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(305, 68)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(160, 160)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Facturación"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnFacturacion.Enabled = False
+        Me.btnFacturacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFacturacion.Location = New System.Drawing.Point(305, 68)
+        Me.btnFacturacion.Name = "btnFacturacion"
+        Me.btnFacturacion.Size = New System.Drawing.Size(160, 160)
+        Me.btnFacturacion.TabIndex = 1
+        Me.btnFacturacion.Text = "Facturación"
+        Me.btnFacturacion.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnIngresoDinero
         '
-        Me.Button3.Enabled = False
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(505, 68)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(160, 160)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Ingreso de Dinero"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnIngresoDinero.Enabled = False
+        Me.btnIngresoDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnIngresoDinero.Location = New System.Drawing.Point(505, 68)
+        Me.btnIngresoDinero.Name = "btnIngresoDinero"
+        Me.btnIngresoDinero.Size = New System.Drawing.Size(160, 160)
+        Me.btnIngresoDinero.TabIndex = 2
+        Me.btnIngresoDinero.Text = "Ingreso de Dinero"
+        Me.btnIngresoDinero.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnRetiroDinero
         '
-        Me.Button4.Enabled = False
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(703, 68)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(160, 160)
-        Me.Button4.TabIndex = 3
-        Me.Button4.Text = "Retiro de Dinero"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnRetiroDinero.Enabled = False
+        Me.btnRetiroDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRetiroDinero.Location = New System.Drawing.Point(703, 68)
+        Me.btnRetiroDinero.Name = "btnRetiroDinero"
+        Me.btnRetiroDinero.Size = New System.Drawing.Size(160, 160)
+        Me.btnRetiroDinero.TabIndex = 3
+        Me.btnRetiroDinero.Text = "Retiro de Dinero"
+        Me.btnRetiroDinero.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnCerrarCaja
         '
-        Me.Button5.Enabled = False
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
-        Me.Button5.Location = New System.Drawing.Point(104, 249)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(160, 160)
-        Me.Button5.TabIndex = 4
-        Me.Button5.Text = "Cerrar Caja"
-        Me.Button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnCerrarCaja.Enabled = False
+        Me.btnCerrarCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarCaja.Image = CType(resources.GetObject("btnCerrarCaja.Image"), System.Drawing.Image)
+        Me.btnCerrarCaja.Location = New System.Drawing.Point(104, 249)
+        Me.btnCerrarCaja.Name = "btnCerrarCaja"
+        Me.btnCerrarCaja.Size = New System.Drawing.Size(160, 160)
+        Me.btnCerrarCaja.TabIndex = 4
+        Me.btnCerrarCaja.Text = "Cerrar Caja"
+        Me.btnCerrarCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnCerrarCaja.UseVisualStyleBackColor = True
         '
         'Button6
         '
@@ -111,15 +111,15 @@ Partial Class FormPrincipal
         Me.Button7.Text = "Reporte Z"
         Me.Button7.UseVisualStyleBackColor = True
         '
-        'Button8
+        'btnCerrar
         '
-        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button8.Location = New System.Drawing.Point(703, 249)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(160, 160)
-        Me.Button8.TabIndex = 7
-        Me.Button8.Text = "Cerrar"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrar.Location = New System.Drawing.Point(703, 249)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(160, 160)
+        Me.btnCerrar.TabIndex = 7
+        Me.btnCerrar.Text = "Cerrar"
+        Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'FormPrincipal
         '
@@ -127,14 +127,14 @@ Partial Class FormPrincipal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(980, 526)
         Me.ControlBox = False
-        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnCerrarCaja)
+        Me.Controls.Add(Me.btnRetiroDinero)
+        Me.Controls.Add(Me.btnIngresoDinero)
+        Me.Controls.Add(Me.btnFacturacion)
+        Me.Controls.Add(Me.btnAbrirCaja)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FormPrincipal"
@@ -143,12 +143,12 @@ Partial Class FormPrincipal
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents btnAbrirCaja As System.Windows.Forms.Button
+    Friend WithEvents btnFacturacion As System.Windows.Forms.Button
+    Friend WithEvents btnIngresoDinero As System.Windows.Forms.Button
+    Friend WithEvents btnRetiroDinero As System.Windows.Forms.Button
+    Friend WithEvents btnCerrarCaja As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents btnCerrar As System.Windows.Forms.Button
 End Class

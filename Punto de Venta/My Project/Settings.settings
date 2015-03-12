@@ -5,5 +5,8 @@
     <Setting Name="cadena" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=138.36.236.215,1433;Network Library=DBMSSOCN;Initial Catalog=Prueba;User ID=creatif;Password=CreatifS;</Value>
     </Setting>
+    <Setting Name="sucursal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnAbrirCaja.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEgAAABNCAYAAAAFICL0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AACYaSURBVHhe7XxncFzZlZ7++q/9w1uqlUYjaUiRFCMCkTk5
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAACYaSURBVHhe7XxncFzZlZ7++q/9w1uqlUYjaUiRFCMCkTk5
         yB5ray3tzkrWqrYkr1ylKte6XGVvlcKMNMwkAAaARM4ZBEHkQESSYARBghEEkTug0RmdADTC5+/c149o
         guAsxQnyunyrDu8L993w3XO+c87rB35teXkZUlZWVrC4uKiOn1ekrbRbWloKXXm66PfDRe8/vOj3pB+R
         8Hb6PSlyLbxP/Vxv+1WUr4Xqr7QsL68ueGlJA0Cuyblskg5IMLj4BEC9/eKidv5Vla8cIH2xKyu6Jjx/
@@ -287,10 +287,10 @@
         ALF7yWXw/sc5AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="Button5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCerrarCaja.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEgAAABNCAYAAAAFICL0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AACqJSURBVHhe5XwHlFVVuqar38z0m34z89bqebbzzN12G9sc
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAACqJSURBVHhe5XwHlFVVuqar38z0m34z89bqebbzzN12G9sc
         QZEkIEKRCqoKKKrIFDnnTFGEImdBEUmCggEVFQUVybmgqm6O55ybc91Qub759jlcLBEV20bXrNmsn3Pu
         vSfs/e3v///v3+feuglsDQ0NqK+vR21trbr/a5i4X+PXdXV1V0x8lt5Pf9b42J9r4vyf28R5oh8qQDey
         pTuZ3tc6e22AxASl37/683RrvP9rtBsOkBiosPS+BoIYtHhfA+vHWprV6eukr/VrtV+VQd9SXbzWBlpX

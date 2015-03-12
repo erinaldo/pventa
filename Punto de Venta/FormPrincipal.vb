@@ -4,7 +4,7 @@ Public Class FormPrincipal
     Dim listaCajaDia As New List(Of CajaDiaria)
 
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
 
@@ -14,7 +14,7 @@ Public Class FormPrincipal
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnFacturacion.Click
         FormEmiteFac.ShowDialog()
     End Sub
 
@@ -24,11 +24,16 @@ Public Class FormPrincipal
         End If
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnCerrarCaja.Click
         Dim objStreamReader As StreamReader
         Dim strLine As String
         Dim listPedidosPendientes As New List(Of ComprobanteVenta)
 
+        If MsgBox("Esta seguro que desea hacer el cierre de caja?", MsgBoxStyle.YesNo, "Cierre de Caja") = MsgBoxResult.No Then
+            Exit Sub
+        End If
+
+        grabarCierreCaja()
 
         objStreamReader = New StreamReader("C:\ComprobanteVenta.txt", System.Text.ASCIIEncoding.ASCII)
 
@@ -67,9 +72,60 @@ Public Class FormPrincipal
         objStreamReader.Close()
 
         ActualizarComprobanteVenta(listPedidosPendientes)
+
+        btnFacturacion.Enabled = False
+        btnCerrarCaja.Enabled = False
+        btnIngresoDinero.Enabled = False
+        btnRetiroDinero.Enabled = False
+        btnAbrirCaja.Enabled = False
+
     End Sub
 
     Private Sub FormPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listaCajaDia = ObtenerCajaDiaria()
+
+        Dim caja As List(Of CajaDiaria) = (From caj In listaCajaDia
+                                  Where caj.Usuario = idUsuario
+                                  Select caj).ToList
+
+        If caja.Count = 0 Then
+            btnFacturacion.Enabled = False
+            btnCerrarCaja.Enabled = False
+            btnIngresoDinero.Enabled = False
+            btnRetiroDinero.Enabled = False
+            btnAbrirCaja.Enabled = True
+        Else
+            btnFacturacion.Enabled = True
+            btnCerrarCaja.Enabled = True
+            btnIngresoDinero.Enabled = True
+            btnRetiroDinero.Enabled = True
+            btnAbrirCaja.Enabled = False
+        End If
+
+
+    End Sub
+
+    Private Sub btnAbrirCaja_Click(sender As Object, e As EventArgs) Handles btnAbrirCaja.Click
+
+        grabarAperturaCaja()
+
+        btnFacturacion.Enabled = True
+        btnCerrarCaja.Enabled = True
+        btnIngresoDinero.Enabled = True
+        btnRetiroDinero.Enabled = True
+        btnAbrirCaja.Enabled = False
+
+    End Sub
+
+    Private Sub btnIngresoDinero_Click(sender As Object, e As EventArgs) Handles btnIngresoDinero.Click
+
+        grabarIngresoDinero(CDbl(InputBox("Ingrese el importe.", "Ingreso de Dinero")))
+
+    End Sub
+
+    Private Sub btnRetiroDinero_Click(sender As Object, e As EventArgs) Handles btnRetiroDinero.Click
+
+        grabarRetiroDinero(CDbl(InputBox("Ingrese el importe.", "Retiro de Dinero")))
+
     End Sub
 End Class
