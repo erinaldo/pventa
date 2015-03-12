@@ -152,7 +152,7 @@ Module ModuloGeneral
 
             ObtenerUsuarios = New Usuarios
 
-            objStreamReader = New StreamReader("D:\Usuarios.txt")
+            objStreamReader = New StreamReader("C:\Usuarios.txt")
 
             Do While Not objStreamReader.EndOfStream
 
@@ -208,7 +208,7 @@ Module ModuloGeneral
 
             ObtenerCajaDiaria = New List(Of CajaDiaria)
 
-            objStreamReader = New StreamReader("D:\CajaDiaria.txt")
+            objStreamReader = New StreamReader("C:\CajaDiaria.txt")
 
             Do While Not objStreamReader.EndOfStream
                 Dim caja As New CajaDiaria
@@ -233,9 +233,9 @@ Module ModuloGeneral
     Public Sub grabarAperturaCaja()
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("D:\CajaDiaria.txt", True)
+        objStreamWriter = New StreamWriter("C:\CajaDiaria.txt", True)
 
-        objStreamWriter.WriteLine(Now.Date & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
+        objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
 
         objStreamWriter.Close()
     End Sub
@@ -243,9 +243,9 @@ Module ModuloGeneral
     Public Sub grabarIngresoDinero(ByVal importe As Double)
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("D:\CajaDiaria.txt", True)
+        objStreamWriter = New StreamWriter("C:\CajaDiaria.txt", True)
 
-        objStreamWriter.WriteLine(Now.Date & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
+        objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
 
         objStreamWriter.Close()
     End Sub
@@ -253,9 +253,9 @@ Module ModuloGeneral
     Public Sub grabarRetiroDinero(ByVal importe As Double)
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("D:\CajaDiaria.txt", True)
+        objStreamWriter = New StreamWriter("C:\CajaDiaria.txt", True)
 
-        objStreamWriter.WriteLine(Now.Date & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
+        objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
 
         objStreamWriter.Close()
     End Sub
@@ -263,9 +263,9 @@ Module ModuloGeneral
     Public Sub grabarCierreCaja()
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("D:\CajaDiaria.txt", True)
+        objStreamWriter = New StreamWriter("C:\CajaDiaria.txt", True)
 
-        objStreamWriter.WriteLine(Now.Date & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
+        objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
 
         objStreamWriter.Close()
     End Sub

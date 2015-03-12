@@ -70,6 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CajaDiaria.vb" />
+    <Compile Include="FormCierreCaja.Designer.vb">
+      <DependentUpon>FormCierreCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormCierreCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ModuloActualizacionBase.vb" />
     <Compile Include="Articulos.vb" />
     <Compile Include="Clientes.vb" />
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormBuscarArtFactu.resx">
       <DependentUpon>FormBuscarArtFactu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCierreCaja.resx">
+      <DependentUpon>FormCierreCaja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEmiteFac.resx">
       <DependentUpon>FormEmiteFac.vb</DependentUpon>

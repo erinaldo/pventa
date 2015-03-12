@@ -39,7 +39,7 @@ Partial Class FormPrincipal
         Me.btnAbrirCaja.Image = CType(resources.GetObject("btnAbrirCaja.Image"), System.Drawing.Image)
         Me.btnAbrirCaja.Location = New System.Drawing.Point(104, 68)
         Me.btnAbrirCaja.Name = "btnAbrirCaja"
-        Me.btnAbrirCaja.Size = New System.Drawing.Size(160, 160)
+        Me.btnAbrirCaja.Size = New System.Drawing.Size(130, 130)
         Me.btnAbrirCaja.TabIndex = 0
         Me.btnAbrirCaja.Text = "Abrir Caja"
         Me.btnAbrirCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -49,20 +49,22 @@ Partial Class FormPrincipal
         '
         Me.btnFacturacion.Enabled = False
         Me.btnFacturacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFacturacion.Location = New System.Drawing.Point(305, 68)
+        Me.btnFacturacion.Image = CType(resources.GetObject("btnFacturacion.Image"), System.Drawing.Image)
+        Me.btnFacturacion.Location = New System.Drawing.Point(271, 68)
         Me.btnFacturacion.Name = "btnFacturacion"
-        Me.btnFacturacion.Size = New System.Drawing.Size(160, 160)
+        Me.btnFacturacion.Size = New System.Drawing.Size(130, 130)
         Me.btnFacturacion.TabIndex = 1
         Me.btnFacturacion.Text = "Facturación"
+        Me.btnFacturacion.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnFacturacion.UseVisualStyleBackColor = True
         '
         'btnIngresoDinero
         '
         Me.btnIngresoDinero.Enabled = False
         Me.btnIngresoDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnIngresoDinero.Location = New System.Drawing.Point(505, 68)
+        Me.btnIngresoDinero.Location = New System.Drawing.Point(448, 68)
         Me.btnIngresoDinero.Name = "btnIngresoDinero"
-        Me.btnIngresoDinero.Size = New System.Drawing.Size(160, 160)
+        Me.btnIngresoDinero.Size = New System.Drawing.Size(130, 130)
         Me.btnIngresoDinero.TabIndex = 2
         Me.btnIngresoDinero.Text = "Ingreso de Dinero"
         Me.btnIngresoDinero.UseVisualStyleBackColor = True
@@ -71,9 +73,9 @@ Partial Class FormPrincipal
         '
         Me.btnRetiroDinero.Enabled = False
         Me.btnRetiroDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRetiroDinero.Location = New System.Drawing.Point(703, 68)
+        Me.btnRetiroDinero.Location = New System.Drawing.Point(626, 68)
         Me.btnRetiroDinero.Name = "btnRetiroDinero"
-        Me.btnRetiroDinero.Size = New System.Drawing.Size(160, 160)
+        Me.btnRetiroDinero.Size = New System.Drawing.Size(130, 130)
         Me.btnRetiroDinero.TabIndex = 3
         Me.btnRetiroDinero.Text = "Retiro de Dinero"
         Me.btnRetiroDinero.UseVisualStyleBackColor = True
@@ -83,9 +85,9 @@ Partial Class FormPrincipal
         Me.btnCerrarCaja.Enabled = False
         Me.btnCerrarCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarCaja.Image = CType(resources.GetObject("btnCerrarCaja.Image"), System.Drawing.Image)
-        Me.btnCerrarCaja.Location = New System.Drawing.Point(104, 249)
+        Me.btnCerrarCaja.Location = New System.Drawing.Point(104, 240)
         Me.btnCerrarCaja.Name = "btnCerrarCaja"
-        Me.btnCerrarCaja.Size = New System.Drawing.Size(160, 160)
+        Me.btnCerrarCaja.Size = New System.Drawing.Size(130, 130)
         Me.btnCerrarCaja.TabIndex = 4
         Me.btnCerrarCaja.Text = "Cerrar Caja"
         Me.btnCerrarCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -94,9 +96,9 @@ Partial Class FormPrincipal
         'Button6
         '
         Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Location = New System.Drawing.Point(305, 249)
+        Me.Button6.Location = New System.Drawing.Point(271, 240)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(160, 160)
+        Me.Button6.Size = New System.Drawing.Size(130, 130)
         Me.Button6.TabIndex = 5
         Me.Button6.Text = "Reporte X"
         Me.Button6.UseVisualStyleBackColor = True
@@ -104,9 +106,9 @@ Partial Class FormPrincipal
         'Button7
         '
         Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(505, 249)
+        Me.Button7.Location = New System.Drawing.Point(448, 240)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(160, 160)
+        Me.Button7.Size = New System.Drawing.Size(130, 130)
         Me.Button7.TabIndex = 6
         Me.Button7.Text = "Reporte Z"
         Me.Button7.UseVisualStyleBackColor = True
@@ -114,18 +116,20 @@ Partial Class FormPrincipal
         'btnCerrar
         '
         Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(703, 249)
+        Me.btnCerrar.Image = CType(resources.GetObject("btnCerrar.Image"), System.Drawing.Image)
+        Me.btnCerrar.Location = New System.Drawing.Point(626, 240)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(160, 160)
+        Me.btnCerrar.Size = New System.Drawing.Size(130, 130)
         Me.btnCerrar.TabIndex = 7
         Me.btnCerrar.Text = "Cerrar"
+        Me.btnCerrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'FormPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(980, 526)
+        Me.ClientSize = New System.Drawing.Size(890, 469)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.Button7)

@@ -35,6 +35,8 @@ Public Class FormPrincipal
 
         grabarCierreCaja()
 
+        FormCierreCaja.ShowDialog()
+
         objStreamReader = New StreamReader("C:\ComprobanteVenta.txt", System.Text.ASCIIEncoding.ASCII)
 
         Do While Not objStreamReader.EndOfStream
@@ -85,7 +87,7 @@ Public Class FormPrincipal
         listaCajaDia = ObtenerCajaDiaria()
 
         Dim caja As List(Of CajaDiaria) = (From caj In listaCajaDia
-                                  Where caj.Usuario = idUsuario
+                                  Where caj.Usuario = idUsuario And caj.FechaHora.Date = Now.Date
                                   Select caj).ToList
 
         If caja.Count = 0 Then
@@ -95,11 +97,26 @@ Public Class FormPrincipal
             btnRetiroDinero.Enabled = False
             btnAbrirCaja.Enabled = True
         Else
-            btnFacturacion.Enabled = True
-            btnCerrarCaja.Enabled = True
-            btnIngresoDinero.Enabled = True
-            btnRetiroDinero.Enabled = True
-            btnAbrirCaja.Enabled = False
+            Dim intCaja As Integer = (From c In caja
+                                        Where c.Operacion = CajaDiaria.tiposOperacion.cierreCaja
+                                        Select c).Count
+
+            If intCaja = 0 Then
+                btnFacturacion.Enabled = True
+                btnCerrarCaja.Enabled = True
+                btnIngresoDinero.Enabled = True
+                btnRetiroDinero.Enabled = True
+                btnAbrirCaja.Enabled = False
+            Else
+                MsgBox("El usuario no puede volver a abrir una caja en el dia de hoy", MsgBoxStyle.Information, "Caja Cerrada")
+                btnFacturacion.Enabled = False
+                btnCerrarCaja.Enabled = False
+                btnIngresoDinero.Enabled = False
+                btnRetiroDinero.Enabled = False
+                btnAbrirCaja.Enabled = False
+                Exit Sub
+            End If
+
         End If
 
 

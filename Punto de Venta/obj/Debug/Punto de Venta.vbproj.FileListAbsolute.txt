@@ -39,3 +39,4 @@ D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormPrincipal.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormVuelto.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.Resources.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.exe
+C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormCierreCaja.resources
