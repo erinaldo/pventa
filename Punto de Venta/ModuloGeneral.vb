@@ -230,6 +230,51 @@ Module ModuloGeneral
         End Try
     End Function
 
+    Public Function ObtenerComprobanteVenta() As List(Of ComprobanteVenta)
+        Dim objStreamReader As StreamReader
+        Dim strLine As String
+
+        Try
+            objStreamReader = New StreamReader("C:\ComprobanteVenta.txt", System.Text.ASCIIEncoding.ASCII)
+
+            Do While Not objStreamReader.EndOfStream
+                Dim pedidoPendiente As New ComprobanteVenta
+
+                strLine = objStreamReader.ReadLine
+
+                pedidoPendiente.Comprobante = Split(strLine, ";")(0)
+                pedidoPendiente.ComprobanteFiscal = Split(strLine, ";")(1)
+                pedidoPendiente.ComprobanteTipo = Split(strLine, ";")(2)
+                pedidoPendiente.IdCliente = Split(strLine, ";")(3)
+                pedidoPendiente.FechaEmision = Split(strLine, ";")(4)
+                pedidoPendiente.CondicionIva = Split(strLine, ";")(5)
+                pedidoPendiente.PrecioBase = Split(strLine, ";")(6)
+                pedidoPendiente.PorcentajeIva = Split(strLine, ";")(7)
+                pedidoPendiente.TotalComprobante = Split(strLine, ";")(8)
+                pedidoPendiente.IdUsuario = Split(strLine, ";")(9)
+                pedidoPendiente.Origen = Split(strLine, ";")(10)
+                pedidoPendiente.Descuento = Split(strLine, ";")(11)
+                pedidoPendiente.TotalDescuento = Split(strLine, ";")(12)
+                pedidoPendiente.IdFormaPago = Split(strLine, ";")(13)
+                pedidoPendiente.FormaPago = Split(strLine, ";")(14)
+                pedidoPendiente.CondicionVenta = Split(strLine, ";")(15)
+                pedidoPendiente.Remito = Split(strLine, ";")(16)
+                pedidoPendiente.Impuestos = Split(strLine, ";")(17)
+                pedidoPendiente.SubtotalImpuestos = Split(strLine, ";")(18)
+                pedidoPendiente.MontoIva = Split(strLine, ";")(19)
+                pedidoPendiente.NroFactura = Split(strLine, ";")(20)
+                pedidoPendiente.Pagada = Split(strLine, ";")(21)
+
+                ObtenerComprobanteVenta.Add(pedidoPendiente)
+
+            Loop
+
+            objStreamReader.Close()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Obtener CajaDiaria" + "|" + ex.Message)
+        End Try
+    End Function
+
     Public Sub grabarAperturaCaja()
         Dim objStreamWriter As StreamWriter
 

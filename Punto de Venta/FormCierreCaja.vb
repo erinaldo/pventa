@@ -1,6 +1,7 @@
 ﻿Public Class FormCierreCaja
 
     Dim lstCajaDaria As List(Of CajaDiaria)
+    Dim lstVentaDetalle As List(Of ComprobanteVentaDetalle)
 
     Private Sub FormCierreCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -22,5 +23,6 @@
                                  Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.cierreCaja
                                  Select Caj.FechaHora).First.ToString
 
+        lstVentaDetalle = ObtenerVentaDetalle()
     End Sub
 End Class
