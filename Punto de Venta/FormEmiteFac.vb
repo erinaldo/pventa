@@ -249,9 +249,9 @@ Public Class FormEmiteFac
 
                         For j = 0 To GrillaArticulos.Rows.Count - 1
 
-                            strComprobanteVentaDetalle = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & GrillaArticulos.Rows(j).Cells("codart").Value & ";" & _
-                                GrillaArticulos.Rows(j).Cells("descri").Value & ";" & GrillaArticulos.Rows(j).Cells("cantidad").Value & ";" & _
-                                GrillaArticulos.Rows(j).Cells("punitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2)
+                            strComprobanteVentaDetalle = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
+                                GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" & _
+                                GrillaArticulos.Rows(j).Cells("PrecioUnitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2)
 
                             objStreamWriter.WriteLine(strComprobanteVentaDetalle)
 

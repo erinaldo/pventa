@@ -235,6 +235,8 @@ Module ModuloGeneral
         Dim strLine As String
 
         Try
+            ObtenerComprobanteVenta = New List(Of ComprobanteVenta)
+
             objStreamReader = New StreamReader("C:\ComprobanteVenta.txt", System.Text.ASCIIEncoding.ASCII)
 
             Do While Not objStreamReader.EndOfStream

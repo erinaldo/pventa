@@ -30,10 +30,24 @@ Partial Class FormCierreCaja
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.lblDiferenciaTotal = New System.Windows.Forms.Label()
+        Me.lblDiferenciaCheques = New System.Windows.Forms.Label()
+        Me.lblDiferenciaTarjetasDebito = New System.Windows.Forms.Label()
+        Me.lblDiferenciaEfectivo = New System.Windows.Forms.Label()
+        Me.lblDiferenciaRetiroDinero = New System.Windows.Forms.Label()
+        Me.lblDiferenciaIngresoDinero = New System.Windows.Forms.Label()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.txtCheques = New System.Windows.Forms.TextBox()
+        Me.txtTarjetasDebito = New System.Windows.Forms.TextBox()
+        Me.txtEfectivo = New System.Windows.Forms.TextBox()
+        Me.txtRetiroDinero = New System.Windows.Forms.TextBox()
+        Me.txtIngresoDinero = New System.Windows.Forms.TextBox()
+        Me.lblTotal = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.lblCheques = New System.Windows.Forms.Label()
-        Me.lblTarjetas = New System.Windows.Forms.Label()
+        Me.lblTarjetasDebito = New System.Windows.Forms.Label()
         Me.lblEfectivo = New System.Windows.Forms.Label()
         Me.lblRetiroDinero = New System.Windows.Forms.Label()
         Me.lblIngresoDinero = New System.Windows.Forms.Label()
@@ -44,20 +58,18 @@ Partial Class FormCierreCaja
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.txtIngresoDinero = New System.Windows.Forms.TextBox()
-        Me.txtRetiroDinero = New System.Windows.Forms.TextBox()
-        Me.txtEfectivo = New System.Windows.Forms.TextBox()
-        Me.txtTarjetas = New System.Windows.Forms.TextBox()
-        Me.txtCheques = New System.Windows.Forms.TextBox()
-        Me.txtTotal = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
+        Me.lblDiferenciaTarjetasCredito = New System.Windows.Forms.Label()
+        Me.txtTarjetasCredito = New System.Windows.Forms.TextBox()
+        Me.lblTarjetasCredito = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblComprobantesIngresoDinero = New System.Windows.Forms.Label()
+        Me.lblComprobantesRetiroDinero = New System.Windows.Forms.Label()
+        Me.lblComprobantesEfectivo = New System.Windows.Forms.Label()
+        Me.lblComprobantesTarjetasDebito = New System.Windows.Forms.Label()
+        Me.lblComprobantesTarjetasCredito = New System.Windows.Forms.Label()
+        Me.lblComprobantesCheques = New System.Windows.Forms.Label()
+        Me.lblComprobantesTotal = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -72,7 +84,7 @@ Partial Class FormCierreCaja
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(520, 68)
+        Me.GroupBox1.Size = New System.Drawing.Size(552, 68)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
@@ -88,7 +100,7 @@ Partial Class FormCierreCaja
         'lblCierre
         '
         Me.lblCierre.AutoSize = True
-        Me.lblCierre.Location = New System.Drawing.Point(331, 40)
+        Me.lblCierre.Location = New System.Drawing.Point(339, 40)
         Me.lblCierre.Name = "lblCierre"
         Me.lblCierre.Size = New System.Drawing.Size(32, 13)
         Me.lblCierre.TabIndex = 3
@@ -106,7 +118,7 @@ Partial Class FormCierreCaja
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(264, 40)
+        Me.Label3.Location = New System.Drawing.Point(272, 40)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 13)
         Me.Label3.TabIndex = 2
@@ -132,24 +144,36 @@ Partial Class FormCierreCaja
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.lblComprobantesTotal)
+        Me.GroupBox2.Controls.Add(Me.lblComprobantesCheques)
+        Me.GroupBox2.Controls.Add(Me.lblComprobantesTarjetasCredito)
+        Me.GroupBox2.Controls.Add(Me.lblComprobantesTarjetasDebito)
+        Me.GroupBox2.Controls.Add(Me.lblComprobantesEfectivo)
+        Me.GroupBox2.Controls.Add(Me.lblComprobantesRetiroDinero)
+        Me.GroupBox2.Controls.Add(Me.lblComprobantesIngresoDinero)
+        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Controls.Add(Me.lblDiferenciaTarjetasCredito)
+        Me.GroupBox2.Controls.Add(Me.txtTarjetasCredito)
+        Me.GroupBox2.Controls.Add(Me.lblTarjetasCredito)
+        Me.GroupBox2.Controls.Add(Me.Label21)
         Me.GroupBox2.Controls.Add(Me.Label18)
         Me.GroupBox2.Controls.Add(Me.Label17)
-        Me.GroupBox2.Controls.Add(Me.Label16)
-        Me.GroupBox2.Controls.Add(Me.Label15)
-        Me.GroupBox2.Controls.Add(Me.Label14)
-        Me.GroupBox2.Controls.Add(Me.Label13)
-        Me.GroupBox2.Controls.Add(Me.Label12)
-        Me.GroupBox2.Controls.Add(Me.Label11)
+        Me.GroupBox2.Controls.Add(Me.lblDiferenciaTotal)
+        Me.GroupBox2.Controls.Add(Me.lblDiferenciaCheques)
+        Me.GroupBox2.Controls.Add(Me.lblDiferenciaTarjetasDebito)
+        Me.GroupBox2.Controls.Add(Me.lblDiferenciaEfectivo)
+        Me.GroupBox2.Controls.Add(Me.lblDiferenciaRetiroDinero)
+        Me.GroupBox2.Controls.Add(Me.lblDiferenciaIngresoDinero)
         Me.GroupBox2.Controls.Add(Me.txtTotal)
         Me.GroupBox2.Controls.Add(Me.txtCheques)
-        Me.GroupBox2.Controls.Add(Me.txtTarjetas)
+        Me.GroupBox2.Controls.Add(Me.txtTarjetasDebito)
         Me.GroupBox2.Controls.Add(Me.txtEfectivo)
         Me.GroupBox2.Controls.Add(Me.txtRetiroDinero)
         Me.GroupBox2.Controls.Add(Me.txtIngresoDinero)
-        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Controls.Add(Me.lblTotal)
         Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Controls.Add(Me.lblCheques)
-        Me.GroupBox2.Controls.Add(Me.lblTarjetas)
+        Me.GroupBox2.Controls.Add(Me.lblTarjetasDebito)
         Me.GroupBox2.Controls.Add(Me.lblEfectivo)
         Me.GroupBox2.Controls.Add(Me.lblRetiroDinero)
         Me.GroupBox2.Controls.Add(Me.lblIngresoDinero)
@@ -160,255 +184,382 @@ Partial Class FormCierreCaja
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 86)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(520, 300)
+        Me.GroupBox2.Size = New System.Drawing.Size(552, 351)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         '
-        'Label10
+        'Label18
         '
-        Me.Label10.Location = New System.Drawing.Point(128, 259)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(53, 17)
-        Me.Label10.TabIndex = 11
-        Me.Label10.Text = "xxxxx"
-        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(225, 25)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(55, 13)
+        Me.Label18.TabIndex = 25
+        Me.Label18.Text = "Rendicion"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(336, 25)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(55, 13)
+        Me.Label17.TabIndex = 24
+        Me.Label17.Text = "Diferencia"
+        '
+        'lblDiferenciaTotal
+        '
+        Me.lblDiferenciaTotal.Location = New System.Drawing.Point(325, 297)
+        Me.lblDiferenciaTotal.Name = "lblDiferenciaTotal"
+        Me.lblDiferenciaTotal.Size = New System.Drawing.Size(75, 17)
+        Me.lblDiferenciaTotal.TabIndex = 23
+        Me.lblDiferenciaTotal.Text = "0"
+        Me.lblDiferenciaTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblDiferenciaCheques
+        '
+        Me.lblDiferenciaCheques.Location = New System.Drawing.Point(325, 255)
+        Me.lblDiferenciaCheques.Name = "lblDiferenciaCheques"
+        Me.lblDiferenciaCheques.Size = New System.Drawing.Size(75, 17)
+        Me.lblDiferenciaCheques.TabIndex = 22
+        Me.lblDiferenciaCheques.Text = "0"
+        Me.lblDiferenciaCheques.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblDiferenciaTarjetasDebito
+        '
+        Me.lblDiferenciaTarjetasDebito.Location = New System.Drawing.Point(325, 175)
+        Me.lblDiferenciaTarjetasDebito.Name = "lblDiferenciaTarjetasDebito"
+        Me.lblDiferenciaTarjetasDebito.Size = New System.Drawing.Size(75, 17)
+        Me.lblDiferenciaTarjetasDebito.TabIndex = 21
+        Me.lblDiferenciaTarjetasDebito.Text = "0"
+        Me.lblDiferenciaTarjetasDebito.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblDiferenciaEfectivo
+        '
+        Me.lblDiferenciaEfectivo.Location = New System.Drawing.Point(325, 133)
+        Me.lblDiferenciaEfectivo.Name = "lblDiferenciaEfectivo"
+        Me.lblDiferenciaEfectivo.Size = New System.Drawing.Size(75, 17)
+        Me.lblDiferenciaEfectivo.TabIndex = 20
+        Me.lblDiferenciaEfectivo.Text = "0"
+        Me.lblDiferenciaEfectivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblDiferenciaRetiroDinero
+        '
+        Me.lblDiferenciaRetiroDinero.Location = New System.Drawing.Point(325, 94)
+        Me.lblDiferenciaRetiroDinero.Name = "lblDiferenciaRetiroDinero"
+        Me.lblDiferenciaRetiroDinero.Size = New System.Drawing.Size(75, 17)
+        Me.lblDiferenciaRetiroDinero.TabIndex = 19
+        Me.lblDiferenciaRetiroDinero.Text = "0"
+        Me.lblDiferenciaRetiroDinero.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblDiferenciaIngresoDinero
+        '
+        Me.lblDiferenciaIngresoDinero.Location = New System.Drawing.Point(325, 56)
+        Me.lblDiferenciaIngresoDinero.Name = "lblDiferenciaIngresoDinero"
+        Me.lblDiferenciaIngresoDinero.Size = New System.Drawing.Size(75, 17)
+        Me.lblDiferenciaIngresoDinero.TabIndex = 18
+        Me.lblDiferenciaIngresoDinero.Text = "0"
+        Me.lblDiferenciaIngresoDinero.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtTotal
+        '
+        Me.txtTotal.Location = New System.Drawing.Point(212, 296)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(82, 20)
+        Me.txtTotal.TabIndex = 6
+        Me.txtTotal.Text = "0"
+        Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtCheques
+        '
+        Me.txtCheques.Location = New System.Drawing.Point(212, 254)
+        Me.txtCheques.Name = "txtCheques"
+        Me.txtCheques.Size = New System.Drawing.Size(82, 20)
+        Me.txtCheques.TabIndex = 5
+        Me.txtCheques.Text = "0"
+        Me.txtCheques.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtTarjetasDebito
+        '
+        Me.txtTarjetasDebito.Location = New System.Drawing.Point(212, 174)
+        Me.txtTarjetasDebito.Name = "txtTarjetasDebito"
+        Me.txtTarjetasDebito.Size = New System.Drawing.Size(82, 20)
+        Me.txtTarjetasDebito.TabIndex = 3
+        Me.txtTarjetasDebito.Text = "0"
+        Me.txtTarjetasDebito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtEfectivo
+        '
+        Me.txtEfectivo.Location = New System.Drawing.Point(212, 132)
+        Me.txtEfectivo.Name = "txtEfectivo"
+        Me.txtEfectivo.Size = New System.Drawing.Size(82, 20)
+        Me.txtEfectivo.TabIndex = 2
+        Me.txtEfectivo.Text = "0"
+        Me.txtEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtRetiroDinero
+        '
+        Me.txtRetiroDinero.Location = New System.Drawing.Point(212, 93)
+        Me.txtRetiroDinero.Name = "txtRetiroDinero"
+        Me.txtRetiroDinero.Size = New System.Drawing.Size(82, 20)
+        Me.txtRetiroDinero.TabIndex = 1
+        Me.txtRetiroDinero.Text = "0"
+        Me.txtRetiroDinero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtIngresoDinero
+        '
+        Me.txtIngresoDinero.Location = New System.Drawing.Point(212, 55)
+        Me.txtIngresoDinero.Name = "txtIngresoDinero"
+        Me.txtIngresoDinero.Size = New System.Drawing.Size(82, 20)
+        Me.txtIngresoDinero.TabIndex = 0
+        Me.txtIngresoDinero.Text = "0"
+        Me.txtIngresoDinero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'lblTotal
+        '
+        Me.lblTotal.Location = New System.Drawing.Point(130, 297)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(53, 17)
+        Me.lblTotal.TabIndex = 11
+        Me.lblTotal.Text = "0"
+        Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(23, 261)
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(6, 299)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(34, 13)
+        Me.Label9.Size = New System.Drawing.Size(40, 13)
         Me.Label9.TabIndex = 10
         Me.Label9.Text = "Total:"
         '
         'lblCheques
         '
-        Me.lblCheques.Location = New System.Drawing.Point(128, 217)
+        Me.lblCheques.Location = New System.Drawing.Point(130, 255)
         Me.lblCheques.Name = "lblCheques"
         Me.lblCheques.Size = New System.Drawing.Size(53, 17)
         Me.lblCheques.TabIndex = 9
-        Me.lblCheques.Text = "xxxxx"
+        Me.lblCheques.Text = "0"
         Me.lblCheques.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblTarjetas
+        'lblTarjetasDebito
         '
-        Me.lblTarjetas.Location = New System.Drawing.Point(128, 175)
-        Me.lblTarjetas.Name = "lblTarjetas"
-        Me.lblTarjetas.Size = New System.Drawing.Size(53, 17)
-        Me.lblTarjetas.TabIndex = 8
-        Me.lblTarjetas.Text = "xxxxx"
-        Me.lblTarjetas.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblTarjetasDebito.Location = New System.Drawing.Point(130, 175)
+        Me.lblTarjetasDebito.Name = "lblTarjetasDebito"
+        Me.lblTarjetasDebito.Size = New System.Drawing.Size(53, 17)
+        Me.lblTarjetasDebito.TabIndex = 8
+        Me.lblTarjetasDebito.Text = "0"
+        Me.lblTarjetasDebito.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblEfectivo
         '
-        Me.lblEfectivo.Location = New System.Drawing.Point(128, 133)
+        Me.lblEfectivo.Location = New System.Drawing.Point(130, 133)
         Me.lblEfectivo.Name = "lblEfectivo"
         Me.lblEfectivo.Size = New System.Drawing.Size(53, 17)
         Me.lblEfectivo.TabIndex = 7
-        Me.lblEfectivo.Text = "xxxxx"
+        Me.lblEfectivo.Text = "0"
         Me.lblEfectivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblRetiroDinero
         '
-        Me.lblRetiroDinero.Location = New System.Drawing.Point(128, 94)
+        Me.lblRetiroDinero.Location = New System.Drawing.Point(130, 94)
         Me.lblRetiroDinero.Name = "lblRetiroDinero"
         Me.lblRetiroDinero.Size = New System.Drawing.Size(53, 17)
         Me.lblRetiroDinero.TabIndex = 6
-        Me.lblRetiroDinero.Text = "xxxxx"
+        Me.lblRetiroDinero.Text = "0"
         Me.lblRetiroDinero.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblIngresoDinero
         '
-        Me.lblIngresoDinero.Location = New System.Drawing.Point(128, 56)
+        Me.lblIngresoDinero.Location = New System.Drawing.Point(130, 56)
         Me.lblIngresoDinero.Name = "lblIngresoDinero"
         Me.lblIngresoDinero.Size = New System.Drawing.Size(53, 17)
         Me.lblIngresoDinero.TabIndex = 5
-        Me.lblIngresoDinero.Text = "xxxxx"
+        Me.lblIngresoDinero.Text = "0"
         Me.lblIngresoDinero.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(23, 219)
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(6, 257)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(52, 13)
+        Me.Label8.Size = New System.Drawing.Size(60, 13)
         Me.Label8.TabIndex = 4
         Me.Label8.Text = "Cheques:"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(23, 177)
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(6, 177)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(48, 13)
+        Me.Label7.Size = New System.Drawing.Size(116, 13)
         Me.Label7.TabIndex = 3
-        Me.Label7.Text = "Tarjetas:"
+        Me.Label7.Text = "Tarjetas de Débito:"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(23, 135)
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(6, 135)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(49, 13)
+        Me.Label6.Size = New System.Drawing.Size(58, 13)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Efectivo:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(23, 96)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(6, 96)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(92, 13)
+        Me.Label5.Size = New System.Drawing.Size(110, 13)
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Retiros de Dinero:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(23, 58)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(6, 58)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(99, 13)
+        Me.Label4.Size = New System.Drawing.Size(118, 13)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Ingresos de Dinero:"
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(431, 400)
+        Me.Button1.Location = New System.Drawing.Point(430, 455)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 2
+        Me.Button1.TabIndex = 7
         Me.Button1.Text = "Aceptar"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(327, 400)
+        Me.Button2.Location = New System.Drawing.Point(326, 455)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "Salir"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'txtIngresoDinero
+        'lblDiferenciaTarjetasCredito
         '
-        Me.txtIngresoDinero.Location = New System.Drawing.Point(208, 55)
-        Me.txtIngresoDinero.Name = "txtIngresoDinero"
-        Me.txtIngresoDinero.Size = New System.Drawing.Size(82, 20)
-        Me.txtIngresoDinero.TabIndex = 12
+        Me.lblDiferenciaTarjetasCredito.Location = New System.Drawing.Point(325, 215)
+        Me.lblDiferenciaTarjetasCredito.Name = "lblDiferenciaTarjetasCredito"
+        Me.lblDiferenciaTarjetasCredito.Size = New System.Drawing.Size(75, 17)
+        Me.lblDiferenciaTarjetasCredito.TabIndex = 29
+        Me.lblDiferenciaTarjetasCredito.Text = "0"
+        Me.lblDiferenciaTarjetasCredito.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'txtRetiroDinero
+        'txtTarjetasCredito
         '
-        Me.txtRetiroDinero.Location = New System.Drawing.Point(208, 93)
-        Me.txtRetiroDinero.Name = "txtRetiroDinero"
-        Me.txtRetiroDinero.Size = New System.Drawing.Size(82, 20)
-        Me.txtRetiroDinero.TabIndex = 13
+        Me.txtTarjetasCredito.Location = New System.Drawing.Point(212, 214)
+        Me.txtTarjetasCredito.Name = "txtTarjetasCredito"
+        Me.txtTarjetasCredito.Size = New System.Drawing.Size(82, 20)
+        Me.txtTarjetasCredito.TabIndex = 4
+        Me.txtTarjetasCredito.Text = "0"
+        Me.txtTarjetasCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtEfectivo
+        'lblTarjetasCredito
         '
-        Me.txtEfectivo.Location = New System.Drawing.Point(208, 132)
-        Me.txtEfectivo.Name = "txtEfectivo"
-        Me.txtEfectivo.Size = New System.Drawing.Size(82, 20)
-        Me.txtEfectivo.TabIndex = 14
+        Me.lblTarjetasCredito.Location = New System.Drawing.Point(130, 215)
+        Me.lblTarjetasCredito.Name = "lblTarjetasCredito"
+        Me.lblTarjetasCredito.Size = New System.Drawing.Size(53, 17)
+        Me.lblTarjetasCredito.TabIndex = 27
+        Me.lblTarjetasCredito.Text = "0"
+        Me.lblTarjetasCredito.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'txtTarjetas
+        'Label21
         '
-        Me.txtTarjetas.Location = New System.Drawing.Point(208, 174)
-        Me.txtTarjetas.Name = "txtTarjetas"
-        Me.txtTarjetas.Size = New System.Drawing.Size(82, 20)
-        Me.txtTarjetas.TabIndex = 15
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(6, 217)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(119, 13)
+        Me.Label21.TabIndex = 26
+        Me.Label21.Text = "Tarjetas de Crédito:"
         '
-        'txtCheques
+        'Label10
         '
-        Me.txtCheques.Location = New System.Drawing.Point(208, 216)
-        Me.txtCheques.Name = "txtCheques"
-        Me.txtCheques.Size = New System.Drawing.Size(82, 20)
-        Me.txtCheques.TabIndex = 16
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(427, 25)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(120, 13)
+        Me.Label10.TabIndex = 30
+        Me.Label10.Text = "Cantidad Comprobantes"
         '
-        'txtTotal
+        'lblComprobantesIngresoDinero
         '
-        Me.txtTotal.Location = New System.Drawing.Point(208, 258)
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(82, 20)
-        Me.txtTotal.TabIndex = 17
+        Me.lblComprobantesIngresoDinero.Location = New System.Drawing.Point(463, 56)
+        Me.lblComprobantesIngresoDinero.Name = "lblComprobantesIngresoDinero"
+        Me.lblComprobantesIngresoDinero.Size = New System.Drawing.Size(50, 17)
+        Me.lblComprobantesIngresoDinero.TabIndex = 31
+        Me.lblComprobantesIngresoDinero.Text = "0"
+        Me.lblComprobantesIngresoDinero.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label11
+        'lblComprobantesRetiroDinero
         '
-        Me.Label11.Location = New System.Drawing.Point(334, 56)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(75, 17)
-        Me.Label11.TabIndex = 18
-        Me.Label11.Text = "xxxxx"
-        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblComprobantesRetiroDinero.Location = New System.Drawing.Point(463, 94)
+        Me.lblComprobantesRetiroDinero.Name = "lblComprobantesRetiroDinero"
+        Me.lblComprobantesRetiroDinero.Size = New System.Drawing.Size(50, 17)
+        Me.lblComprobantesRetiroDinero.TabIndex = 32
+        Me.lblComprobantesRetiroDinero.Text = "0"
+        Me.lblComprobantesRetiroDinero.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label12
+        'lblComprobantesEfectivo
         '
-        Me.Label12.Location = New System.Drawing.Point(334, 94)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(75, 17)
-        Me.Label12.TabIndex = 19
-        Me.Label12.Text = "xxxxx"
-        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblComprobantesEfectivo.Location = New System.Drawing.Point(463, 133)
+        Me.lblComprobantesEfectivo.Name = "lblComprobantesEfectivo"
+        Me.lblComprobantesEfectivo.Size = New System.Drawing.Size(50, 17)
+        Me.lblComprobantesEfectivo.TabIndex = 33
+        Me.lblComprobantesEfectivo.Text = "0"
+        Me.lblComprobantesEfectivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label13
+        'lblComprobantesTarjetasDebito
         '
-        Me.Label13.Location = New System.Drawing.Point(334, 133)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(75, 17)
-        Me.Label13.TabIndex = 20
-        Me.Label13.Text = "xxxxx"
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblComprobantesTarjetasDebito.Location = New System.Drawing.Point(463, 175)
+        Me.lblComprobantesTarjetasDebito.Name = "lblComprobantesTarjetasDebito"
+        Me.lblComprobantesTarjetasDebito.Size = New System.Drawing.Size(50, 17)
+        Me.lblComprobantesTarjetasDebito.TabIndex = 34
+        Me.lblComprobantesTarjetasDebito.Text = "0"
+        Me.lblComprobantesTarjetasDebito.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label14
+        'lblComprobantesTarjetasCredito
         '
-        Me.Label14.Location = New System.Drawing.Point(334, 175)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(75, 17)
-        Me.Label14.TabIndex = 21
-        Me.Label14.Text = "xxxxx"
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblComprobantesTarjetasCredito.Location = New System.Drawing.Point(463, 215)
+        Me.lblComprobantesTarjetasCredito.Name = "lblComprobantesTarjetasCredito"
+        Me.lblComprobantesTarjetasCredito.Size = New System.Drawing.Size(50, 17)
+        Me.lblComprobantesTarjetasCredito.TabIndex = 35
+        Me.lblComprobantesTarjetasCredito.Text = "0"
+        Me.lblComprobantesTarjetasCredito.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label15
+        'lblComprobantesCheques
         '
-        Me.Label15.Location = New System.Drawing.Point(334, 217)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(75, 17)
-        Me.Label15.TabIndex = 22
-        Me.Label15.Text = "xxxxx"
-        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblComprobantesCheques.Location = New System.Drawing.Point(463, 255)
+        Me.lblComprobantesCheques.Name = "lblComprobantesCheques"
+        Me.lblComprobantesCheques.Size = New System.Drawing.Size(50, 17)
+        Me.lblComprobantesCheques.TabIndex = 36
+        Me.lblComprobantesCheques.Text = "0"
+        Me.lblComprobantesCheques.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label16
+        'lblComprobantesTotal
         '
-        Me.Label16.Location = New System.Drawing.Point(334, 259)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(75, 17)
-        Me.Label16.TabIndex = 23
-        Me.Label16.Text = "xxxxx"
-        Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(345, 25)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(55, 13)
-        Me.Label17.TabIndex = 24
-        Me.Label17.Text = "Diferencia"
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(223, 25)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(55, 13)
-        Me.Label18.TabIndex = 25
-        Me.Label18.Text = "Rendicion"
+        Me.lblComprobantesTotal.Location = New System.Drawing.Point(463, 297)
+        Me.lblComprobantesTotal.Name = "lblComprobantesTotal"
+        Me.lblComprobantesTotal.Size = New System.Drawing.Size(50, 17)
+        Me.lblComprobantesTotal.TabIndex = 37
+        Me.lblComprobantesTotal.Text = "0"
+        Me.lblComprobantesTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'FormCierreCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(544, 437)
+        Me.ClientSize = New System.Drawing.Size(576, 493)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox2)
@@ -430,10 +581,10 @@ Partial Class FormCierreCaja
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents lblTotal As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents lblCheques As System.Windows.Forms.Label
-    Friend WithEvents lblTarjetas As System.Windows.Forms.Label
+    Friend WithEvents lblTarjetasDebito As System.Windows.Forms.Label
     Friend WithEvents lblEfectivo As System.Windows.Forms.Label
     Friend WithEvents lblRetiroDinero As System.Windows.Forms.Label
     Friend WithEvents lblIngresoDinero As System.Windows.Forms.Label
@@ -446,16 +597,28 @@ Partial Class FormCierreCaja
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents lblDiferenciaTotal As System.Windows.Forms.Label
+    Friend WithEvents lblDiferenciaCheques As System.Windows.Forms.Label
+    Friend WithEvents lblDiferenciaTarjetasDebito As System.Windows.Forms.Label
+    Friend WithEvents lblDiferenciaEfectivo As System.Windows.Forms.Label
+    Friend WithEvents lblDiferenciaRetiroDinero As System.Windows.Forms.Label
+    Friend WithEvents lblDiferenciaIngresoDinero As System.Windows.Forms.Label
     Friend WithEvents txtTotal As System.Windows.Forms.TextBox
     Friend WithEvents txtCheques As System.Windows.Forms.TextBox
-    Friend WithEvents txtTarjetas As System.Windows.Forms.TextBox
+    Friend WithEvents txtTarjetasDebito As System.Windows.Forms.TextBox
     Friend WithEvents txtEfectivo As System.Windows.Forms.TextBox
     Friend WithEvents txtRetiroDinero As System.Windows.Forms.TextBox
     Friend WithEvents txtIngresoDinero As System.Windows.Forms.TextBox
+    Friend WithEvents lblDiferenciaTarjetasCredito As System.Windows.Forms.Label
+    Friend WithEvents txtTarjetasCredito As System.Windows.Forms.TextBox
+    Friend WithEvents lblTarjetasCredito As System.Windows.Forms.Label
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents lblComprobantesTotal As System.Windows.Forms.Label
+    Friend WithEvents lblComprobantesCheques As System.Windows.Forms.Label
+    Friend WithEvents lblComprobantesTarjetasCredito As System.Windows.Forms.Label
+    Friend WithEvents lblComprobantesTarjetasDebito As System.Windows.Forms.Label
+    Friend WithEvents lblComprobantesEfectivo As System.Windows.Forms.Label
+    Friend WithEvents lblComprobantesRetiroDinero As System.Windows.Forms.Label
+    Friend WithEvents lblComprobantesIngresoDinero As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class
