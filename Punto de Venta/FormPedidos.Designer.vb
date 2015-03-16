@@ -35,11 +35,11 @@ Partial Class FormPedidos
         Me.GrillaPedidosPendientes.AllowUserToAddRows = False
         Me.GrillaPedidosPendientes.AllowUserToDeleteRows = False
         Me.GrillaPedidosPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GrillaPedidosPendientes.Location = New System.Drawing.Point(12, 59)
+        Me.GrillaPedidosPendientes.Location = New System.Drawing.Point(12, 12)
         Me.GrillaPedidosPendientes.Name = "GrillaPedidosPendientes"
         Me.GrillaPedidosPendientes.ReadOnly = True
         Me.GrillaPedidosPendientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GrillaPedidosPendientes.Size = New System.Drawing.Size(725, 178)
+        Me.GrillaPedidosPendientes.Size = New System.Drawing.Size(725, 199)
         Me.GrillaPedidosPendientes.TabIndex = 5
         '
         'btnImprimir
@@ -65,11 +65,11 @@ Partial Class FormPedidos
         Me.GrillaComprobanteVentaDetalle.AllowUserToAddRows = False
         Me.GrillaComprobanteVentaDetalle.AllowUserToDeleteRows = False
         Me.GrillaComprobanteVentaDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GrillaComprobanteVentaDetalle.Location = New System.Drawing.Point(12, 243)
+        Me.GrillaComprobanteVentaDetalle.Location = New System.Drawing.Point(12, 217)
         Me.GrillaComprobanteVentaDetalle.Name = "GrillaComprobanteVentaDetalle"
         Me.GrillaComprobanteVentaDetalle.ReadOnly = True
         Me.GrillaComprobanteVentaDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GrillaComprobanteVentaDetalle.Size = New System.Drawing.Size(725, 196)
+        Me.GrillaComprobanteVentaDetalle.Size = New System.Drawing.Size(725, 222)
         Me.GrillaComprobanteVentaDetalle.TabIndex = 8
         '
         'FormPedidos

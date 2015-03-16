@@ -12,8 +12,7 @@ Module ModuloActualizacionBase
         Try
             ActualizarComprobanteVenta = False
 
-            Dim tblCompVenta As DataTable
-            'tblCompVenta = dsComprobanteVenta.Tables(0)
+            Dim tblCompVenta As New DataTable
 
             ObtenerComprobanteVentaVacio(tblCompVenta, "Comprobantes_Venta")
 
@@ -61,8 +60,7 @@ Module ModuloActualizacionBase
         Try
             ActualizarComprobanteVentaDetalle = False
 
-            Dim tblCompVentaDet As DataTable
-            'tblCompVentaDet = dsComprobanteVentaDetalle.Tables(0)
+            Dim tblCompVentaDet As New DataTable
 
             ObtenerComprobanteVentaDetalleVacio(tblCompVentaDet, "Comprobantes_Venta_Detalle")
 
@@ -101,9 +99,7 @@ Module ModuloActualizacionBase
         Try
             ActualizarCajaDiaria = False
 
-            Dim tblCompVentaDet As DataTable
-
-            'tblCompVentaDet = dsCajaDiaria.Tables(0)
+            Dim tblCompVentaDet As New DataTable
 
             ObtenerCajaDiariaVacio(tblCompVentaDet, "Caja_Diaria")
 

@@ -55,20 +55,29 @@ Module ModuloGeneral
     Public Function obtenerNroComprobante() As Integer
         Dim objStreamReader As StreamReader
 
-        objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Comprobante.txt")
+        Try
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Comprobante.txt")
 
-        obtenerNroComprobante = objStreamReader.ReadLine
+            obtenerNroComprobante = objStreamReader.ReadLine
 
-        objStreamReader.Close()
+            objStreamReader.Close()
 
-        Dim objStreamWriter As StreamWriter
+            Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Comprobante.txt", False)
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Comprobante.txt", False)
 
-        objStreamWriter.WriteLine(obtenerNroComprobante + 1)
+            objStreamWriter.WriteLine(obtenerNroComprobante + 1)
 
-        objStreamWriter.Close()
+            objStreamWriter.Close()
 
+        Catch ex As FileNotFoundException
+            Dim objStreamWriter As StreamWriter
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Comprobante.txt", True)
+            objStreamWriter.Close()
+            obtenerNroComprobante()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Obtener Comprobante" + "|" + ex.Message)
+        End Try
     End Function
 
     Public Function MsgAtencion(strMensaje As String) As MsgBoxStyle
@@ -311,45 +320,60 @@ Module ModuloGeneral
     Public Sub grabarAperturaCaja()
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
+        Try
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-        objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
+            objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
 
-        objStreamWriter.Close()
+            objStreamWriter.Close()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Grabar Apertura de Caja" + "|" + ex.Message)
+        End Try
     End Sub
 
     Public Sub grabarIngresoDinero(ByVal importe As Double)
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
+        Try
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-        objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
+            objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
 
-        objStreamWriter.Close()
+            objStreamWriter.Close()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Grabar Ingreso de Dinero" + "|" + ex.Message)
+        End Try
     End Sub
 
     Public Sub grabarRetiroDinero(ByVal importe As Double)
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
+        Try
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-        objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
+            objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
 
-        objStreamWriter.Close()
+            objStreamWriter.Close()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Grabar Retiro de Dinero" + "|" + ex.Message)
+        End Try
     End Sub
 
     Public Sub grabarCierreCaja()
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
+        Try
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-        objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
+            objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
 
-        objStreamWriter.Close()
+            objStreamWriter.Close()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Grabar Cierre de Caja" + "|" + ex.Message)
+        End Try
     End Sub
 
     Public Function Decript(pass As String) As String
-
 
         Dim pos As Long
         Dim Key As Long
@@ -371,7 +395,5 @@ Module ModuloGeneral
         Next
         Decript = temp1
     End Function
-
-
 
 End Module

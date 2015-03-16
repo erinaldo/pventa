@@ -9,7 +9,7 @@
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="rutaArchivos" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\</Value>
+      <Value Profile="(Default)">C:\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

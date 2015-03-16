@@ -114,4 +114,46 @@
         lblDiferenciaTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(txtTotal.Text), 2)
         ActualizarDiferencia()
     End Sub
+
+    Private Sub txtIngresoDinero_KeyDown(sender As Object, e As KeyEventArgs) Handles txtIngresoDinero.KeyDown
+        If e.KeyCode = Keys.Return Then
+            txtRetiroDinero.Focus()
+        End If
+    End Sub
+
+    Private Sub txtRetiroDinero_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRetiroDinero.KeyDown
+        If e.KeyCode = Keys.Return Then
+            txtEfectivo.Focus()
+        End If
+    End Sub
+
+    Private Sub txtEfectivo_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEfectivo.KeyDown
+        If e.KeyCode = Keys.Return Then
+            txtTarjetasDebito.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTarjetasDebito_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTarjetasDebito.KeyDown
+        If e.KeyCode = Keys.Return Then
+            txtTarjetasCredito.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTarjetasCredito_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTarjetasCredito.KeyDown
+        If e.KeyCode = Keys.Return Then
+            txtCheques.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCheques_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCheques.KeyDown
+        If e.KeyCode = Keys.Return Then
+            Button1.Focus()
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If MsgBox("Esta seguro de grabar la rendicion?", MsgBoxStyle.YesNo, "Rendicion") = MsgBoxResult.Yes Then
+            Me.Close()
+        End If
+    End Sub
 End Class

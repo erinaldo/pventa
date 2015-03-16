@@ -5,25 +5,30 @@
     Public Sub ImprimirTicketFiscal(ByVal grilla As DataGridView)
         miOCX = New FiscalPrinterLib.HASAR
 
-        miOCX.Puerto = 5
-        miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_615
-        miOCX.Comenzar()
-        miOCX.TratarDeCancelarTodo()
-        miOCX.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_C)
+        Try
+            miOCX.Puerto = 5
+            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_615
+            miOCX.Comenzar()
+            miOCX.TratarDeCancelarTodo()
+            miOCX.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_C)
 
-        Dim filas As Integer = grilla.Rows.Count - 1
+            Dim filas As Integer = grilla.Rows.Count - 1
 
-        For i = 0 To filas
-            miOCX.ImprimirItem(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), grilla.Rows(i).Cells("Cantidad").Value(), grilla.Rows(i).Cells("PrecioUnitario").Value(), 0, 0)
-        Next i
-        If MontoDesc <> 0 Then
-            miOCX.DescuentoGeneral("Descuento", MontoDesc, True)
-        End If
-        miOCX.ImprimirPago("Pago con", Paga)
-        'miOCX.ImprimirPago("Vuelto", Vuelto) '*** Linea que sacamos para 5 y 63 - 30/09/2010
+            For i = 0 To filas
+                miOCX.ImprimirItem(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), grilla.Rows(i).Cells("Cantidad").Value(), grilla.Rows(i).Cells("PrecioUnitario").Value(), 0, 0)
+            Next i
+            If MontoDesc <> 0 Then
+                miOCX.DescuentoGeneral("Descuento", MontoDesc, True)
+            End If
+            miOCX.ImprimirPago("Pago con", Paga)
+            'miOCX.ImprimirPago("Vuelto", Vuelto) '*** Linea que sacamos para 5 y 63 - 30/09/2010
 
-        miOCX.CerrarComprobanteFiscal()
-        miOCX.Finalizar()
+            miOCX.CerrarComprobanteFiscal()
+            miOCX.Finalizar()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo Impresion" + "Imprimiendo Item" + "|" + ex.Message)
+        End Try
+       
     End Sub
 
     Function ImprimirReporteZ() As Boolean

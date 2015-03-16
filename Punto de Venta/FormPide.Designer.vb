@@ -35,7 +35,7 @@ Partial Class FormPide
         Me.lbldescart.AutoSize = True
         Me.lbldescart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbldescart.ForeColor = System.Drawing.Color.Red
-        Me.lbldescart.Location = New System.Drawing.Point(104, 69)
+        Me.lbldescart.Location = New System.Drawing.Point(118, 78)
         Me.lbldescart.Name = "lbldescart"
         Me.lbldescart.Size = New System.Drawing.Size(55, 16)
         Me.lbldescart.TabIndex = 9
@@ -44,7 +44,7 @@ Partial Class FormPide
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(31, 106)
+        Me.Label2.Location = New System.Drawing.Point(45, 115)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(40, 13)
         Me.Label2.TabIndex = 8
@@ -53,7 +53,7 @@ Partial Class FormPide
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(31, 71)
+        Me.Label1.Location = New System.Drawing.Point(45, 80)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(66, 13)
         Me.Label1.TabIndex = 6
@@ -79,7 +79,7 @@ Partial Class FormPide
         '
         'txtprecio
         '
-        Me.txtprecio.Location = New System.Drawing.Point(107, 103)
+        Me.txtprecio.Location = New System.Drawing.Point(121, 112)
         Me.txtprecio.Name = "txtprecio"
         Me.txtprecio.Size = New System.Drawing.Size(107, 20)
         Me.txtprecio.TabIndex = 10

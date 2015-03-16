@@ -37,17 +37,21 @@
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If CDbl(txtAbona.Text) <> 0 Then
-            Vuelto = 0
-            Paga = 0
-            Descuento = CDbl(textdto.Text)
-            TotalDto = CDbl(txttotaldto.Text)
-            MontoDesc = CDbl(lblTot.Text) - CDbl(txttotaldto.Text)
-            IdFormaPago = cmbFormas.SelectedValue
-            FormaPago = cmbFormas.Text
-            AceptaPago = True
-            Paga = CDbl(txtAbona.Text)
-            Me.lblVuelto.Text = 0
-            Me.Close()
+            If CDbl(txtAbona.Text) >= CDbl(txttotaldto.Text) Then
+                Vuelto = 0
+                Paga = 0
+                Descuento = CDbl(textdto.Text)
+                TotalDto = CDbl(txttotaldto.Text)
+                MontoDesc = CDbl(lblTot.Text) - CDbl(txttotaldto.Text)
+                IdFormaPago = cmbFormas.SelectedValue
+                FormaPago = cmbFormas.Text
+                AceptaPago = True
+                Paga = CDbl(txtAbona.Text)
+                Me.lblVuelto.Text = 0
+                Me.Close()
+            Else
+                Me.txtAbona.SelectAll()
+            End If
         Else
             MsgAtencion("Debe ingresar algun monto de pago")
             txtAbona.Focus()
@@ -56,7 +60,13 @@
 
     Private Sub txtAbona_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAbona.KeyUp
         Try
+            If e.KeyCode = Keys.Return Then
+                btnAceptar_Click(sender, e)
+                Exit Sub
+            End If
+
             lblVuelto.Text = CDbl(txtAbona.Text) - CDbl(txttotaldto.Text)
+
             If CDbl(lblVuelto.Text) < 0 Then
                 lblVuelto.ForeColor = Color.Red
             Else
@@ -68,4 +78,38 @@
         End Try
     End Sub
 
+    Private Sub cmbFormas_DropDownClosed(sender As Object, e As EventArgs) Handles cmbFormas.DropDownClosed
+        If cmbFormas.SelectedValue <> ComprobanteVenta.FormasPago.Efectivo Then
+            txtAbona.Text = FormatNumber(CDbl(txttotaldto.Text), 2)
+            lblVuelto.Text = FormatNumber(0, 2)
+        Else
+            txtAbona.Text = FormatNumber(0, 2)
+            lblVuelto.Text = CDbl(txtAbona.Text) - CDbl(txttotaldto.Text)
+            txtAbona.SelectAll()
+            txtAbona.Focus()
+        End If
+    End Sub
+
+    Private Sub txtAbona_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAbona.KeyPress
+        If e.KeyChar = "." Then
+            If txtAbona.Text.Contains(",") Then
+                e.Handled = True
+                Exit Sub
+            Else
+                e.Handled = True
+                SendKeys.Send(",")
+            End If
+        End If
+        If e.KeyChar = "," Then
+            If txtAbona.Text.Contains(",") Then
+                e.Handled = True
+                Exit Sub
+            End If
+        End If
+    End Sub
+
+    Private Sub btnCancelar_Click_1(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        AceptaPago = False
+        Me.Close()
+    End Sub
 End Class

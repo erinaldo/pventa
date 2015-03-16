@@ -7,7 +7,11 @@ Public Class FormBuscarArtFactu
     Public Sub abrirFormulario(ByVal listaArt As List(Of Articulos), ByVal intIdLista As Integer)
 
 
-        CargarGrillaArticulos(listaArt)
+        lista = (From listArt In listaArt
+                Where listArt.IdLista = intIdLista
+                Select listArt).ToList
+
+        CargarGrillaArticulos(lista)
 
         Me.btnCodBar.Checked = False
         Me.txtCodbar.Visible = False
@@ -16,7 +20,7 @@ Public Class FormBuscarArtFactu
 
         Me.txtdescri.Focus()
 
-        lista = listaArt
+        'lista = listaArt
         ShowDialog()
 
     End Sub
@@ -162,4 +166,5 @@ Public Class FormBuscarArtFactu
     Private Sub GrillaArticulos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaArticulos.CellDoubleClick
         btnSeleccionar_Click(sender, e)
     End Sub
+
 End Class

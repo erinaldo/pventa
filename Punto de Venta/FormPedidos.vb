@@ -22,6 +22,13 @@ Public Class FormPedidos
 
             GrillaPedidosPendientes.DataSource = result
 
+            Me.GrillaPedidosPendientes.Columns("ComprobanteTipo").Visible = False
+            Me.GrillaPedidosPendientes.Columns("CondicionIva").Visible = False
+            Me.GrillaPedidosPendientes.Columns("IdCliente").Visible = False
+            Me.GrillaPedidosPendientes.Columns("IdFormaPago").Visible = False
+            Me.GrillaPedidosPendientes.Columns("IdUsuario").Visible = False
+            Me.GrillaPedidosPendientes.Columns("Origen").Visible = False
+            Me.GrillaPedidosPendientes.Columns("PorcentajeIva").Visible = False
 
         Catch ex As Exception
             Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
@@ -66,5 +73,9 @@ Public Class FormPedidos
                                                          Select comp).ToList
 
         GrillaComprobanteVentaDetalle.DataSource = result
+    End Sub
+
+    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Close()
     End Sub
 End Class
