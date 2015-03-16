@@ -96,6 +96,7 @@ Partial Class FormPide
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnaceptar)
         Me.Name = "FormPide"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ingrese Monto"
         Me.ResumeLayout(False)
         Me.PerformLayout()

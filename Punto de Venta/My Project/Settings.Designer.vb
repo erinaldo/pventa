@@ -56,8 +56,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=138.36.236.215,1433;Network Library=DBMSSOCN;Initial Catalog=Prueba;U"& _ 
-            "ser ID=creatif;Password=CreatifS;")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=138.36.236.215,1433;Network Library=DBMSSOCN;Initial Catalog=Facturac"& _ 
+            "ionSuperMarc;User ID=creatif;Password=CreatifS;")>  _
         Public Property cadena() As String
             Get
                 Return CType(Me("cadena"),String)
@@ -76,6 +76,18 @@ Namespace My
             End Get
             Set
                 Me("sucursal") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("D:\")>  _
+        Public Property rutaArchivos() As String
+            Get
+                Return CType(Me("rutaArchivos"),String)
+            End Get
+            Set
+                Me("rutaArchivos") = value
             End Set
         End Property
     End Class

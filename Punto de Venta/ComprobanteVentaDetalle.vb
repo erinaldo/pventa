@@ -1,7 +1,6 @@
 ﻿Public Class ComprobanteVentaDetalle
 
     Private intNroComprobante As Integer
-    Private strNroComprobanteFiscal As String
     Private intCodArt As Integer
     Private strDescripcionArticulo As String
     Private intCantidad As Integer
@@ -14,15 +13,6 @@
         End Get
         Set(ByVal value As Integer)
             intNroComprobante = value
-        End Set
-    End Property
-
-    Public Property ComprobanteFiscal() As String
-        Get
-            Return strNroComprobanteFiscal
-        End Get
-        Set(ByVal value As String)
-            strNroComprobanteFiscal = value
         End Set
     End Property
 

@@ -13,6 +13,7 @@
         Me.txttotaldto.Text = dblTotFac
         Me.textdto.Text = 0
         Me.txtAbona.Text = 0
+        Me.txtAbona.Focus()
         ShowDialog()
 
     End Sub
@@ -45,6 +46,7 @@
             FormaPago = cmbFormas.Text
             AceptaPago = True
             Paga = CDbl(txtAbona.Text)
+            Me.lblVuelto.Text = 0
             Me.Close()
         Else
             MsgAtencion("Debe ingresar algun monto de pago")
@@ -53,11 +55,17 @@
     End Sub
 
     Private Sub txtAbona_KeyUp(sender As Object, e As KeyEventArgs) Handles txtAbona.KeyUp
-        lblVuelto.Text = CDbl(txtAbona.Text) - CDbl(txttotaldto.Text)
-        If CDbl(lblVuelto.Text) < 0 Then
-            lblVuelto.ForeColor = Color.Red
-        Else
-            lblVuelto.ForeColor = Color.Green
-        End If
+        Try
+            lblVuelto.Text = CDbl(txtAbona.Text) - CDbl(txttotaldto.Text)
+            If CDbl(lblVuelto.Text) < 0 Then
+                lblVuelto.ForeColor = Color.Red
+            Else
+                lblVuelto.ForeColor = Color.Green
+            End If
+            lblVuelto.Text = FormatNumber(lblVuelto.Text, 2)
+        Catch ex As Exception
+
+        End Try
     End Sub
+
 End Class

@@ -55,7 +55,7 @@ Module ModuloGeneral
     Public Function obtenerNroComprobante() As Integer
         Dim objStreamReader As StreamReader
 
-        objStreamReader = New StreamReader("C:\Comprobante.txt")
+        objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Comprobante.txt")
 
         obtenerNroComprobante = objStreamReader.ReadLine
 
@@ -63,7 +63,7 @@ Module ModuloGeneral
 
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("C:\Comprobante.txt", False)
+        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Comprobante.txt", False)
 
         objStreamWriter.WriteLine(obtenerNroComprobante + 1)
 
@@ -90,7 +90,7 @@ Module ModuloGeneral
 
             ObtenerArticulos = New List(Of Articulos)
 
-            objStreamReader = New StreamReader("C:\Articulos.txt")
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Articulos.txt")
 
             Do While Not objStreamReader.EndOfStream
                 Dim art As New Articulos
@@ -123,7 +123,7 @@ Module ModuloGeneral
 
             ObtenerClientes = New List(Of Clientes)
 
-            objStreamReader = New StreamReader("C:\Clientes.txt")
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Clientes.txt")
 
             Do While Not objStreamReader.EndOfStream
                 Dim cli As New Clientes
@@ -152,7 +152,7 @@ Module ModuloGeneral
 
             ObtenerUsuarios = New Usuarios
 
-            objStreamReader = New StreamReader("C:\Usuarios.txt")
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Usuarios.txt")
 
             Do While Not objStreamReader.EndOfStream
 
@@ -181,7 +181,7 @@ Module ModuloGeneral
 
             ObtenerFormasPago = New List(Of FormasPago)
 
-            objStreamReader = New StreamReader("C:\FormasPago.txt")
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "FormasPago.txt")
 
             Do While Not objStreamReader.EndOfStream
                 Dim formPago As New FormasPago
@@ -208,7 +208,7 @@ Module ModuloGeneral
 
             ObtenerCajaDiaria = New List(Of CajaDiaria)
 
-            objStreamReader = New StreamReader("C:\CajaDiaria.txt")
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "CajaDiaria.txt")
 
             Do While Not objStreamReader.EndOfStream
                 Dim caja As New CajaDiaria
@@ -225,6 +225,11 @@ Module ModuloGeneral
 
             objStreamReader.Close()
 
+        Catch ex As FileNotFoundException
+            Dim objStreamWriter As StreamWriter
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
+            objStreamWriter.Close()
+            ObtenerCajaDiaria()
         Catch ex As Exception
             Throw New Exception("Error en Modulo General" + "Obtener CajaDiaria" + "|" + ex.Message)
         End Try
@@ -237,7 +242,7 @@ Module ModuloGeneral
         Try
             ObtenerComprobanteVenta = New List(Of ComprobanteVenta)
 
-            objStreamReader = New StreamReader("C:\ComprobanteVenta.txt", System.Text.ASCIIEncoding.ASCII)
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "ComprobanteVenta.txt", System.Text.ASCIIEncoding.ASCII)
 
             Do While Not objStreamReader.EndOfStream
                 Dim pedidoPendiente As New ComprobanteVenta
@@ -259,28 +264,54 @@ Module ModuloGeneral
                 pedidoPendiente.TotalDescuento = Split(strLine, ";")(12)
                 pedidoPendiente.IdFormaPago = Split(strLine, ";")(13)
                 pedidoPendiente.FormaPago = Split(strLine, ";")(14)
-                pedidoPendiente.CondicionVenta = Split(strLine, ";")(15)
-                pedidoPendiente.Remito = Split(strLine, ";")(16)
-                pedidoPendiente.Impuestos = Split(strLine, ";")(17)
-                pedidoPendiente.SubtotalImpuestos = Split(strLine, ";")(18)
-                pedidoPendiente.MontoIva = Split(strLine, ";")(19)
-                pedidoPendiente.NroFactura = Split(strLine, ";")(20)
-                pedidoPendiente.Pagada = Split(strLine, ";")(21)
 
                 ObtenerComprobanteVenta.Add(pedidoPendiente)
 
             Loop
 
             objStreamReader.Close()
+
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener CajaDiaria" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General" + "Obtener ComprobanteVenta" + "|" + ex.Message)
+        End Try
+    End Function
+
+    Public Function ObtenerComprobanteVentaDetalle() As List(Of ComprobanteVentaDetalle)
+        Dim objStreamReader As StreamReader
+        Dim strLine As String
+
+        Try
+            ObtenerComprobanteVentaDetalle = New List(Of ComprobanteVentaDetalle)
+
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "ComprobanteVentaDetalle.txt", System.Text.ASCIIEncoding.ASCII)
+
+            Do While Not objStreamReader.EndOfStream
+                Dim compVentDetalle As New ComprobanteVentaDetalle
+
+                strLine = objStreamReader.ReadLine
+
+                compVentDetalle.Comprobante = Split(strLine, ";")(0)
+                compVentDetalle.CodigoArticulo = Split(strLine, ";")(1)
+                compVentDetalle.DescripcionArticulo = Split(strLine, ";")(2)
+                compVentDetalle.Cantidad = Split(strLine, ";")(3)
+                compVentDetalle.PrecioUnitario = Split(strLine, ";")(4)
+                compVentDetalle.PrecioTotal = Split(strLine, ";")(5)
+
+                ObtenerComprobanteVentaDetalle.Add(compVentDetalle)
+
+            Loop
+
+            objStreamReader.Close()
+
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Obtener ComprobanteVentaDetalle" + "|" + ex.Message)
         End Try
     End Function
 
     Public Sub grabarAperturaCaja()
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("C:\CajaDiaria.txt", True)
+        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
         objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
 
@@ -290,7 +321,7 @@ Module ModuloGeneral
     Public Sub grabarIngresoDinero(ByVal importe As Double)
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("C:\CajaDiaria.txt", True)
+        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
         objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
 
@@ -300,7 +331,7 @@ Module ModuloGeneral
     Public Sub grabarRetiroDinero(ByVal importe As Double)
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("C:\CajaDiaria.txt", True)
+        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
         objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
 
@@ -310,7 +341,7 @@ Module ModuloGeneral
     Public Sub grabarCierreCaja()
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter("C:\CajaDiaria.txt", True)
+        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
         objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
 

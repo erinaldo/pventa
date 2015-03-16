@@ -25,9 +25,11 @@ Public Class FormPrincipal
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnCerrarCaja.Click
-        Dim objStreamReader As StreamReader
-        Dim strLine As String
-        Dim listPedidosPendientes As New List(Of ComprobanteVenta)
+
+
+        Dim listComprobanteVenta As New List(Of ComprobanteVenta)
+        Dim listComprobanteVentaDetalle As New List(Of ComprobanteVentaDetalle)
+        Dim listCajaDiaria As New List(Of CajaDiaria)
 
         If MsgBox("Esta seguro que desea hacer el cierre de caja?", MsgBoxStyle.YesNo, "Cierre de Caja") = MsgBoxResult.No Then
             Exit Sub
@@ -37,43 +39,19 @@ Public Class FormPrincipal
 
         FormCierreCaja.ShowDialog()
 
-        objStreamReader = New StreamReader("C:\ComprobanteVenta.txt", System.Text.ASCIIEncoding.ASCII)
+        listComprobanteVenta = ObtenerComprobanteVenta()
+        listComprobanteVentaDetalle = ObtenerComprobanteVentaDetalle()
+        listCajaDiaria = ObtenerCajaDiaria()
 
-        Do While Not objStreamReader.EndOfStream
-            Dim pedidoPendiente As New ComprobanteVenta
-
-            strLine = objStreamReader.ReadLine
-
-            pedidoPendiente.Comprobante = Split(strLine, ";")(0)
-            pedidoPendiente.ComprobanteFiscal = Split(strLine, ";")(1)
-            pedidoPendiente.ComprobanteTipo = Split(strLine, ";")(2)
-            pedidoPendiente.IdCliente = Split(strLine, ";")(3)
-            pedidoPendiente.FechaEmision = Split(strLine, ";")(4)
-            pedidoPendiente.CondicionIva = Split(strLine, ";")(5)
-            pedidoPendiente.PrecioBase = Split(strLine, ";")(6)
-            pedidoPendiente.PorcentajeIva = Split(strLine, ";")(7)
-            pedidoPendiente.TotalComprobante = Split(strLine, ";")(8)
-            pedidoPendiente.IdUsuario = Split(strLine, ";")(9)
-            pedidoPendiente.Origen = Split(strLine, ";")(10)
-            pedidoPendiente.Descuento = Split(strLine, ";")(11)
-            pedidoPendiente.TotalDescuento = Split(strLine, ";")(12)
-            pedidoPendiente.IdFormaPago = Split(strLine, ";")(13)
-            pedidoPendiente.FormaPago = Split(strLine, ";")(14)
-            pedidoPendiente.CondicionVenta = Split(strLine, ";")(15)
-            pedidoPendiente.Remito = Split(strLine, ";")(16)
-            pedidoPendiente.Impuestos = Split(strLine, ";")(17)
-            pedidoPendiente.SubtotalImpuestos = Split(strLine, ";")(18)
-            pedidoPendiente.MontoIva = Split(strLine, ";")(19)
-            pedidoPendiente.NroFactura = Split(strLine, ";")(20)
-            pedidoPendiente.Pagada = Split(strLine, ";")(21)
-
-            listPedidosPendientes.Add(pedidoPendiente)
-
-        Loop
-
-        objStreamReader.Close()
-
-        ActualizarComprobanteVenta(listPedidosPendientes)
+        If ActualizarComprobanteVenta(listComprobanteVenta) Then
+            My.Computer.FileSystem.DeleteFile(My.Settings.rutaArchivos & "ComprobanteVenta.txt")
+        End If
+        If ActualizarComprobanteVentaDetalle(listComprobanteVentaDetalle) Then
+            My.Computer.FileSystem.DeleteFile(My.Settings.rutaArchivos & "ComprobanteVentaDetalle.txt")
+        End If
+        If ActualizarCajaDiaria(listCajaDiaria) Then
+            My.Computer.FileSystem.DeleteFile(My.Settings.rutaArchivos & "CajaDiaria.txt")
+        End If
 
         btnFacturacion.Enabled = False
         btnCerrarCaja.Enabled = False
@@ -84,6 +62,7 @@ Public Class FormPrincipal
     End Sub
 
     Private Sub FormPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         listaCajaDia = ObtenerCajaDiaria()
 
         Dim caja As List(Of CajaDiaria) = (From caj In listaCajaDia

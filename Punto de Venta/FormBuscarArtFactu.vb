@@ -14,6 +14,8 @@ Public Class FormBuscarArtFactu
         Me.txtdescri.Visible = True
         Me.btnDescri.Checked = True
 
+        Me.txtdescri.Focus()
+
         lista = listaArt
         ShowDialog()
 
@@ -157,4 +159,7 @@ Public Class FormBuscarArtFactu
         CargarGrillaArticulos(result)
     End Sub
 
+    Private Sub GrillaArticulos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaArticulos.CellDoubleClick
+        btnSeleccionar_Click(sender, e)
+    End Sub
 End Class

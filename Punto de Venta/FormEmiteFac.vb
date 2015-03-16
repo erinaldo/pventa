@@ -48,13 +48,8 @@ Public Class FormEmiteFac
 
     Private Sub LimpiarCajas()
         Me.textcodbar.Text = ""
-        'Me.Lbldescripcion.Text = ""
-        'Me.LblStock.Text = ""
-        'Me.TextCantidad.Text = ""
         Me.TextCodigo.Text = "0"
         Me.textPCompra.Text = "0"
-        'Me.TextPU.Text = "0"
-        'Me.LblTotalU.Text = "0"
         Me.textcodbar.Focus()
     End Sub
 
@@ -174,6 +169,7 @@ Public Class FormEmiteFac
         If e.KeyCode = 70 Then 'Presiona F-> Graba el ticket e imprime en impresora fiscal
             Origen = "F"
             cmdAceptar_Click(sender, e)
+            Exit Sub
         End If
 
         If e.KeyCode = Keys.F5 Then
@@ -223,7 +219,7 @@ Public Class FormEmiteFac
                         intNroComprobante = obtenerNroComprobante()
                         intNroComprobanteFiscal = obtenerNroComprobanteFiscal() + 1
 
-                        objStreamWriter = New StreamWriter("C:\ComprobanteVenta.txt", True, System.Text.ASCIIEncoding.ASCII)
+                        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVenta.txt", True, System.Text.ASCIIEncoding.ASCII)
 
                         Dim strComprobanteVenta As String
 
@@ -234,8 +230,7 @@ Public Class FormEmiteFac
                         strComprobanteVenta = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
                             FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
                             3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
-                            FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & FormaPago & ";" & 1 & ";" & "" & ";" & 0 & ";" & 0 & ";" & 0 & ";" & _
-                            "" & ";" & 1
+                            FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & FormaPago
 
                         objStreamWriter.WriteLine(strComprobanteVenta)
 
@@ -245,11 +240,11 @@ Public Class FormEmiteFac
                         Dim j As Integer = 0
                         Dim strComprobanteVentaDetalle As String
 
-                        objStreamWriter = New StreamWriter("C:\ComprobanteVentaDetalle.txt", True)
+                        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVentaDetalle.txt", True)
 
                         For j = 0 To GrillaArticulos.Rows.Count - 1
 
-                            strComprobanteVentaDetalle = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
+                            strComprobanteVentaDetalle = intNroComprobante & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
                                 GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" & _
                                 GrillaArticulos.Rows(j).Cells("PrecioUnitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2)
 
@@ -269,6 +264,7 @@ Public Class FormEmiteFac
                         LimpiarCajas()
                         Me.lblCantidad.Text = "0"
                         Me.lblTotal.Text = "0"
+                        Origen = ""
                         GrillaArticulos.Rows.Clear()
                         FormEmiteFac_Load(sender, e)
                         '''''PrepararNuevoTicket()

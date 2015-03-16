@@ -82,6 +82,7 @@ Partial Class FormPedidos
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.GrillaPedidosPendientes)
         Me.Name = "FormPedidos"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pedidos Pendientes"
         CType(Me.GrillaPedidosPendientes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrillaComprobanteVentaDetalle, System.ComponentModel.ISupportInitialize).EndInit()

@@ -175,7 +175,7 @@ Partial Class FormVuelto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(338, 372)
+        Me.ClientSize = New System.Drawing.Size(338, 379)
         Me.Controls.Add(Me.lblVuelto)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtAbona)
@@ -192,6 +192,7 @@ Partial Class FormVuelto
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "FormVuelto"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Vuelto"
         Me.ResumeLayout(False)
         Me.PerformLayout()

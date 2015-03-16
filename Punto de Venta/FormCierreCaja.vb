@@ -66,59 +66,52 @@
                                        Into Count(vent.TotalComprobante)
 
 
-        lblTotal.Text = CDbl(lblIngresoDinero.Text) - CDbl(lblRetiroDinero.Text) + CDbl(lblEfectivo.Text) + CDbl(lblTarjetasDebito.Text) + CDbl(lblTarjetasCredito.Text) + CDbl(lblCheques.Text)
+        lblTotal.Text = FormatNumber(CDbl(lblIngresoDinero.Text) - CDbl(lblRetiroDinero.Text) + CDbl(lblEfectivo.Text) + CDbl(lblTarjetasDebito.Text) + CDbl(lblTarjetasCredito.Text) + CDbl(lblCheques.Text), 2)
 
     End Sub
 
     Public Sub ActualizarDiferencia()
-        'lblDiferenciaIngresoDinero.Text = CDbl(lblIngresoDinero.Text) - CDbl(txtIngresoDinero.Text)
-        'lblDiferenciaRetiroDinero.Text = CDbl(lblRetiroDinero.Text) - CDbl(txtRetiroDinero.Text)
-        'lblDiferenciaEfectivo.Text = CDbl(lblEfectivo.Text) - CDbl(txtEfectivo.Text)
-        'lblDiferenciaTarjetasDebito.Text = CDbl(lblTarjetasDebito.Text) - CDbl(txtTarjetasDebito.Text)
-        'lblDiferenciaTarjetasCredito.Text = CDbl(lblTarjetasCredito.Text) - CDbl(txtTarjetasCredito.Text)
-        'lblDiferenciaCheques.Text = CDbl(lblCheques.Text) - CDbl(txtCheques.Text)
-        'lblDiferenciaTotal.Text = CDbl(lblTotal.Text) - CDbl(txtTotal.Text)
 
-        lblTotal.Text = CDbl(lblIngresoDinero.Text) - CDbl(lblRetiroDinero.Text) + CDbl(lblEfectivo.Text) + CDbl(lblTarjetasDebito.Text) + CDbl(lblTarjetasCredito.Text) + CDbl(lblCheques.Text)
-        txtTotal.Text = CDbl(txtIngresoDinero.Text) - CDbl(txtRetiroDinero.Text) + CDbl(txtEfectivo.Text) + CDbl(txtTarjetasDebito.Text) + CDbl(txtTarjetasCredito.Text) + CDbl(txtCheques.Text)
-        lblDiferenciaTotal.Text = CDbl(lblDiferenciaIngresoDinero.Text) + CDbl(lblDiferenciaRetiroDinero.Text) + CDbl(lblDiferenciaEfectivo.Text) + CDbl(lblDiferenciaTarjetasDebito.Text) + CDbl(lblDiferenciaTarjetasCredito.Text) + CDbl(lblDiferenciaCheques.Text)
-        lblComprobantesTotal.Text = CDbl(lblComprobantesIngresoDinero.Text) + CDbl(lblComprobantesRetiroDinero.Text) + CDbl(lblComprobantesEfectivo.Text) + CDbl(lblComprobantesTarjetasDebito.Text) + CDbl(lblComprobantesTarjetasCredito.Text) + CDbl(lblComprobantesCheques.Text)
+        lblTotal.Text = FormatNumber(CDbl(lblIngresoDinero.Text) - CDbl(lblRetiroDinero.Text) + CDbl(lblEfectivo.Text) + CDbl(lblTarjetasDebito.Text) + CDbl(lblTarjetasCredito.Text) + CDbl(lblCheques.Text), 2)
+        txtTotal.Text = FormatNumber(CDbl(txtIngresoDinero.Text) - CDbl(txtRetiroDinero.Text) + CDbl(txtEfectivo.Text) + CDbl(txtTarjetasDebito.Text) + CDbl(txtTarjetasCredito.Text) + CDbl(txtCheques.Text), 2)
+        lblDiferenciaTotal.Text = FormatNumber(CDbl(lblDiferenciaIngresoDinero.Text) + CDbl(lblDiferenciaRetiroDinero.Text) + CDbl(lblDiferenciaEfectivo.Text) + CDbl(lblDiferenciaTarjetasDebito.Text) + CDbl(lblDiferenciaTarjetasCredito.Text) + CDbl(lblDiferenciaCheques.Text), 2)
+        lblComprobantesTotal.Text = FormatNumber(CDbl(lblComprobantesIngresoDinero.Text) + CDbl(lblComprobantesRetiroDinero.Text) + CDbl(lblComprobantesEfectivo.Text) + CDbl(lblComprobantesTarjetasDebito.Text) + CDbl(lblComprobantesTarjetasCredito.Text) + CDbl(lblComprobantesCheques.Text), 2)
 
     End Sub
 
     Private Sub txtIngresoDinero_Validated(sender As Object, e As EventArgs) Handles txtIngresoDinero.Validated
-        lblDiferenciaIngresoDinero.Text = CDbl(txtIngresoDinero.Text) - CDbl(lblIngresoDinero.Text)
-        lblDiferenciaTotal.Text = CDbl(lblTotal.Text) - CDbl(txtTotal.Text)
+        lblDiferenciaIngresoDinero.Text = FormatNumber(CDbl(txtIngresoDinero.Text) - CDbl(lblIngresoDinero.Text), 2)
+        lblDiferenciaTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(txtTotal.Text), 2)
         ActualizarDiferencia()
     End Sub
 
     Private Sub txtRetiroDinero_Validated(sender As Object, e As EventArgs) Handles txtRetiroDinero.Validated
-        lblDiferenciaRetiroDinero.Text = CDbl(txtRetiroDinero.Text) - CDbl(lblRetiroDinero.Text)
-        lblDiferenciaTotal.Text = CDbl(lblTotal.Text) - CDbl(txtTotal.Text)
+        lblDiferenciaRetiroDinero.Text = FormatNumber(CDbl(txtRetiroDinero.Text) - CDbl(lblRetiroDinero.Text), 2)
+        lblDiferenciaTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(txtTotal.Text), 2)
         ActualizarDiferencia()
     End Sub
 
     Private Sub txtEfectivo_Validated(sender As Object, e As EventArgs) Handles txtEfectivo.Validated
-        lblDiferenciaEfectivo.Text = CDbl(txtEfectivo.Text) - CDbl(lblEfectivo.Text)
-        lblDiferenciaTotal.Text = CDbl(lblTotal.Text) - CDbl(txtTotal.Text)
+        lblDiferenciaEfectivo.Text = FormatNumber(CDbl(txtEfectivo.Text) - CDbl(lblEfectivo.Text), 2)
+        lblDiferenciaTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(txtTotal.Text), 2)
         ActualizarDiferencia()
     End Sub
 
     Private Sub txtTarjetasDebito_Validated(sender As Object, e As EventArgs) Handles txtTarjetasDebito.Validated
-        lblDiferenciaTarjetasDebito.Text = CDbl(txtTarjetasDebito.Text) - CDbl(lblTarjetasDebito.Text)
-        lblDiferenciaTotal.Text = CDbl(lblTotal.Text) - CDbl(txtTotal.Text)
+        lblDiferenciaTarjetasDebito.Text = FormatNumber(CDbl(txtTarjetasDebito.Text) - CDbl(lblTarjetasDebito.Text), 2)
+        lblDiferenciaTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(txtTotal.Text), 2)
         ActualizarDiferencia()
     End Sub
 
     Private Sub txtTarjetasCredito_Validated(sender As Object, e As EventArgs) Handles txtTarjetasCredito.Validated
-        lblDiferenciaTarjetasCredito.Text = CDbl(txtTarjetasCredito.Text) - CDbl(lblTarjetasCredito.Text)
-        lblDiferenciaTotal.Text = CDbl(lblTotal.Text) - CDbl(txtTotal.Text)
+        lblDiferenciaTarjetasCredito.Text = FormatNumber(CDbl(txtTarjetasCredito.Text) - CDbl(lblTarjetasCredito.Text), 2)
+        lblDiferenciaTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(txtTotal.Text), 2)
         ActualizarDiferencia()
     End Sub
 
     Private Sub txtCheques_Validated(sender As Object, e As EventArgs) Handles txtCheques.Validated
-        lblDiferenciaCheques.Text = CDbl(txtCheques.Text) - CDbl(lblCheques.Text)
-        lblDiferenciaTotal.Text = CDbl(lblTotal.Text) - CDbl(txtTotal.Text)
+        lblDiferenciaCheques.Text = FormatNumber(CDbl(txtCheques.Text) - CDbl(lblCheques.Text), 2)
+        lblDiferenciaTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(txtTotal.Text), 2)
         ActualizarDiferencia()
     End Sub
 End Class

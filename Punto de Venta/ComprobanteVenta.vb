@@ -14,13 +14,6 @@
     Private dblTotalDescuento As Double
     Private intIdFormaPago As Integer
     Private strFormaPago As String
-    Private intCondicionVenta As Integer
-    Private strRemito As String
-    Private dblImpuestos As Double
-    Private dblSubtotalImpuestos As Double
-    Private dblMontoIva As Double
-    Private strNroFactura As String
-    Private intPagada As Integer
 
     Enum FormasPago As Integer
         Efectivo = 1
@@ -161,69 +154,6 @@
         End Get
         Set(ByVal value As String)
             strFormaPago = value
-        End Set
-    End Property
-
-    Public Property CondicionVenta() As Integer
-        Get
-            Return intCondicionVenta
-        End Get
-        Set(ByVal value As Integer)
-            intCondicionVenta = value
-        End Set
-    End Property
-
-    Public Property Remito() As String
-        Get
-            Return strRemito
-        End Get
-        Set(ByVal value As String)
-            strRemito = value
-        End Set
-    End Property
-
-    Public Property Impuestos() As Double
-        Get
-            Return dblImpuestos
-        End Get
-        Set(ByVal value As Double)
-            dblImpuestos = value
-        End Set
-    End Property
-
-    Public Property SubtotalImpuestos() As Double
-        Get
-            Return dblSubtotalImpuestos
-        End Get
-        Set(ByVal value As Double)
-            dblSubtotalImpuestos = value
-        End Set
-    End Property
-
-    Public Property MontoIva() As Double
-        Get
-            Return dblMontoIva
-        End Get
-        Set(ByVal value As Double)
-            dblMontoIva = value
-        End Set
-    End Property
-
-    Public Property NroFactura() As String
-        Get
-            Return strNroFactura
-        End Get
-        Set(ByVal value As String)
-            strNroFactura = value
-        End Set
-    End Property
-
-    Public Property Pagada() As Integer
-        Get
-            Return intPagada
-        End Get
-        Set(ByVal value As Integer)
-            intPagada = value
         End Set
     End Property
 

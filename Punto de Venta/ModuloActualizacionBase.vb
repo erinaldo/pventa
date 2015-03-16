@@ -4,56 +4,137 @@ Imports System.Data.SqlClient
 Module ModuloActualizacionBase
 
     Dim dsComprobanteVenta As New DataSet("ComprobanteVenta")
+    Dim dsComprobanteVentaDetalle As New DataSet("ComprobanteVentaDetalle")
+    Dim dsCajaDiaria As New DataSet("CajaDiaria")
 
-    Public Sub ActualizarComprobanteVenta(ByVal listaComprobanteVenta As List(Of ComprobanteVenta))
+    Function ActualizarComprobanteVenta(ByVal listaComprobanteVenta As List(Of ComprobanteVenta)) As Boolean
 
-        Dim tblCompVenta As DataTable
-        tblCompVenta = dsComprobanteVenta.Tables(0)
+        Try
+            ActualizarComprobanteVenta = False
 
-        ObtenerComprobanteVentaVacio(tblCompVenta, "Comprobantes_Venta")
+            Dim tblCompVenta As DataTable
+            'tblCompVenta = dsComprobanteVenta.Tables(0)
 
-        tblCompVenta = dsComprobanteVenta.Tables(0)
+            ObtenerComprobanteVentaVacio(tblCompVenta, "Comprobantes_Venta")
 
-        For Each compVent In listaComprobanteVenta
+            tblCompVenta = dsComprobanteVenta.Tables(0)
 
-            Dim drCurrent As DataRow
-            ' Obtain a new DataRow object from the DataTable.
-            drCurrent = tblCompVenta.NewRow()
+            For Each compVent In listaComprobanteVenta
 
-            ' Set the DataRow field values as necessary.
-            drCurrent("cvt_nrocom") = compVent.Comprobante
-            drCurrent("cvt_nrocomfiscal") = compVent.ComprobanteFiscal
-            drCurrent("cvt_tipcom") = compVent.ComprobanteTipo
-            drCurrent("cvt_idcliente") = compVent.IdCliente
-            drCurrent("cvt_fecha") = compVent.FechaEmision
-            drCurrent("cvt_idcondiva") = compVent.CondicionIva
-            drCurrent("cvt_pbase") = compVent.PrecioBase
-            drCurrent("cvt_porciva") = compVent.PorcentajeIva
-            drCurrent("cvt_totcom") = compVent.TotalComprobante
-            drCurrent("cvt_idusuario") = compVent.IdUsuario
-            drCurrent("cvt_origen") = compVent.Origen
-            drCurrent("cvt_dto") = compVent.Descuento
-            drCurrent("cvt_totaldto") = compVent.TotalDescuento
-            drCurrent("cvt_formapago") = compVent.IdFormaPago
-            drCurrent("cvt_condicionventa") = compVent.CondicionVenta
-            drCurrent("cvt_remito") = compVent.Remito
-            drCurrent("cvt_impuestos") = compVent.Impuestos
-            drCurrent("cvt_subtotali") = compVent.SubtotalImpuestos
-            drCurrent("cvt_montoiva") = compVent.MontoIva
-            drCurrent("cvt_nrofactura") = compVent.NroFactura
-            drCurrent("cvt_pagada") = compVent.Pagada
-            drCurrent("cvt_idsucursal") = My.Settings.sucursal
+                Dim drCurrent As DataRow
+                ' Obtain a new DataRow object from the DataTable.
+                drCurrent = tblCompVenta.NewRow()
 
-            'Pass that new object into the Add method of the DataTable.Rows collection.
-            tblCompVenta.Rows.Add(drCurrent)
-        Next
+                ' Set the DataRow field values as necessary.
+                drCurrent("cvt_nrocom") = compVent.Comprobante
+                drCurrent("cvt_nrocomfiscal") = compVent.ComprobanteFiscal
+                drCurrent("cvt_tipcom") = compVent.ComprobanteTipo
+                drCurrent("cvt_idcliente") = compVent.IdCliente
+                drCurrent("cvt_fecha") = compVent.FechaEmision
+                drCurrent("cvt_idcondiva") = compVent.CondicionIva
+                drCurrent("cvt_pbase") = compVent.PrecioBase
+                drCurrent("cvt_porciva") = compVent.PorcentajeIva
+                drCurrent("cvt_totcom") = compVent.TotalComprobante
+                drCurrent("cvt_idusuario") = compVent.IdUsuario
+                drCurrent("cvt_origen") = compVent.Origen
+                drCurrent("cvt_dto") = compVent.Descuento
+                drCurrent("cvt_totaldto") = compVent.TotalDescuento
+                drCurrent("cvt_formapago") = compVent.IdFormaPago
+                drCurrent("cvt_idsucursal") = My.Settings.sucursal
 
-        ImportDataTable(tblCompVenta, "Comprobantes_Venta")
-    End Sub
+                'Pass that new object into the Add method of the DataTable.Rows collection.
+                tblCompVenta.Rows.Add(drCurrent)
+            Next
 
-    Public Sub ActualizarComprobanteVentaDetalle(ByVal listaComprobanteVentaDetalle As List(Of ComprobanteVentaDetalle))
+            ImportDataTable(tblCompVenta, "Comprobantes_Venta")
 
-    End Sub
+            ActualizarComprobanteVenta = True
+
+        Catch ex As Exception
+            ActualizarComprobanteVenta = False
+        End Try
+
+    End Function
+
+    Function ActualizarComprobanteVentaDetalle(ByVal listaComprobanteVentaDetalle As List(Of ComprobanteVentaDetalle)) As Boolean
+
+        Try
+            ActualizarComprobanteVentaDetalle = False
+
+            Dim tblCompVentaDet As DataTable
+            'tblCompVentaDet = dsComprobanteVentaDetalle.Tables(0)
+
+            ObtenerComprobanteVentaDetalleVacio(tblCompVentaDet, "Comprobantes_Venta_Detalle")
+
+            tblCompVentaDet = dsComprobanteVentaDetalle.Tables(0)
+
+            For Each compVent In listaComprobanteVentaDetalle
+
+                Dim drCurrent As DataRow
+                ' Obtain a new DataRow object from the DataTable.
+                drCurrent = tblCompVentaDet.NewRow()
+
+                ' Set the DataRow field values as necessary.
+                drCurrent("cvd_nrocom") = compVent.Comprobante
+                drCurrent("cvd_codart") = compVent.CodigoArticulo
+                drCurrent("cvd_descart") = compVent.DescripcionArticulo
+                drCurrent("cvd_cantidad") = compVent.Cantidad
+                drCurrent("cvd_precunit") = compVent.PrecioUnitario
+                drCurrent("cvd_totart") = compVent.PrecioTotal
+
+                'Pass that new object into the Add method of the DataTable.Rows collection.
+                tblCompVentaDet.Rows.Add(drCurrent)
+            Next
+
+            ImportDataTable(tblCompVentaDet, "Comprobantes_Venta_Detalle")
+
+            ActualizarComprobanteVentaDetalle = True
+
+        Catch ex As Exception
+            ActualizarComprobanteVentaDetalle = False
+        End Try
+        
+    End Function
+
+    Function ActualizarCajaDiaria(ByVal listaCajaDiaria As List(Of CajaDiaria)) As Boolean
+
+        Try
+            ActualizarCajaDiaria = False
+
+            Dim tblCompVentaDet As DataTable
+
+            'tblCompVentaDet = dsCajaDiaria.Tables(0)
+
+            ObtenerCajaDiariaVacio(tblCompVentaDet, "Caja_Diaria")
+
+            tblCompVentaDet = dsCajaDiaria.Tables(0)
+
+            For Each cajaDia In listaCajaDiaria
+
+                Dim drCurrent As DataRow
+                ' Obtain a new DataRow object from the DataTable.
+                drCurrent = tblCompVentaDet.NewRow()
+
+                ' Set the DataRow field values as necessary.
+                drCurrent("cd_fechahora") = cajaDia.FechaHora
+                drCurrent("cd_importe") = cajaDia.Importe
+                drCurrent("cd_tpooper") = cajaDia.Operacion
+                drCurrent("cd_idusuario") = cajaDia.Usuario
+                drCurrent("cd_idsucursal") = cajaDia.Sucursal
+
+                'Pass that new object into the Add method of the DataTable.Rows collection.
+                tblCompVentaDet.Rows.Add(drCurrent)
+            Next
+
+            ImportDataTable(tblCompVentaDet, "Caja_Diaria")
+
+            ActualizarCajaDiaria = True
+
+        Catch ex As Exception
+            ActualizarCajaDiaria = False
+        End Try
+
+    End Function
 
     Public Sub ImportDataTable(ByVal DataTable As DataTable, ByVal ServerTableName As String)
 
@@ -80,6 +161,36 @@ Module ModuloActualizacionBase
         daComprobanteVenta.FillSchema(dsComprobanteVenta, SchemaType.Source, "Comprobantes_Venta")
         daComprobanteVenta.Fill(dsComprobanteVenta, "Comprobantes_Venta")
 
+
+    End Sub
+
+    Public Sub ObtenerComprobanteVentaDetalleVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
+
+        Dim objConn As New SqlConnection(My.Settings.cadena)
+        objConn.Open()
+
+        ' Create an instance of a DataAdapter.
+        Dim daComprobanteVentaDetalle As New SqlDataAdapter("Select * From Comprobantes_Venta_Detalle Where cvd_id = -1", objConn)
+
+        ' Create an instance of a DataSet, and retrieve data from the Authors table.
+
+        daComprobanteVentaDetalle.FillSchema(dsComprobanteVentaDetalle, SchemaType.Source, "Comprobantes_Venta_Detalle")
+        daComprobanteVentaDetalle.Fill(dsComprobanteVentaDetalle, "Comprobantes_Venta_Detalle")
+
+    End Sub
+
+    Public Sub ObtenerCajaDiariaVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
+
+        Dim objConn As New SqlConnection(My.Settings.cadena)
+        objConn.Open()
+
+        ' Create an instance of a DataAdapter.
+        Dim daCajaDiaria As New SqlDataAdapter("Select * From Caja_Diaria Where cd_id = -1", objConn)
+
+        ' Create an instance of a DataSet, and retrieve data from the Authors table.
+
+        daCajaDiaria.FillSchema(dsCajaDiaria, SchemaType.Source, "Caja_Diaria")
+        daCajaDiaria.Fill(dsCajaDiaria, "Caja_Diaria")
 
     End Sub
 

@@ -178,6 +178,7 @@ Partial Class FormBuscarArtFactu
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.GrillaArticulos)
         Me.Name = "FormBuscarArtFactu"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Buscar Articulo"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
