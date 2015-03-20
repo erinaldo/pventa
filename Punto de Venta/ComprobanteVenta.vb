@@ -15,13 +15,6 @@
     Private intIdFormaPago As Integer
     Private strFormaPago As String
 
-    Enum FormasPago As Integer
-        Efectivo = 1
-        TarjetaDebito = 2
-        TarjetaCredito = 3
-        Cheque = 4
-    End Enum
-
     Public Property Comprobante() As Integer
         Get
             Return intNroComprobante
@@ -139,11 +132,11 @@
         End Set
     End Property
 
-    Public Property IdFormaPago() As FormasPago
+    Public Property IdFormaPago() As Integer
         Get
             Return intIdFormaPago
         End Get
-        Set(ByVal value As FormasPago)
+        Set(ByVal value As Integer)
             intIdFormaPago = value
         End Set
     End Property

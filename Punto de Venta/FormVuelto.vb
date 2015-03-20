@@ -79,7 +79,7 @@
     End Sub
 
     Private Sub cmbFormas_DropDownClosed(sender As Object, e As EventArgs) Handles cmbFormas.DropDownClosed
-        If cmbFormas.SelectedValue <> ComprobanteVenta.FormasPago.Efectivo Then
+        If cmbFormas.SelectedValue <> 1 Then
             txtAbona.Text = FormatNumber(CDbl(txttotaldto.Text), 2)
             lblVuelto.Text = FormatNumber(0, 2)
         Else

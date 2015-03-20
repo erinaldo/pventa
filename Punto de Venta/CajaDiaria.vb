@@ -1,9 +1,9 @@
 ﻿Public Class CajaDiaria
     Enum tiposOperacion As Integer
-        aperturaCaja = 1
-        ingresoDinero = 5
-        retiroDinero = 6
-        cierreCaja = 10
+        aperturaCaja = 50
+        ingresoDinero = 60
+        retiroDinero = 70
+        cierreCaja = 80
     End Enum
 
     Private intFechaHora As DateTime
