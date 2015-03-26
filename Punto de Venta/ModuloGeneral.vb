@@ -210,6 +210,38 @@ Module ModuloGeneral
         End Try
     End Function
 
+    Public Function ObtenerRendicion() As List(Of Rendicion)
+        Try
+            Dim objStreamReader As StreamReader
+            Dim strLine As String
+
+            ObtenerRendicion = New List(Of Rendicion)
+
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Rendicion.txt")
+
+            Do While Not objStreamReader.EndOfStream
+                Dim rend As New Rendicion
+
+                strLine = objStreamReader.ReadLine
+                rend.Fecha = Split(strLine, ";")(0)
+                rend.Usuario = Split(strLine, ";")(1)
+                rend.Descripcion = Split(strLine, ";")(2)
+                rend.Total = Split(strLine, ";")(3)
+                rend.Rendido = Split(strLine, ";")(4)
+                rend.Diferencia = Split(strLine, ";")(5)
+                rend.Comprobantes = Split(strLine, ";")(6)
+                rend.Operacion = Split(strLine, ";")(7)
+
+                ObtenerRendicion.Add(rend)
+            Loop
+
+            objStreamReader.Close()
+
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General" + "Obtener Rendicion" + "|" + ex.Message)
+        End Try
+    End Function
+
     Public Function ObtenerCajaDiaria() As List(Of CajaDiaria)
         Try
             Dim objStreamReader As StreamReader

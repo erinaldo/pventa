@@ -37,20 +37,22 @@ Partial Class FormCierreCaja
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.dgvRendicion = New System.Windows.Forms.DataGridView()
-        Me.lblDiferencia = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.totalFacturado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.rendicion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.diferencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cantComprobantes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tpoOperacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lblDiferencia = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblIdUsuario = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvRendicion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblIdUsuario)
         Me.GroupBox1.Controls.Add(Me.lblUsuario)
         Me.GroupBox1.Controls.Add(Me.lblCierre)
         Me.GroupBox1.Controls.Add(Me.lblApertura)
@@ -154,25 +156,6 @@ Partial Class FormCierreCaja
         Me.dgvRendicion.Size = New System.Drawing.Size(552, 311)
         Me.dgvRendicion.TabIndex = 8
         '
-        'lblDiferencia
-        '
-        Me.lblDiferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDiferencia.Location = New System.Drawing.Point(389, 405)
-        Me.lblDiferencia.Name = "lblDiferencia"
-        Me.lblDiferencia.Size = New System.Drawing.Size(164, 42)
-        Me.lblDiferencia.TabIndex = 9
-        Me.lblDiferencia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(284, 416)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(99, 24)
-        Me.Label4.TabIndex = 10
-        Me.Label4.Text = "Diferencia:"
-        '
         'descripcion
         '
         Me.descripcion.HeaderText = "Descripcion"
@@ -222,6 +205,35 @@ Partial Class FormCierreCaja
         Me.tpoOperacion.Name = "tpoOperacion"
         Me.tpoOperacion.Visible = False
         '
+        'lblDiferencia
+        '
+        Me.lblDiferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDiferencia.Location = New System.Drawing.Point(389, 405)
+        Me.lblDiferencia.Name = "lblDiferencia"
+        Me.lblDiferencia.Size = New System.Drawing.Size(164, 42)
+        Me.lblDiferencia.TabIndex = 9
+        Me.lblDiferencia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(284, 416)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(99, 24)
+        Me.Label4.TabIndex = 10
+        Me.Label4.Text = "Diferencia:"
+        '
+        'lblIdUsuario
+        '
+        Me.lblIdUsuario.AutoSize = True
+        Me.lblIdUsuario.Location = New System.Drawing.Point(218, 16)
+        Me.lblIdUsuario.Name = "lblIdUsuario"
+        Me.lblIdUsuario.Size = New System.Drawing.Size(34, 13)
+        Me.lblIdUsuario.TabIndex = 5
+        Me.lblIdUsuario.Text = "idUsu"
+        Me.lblIdUsuario.Visible = False
+        '
         'FormCierreCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -261,4 +273,5 @@ Partial Class FormCierreCaja
     Friend WithEvents diferencia As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cantComprobantes As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tpoOperacion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lblIdUsuario As System.Windows.Forms.Label
 End Class

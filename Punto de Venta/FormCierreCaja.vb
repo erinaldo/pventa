@@ -1,4 +1,6 @@
-﻿Public Class FormCierreCaja
+﻿Imports System.IO
+
+Public Class FormCierreCaja
 
     Dim lstCajaDaria As New List(Of CajaDiaria)
     Dim lstComprobanteVenta As New List(Of ComprobanteVenta)
@@ -6,6 +8,9 @@
 
     Private Sub FormCierreCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim row As DataGridViewRow
+
+        lblUsuario.Text = NomUsuario
+        lblIdUsuario.Text = CInt(idUsuario)
 
         lstCajaDaria = ObtenerCajaDiaria()
 
@@ -33,6 +38,8 @@
                          Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.ingresoDinero
                          Into Sum(Caj.Importe)
 
+        row.Cells(5).Value = CajaDiaria.tiposOperacion.ingresoDinero
+
         dgvRendicion.Rows.Add(row)
 
         row = New DataGridViewRow
@@ -48,6 +55,8 @@
         row.Cells(1).Value = Aggregate Caj In lstCajaDaria
                                  Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.retiroDinero
                                  Into Sum(Caj.Importe)
+
+        row.Cells(5).Value = CajaDiaria.tiposOperacion.retiroDinero
 
         dgvRendicion.Rows.Add(row)
 
@@ -88,9 +97,32 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If MsgBox("Esta seguro de grabar la rendicion?", MsgBoxStyle.YesNo, "Rendicion") = MsgBoxResult.Yes Then
-            Me.Close()
-        End If
+        Try
+
+
+            If MsgBox("Esta seguro de grabar la rendicion?", MsgBoxStyle.YesNo, "Rendicion") = MsgBoxResult.Yes Then
+
+                Dim objStreamWriter As StreamWriter
+                Dim strLine As String
+
+                objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Rendicion.txt", True, System.Text.ASCIIEncoding.ASCII)
+
+                For Each row As DataGridViewRow In dgvRendicion.Rows
+                    strLine = Now.Date & ";" & lblIdUsuario.Text & ";" & row.Cells("descripcion").Value & ";" & row.Cells("totalFacturado").Value & ";" & _
+                        CDbl(row.Cells("rendicion").Value) & ";" & CDbl(row.Cells("diferencia").Value) & ";" & row.Cells("cantComprobantes").Value & ";" & _
+                        row.Cells("tpoOperacion").Value
+
+                    objStreamWriter.WriteLine(strLine)
+
+                Next
+                objStreamWriter.Close()
+
+                Me.Close()
+            End If
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub dgvRendicion_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRendicion.CellEndEdit

@@ -6,6 +6,7 @@ Module ModuloActualizacionBase
     Dim dsComprobanteVenta As New DataSet("ComprobanteVenta")
     Dim dsComprobanteVentaDetalle As New DataSet("ComprobanteVentaDetalle")
     Dim dsCajaDiaria As New DataSet("CajaDiaria")
+    Dim dsRendicion As New DataSet("Rendicion")
 
     Function ActualizarComprobanteVenta(ByVal listaComprobanteVenta As List(Of ComprobanteVenta)) As Boolean
 
@@ -132,6 +133,46 @@ Module ModuloActualizacionBase
 
     End Function
 
+    Function ActualizarRendicion(ByVal listaRendicion As List(Of Rendicion)) As Boolean
+
+        Try
+            ActualizarRendicion = False
+
+            Dim tblRendicion As New DataTable
+
+            ObtenerRendicionVacio(tblRendicion, "Rendicion")
+
+            tblRendicion = dsRendicion.Tables(0)
+
+            For Each rendicion In listaRendicion
+
+                Dim drCurrent As DataRow
+                ' Obtain a new DataRow object from the DataTable.
+                drCurrent = tblRendicion.NewRow()
+
+                ' Set the DataRow field values as necessary.
+                drCurrent("r_fecha") = rendicion.Fecha
+                drCurrent("r_idUsuario") = rendicion.Usuario
+                drCurrent("r_total") = rendicion.Total
+                drCurrent("r_rendido") = rendicion.Rendido
+                drCurrent("r_diferencia") = rendicion.Diferencia
+                drCurrent("r_comprobantes") = rendicion.Comprobantes
+                drCurrent("r_idOperacion") = rendicion.Operacion
+
+                'Pass that new object into the Add method of the DataTable.Rows collection.
+                tblRendicion.Rows.Add(drCurrent)
+            Next
+
+            ImportDataTable(tblRendicion, "Rendicion")
+
+            ActualizarRendicion = True
+
+        Catch ex As Exception
+            ActualizarRendicion = False
+        End Try
+
+    End Function
+
     Public Sub ImportDataTable(ByVal DataTable As DataTable, ByVal ServerTableName As String)
 
         Using cn As New SqlConnection(My.Settings.cadena), _
@@ -187,6 +228,22 @@ Module ModuloActualizacionBase
 
         daCajaDiaria.FillSchema(dsCajaDiaria, SchemaType.Source, "Caja_Diaria")
         daCajaDiaria.Fill(dsCajaDiaria, "Caja_Diaria")
+
+    End Sub
+
+    Public Sub ObtenerRendicionVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
+
+        Dim objConn As New SqlConnection(My.Settings.cadena)
+        objConn.Open()
+
+        ' Create an instance of a DataAdapter.
+        Dim daRendicion As New SqlDataAdapter("Select * From Rendicion Where r_id = -1", objConn)
+
+        ' Create an instance of a DataSet, and retrieve data from the Authors table.
+
+        daRendicion.FillSchema(dsRendicion, SchemaType.Source, "Rendicion")
+        daRendicion.Fill(dsRendicion, "Rendicion")
+
 
     End Sub
 
