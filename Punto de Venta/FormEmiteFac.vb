@@ -8,6 +8,7 @@ Public Class FormEmiteFac
     Dim Valido As Boolean
     Dim idListaSeleccionada As Integer
     Dim TotalPCompra As Double
+    Dim blnInicioTicket As Boolean
 
     Private Sub FormEmiteFac_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -19,7 +20,8 @@ Public Class FormEmiteFac
 
     Public Sub AbrirFormulario()
 
-
+        blnInicioTicket = True
+        cmbcliente.Enabled = True
         'If pwiFacturacion.wflEmisionFactura_ExisteCajaAbierta(My.Settings.cadena, idUsuario, My.Settings.sucursal) Then
         GrillaArticulos.Font = New Font("Arial ", 16, FontStyle.Regular)
         listaCli = ModuloGeneral.ObtenerClientes()
@@ -30,6 +32,7 @@ Public Class FormEmiteFac
         lblTotal.Text = FormatNumber("0", 2)
         lblCantidad.Text = 0
         Me.TextCodBar.Focus()
+
         'ShowDialog()
         'Else
         'MsgAtencion("El usuario actual no posee una caja abierta. Por favor abra una caja y vuelva a intenatrlo")
@@ -73,6 +76,12 @@ Public Class FormEmiteFac
 
     Private Sub agregarArticulo()
         Dim intCantidad As Integer
+
+        If blnInicioTicket Then
+            cmbcliente.Enabled = False
+            blnInicioTicket = False
+        End If
+
         Articulo = New Articulos
         If TextCodBar.Text.Contains("*") Then
             intCantidad = Mid(TextCodBar.Text, 1, InStr(TextCodBar.Text, "*", CompareMethod.Text) - 1)
@@ -268,7 +277,8 @@ Public Class FormEmiteFac
                         GrillaArticulos.Rows.Clear()
                         FormEmiteFac_Load(sender, e)
                         '''''PrepararNuevoTicket()
-
+                        blnInicioTicket = True
+                        cmbcliente.Enabled = True
                     End If
                 Else
                     MsgAtencion("Debe cargar al menos un articulo")

@@ -7,14 +7,15 @@
     End Sub
 
     Public Sub Abrir(dblTotFac As Double)
-        'dstFormas = pwiFacturacion.obtenerFormasPago(My.Settings.cadena)
         Cargar_Combobox(ObtenerFormasPago, Me.cmbFormas)
         Me.lblTot.Text = dblTotFac
         Me.txttotaldto.Text = dblTotFac
         Me.textdto.Text = 0
         Me.txtAbona.Text = 0
-        Me.txtAbona.Focus()
+
         ShowDialog()
+
+        Me.txtAbona.Focus()
 
     End Sub
 
@@ -82,6 +83,7 @@
         If cmbFormas.SelectedValue <> 1 Then
             txtAbona.Text = FormatNumber(CDbl(txttotaldto.Text), 2)
             lblVuelto.Text = FormatNumber(0, 2)
+            btnAceptar.Focus()
         Else
             txtAbona.Text = FormatNumber(0, 2)
             lblVuelto.Text = CDbl(txtAbona.Text) - CDbl(txttotaldto.Text)
@@ -111,5 +113,9 @@
     Private Sub btnCancelar_Click_1(sender As Object, e As EventArgs) Handles btnCancelar.Click
         AceptaPago = False
         Me.Close()
+    End Sub
+
+    Private Sub FormVuelto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtAbona.Focus()
     End Sub
 End Class

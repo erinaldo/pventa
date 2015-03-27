@@ -9,6 +9,8 @@ Public Class FormCierreCaja
     Private Sub FormCierreCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim row As DataGridViewRow
 
+        Me.dgvRendicion.Rows.Clear()
+
         lblUsuario.Text = NomUsuario
         lblIdUsuario.Text = CInt(idUsuario)
 
@@ -73,11 +75,11 @@ Public Class FormCierreCaja
             row.Cells(0).Value = formPago.Descripcion
 
             row.Cells(1).Value = Aggregate vent In lstComprobanteVenta
-                                        Where vent.IdUsuario = idUsuario And vent.IdFormaPago = formPago.IdFormaPago
+                                        Where vent.IdUsuario = idUsuario And vent.IdFormaPago = formPago.IdFormaPago And vent.FechaEmision = Now.Date
                                         Into Sum(vent.TotalComprobante)
 
             row.Cells(4).Value = Aggregate vent In lstComprobanteVenta
-                                       Where vent.IdUsuario = idUsuario And vent.IdFormaPago = formPago.IdFormaPago
+                                       Where vent.IdUsuario = idUsuario And vent.IdFormaPago = formPago.IdFormaPago And vent.FechaEmision = Now.Date
                                        Into Count(vent.TotalComprobante)
 
             row.Cells(5).Value = formPago.IdFormaPago
@@ -91,9 +93,8 @@ Public Class FormCierreCaja
         dgvRendicion.Columns(3).ReadOnly = True
         dgvRendicion.Columns(4).ReadOnly = True
 
-        'dgvRendicion.Rows(0).Cells(2).Selected = True
-
         lblDiferencia.Text = 0
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -145,6 +146,12 @@ Public Class FormCierreCaja
             lblDiferencia.Text = lblDiferencia.Text + CDbl(row.Cells(3).Value)
         Next
         lblDiferencia.Text = FormatNumber(lblDiferencia.Text, 2)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If MsgBox("Esta seguro de cerrar la rendicion?", MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
+            Me.Close()
+        End If
     End Sub
 
 End Class

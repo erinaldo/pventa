@@ -22,12 +22,13 @@ Partial Class FormCierreCaja
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblIdUsuario = New System.Windows.Forms.Label()
         Me.lblUsuario = New System.Windows.Forms.Label()
         Me.lblCierre = New System.Windows.Forms.Label()
         Me.lblApertura = New System.Windows.Forms.Label()
@@ -45,7 +46,6 @@ Partial Class FormCierreCaja
         Me.tpoOperacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblDiferencia = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.lblIdUsuario = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvRendicion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -64,6 +64,16 @@ Partial Class FormCierreCaja
         Me.GroupBox1.Size = New System.Drawing.Size(552, 68)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'lblIdUsuario
+        '
+        Me.lblIdUsuario.AutoSize = True
+        Me.lblIdUsuario.Location = New System.Drawing.Point(218, 16)
+        Me.lblIdUsuario.Name = "lblIdUsuario"
+        Me.lblIdUsuario.Size = New System.Drawing.Size(34, 13)
+        Me.lblIdUsuario.TabIndex = 5
+        Me.lblIdUsuario.Text = "idUsu"
+        Me.lblIdUsuario.Visible = False
         '
         'lblUsuario
         '
@@ -141,14 +151,14 @@ Partial Class FormCierreCaja
         '
         Me.dgvRendicion.AllowUserToAddRows = False
         Me.dgvRendicion.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvRendicion.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvRendicion.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.dgvRendicion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvRendicion.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.descripcion, Me.totalFacturado, Me.rendicion, Me.diferencia, Me.cantComprobantes, Me.tpoOperacion})
         Me.dgvRendicion.Location = New System.Drawing.Point(12, 86)
@@ -165,8 +175,8 @@ Partial Class FormCierreCaja
         '
         'totalFacturado
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.totalFacturado.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.totalFacturado.DefaultCellStyle = DataGridViewCellStyle7
         Me.totalFacturado.HeaderText = "Total"
         Me.totalFacturado.Name = "totalFacturado"
         Me.totalFacturado.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -174,8 +184,8 @@ Partial Class FormCierreCaja
         '
         'rendicion
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.rendicion.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.rendicion.DefaultCellStyle = DataGridViewCellStyle8
         Me.rendicion.HeaderText = "Rendicion"
         Me.rendicion.Name = "rendicion"
         Me.rendicion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -183,8 +193,8 @@ Partial Class FormCierreCaja
         '
         'diferencia
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.diferencia.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.diferencia.DefaultCellStyle = DataGridViewCellStyle9
         Me.diferencia.HeaderText = "Diferencia"
         Me.diferencia.Name = "diferencia"
         Me.diferencia.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -192,8 +202,8 @@ Partial Class FormCierreCaja
         '
         'cantComprobantes
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.cantComprobantes.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.cantComprobantes.DefaultCellStyle = DataGridViewCellStyle10
         Me.cantComprobantes.HeaderText = "Cant.Comprob."
         Me.cantComprobantes.Name = "cantComprobantes"
         Me.cantComprobantes.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -223,16 +233,6 @@ Partial Class FormCierreCaja
         Me.Label4.Size = New System.Drawing.Size(99, 24)
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Diferencia:"
-        '
-        'lblIdUsuario
-        '
-        Me.lblIdUsuario.AutoSize = True
-        Me.lblIdUsuario.Location = New System.Drawing.Point(218, 16)
-        Me.lblIdUsuario.Name = "lblIdUsuario"
-        Me.lblIdUsuario.Size = New System.Drawing.Size(34, 13)
-        Me.lblIdUsuario.TabIndex = 5
-        Me.lblIdUsuario.Text = "idUsu"
-        Me.lblIdUsuario.Visible = False
         '
         'FormCierreCaja
         '
