@@ -44,20 +44,20 @@ Partial Class FormPedidos
         '
         'btnImprimir
         '
-        Me.btnImprimir.Location = New System.Drawing.Point(370, 457)
+        Me.btnImprimir.Image = Global.PuntoVenta.My.Resources.Resources.la_lucha_contra_la_caja_registradora_icono_4028_32
+        Me.btnImprimir.Location = New System.Drawing.Point(378, 445)
         Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(75, 23)
+        Me.btnImprimir.Size = New System.Drawing.Size(95, 46)
         Me.btnImprimir.TabIndex = 6
-        Me.btnImprimir.Text = "Imprimir"
         Me.btnImprimir.UseVisualStyleBackColor = True
         '
         'btnCerrar
         '
-        Me.btnCerrar.Location = New System.Drawing.Point(289, 457)
+        Me.btnCerrar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
+        Me.btnCerrar.Location = New System.Drawing.Point(255, 445)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCerrar.Size = New System.Drawing.Size(95, 46)
         Me.btnCerrar.TabIndex = 7
-        Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'GrillaComprobanteVentaDetalle
@@ -76,7 +76,7 @@ Partial Class FormPedidos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(749, 492)
+        Me.ClientSize = New System.Drawing.Size(749, 503)
         Me.Controls.Add(Me.GrillaComprobanteVentaDetalle)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.btnImprimir)

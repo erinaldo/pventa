@@ -11,5 +11,8 @@
     <Setting Name="rutaArchivos" Type="System.String" Scope="User">
       <Value Profile="(Default)">D:\</Value>
     </Setting>
+    <Setting Name="codificacion" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

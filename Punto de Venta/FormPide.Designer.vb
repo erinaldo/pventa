@@ -61,20 +61,20 @@ Partial Class FormPide
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(56, 191)
+        Me.btnCancelar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
+        Me.btnCancelar.Location = New System.Drawing.Point(48, 191)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancelar.Size = New System.Drawing.Size(95, 46)
         Me.btnCancelar.TabIndex = 7
-        Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'btnaceptar
         '
-        Me.btnaceptar.Location = New System.Drawing.Point(178, 191)
+        Me.btnaceptar.Image = Global.PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32
+        Me.btnaceptar.Location = New System.Drawing.Point(179, 191)
         Me.btnaceptar.Name = "btnaceptar"
-        Me.btnaceptar.Size = New System.Drawing.Size(75, 23)
+        Me.btnaceptar.Size = New System.Drawing.Size(95, 46)
         Me.btnaceptar.TabIndex = 5
-        Me.btnaceptar.Text = "Aceptar"
         Me.btnaceptar.UseVisualStyleBackColor = True
         '
         'txtprecio

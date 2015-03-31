@@ -16,7 +16,9 @@
                 clave = Usuario.Password
 
                 If Decript(clave) = textcontrasenia.Text Then
-                    FormPrincipal.Show()
+                    FormPrincipal.ShowDialog()
+                    textcontrasenia.Text = ""
+                    Me.Close()
                 Else
                     MsgAtencion("La contraseña está mal ingresada")
                     textcontrasenia.Focus()
@@ -51,4 +53,8 @@
         End If
     End Sub
 
+    Private Sub FormInicioSesion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        textnombreusuario.Text = ""
+        textcontrasenia.Text = ""
+    End Sub
 End Class

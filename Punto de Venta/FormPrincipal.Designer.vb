@@ -22,76 +22,15 @@ Partial Class FormPrincipal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormPrincipal))
-        Me.btnAbrirCaja = New System.Windows.Forms.Button()
-        Me.btnFacturacion = New System.Windows.Forms.Button()
-        Me.btnIngresoDinero = New System.Windows.Forms.Button()
-        Me.btnRetiroDinero = New System.Windows.Forms.Button()
-        Me.btnCerrarCaja = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.btnCerrarCaja = New System.Windows.Forms.Button()
+        Me.btnRetiroDinero = New System.Windows.Forms.Button()
+        Me.btnIngresoDinero = New System.Windows.Forms.Button()
+        Me.btnFacturacion = New System.Windows.Forms.Button()
+        Me.btnAbrirCaja = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'btnAbrirCaja
-        '
-        Me.btnAbrirCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAbrirCaja.Image = CType(resources.GetObject("btnAbrirCaja.Image"), System.Drawing.Image)
-        Me.btnAbrirCaja.Location = New System.Drawing.Point(104, 68)
-        Me.btnAbrirCaja.Name = "btnAbrirCaja"
-        Me.btnAbrirCaja.Size = New System.Drawing.Size(130, 130)
-        Me.btnAbrirCaja.TabIndex = 0
-        Me.btnAbrirCaja.Text = "Abrir Caja"
-        Me.btnAbrirCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnAbrirCaja.UseVisualStyleBackColor = True
-        '
-        'btnFacturacion
-        '
-        Me.btnFacturacion.Enabled = False
-        Me.btnFacturacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFacturacion.Image = CType(resources.GetObject("btnFacturacion.Image"), System.Drawing.Image)
-        Me.btnFacturacion.Location = New System.Drawing.Point(271, 68)
-        Me.btnFacturacion.Name = "btnFacturacion"
-        Me.btnFacturacion.Size = New System.Drawing.Size(130, 130)
-        Me.btnFacturacion.TabIndex = 1
-        Me.btnFacturacion.Text = "Facturación"
-        Me.btnFacturacion.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnFacturacion.UseVisualStyleBackColor = True
-        '
-        'btnIngresoDinero
-        '
-        Me.btnIngresoDinero.Enabled = False
-        Me.btnIngresoDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnIngresoDinero.Location = New System.Drawing.Point(448, 68)
-        Me.btnIngresoDinero.Name = "btnIngresoDinero"
-        Me.btnIngresoDinero.Size = New System.Drawing.Size(130, 130)
-        Me.btnIngresoDinero.TabIndex = 2
-        Me.btnIngresoDinero.Text = "Ingreso de Dinero"
-        Me.btnIngresoDinero.UseVisualStyleBackColor = True
-        '
-        'btnRetiroDinero
-        '
-        Me.btnRetiroDinero.Enabled = False
-        Me.btnRetiroDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRetiroDinero.Location = New System.Drawing.Point(626, 68)
-        Me.btnRetiroDinero.Name = "btnRetiroDinero"
-        Me.btnRetiroDinero.Size = New System.Drawing.Size(130, 130)
-        Me.btnRetiroDinero.TabIndex = 3
-        Me.btnRetiroDinero.Text = "Retiro de Dinero"
-        Me.btnRetiroDinero.UseVisualStyleBackColor = True
-        '
-        'btnCerrarCaja
-        '
-        Me.btnCerrarCaja.Enabled = False
-        Me.btnCerrarCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrarCaja.Image = CType(resources.GetObject("btnCerrarCaja.Image"), System.Drawing.Image)
-        Me.btnCerrarCaja.Location = New System.Drawing.Point(104, 240)
-        Me.btnCerrarCaja.Name = "btnCerrarCaja"
-        Me.btnCerrarCaja.Size = New System.Drawing.Size(130, 130)
-        Me.btnCerrarCaja.TabIndex = 4
-        Me.btnCerrarCaja.Text = "Cerrar Caja"
-        Me.btnCerrarCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnCerrarCaja.UseVisualStyleBackColor = True
         '
         'Button6
         '
@@ -116,7 +55,7 @@ Partial Class FormPrincipal
         'btnCerrar
         '
         Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Image = CType(resources.GetObject("btnCerrar.Image"), System.Drawing.Image)
+        Me.btnCerrar.Image = Global.PuntoVenta.My.Resources.Resources.salir_de_mi_perfil_icono_3964_96
         Me.btnCerrar.Location = New System.Drawing.Point(626, 240)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(130, 130)
@@ -124,6 +63,71 @@ Partial Class FormPrincipal
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnCerrar.UseVisualStyleBackColor = True
+        '
+        'btnCerrarCaja
+        '
+        Me.btnCerrarCaja.Enabled = False
+        Me.btnCerrarCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarCaja.Image = Global.PuntoVenta.My.Resources.Resources.shop_closed
+        Me.btnCerrarCaja.Location = New System.Drawing.Point(104, 240)
+        Me.btnCerrarCaja.Name = "btnCerrarCaja"
+        Me.btnCerrarCaja.Size = New System.Drawing.Size(130, 130)
+        Me.btnCerrarCaja.TabIndex = 4
+        Me.btnCerrarCaja.Text = "Cerrar Caja"
+        Me.btnCerrarCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnCerrarCaja.UseVisualStyleBackColor = True
+        '
+        'btnRetiroDinero
+        '
+        Me.btnRetiroDinero.Enabled = False
+        Me.btnRetiroDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRetiroDinero.Image = Global.PuntoVenta.My.Resources.Resources.coin_delete_96x96
+        Me.btnRetiroDinero.Location = New System.Drawing.Point(626, 68)
+        Me.btnRetiroDinero.Name = "btnRetiroDinero"
+        Me.btnRetiroDinero.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.btnRetiroDinero.Size = New System.Drawing.Size(130, 130)
+        Me.btnRetiroDinero.TabIndex = 3
+        Me.btnRetiroDinero.Text = "Retiro de Dinero"
+        Me.btnRetiroDinero.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnRetiroDinero.UseVisualStyleBackColor = True
+        '
+        'btnIngresoDinero
+        '
+        Me.btnIngresoDinero.Enabled = False
+        Me.btnIngresoDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnIngresoDinero.Image = Global.PuntoVenta.My.Resources.Resources.coin_add_96x96
+        Me.btnIngresoDinero.Location = New System.Drawing.Point(448, 68)
+        Me.btnIngresoDinero.Name = "btnIngresoDinero"
+        Me.btnIngresoDinero.Size = New System.Drawing.Size(130, 130)
+        Me.btnIngresoDinero.TabIndex = 2
+        Me.btnIngresoDinero.Text = "Ingreso de Dinero"
+        Me.btnIngresoDinero.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnIngresoDinero.UseVisualStyleBackColor = True
+        '
+        'btnFacturacion
+        '
+        Me.btnFacturacion.Enabled = False
+        Me.btnFacturacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFacturacion.Image = Global.PuntoVenta.My.Resources.Resources.la_lucha_contra_la_caja_registradora_icono_4028_96
+        Me.btnFacturacion.Location = New System.Drawing.Point(271, 68)
+        Me.btnFacturacion.Name = "btnFacturacion"
+        Me.btnFacturacion.Size = New System.Drawing.Size(130, 130)
+        Me.btnFacturacion.TabIndex = 1
+        Me.btnFacturacion.Text = "Facturación"
+        Me.btnFacturacion.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnFacturacion.UseVisualStyleBackColor = True
+        '
+        'btnAbrirCaja
+        '
+        Me.btnAbrirCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAbrirCaja.Image = Global.PuntoVenta.My.Resources.Resources.shop_open
+        Me.btnAbrirCaja.Location = New System.Drawing.Point(104, 68)
+        Me.btnAbrirCaja.Name = "btnAbrirCaja"
+        Me.btnAbrirCaja.Size = New System.Drawing.Size(130, 130)
+        Me.btnAbrirCaja.TabIndex = 0
+        Me.btnAbrirCaja.Text = "Abrir Caja"
+        Me.btnAbrirCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnAbrirCaja.UseVisualStyleBackColor = True
         '
         'FormPrincipal
         '

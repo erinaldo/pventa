@@ -69,20 +69,20 @@ Partial Class FormVuelto
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(73, 337)
+        Me.btnCancelar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
+        Me.btnCancelar.Location = New System.Drawing.Point(53, 335)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancelar.Size = New System.Drawing.Size(95, 46)
         Me.btnCancelar.TabIndex = 16
-        Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'btnAceptar
         '
-        Me.btnAceptar.Location = New System.Drawing.Point(184, 337)
+        Me.btnAceptar.Image = Global.PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32
+        Me.btnAceptar.Location = New System.Drawing.Point(190, 335)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAceptar.Size = New System.Drawing.Size(95, 46)
         Me.btnAceptar.TabIndex = 15
-        Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = True
         '
         'Label4
@@ -165,7 +165,7 @@ Partial Class FormVuelto
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(92, 284)
+        Me.Label8.Location = New System.Drawing.Point(92, 289)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(40, 13)
         Me.Label8.TabIndex = 24
@@ -175,7 +175,7 @@ Partial Class FormVuelto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(338, 379)
+        Me.ClientSize = New System.Drawing.Size(338, 393)
         Me.Controls.Add(Me.lblVuelto)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtAbona)

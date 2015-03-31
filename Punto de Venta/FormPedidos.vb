@@ -20,6 +20,12 @@ Public Class FormPedidos
                                                          Where ped.Origen = "I"
                                                          Select ped).ToList
 
+            If result.Count = 0 Then
+                MsgBox("No existen pedidos a Facturar.", MsgBoxStyle.Information, "Mensaje al Operador")
+                Me.Close()
+                Exit Sub
+            End If
+
             GrillaPedidosPendientes.DataSource = result
 
             Me.GrillaPedidosPendientes.Columns("ComprobanteTipo").Visible = False
@@ -30,6 +36,9 @@ Public Class FormPedidos
             Me.GrillaPedidosPendientes.Columns("Origen").Visible = False
             Me.GrillaPedidosPendientes.Columns("PorcentajeIva").Visible = False
 
+        Catch ex As FileNotFoundException
+            MsgBox("No existen Pedidos.", MsgBoxStyle.Information, "Mensaje al Operador")
+            Me.Close()
         Catch ex As Exception
             Throw New Exception("Error en WFL" + "Obtener Lista" + "|" + ex.Message)
         End Try

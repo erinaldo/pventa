@@ -7,8 +7,11 @@ Public Class FormBuscarArtFactu
     Public Sub abrirFormulario(ByVal listaArt As List(Of Articulos), ByVal intIdLista As Integer)
 
 
+        'lista = (From listArt In listaArt
+        '        Where listArt.IdLista = intIdLista
+        '        Select listArt).ToList
+
         lista = (From listArt In listaArt
-                Where listArt.IdLista = intIdLista
                 Select listArt).ToList
 
         CargarGrillaArticulos(lista)

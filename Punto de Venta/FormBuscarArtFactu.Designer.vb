@@ -29,13 +29,13 @@ Partial Class FormBuscarArtFactu
         Me.txtCodbar = New System.Windows.Forms.TextBox()
         Me.txtdescri = New System.Windows.Forms.TextBox()
         Me.btnDescri = New System.Windows.Forms.RadioButton()
-        Me.btnSeleccionar = New System.Windows.Forms.Button()
-        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.GrillaArticulos = New System.Windows.Forms.DataGridView()
         Me.Codart = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Descripción = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnSeleccionar = New System.Windows.Forms.Button()
+        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -61,7 +61,7 @@ Partial Class FormBuscarArtFactu
         Me.GroupBox1.Controls.Add(Me.btnCodBar)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(679, 77)
+        Me.GroupBox1.Size = New System.Drawing.Size(686, 77)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Búsqueda de articulos"
@@ -112,24 +112,6 @@ Partial Class FormBuscarArtFactu
         Me.btnDescri.Text = "Búsqueda por descripción:"
         Me.btnDescri.UseVisualStyleBackColor = True
         '
-        'btnSeleccionar
-        '
-        Me.btnSeleccionar.Location = New System.Drawing.Point(708, 243)
-        Me.btnSeleccionar.Name = "btnSeleccionar"
-        Me.btnSeleccionar.Size = New System.Drawing.Size(75, 34)
-        Me.btnSeleccionar.TabIndex = 2
-        Me.btnSeleccionar.Text = "Seleccionar"
-        Me.btnSeleccionar.UseVisualStyleBackColor = True
-        '
-        'btnCerrar
-        '
-        Me.btnCerrar.Location = New System.Drawing.Point(325, 467)
-        Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(95, 35)
-        Me.btnCerrar.TabIndex = 3
-        Me.btnCerrar.Text = "Cerrar"
-        Me.btnCerrar.UseVisualStyleBackColor = True
-        '
         'GrillaArticulos
         '
         Me.GrillaArticulos.AllowUserToAddRows = False
@@ -140,7 +122,7 @@ Partial Class FormBuscarArtFactu
         Me.GrillaArticulos.Name = "GrillaArticulos"
         Me.GrillaArticulos.ReadOnly = True
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GrillaArticulos.Size = New System.Drawing.Size(679, 349)
+        Me.GrillaArticulos.Size = New System.Drawing.Size(686, 349)
         Me.GrillaArticulos.TabIndex = 4
         Me.GrillaArticulos.TabStop = False
         '
@@ -171,11 +153,29 @@ Partial Class FormBuscarArtFactu
         Me.Precio.Name = "Precio"
         Me.Precio.ReadOnly = True
         '
+        'btnSeleccionar
+        '
+        Me.btnSeleccionar.Image = Global.PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32
+        Me.btnSeleccionar.Location = New System.Drawing.Point(531, 467)
+        Me.btnSeleccionar.Name = "btnSeleccionar"
+        Me.btnSeleccionar.Size = New System.Drawing.Size(95, 46)
+        Me.btnSeleccionar.TabIndex = 2
+        Me.btnSeleccionar.UseVisualStyleBackColor = True
+        '
+        'btnCerrar
+        '
+        Me.btnCerrar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
+        Me.btnCerrar.Location = New System.Drawing.Point(397, 467)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(95, 46)
+        Me.btnCerrar.TabIndex = 3
+        Me.btnCerrar.UseVisualStyleBackColor = True
+        '
         'FormBuscarArtFactu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(795, 519)
+        Me.ClientSize = New System.Drawing.Size(710, 525)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnSeleccionar)
         Me.Controls.Add(Me.btnCerrar)

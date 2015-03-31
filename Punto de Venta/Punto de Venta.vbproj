@@ -76,6 +76,12 @@
     <Compile Include="FormCierreCaja.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormSupervisor.Designer.vb">
+      <DependentUpon>FormSupervisor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSupervisor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ModuloActualizacionBase.vb" />
     <Compile Include="Articulos.vb" />
     <Compile Include="Clientes.vb" />
@@ -176,18 +182,22 @@
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSupervisor.resx">
+      <DependentUpon>FormSupervisor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVuelto.resx">
       <DependentUpon>FormVuelto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="fiscal110423.tlb" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -199,10 +209,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Fiscal110423.Ocx" />
     <Content Include="Imagenes\abierto.png" />
     <Content Include="Imagenes\atencion2.jpg" />
     <Content Include="Imagenes\atention.png" />
+    <Content Include="Imagenes\boton-de-cancelacion-de-icono-6056-32.png" />
     <Content Include="Imagenes\cerrado.png" />
+    <None Include="Imagenes\la-lucha-contra-la-caja-registradora-icono-4028-96.png" />
+    <None Include="Imagenes\salir-de-mi-perfil-icono-3964-96.png" />
+    <None Include="Imagenes\emptytrash-icono-9439-32.png" />
+    <Content Include="Imagenes\coin-add.png" />
+    <None Include="Imagenes\coin-add_96x96.png" />
+    <Content Include="Imagenes\coin-delete.png" />
+    <Content Include="Imagenes\coin-delete_96x96.png" />
+    <None Include="Imagenes\la-lucha-contra-la-caja-registradora-icono-4028-32.png" />
+    <Content Include="Imagenes\shop-closed.png" />
+    <Content Include="Imagenes\shop-open.png" />
+    <Content Include="Imagenes\si-puede-aceptar-icono-7881-32.png" />
+    <None Include="Imagenes\viewmag-icono-4318-16.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="FiscalPrinterLib">

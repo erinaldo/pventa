@@ -148,10 +148,4 @@ Public Class FormCierreCaja
         lblDiferencia.Text = FormatNumber(lblDiferencia.Text, 2)
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        If MsgBox("Esta seguro de cerrar la rendicion?", MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
-            Me.Close()
-        End If
-    End Sub
-
 End Class

@@ -27,6 +27,7 @@ Public Class FormEmiteFac
         listaCli = ModuloGeneral.ObtenerClientes()
         Cargar_Combobox(listaCli, cmbcliente)
         cmbcliente.SelectedValue = 1
+        cmbcliente.Enabled = False
         Me.lblLista.Text = "Consumidor Final" 'dstClientes.Tables(0).Rows(cmbcliente.SelectedIndex)("lpr_descripcion")
         idListaSeleccionada = 1 'dstClientes.Tables(0).Rows(cmbcliente.SelectedIndex)("lpr_id")
         lblTotal.Text = FormatNumber("0", 2)
@@ -68,9 +69,13 @@ Public Class FormEmiteFac
 
         BuscarArticulo = New Articulos
 
+        'BuscarArticulo = (From art In listaArt
+        '                  Where art.CodigoBarras = strCodBarra And art.IdLista = intIdLista
+        '                  Select art).First
+
         BuscarArticulo = (From art In listaArt
-                          Where art.CodigoBarras = strCodBarra And art.IdLista = intIdLista
-                          Select art).First
+                  Where art.CodigoBarras = strCodBarra
+                  Select art).First
 
     End Function
 
@@ -309,16 +314,22 @@ Public Class FormEmiteFac
         Dim fila As Long = 0
         Dim codart As Long = 0
         If GrillaArticulos.CurrentCell Is Nothing Then
+            Me.TextCodBar.Focus()
             Exit Sub
         End If
-        If GrillaArticulos.CurrentRow.Cells("codart").Value <> 0 Then
+        FormSupervisor.ShowDialog()
+        If Not blnEsSupervisor Then
+            Exit Sub
+        End If
+        If GrillaArticulos.CurrentRow.Cells("CodigoArticulo").Value <> 0 Then
             If MsgPregunta("Está seguro de eliminar el producto") = 6 Then
                 If GrillaArticulos.CurrentRow.Cells.Count > 0 Then
-                    codart = CLng(GrillaArticulos.CurrentRow.Cells("codart").Value)
+                    codart = CLng(GrillaArticulos.CurrentRow.Cells("CodigoArticulo").Value)
                     Dim sele As Integer = GrillaArticulos.CurrentRow.Index
                     Me.lblTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(GrillaArticulos.CurrentRow.Cells("Total").Value), 2)
-                    TotalPCompra = TotalPCompra - (CDbl(GrillaArticulos.CurrentRow.Cells("cantidad").Value) * CDbl(GrillaArticulos.CurrentRow.Cells("punitario").Value))
+                    'TotalPCompra = TotalPCompra - (CDbl(GrillaArticulos.CurrentRow.Cells("cantidad").Value) * CDbl(GrillaArticulos.CurrentRow.Cells("punitario").Value))
                     dblcantidad = GrillaArticulos.CurrentRow.Cells("cantidad").Value
+                    ContarArticulos(dblcantidad * -1)
                     GrillaArticulos.Rows.RemoveAt(sele)
 
                     Me.TextCodBar.Focus()
@@ -340,17 +351,17 @@ Public Class FormEmiteFac
     End Sub
 
     Private Sub cmbcliente_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbcliente.SelectionChangeCommitted
-        Dim idCli As Integer
+        'Dim idCli As Integer
 
-        idCli = cmbcliente.SelectedValue
+        'idCli = cmbcliente.SelectedValue
 
-        For Each cli In listaCli
-            If cli.IdCliente = idCli Then
-                Me.lblLista.Text = cli.ListaDescripcion
-                idListaSeleccionada = cli.IdLista
-                Exit For
-            End If
-        Next
+        'For Each cli In listaCli
+        '    If cli.IdCliente = idCli Then
+        '        Me.lblLista.Text = cli.ListaDescripcion
+        '        idListaSeleccionada = cli.IdLista
+        '        Exit For
+        '    End If
+        'Next
 
     End Sub
 

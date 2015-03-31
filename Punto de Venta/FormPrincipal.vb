@@ -68,6 +68,8 @@ Public Class FormPrincipal
 
     Private Sub FormPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        blnEsSupervisor = False
+
         listaCajaDia = ObtenerCajaDiaria()
 
         Dim caja As List(Of CajaDiaria) = (From caj In listaCajaDia
@@ -126,7 +128,18 @@ Public Class FormPrincipal
 
     Private Sub btnRetiroDinero_Click(sender As Object, e As EventArgs) Handles btnRetiroDinero.Click
 
-        grabarRetiroDinero(CDbl(InputBox("Ingrese el importe.", "Retiro de Dinero")))
+        Dim dblRetiro As String
 
+        Try
+            FormSupervisor.ShowDialog()
+            If blnEsSupervisor Then
+                dblRetiro = InputBox("Ingrese el importe.", "Retiro de Dinero")
+                If CDbl(dblRetiro) <> 0 Then
+                    grabarRetiroDinero(CDbl(dblRetiro))
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("Debe ingresar un monto válido", MsgBoxStyle.Information, "Mensaje al Operador")
+        End Try
     End Sub
 End Class

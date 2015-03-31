@@ -20,6 +20,7 @@ Module ModuloGeneral
     Public idUsuario As Double '=4
     Public NomUsuario As String '= "Administrador"
     Public idPerfilUsuario As Integer
+    Public blnEsSupervisor As Boolean
 
     Public Sub InsertarFilasEnGrilla(codart As String, descri As String, precio As Double, _
                                            cantidad As Double, total As Double, codbarra As String, costo As Double, _
@@ -76,7 +77,7 @@ Module ModuloGeneral
             objStreamWriter.Close()
             obtenerNroComprobante()
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener Comprobante" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener Comprobante" + "|" + ex.Message)
         End Try
     End Function
 
@@ -119,9 +120,10 @@ Module ModuloGeneral
             Loop
 
             objStreamReader.Close()
-
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Articulos" + "|" + ex.Message)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener Articulos" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener Articulos" + "|" + ex.Message)
         End Try
     End Function
 
@@ -140,17 +142,18 @@ Module ModuloGeneral
                 strLine = objStreamReader.ReadLine
                 cli.IdCliente = Split(strLine, ";")(0)
                 cli.NombreFantasia = Split(strLine, ";")(1)
-                cli.IdLista = Split(strLine, ";")(2)
-                cli.ListaDescripcion = Split(strLine, ";")(3)
-                cli.IdSucursal = Split(strLine, ";")(4)
+                'cli.IdLista = Split(strLine, ";")(2)
+                'cli.ListaDescripcion = Split(strLine, ";")(3)
+                cli.IdSucursal = Split(strLine, ";")(2)
 
                 ObtenerClientes.Add(cli)
             Loop
 
             objStreamReader.Close()
-
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Clientes" + "|" + ex.Message)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener Clientes" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener Clientes" + "|" + ex.Message)
         End Try
     End Function
 
@@ -166,7 +169,7 @@ Module ModuloGeneral
             Do While Not objStreamReader.EndOfStream
 
                 strLine = objStreamReader.ReadLine
-                If Split(strLine, ";")(1) = strNombreUsuario Then
+                If Split(strLine, ";")(1).ToUpper = strNombreUsuario.ToUpper Then
                     ObtenerUsuarios.IdUsuario = Split(strLine, ";")(0)
                     ObtenerUsuarios.Usuario = Split(strLine, ";")(1)
                     ObtenerUsuarios.Password = Split(strLine, ";")(2)
@@ -177,9 +180,10 @@ Module ModuloGeneral
             Loop
 
             objStreamReader.Close()
-
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Usuarios" + "|" + ex.Message)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener Usuarios" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener Usuarios" + "|" + ex.Message)
         End Try
     End Function
 
@@ -204,9 +208,10 @@ Module ModuloGeneral
             Loop
 
             objStreamReader.Close()
-
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Formas de Pago" + "|" + ex.Message)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener FormasPago" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener FormasPago" + "|" + ex.Message)
         End Try
     End Function
 
@@ -236,9 +241,10 @@ Module ModuloGeneral
             Loop
 
             objStreamReader.Close()
-
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Rendicion" + "|" + ex.Message)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener Rendicion" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener Rendicion" + "|" + ex.Message)
         End Try
     End Function
 
@@ -272,7 +278,7 @@ Module ModuloGeneral
             objStreamWriter.Close()
             ObtenerCajaDiaria()
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener CajaDiaria" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener CajaDiaria" + "|" + ex.Message)
         End Try
     End Function
 
@@ -311,9 +317,10 @@ Module ModuloGeneral
             Loop
 
             objStreamReader.Close()
-
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Comprobante Ventas" + "|" + ex.Message)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener ComprobanteVenta" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener ComprobanteVenta" + "|" + ex.Message)
         End Try
     End Function
 
@@ -344,8 +351,10 @@ Module ModuloGeneral
 
             objStreamReader.Close()
 
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Comprobante Venta Detalle" + "|" + ex.Message)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Obtener ComprobanteVentaDetalle" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Obtener ComprobanteVentaDetalle" + "|" + ex.Message)
         End Try
     End Function
 
@@ -359,7 +368,7 @@ Module ModuloGeneral
 
             objStreamWriter.Close()
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Grabar Apertura de Caja" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Grabar Apertura de Caja" + "|" + ex.Message)
         End Try
     End Sub
 
@@ -373,7 +382,7 @@ Module ModuloGeneral
 
             objStreamWriter.Close()
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Grabar Ingreso de Dinero" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Grabar Ingreso de Dinero" + "|" + ex.Message)
         End Try
     End Sub
 
@@ -387,7 +396,7 @@ Module ModuloGeneral
 
             objStreamWriter.Close()
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Grabar Retiro de Dinero" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Grabar Retiro de Dinero" + "|" + ex.Message)
         End Try
     End Sub
 
@@ -401,7 +410,7 @@ Module ModuloGeneral
 
             objStreamWriter.Close()
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General" + "Grabar Cierre de Caja" + "|" + ex.Message)
+            Throw New Exception("Error en Modulo General." + " Grabar Cierre de Caja" + "|" + ex.Message)
         End Try
     End Sub
 
