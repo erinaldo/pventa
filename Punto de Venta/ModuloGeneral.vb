@@ -111,10 +111,10 @@ Module ModuloGeneral
                 art.CodigoBarras = Split(strLine, ";")(2)
                 art.PrecioCosto = Split(strLine, ";")(3)
                 art.PrecioVenta = Split(strLine, ";")(4)
-                art.IdLista = Split(strLine, ";")(5)
-                art.Unidad = Split(strLine, ";")(6)
-                art.CostoGranel = Split(strLine, ";")(7)
-                art.UnidadGranel = Split(strLine, ";")(8)
+                'art.IdLista = Split(strLine, ";")(5)
+                art.Unidad = Split(strLine, ";")(5)
+                art.CostoGranel = Split(strLine, ";")(6)
+                art.UnidadGranel = Split(strLine, ";")(7)
 
                 ObtenerArticulos.Add(art)
             Loop

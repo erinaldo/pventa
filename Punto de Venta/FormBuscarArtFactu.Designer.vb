@@ -30,10 +30,6 @@ Partial Class FormBuscarArtFactu
         Me.txtdescri = New System.Windows.Forms.TextBox()
         Me.btnDescri = New System.Windows.Forms.RadioButton()
         Me.GrillaArticulos = New System.Windows.Forms.DataGridView()
-        Me.Codart = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripción = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnSeleccionar = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
@@ -117,7 +113,6 @@ Partial Class FormBuscarArtFactu
         Me.GrillaArticulos.AllowUserToAddRows = False
         Me.GrillaArticulos.AllowUserToDeleteRows = False
         Me.GrillaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GrillaArticulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codart, Me.Descripción, Me.Codbar, Me.Precio})
         Me.GrillaArticulos.Location = New System.Drawing.Point(12, 95)
         Me.GrillaArticulos.Name = "GrillaArticulos"
         Me.GrillaArticulos.ReadOnly = True
@@ -125,33 +120,6 @@ Partial Class FormBuscarArtFactu
         Me.GrillaArticulos.Size = New System.Drawing.Size(686, 349)
         Me.GrillaArticulos.TabIndex = 4
         Me.GrillaArticulos.TabStop = False
-        '
-        'Codart
-        '
-        Me.Codart.HeaderText = "Código"
-        Me.Codart.Name = "Codart"
-        Me.Codart.ReadOnly = True
-        Me.Codart.Width = 90
-        '
-        'Descripción
-        '
-        Me.Descripción.HeaderText = "Descripción"
-        Me.Descripción.Name = "Descripción"
-        Me.Descripción.ReadOnly = True
-        Me.Descripción.Width = 320
-        '
-        'Codbar
-        '
-        Me.Codbar.HeaderText = "Codigo de Barras"
-        Me.Codbar.Name = "Codbar"
-        Me.Codbar.ReadOnly = True
-        Me.Codbar.Width = 110
-        '
-        'Precio
-        '
-        Me.Precio.HeaderText = "Precio"
-        Me.Precio.Name = "Precio"
-        Me.Precio.ReadOnly = True
         '
         'btnSeleccionar
         '
@@ -199,8 +167,4 @@ Partial Class FormBuscarArtFactu
     Friend WithEvents btnSeleccionar As System.Windows.Forms.Button
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Friend WithEvents GrillaArticulos As System.Windows.Forms.DataGridView
-    Friend WithEvents Codart As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Descripción As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Codbar As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Precio As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

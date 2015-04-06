@@ -14,7 +14,19 @@ Public Class FormBuscarArtFactu
         lista = (From listArt In listaArt
                 Select listArt).ToList
 
-        CargarGrillaArticulos(lista)
+        'CargarGrillaArticulos(lista)
+        GrillaArticulos.DataSource = lista
+
+        GrillaArticulos.Columns(0).HeaderText = "Código"
+        GrillaArticulos.Columns(1).HeaderText = "Descripción"
+        GrillaArticulos.Columns(1).Width = 300
+        GrillaArticulos.Columns(2).HeaderText = "Cod.Barra"
+        GrillaArticulos.Columns(4).HeaderText = "Precio Venta"
+
+        GrillaArticulos.Columns(3).Visible = False
+        GrillaArticulos.Columns(5).Visible = False
+        GrillaArticulos.Columns(6).Visible = False
+        GrillaArticulos.Columns(7).Visible = False
 
         Me.btnCodBar.Checked = False
         Me.txtCodbar.Visible = False

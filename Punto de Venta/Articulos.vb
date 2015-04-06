@@ -4,7 +4,7 @@
     Private strCodBar As String
     Private dblPrecioCosto As Double
     Private dblPrecioVenta As Double
-    Private intListaPrecios As Double
+    'Private intListaPrecios As Double
     Private intUnidad As Integer
     Private dblCostoGranel As Double
     Private dblUnidadGranel As Double
@@ -54,14 +54,14 @@
         End Set
     End Property
 
-    Public Property IdLista() As Integer
-        Get
-            Return intListaPrecios
-        End Get
-        Set(ByVal value As Integer)
-            intListaPrecios = value
-        End Set
-    End Property
+    'Public Property IdLista() As Integer
+    '    Get
+    '        Return intListaPrecios
+    '    End Get
+    '    Set(ByVal value As Integer)
+    '        intListaPrecios = value
+    '    End Set
+    'End Property
 
     Public Property Unidad() As Integer
         Get
