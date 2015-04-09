@@ -218,6 +218,7 @@ Partial Class FormCierreCaja
         '
         'Button1
         '
+        Me.Button1.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.Location = New System.Drawing.Point(430, 450)
         Me.Button1.Name = "Button1"
@@ -235,6 +236,7 @@ Partial Class FormCierreCaja
         Me.Controls.Add(Me.dgvRendicion)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Name = "FormCierreCaja"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cierre de Caja"

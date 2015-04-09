@@ -1,0 +1,21 @@
+D:\Punto_de_Venta\Punto de Venta\bin\Release\PuntoVenta.exe.config
+D:\Punto_de_Venta\Punto de Venta\obj\Release\Interop.FiscalPrinterLib.dll
+D:\Punto_de_Venta\Punto de Venta\obj\Release\Punto de Venta.vbproj.ResolveComReference.cache
+D:\Punto_de_Venta\Punto de Venta\bin\Release\PuntoVenta.exe
+D:\Punto_de_Venta\Punto de Venta\bin\Release\PuntoVenta.pdb
+D:\Punto_de_Venta\Punto de Venta\bin\Release\PuntoVenta.xml
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormAtencion.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormBuscarArtFactu.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormCierreCaja.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormEmiteFac.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormInicioSesion.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormPedidos.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormPide.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormPrincipal.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormSupervisor.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormVuelto.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.Resources.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Release\Punto de Venta.vbproj.GenerateResource.Cache
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.exe
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.xml
+D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.pdb

@@ -42,6 +42,10 @@ Public Class FormCierreCaja
 
         row.Cells(5).Value = CajaDiaria.tiposOperacion.ingresoDinero
 
+        row.Cells(3).Value = 0
+
+        row.Cells(2).Value = 0
+
         dgvRendicion.Rows.Add(row)
 
         row = New DataGridViewRow
@@ -59,6 +63,10 @@ Public Class FormCierreCaja
                                  Into Sum(Caj.Importe)
 
         row.Cells(5).Value = CajaDiaria.tiposOperacion.retiroDinero
+
+        row.Cells(3).Value = 0
+
+        row.Cells(2).Value = 0
 
         dgvRendicion.Rows.Add(row)
 
@@ -84,14 +92,23 @@ Public Class FormCierreCaja
 
             row.Cells(5).Value = formPago.IdFormaPago
 
+            row.Cells(3).Value = 0
+
+            row.Cells(2).Value = 0
+
             dgvRendicion.Rows.Add(row)
 
         Next
 
+
         dgvRendicion.Columns(0).ReadOnly = True
         dgvRendicion.Columns(1).ReadOnly = True
+        dgvRendicion.Columns(1).DefaultCellStyle.Format = "N2"
         dgvRendicion.Columns(3).ReadOnly = True
+        dgvRendicion.Columns(3).DefaultCellStyle.Format = "N2"
         dgvRendicion.Columns(4).ReadOnly = True
+
+        dgvRendicion.Columns(2).DefaultCellStyle.Format = "N2"
 
         lblDiferencia.Text = 0
 

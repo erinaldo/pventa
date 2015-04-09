@@ -67,16 +67,21 @@ Public Class FormEmiteFac
 
     Function BuscarArticulo(ByVal strCodBarra As String, ByVal intIdLista As Integer) As Articulos
 
-        BuscarArticulo = New Articulos
+        Try
 
-        'BuscarArticulo = (From art In listaArt
-        '                  Where art.CodigoBarras = strCodBarra And art.IdLista = intIdLista
-        '                  Select art).First
+            BuscarArticulo = New Articulos
 
-        BuscarArticulo = (From art In listaArt
-                  Where art.CodigoBarras = strCodBarra
-                  Select art).First
+            'BuscarArticulo = (From art In listaArt
+            '                  Where art.CodigoBarras = strCodBarra And art.IdLista = intIdLista
+            '                  Select art).First
 
+            BuscarArticulo = (From art In listaArt
+                      Where art.CodigoBarras = strCodBarra
+                      Select art).First
+
+        Catch ex As Exception
+
+        End Try
     End Function
 
     Private Sub agregarArticulo()
@@ -137,7 +142,7 @@ Public Class FormEmiteFac
             Dim preciofiambre As Double
             CodigoFiambre = Mid(CodigoBarrasBuscado, 2, 6)
             Articulo = BuscarArticulo(CodigoFiambre.ToString, idListaSeleccionada)
-            If Not Articulo Is Nothing Then
+            If Not Articulo.CodigoBarras Is Nothing Then
                 PrecioFiambreAux = Mid(CodigoBarrasBuscado, 8, 5)
                 preciofiambre = ConvertirPrecio(PrecioFiambreAux)
 
@@ -305,9 +310,30 @@ Public Class FormEmiteFac
 
         If MsgPregunta("ATENCION: Esta operación CANCELARA el ticket. CANCELA ?") = vbYes Then
             paso = True
+            GuardarCancelado()
             GrillaArticulos.Rows.Clear()
             Me.Close()
         End If
+    End Sub
+
+    Private Sub GuardarCancelado()
+        Dim j As Integer = 0
+        Dim strComprobanteVentaDetalle As String
+        Dim objStreamWriter As StreamWriter
+
+        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVentaCa.txt", True)
+
+        For j = 0 To GrillaArticulos.Rows.Count - 1
+
+            strComprobanteVentaDetalle = Date.Now & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
+                GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" & _
+                GrillaArticulos.Rows(j).Cells("PrecioUnitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2) & ";" & NomUsuario
+
+            objStreamWriter.WriteLine(strComprobanteVentaDetalle)
+
+        Next
+
+        objStreamWriter.Close()
     End Sub
 
     Private Sub cmdEliminar_Click(sender As Object, e As EventArgs) Handles cmdEliminar.Click

@@ -22,13 +22,13 @@ Partial Class FormBuscarArtFactu
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnCodBar = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.btncontinua = New System.Windows.Forms.Button()
+        Me.txtCod = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.txtCodbar = New System.Windows.Forms.TextBox()
         Me.txtdescri = New System.Windows.Forms.TextBox()
-        Me.btnDescri = New System.Windows.Forms.RadioButton()
         Me.GrillaArticulos = New System.Windows.Forms.DataGridView()
         Me.btnSeleccionar = New System.Windows.Forms.Button()
         Me.btnCerrar = New System.Windows.Forms.Button()
@@ -36,88 +36,79 @@ Partial Class FormBuscarArtFactu
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'btnCodBar
-        '
-        Me.btnCodBar.AutoSize = True
-        Me.btnCodBar.Location = New System.Drawing.Point(33, 19)
-        Me.btnCodBar.Name = "btnCodBar"
-        Me.btnCodBar.Size = New System.Drawing.Size(176, 17)
-        Me.btnCodBar.TabIndex = 4
-        Me.btnCodBar.TabStop = True
-        Me.btnCodBar.Text = "Búsqueda por código de barras:"
-        Me.btnCodBar.UseVisualStyleBackColor = True
-        '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.btncontinua)
+        Me.GroupBox1.Controls.Add(Me.txtCod)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.txtCodbar)
         Me.GroupBox1.Controls.Add(Me.txtdescri)
-        Me.GroupBox1.Controls.Add(Me.btnDescri)
-        Me.GroupBox1.Controls.Add(Me.btnCodBar)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(686, 77)
+        Me.GroupBox1.Size = New System.Drawing.Size(686, 65)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Búsqueda de articulos"
         '
-        'Button2
+        'txtCod
         '
-        Me.Button2.Location = New System.Drawing.Point(519, 16)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(134, 23)
-        Me.Button2.TabIndex = 5
-        Me.Button2.TabStop = False
-        Me.Button2.Text = "Volver Busqueda"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.txtCod.Location = New System.Drawing.Point(55, 28)
+        Me.txtCod.Name = "txtCod"
+        Me.txtCod.Size = New System.Drawing.Size(68, 20)
+        Me.txtCod.TabIndex = 0
         '
-        'btncontinua
+        'Label3
         '
-        Me.btncontinua.Location = New System.Drawing.Point(519, 40)
-        Me.btncontinua.Name = "btncontinua"
-        Me.btncontinua.Size = New System.Drawing.Size(134, 23)
-        Me.btncontinua.TabIndex = 4
-        Me.btncontinua.TabStop = False
-        Me.btncontinua.Text = "Continúa Buscando"
-        Me.btncontinua.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 31)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(43, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Código:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(129, 31)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(66, 13)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Descripción:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(473, 31)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(57, 13)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Cod.Barra:"
         '
         'txtCodbar
         '
-        Me.txtCodbar.Location = New System.Drawing.Point(94, 42)
+        Me.txtCodbar.Location = New System.Drawing.Point(536, 28)
         Me.txtCodbar.Name = "txtCodbar"
-        Me.txtCodbar.Size = New System.Drawing.Size(293, 20)
-        Me.txtCodbar.TabIndex = 1
-        Me.txtCodbar.Visible = False
+        Me.txtCodbar.Size = New System.Drawing.Size(129, 20)
+        Me.txtCodbar.TabIndex = 2
         '
         'txtdescri
         '
-        Me.txtdescri.Location = New System.Drawing.Point(94, 42)
+        Me.txtdescri.Location = New System.Drawing.Point(201, 28)
         Me.txtdescri.Name = "txtdescri"
-        Me.txtdescri.Size = New System.Drawing.Size(293, 20)
-        Me.txtdescri.TabIndex = 0
-        '
-        'btnDescri
-        '
-        Me.btnDescri.AutoSize = True
-        Me.btnDescri.Location = New System.Drawing.Point(312, 19)
-        Me.btnDescri.Name = "btnDescri"
-        Me.btnDescri.Size = New System.Drawing.Size(151, 17)
-        Me.btnDescri.TabIndex = 5
-        Me.btnDescri.TabStop = True
-        Me.btnDescri.Text = "Búsqueda por descripción:"
-        Me.btnDescri.UseVisualStyleBackColor = True
+        Me.txtdescri.Size = New System.Drawing.Size(266, 20)
+        Me.txtdescri.TabIndex = 1
         '
         'GrillaArticulos
         '
         Me.GrillaArticulos.AllowUserToAddRows = False
         Me.GrillaArticulos.AllowUserToDeleteRows = False
         Me.GrillaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GrillaArticulos.Location = New System.Drawing.Point(12, 95)
+        Me.GrillaArticulos.Location = New System.Drawing.Point(12, 83)
         Me.GrillaArticulos.Name = "GrillaArticulos"
         Me.GrillaArticulos.ReadOnly = True
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GrillaArticulos.Size = New System.Drawing.Size(686, 349)
+        Me.GrillaArticulos.Size = New System.Drawing.Size(686, 361)
         Me.GrillaArticulos.TabIndex = 4
         Me.GrillaArticulos.TabStop = False
         '
@@ -127,7 +118,7 @@ Partial Class FormBuscarArtFactu
         Me.btnSeleccionar.Location = New System.Drawing.Point(531, 467)
         Me.btnSeleccionar.Name = "btnSeleccionar"
         Me.btnSeleccionar.Size = New System.Drawing.Size(95, 46)
-        Me.btnSeleccionar.TabIndex = 2
+        Me.btnSeleccionar.TabIndex = 3
         Me.btnSeleccionar.UseVisualStyleBackColor = True
         '
         'btnCerrar
@@ -136,7 +127,7 @@ Partial Class FormBuscarArtFactu
         Me.btnCerrar.Location = New System.Drawing.Point(397, 467)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(95, 46)
-        Me.btnCerrar.TabIndex = 3
+        Me.btnCerrar.TabIndex = 4
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'FormBuscarArtFactu
@@ -157,14 +148,14 @@ Partial Class FormBuscarArtFactu
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents btnCodBar As System.Windows.Forms.RadioButton
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents btncontinua As System.Windows.Forms.Button
     Friend WithEvents txtCodbar As System.Windows.Forms.TextBox
     Friend WithEvents txtdescri As System.Windows.Forms.TextBox
-    Friend WithEvents btnDescri As System.Windows.Forms.RadioButton
     Friend WithEvents btnSeleccionar As System.Windows.Forms.Button
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Friend WithEvents GrillaArticulos As System.Windows.Forms.DataGridView
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtCod As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class

@@ -414,6 +414,16 @@ Module ModuloGeneral
         End Try
     End Sub
 
+    Function existeArchivo(ByVal strArchivo As String) As Boolean
+        Try
+
+            existeArchivo = System.IO.File.Exists(My.Settings.rutaArchivos & strArchivo)
+
+        Catch ex As Exception
+            existeArchivo = False
+        End Try
+    End Function
+
     Public Function Decript(pass As String) As String
 
         Dim pos As Long

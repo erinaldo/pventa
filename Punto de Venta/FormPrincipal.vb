@@ -36,6 +36,21 @@ Public Class FormPrincipal
             Exit Sub
         End If
 
+        If Not existeArchivo("CajaDiaria.txt") Then
+            MsgBox("No existe ninguna caja para enviar. No se puede continuar.", MsgBoxStyle.Information, "Mensaje al Operador")
+            Exit Sub
+        End If
+
+        If Not existeArchivo("ComprobanteVenta.txt") Then
+            MsgBox("No existen ventas para enviar. No se puede continuar.", MsgBoxStyle.Information, "Mensaje al Operador")
+            Exit Sub
+        End If
+
+        If Not existeArchivo("ComprobanteVentaDetalle.txt") Then
+            MsgBox("No existen detalle de ventas para enviar. No se puede continuar.", MsgBoxStyle.Information, "Mensaje al Operador")
+            Exit Sub
+        End If
+
         grabarCierreCaja()
 
         FormCierreCaja.ShowDialog()

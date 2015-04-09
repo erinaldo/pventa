@@ -44,7 +44,7 @@ Partial Class FormPide
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(45, 115)
+        Me.Label2.Location = New System.Drawing.Point(28, 112)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(40, 13)
         Me.Label2.TabIndex = 8
@@ -53,7 +53,7 @@ Partial Class FormPide
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(45, 80)
+        Me.Label1.Location = New System.Drawing.Point(28, 80)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(66, 13)
         Me.Label1.TabIndex = 6

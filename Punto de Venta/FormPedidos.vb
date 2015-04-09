@@ -12,6 +12,11 @@ Public Class FormPedidos
             listPedidosPendientes = New List(Of ComprobanteVenta)
             listComprobanteVentaDetalle = New List(Of ComprobanteVentaDetalle)
 
+            If Not existeArchivo("ComprobanteVenta.txt") Then
+                MsgBox("No existen pedidos para facturar", MsgBoxStyle.Information, "Mensaje al Operador")
+                Exit Sub
+            End If
+
             listPedidosPendientes = ObtenerComprobanteVenta()
 
             listComprobanteVentaDetalle = ObtenerComprobanteVentaDetalle()
