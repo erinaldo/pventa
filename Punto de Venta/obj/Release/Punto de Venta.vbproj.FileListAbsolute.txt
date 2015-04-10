@@ -19,3 +19,4 @@ D:\Punto_de_Venta\Punto de Venta\obj\Release\Punto de Venta.vbproj.GenerateResou
 D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.exe
 D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.xml
 D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.pdb
+D:\Punto_de_Venta\Punto de Venta\obj\Release\Punto de Venta.vbprojResolveAssemblyReference.cache

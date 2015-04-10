@@ -95,10 +95,10 @@ Public Class FormEmiteFac
         Articulo = New Articulos
         If TextCodBar.Text.Contains("*") Then
             intCantidad = Mid(TextCodBar.Text, 1, InStr(TextCodBar.Text, "*", CompareMethod.Text) - 1)
-            CodigoBarrasBuscado = Mid(TextCodBar.Text, InStr(TextCodBar.Text, "*", CompareMethod.Text) + 1, Len(TextCodBar.Text))
+            CodigoBarrasBuscado = Mid(TextCodBar.Text.ToUpper, InStr(TextCodBar.Text, "*", CompareMethod.Text) + 1, Len(TextCodBar.Text))
         Else
             intCantidad = 1
-            CodigoBarrasBuscado = TextCodBar.Text
+            CodigoBarrasBuscado = TextCodBar.Text.ToUpper
         End If
 
         If Mid(CodigoBarrasBuscado, 1, 1) <> "2" And Mid(CodigoBarrasBuscado, 2, 6) <> "900000" Then
@@ -113,17 +113,30 @@ Public Class FormEmiteFac
                     Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(Articulo.PrecioVenta * intCantidad)
 
                     ''            'Lo calculo cuando lo guardo 
-                    TotalPCompra = TotalPCompra + (Val(TextPCompra.Text) * Val(intCantidad))
+                    TotalPCompra = TotalPCompra + (Val(Articulo.PrecioCosto) * Val(intCantidad))
                     ''            'HASAR1.ImprimirItem Lbldescripcion.Caption, CDbl(TextCantidad.Text), CDbl(lblTotal.Caption), 21, 0
                     ContarArticulos(intCantidad)
                     LimpiarCajas()
                 Else
                     'Articulo = BuscarArticulo(TextCodBar.Text, idListaSeleccionada)
-                    dblcantidad = 1
-                    Dim auxTot = CDbl(Me.lblTotal.Text)
-                    FormPide.Cargar_Formulario(Articulo.Descripcion, Articulo.PrecioVenta, Articulo.Codigo, CodigoBarrasBuscado, Articulo.PrecioCosto, Me.GrillaArticulos, auxTot)
-                    Me.lblTotal.Text = FormatNumber(auxTot, 2)
-                    ContarArticulos(CDbl(dblcantidad))
+                    'dblcantidad = 1
+                    Dim auxTot As Double = 0
+                    FormPide.Cargar_Formulario(Articulo.Descripcion, auxTot)
+
+                    If auxTot = 0 Then
+                        Me.TextCodBar.Text = ""
+                        Me.TextCodBar.Focus()
+                        Exit Sub
+                    End If
+                    ModuloGeneral.InsertarFilasEnGrilla(Articulo.Codigo, Articulo.Descripcion, CDbl(auxTot), CDbl(intCantidad), CDbl(auxTot * intCantidad), Articulo.CodigoBarras, CDbl(Articulo.PrecioCosto), Me.GrillaArticulos)
+                    ''            'Actualizo el Total
+                    Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(auxTot * intCantidad)
+
+                    ''            'Lo calculo cuando lo guardo 
+                    TotalPCompra = TotalPCompra + (Val(Articulo.PrecioCosto) * Val(intCantidad))
+
+                    Me.lblTotal.Text = FormatNumber(Me.lblTotal.Text, 2)
+                    ContarArticulos(CDbl(intCantidad))
                     LimpiarCajas()
                     TextCodBar.Focus()
                     'TRAER ARTICULOS CANTIDAD
@@ -154,7 +167,7 @@ Public Class FormEmiteFac
                 '-----------------------------------
                 ModuloGeneral.InsertarFilasEnGrilla(Articulo.Codigo, Articulo.Descripcion, CDbl(preciofiambre), CDbl(intCantidad), CDbl(preciofiambre * CDbl(intCantidad)), CodigoBarrasBuscado, CDbl(Articulo.PrecioCosto), Me.GrillaArticulos)
                 Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(preciofiambre * CDbl(intCantidad))
-                TotalPCompra = TotalPCompra + (CDbl(TextPCompra.Text) * CDbl(intCantidad))
+                TotalPCompra = TotalPCompra + (CDbl(Articulo.PrecioCosto) * CDbl(intCantidad))
                 ContarArticulos(CDbl(intCantidad))
 
                 LimpiarCajas()

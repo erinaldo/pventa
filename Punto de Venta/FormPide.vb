@@ -1,38 +1,33 @@
 ﻿Public Class FormPide
     Dim descart As String
-    Dim precio As Double
-    Dim codigo As String
-    Dim CodBarras As String
-    Dim pcompra As Double
-    Dim gri As DataGridView
     Dim tot As Double
 
-    Public Sub Cargar_Formulario(des As String, pr As Double, cod As String, cb As String, pc As Double, grilla As DataGridView, ByRef total As Double)
+    Public Sub Cargar_Formulario(des As String, ByRef total As Double)
         descart = des
-        precio = pr
-        codigo = cod
-        CodBarras = cb
-        pcompra = pc
         lbldescart.Text = descart
-        gri = grilla
         tot = total
+        Me.txtprecio.Text = ""
         Me.txtprecio.Focus()
         ShowDialog()
         total = tot
     End Sub
 
     Private Sub btnaceptar_Click(sender As Object, e As EventArgs) Handles btnaceptar.Click
-        Dim Pingresado As Double
-        Dim PTotal As Double
-        If CDbl(txtprecio.Text) < 0 Then
+        If txtprecio.Text = "" Then
+            tot = 0
+            Me.Dispose()
+            Me.Close()
             Exit Sub
         End If
-        ModuloGeneral.InsertarFilasEnGrilla(codigo, descart, CDbl(txtprecio.Text), dblcantidad, FormatNumber(CDbl(txtprecio.Text) * dblcantidad, 2), CodBarras, pcompra, gri)
-        TotalPcompra = TotalPcompra + (pcompra * dblcantidad)
-        Pingresado = CDbl(txtprecio.Text) * dblcantidad
-        PTotal = tot
-        tot = FormatNumber(PTotal + Pingresado, 2)
 
+        If CDbl(txtprecio.Text) < 0 Then
+            tot = 0
+            Me.Dispose()
+            Me.Close()
+            Exit Sub
+        End If
+        tot = CDbl(txtprecio.Text) * dblcantidad
+        Me.Dispose()
         Me.Close()
     End Sub
 
@@ -41,5 +36,13 @@
             e.Handled = True
             SendKeys.Send("{TAB}")
         End If
+    End Sub
+
+    Private Sub txtprecio_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtprecio.Validating
+        Try
+            txtprecio.Text = FormatNumber(Replace(txtprecio.Text, ".", ","), 2)
+        Catch ex As Exception
+            txtprecio.Text = 0
+        End Try
     End Sub
 End Class

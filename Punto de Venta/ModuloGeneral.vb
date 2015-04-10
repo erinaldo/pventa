@@ -424,6 +424,10 @@ Module ModuloGeneral
         End Try
     End Function
 
+    Function ControlarCierreRealizado() As Boolean
+
+    End Function
+
     Public Function Decript(pass As String) As String
 
         Dim pos As Long

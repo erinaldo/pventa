@@ -58,7 +58,7 @@ Partial Class FormAtencion
         Me.KeyPreview = True
         Me.Name = "FormAtencion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FormAtencion"
+        Me.Text = "Atencion"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

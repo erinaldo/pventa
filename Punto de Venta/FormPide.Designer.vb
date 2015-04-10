@@ -65,7 +65,7 @@ Partial Class FormPide
         Me.btnCancelar.Location = New System.Drawing.Point(48, 191)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(95, 46)
-        Me.btnCancelar.TabIndex = 7
+        Me.btnCancelar.TabIndex = 2
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'btnaceptar
@@ -74,7 +74,7 @@ Partial Class FormPide
         Me.btnaceptar.Location = New System.Drawing.Point(179, 191)
         Me.btnaceptar.Name = "btnaceptar"
         Me.btnaceptar.Size = New System.Drawing.Size(95, 46)
-        Me.btnaceptar.TabIndex = 5
+        Me.btnaceptar.TabIndex = 1
         Me.btnaceptar.UseVisualStyleBackColor = True
         '
         'txtprecio
@@ -82,7 +82,7 @@ Partial Class FormPide
         Me.txtprecio.Location = New System.Drawing.Point(121, 112)
         Me.txtprecio.Name = "txtprecio"
         Me.txtprecio.Size = New System.Drawing.Size(107, 20)
-        Me.txtprecio.TabIndex = 10
+        Me.txtprecio.TabIndex = 0
         '
         'FormPide
         '

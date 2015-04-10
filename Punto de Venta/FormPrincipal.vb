@@ -85,6 +85,10 @@ Public Class FormPrincipal
 
         blnEsSupervisor = False
 
+        'If Not ControlarCierreRealizado() Then
+        'MsgBox("No se ha realizado el cierre anterior. P
+        'End If
+
         listaCajaDia = ObtenerCajaDiaria()
 
         Dim caja As List(Of CajaDiaria) = (From caj In listaCajaDia
