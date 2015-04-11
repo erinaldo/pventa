@@ -16,9 +16,15 @@
                 Exit Sub
             Else
                 blnEsSupervisor = False
+                Me.Dispose()
                 Me.Close()
                 Exit Sub
             End If
+        ElseIf e.KeyChar = ChrW(Keys.Escape) Then
+            blnEsSupervisor = False
+            Me.Dispose()
+            Me.Close()
+            Exit Sub
         Else
             lngCodigo = lngCodigo & e.KeyChar.ToString
         End If

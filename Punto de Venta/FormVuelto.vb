@@ -134,11 +134,31 @@
         If e.KeyCode = Keys.I Then
             Origen = "I"
             btnAceptar_Click(sender, e)
+            Exit Sub
         End If
 
         If e.KeyCode = Keys.F Then
             Origen = "F"
             btnAceptar_Click(sender, e)
+            Exit Sub
+        End If
+
+        If e.KeyCode = Keys.F1 Then
+            cmbFormas.SelectedValue = 1
+            cmbFormas_DropDownClosed(sender, e)
+            Exit Sub
+        End If
+
+        If e.KeyCode = Keys.F2 Then
+            cmbFormas.SelectedValue = 2
+            cmbFormas_DropDownClosed(sender, e)
+            Exit Sub
+        End If
+
+        If e.KeyCode = Keys.F3 Then
+            cmbFormas.SelectedValue = 3
+            cmbFormas_DropDownClosed(sender, e)
+            Exit Sub
         End If
 
         If e.KeyCode = Keys.Enter Then

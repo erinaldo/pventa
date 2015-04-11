@@ -47,6 +47,10 @@ Partial Class FormEmiteFac
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdAceptar = New System.Windows.Forms.Button()
+        Me.cmdEliminar = New System.Windows.Forms.Button()
         Me.CodigoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescripcionArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -54,10 +58,6 @@ Partial Class FormEmiteFac
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pcompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
-        Me.cmdEliminar = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -67,7 +67,6 @@ Partial Class FormEmiteFac
         '
         Me.GrillaArticulos.AllowUserToAddRows = False
         Me.GrillaArticulos.AllowUserToDeleteRows = False
-        Me.GrillaArticulos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -91,15 +90,15 @@ Partial Class FormEmiteFac
         Me.GrillaArticulos.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.GrillaArticulos.RowTemplate.Height = 100
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GrillaArticulos.Size = New System.Drawing.Size(760, 300)
-        Me.GrillaArticulos.TabIndex = 102
-        Me.GrillaArticulos.TabStop = False
+        Me.GrillaArticulos.Size = New System.Drawing.Size(760, 282)
+        Me.GrillaArticulos.StandardTab = True
+        Me.GrillaArticulos.TabIndex = 3
         '
         'lblCantidad
         '
         Me.lblCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCantidad.ForeColor = System.Drawing.Color.Red
-        Me.lblCantidad.Location = New System.Drawing.Point(653, 507)
+        Me.lblCantidad.Location = New System.Drawing.Point(653, 489)
         Me.lblCantidad.Name = "lblCantidad"
         Me.lblCantidad.Size = New System.Drawing.Size(94, 37)
         Me.lblCantidad.TabIndex = 110
@@ -119,7 +118,7 @@ Partial Class FormEmiteFac
         '
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotal.ForeColor = System.Drawing.Color.Red
-        Me.lblTotal.Location = New System.Drawing.Point(475, 507)
+        Me.lblTotal.Location = New System.Drawing.Point(475, 489)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(133, 37)
         Me.lblTotal.TabIndex = 107
@@ -129,7 +128,7 @@ Partial Class FormEmiteFac
         'Label7
         '
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(518, 476)
+        Me.Label7.Location = New System.Drawing.Point(518, 458)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(45, 17)
         Me.Label7.TabIndex = 106
@@ -151,7 +150,8 @@ Partial Class FormEmiteFac
         Me.cmbcliente.Location = New System.Drawing.Point(463, 18)
         Me.cmbcliente.Name = "cmbcliente"
         Me.cmbcliente.Size = New System.Drawing.Size(285, 23)
-        Me.cmbcliente.TabIndex = 5
+        Me.cmbcliente.TabIndex = 100
+        Me.cmbcliente.TabStop = False
         '
         'GroupBox1
         '
@@ -231,7 +231,8 @@ Partial Class FormEmiteFac
         Me.DtFechaEmi.Location = New System.Drawing.Point(65, 21)
         Me.DtFechaEmi.Name = "DtFechaEmi"
         Me.DtFechaEmi.Size = New System.Drawing.Size(129, 21)
-        Me.DtFechaEmi.TabIndex = 1
+        Me.DtFechaEmi.TabIndex = 101
+        Me.DtFechaEmi.TabStop = False
         '
         'Label1
         '
@@ -249,7 +250,7 @@ Partial Class FormEmiteFac
         Me.TextCodBar.Location = New System.Drawing.Point(175, 20)
         Me.TextCodBar.Name = "TextCodBar"
         Me.TextCodBar.Size = New System.Drawing.Size(183, 26)
-        Me.TextCodBar.TabIndex = 0
+        Me.TextCodBar.TabIndex = 1
         '
         'Label14
         '
@@ -264,7 +265,7 @@ Partial Class FormEmiteFac
         'Label13
         '
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(627, 466)
+        Me.Label13.Location = New System.Drawing.Point(627, 448)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(145, 34)
         Me.Label13.TabIndex = 109
@@ -282,8 +283,44 @@ Partial Class FormEmiteFac
         Me.GroupBox2.Location = New System.Drawing.Point(12, 100)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(760, 57)
-        Me.GroupBox2.TabIndex = 101
+        Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
+        '
+        'Button1
+        '
+        Me.Button1.Image = Global.PuntoVenta.My.Resources.Resources.viewmag_icono_4318_16
+        Me.Button1.Location = New System.Drawing.Point(373, 20)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(36, 26)
+        Me.Button1.TabIndex = 2
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
+        Me.cmdCancelar.Location = New System.Drawing.Point(256, 468)
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(95, 46)
+        Me.cmdCancelar.TabIndex = 5
+        Me.cmdCancelar.UseVisualStyleBackColor = True
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Image = Global.PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32
+        Me.cmdAceptar.Location = New System.Drawing.Point(357, 468)
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(95, 46)
+        Me.cmdAceptar.TabIndex = 4
+        Me.cmdAceptar.UseVisualStyleBackColor = True
+        '
+        'cmdEliminar
+        '
+        Me.cmdEliminar.Image = Global.PuntoVenta.My.Resources.Resources.emptytrash_icono_9439_32
+        Me.cmdEliminar.Location = New System.Drawing.Point(30, 468)
+        Me.cmdEliminar.Name = "cmdEliminar"
+        Me.cmdEliminar.Size = New System.Drawing.Size(95, 46)
+        Me.cmdEliminar.TabIndex = 6
+        Me.cmdEliminar.UseVisualStyleBackColor = True
         '
         'CodigoArticulo
         '
@@ -299,7 +336,7 @@ Partial Class FormEmiteFac
         Me.DescripcionArticulo.HeaderText = "Descripción"
         Me.DescripcionArticulo.Name = "DescripcionArticulo"
         Me.DescripcionArticulo.ReadOnly = True
-        Me.DescripcionArticulo.Width = 340
+        Me.DescripcionArticulo.Width = 330
         '
         'PrecioUnitario
         '
@@ -326,7 +363,7 @@ Partial Class FormEmiteFac
         Me.Total.HeaderText = "Total"
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
-        Me.Total.Width = 110
+        Me.Total.Width = 105
         '
         'Codbar
         '
@@ -342,47 +379,11 @@ Partial Class FormEmiteFac
         Me.pcompra.ReadOnly = True
         Me.pcompra.Visible = False
         '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
-        Me.cmdCancelar.Location = New System.Drawing.Point(256, 508)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(95, 46)
-        Me.cmdCancelar.TabIndex = 3
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Image = Global.PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32
-        Me.cmdAceptar.Location = New System.Drawing.Point(357, 508)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(95, 46)
-        Me.cmdAceptar.TabIndex = 2
-        Me.cmdAceptar.UseVisualStyleBackColor = True
-        '
-        'cmdEliminar
-        '
-        Me.cmdEliminar.Image = Global.PuntoVenta.My.Resources.Resources.emptytrash_icono_9439_32
-        Me.cmdEliminar.Location = New System.Drawing.Point(30, 508)
-        Me.cmdEliminar.Name = "cmdEliminar"
-        Me.cmdEliminar.Size = New System.Drawing.Size(95, 46)
-        Me.cmdEliminar.TabIndex = 4
-        Me.cmdEliminar.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Image = Global.PuntoVenta.My.Resources.Resources.viewmag_icono_4318_16
-        Me.Button1.Location = New System.Drawing.Point(373, 20)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(36, 26)
-        Me.Button1.TabIndex = 1
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'FormEmiteFac
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 562)
+        Me.ClientSize = New System.Drawing.Size(784, 532)
         Me.Controls.Add(Me.GrillaArticulos)
         Me.Controls.Add(Me.lblCantidad)
         Me.Controls.Add(Me.lblTotal)

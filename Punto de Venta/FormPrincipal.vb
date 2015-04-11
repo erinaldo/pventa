@@ -15,7 +15,8 @@ Public Class FormPrincipal
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnFacturacion.Click
-        FormEmiteFac.ShowDialog()
+        Dim frm As New FormEmiteFac
+        frm.ShowDialog()
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click

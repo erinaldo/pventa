@@ -133,7 +133,7 @@ Partial Class FormPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 562)
+        Me.ClientSize = New System.Drawing.Size(784, 542)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.Button7)

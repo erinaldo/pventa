@@ -34,7 +34,7 @@ Public Class FormEmiteFac
         idListaSeleccionada = 1
         lblTotal.Text = FormatNumber("0", 2)
         lblCantidad.Text = 0
-        Me.TextCodBar.Focus()
+        'Me.TextCodBar.Focus()
 
         'ShowDialog()
         'Else
@@ -210,6 +210,10 @@ Public Class FormEmiteFac
             Exit Sub
         End If
 
+        If e.KeyCode = Keys.F4 Then
+            FormConsulta.ShowDialog()
+        End If
+
         If e.KeyCode = Keys.F5 Then
             FormPedidos.ShowDialog()
         End If
@@ -317,7 +321,7 @@ Public Class FormEmiteFac
                     FormEmiteFac_Load(sender, e)
                     '''''PrepararNuevoTicket()
                     blnInicioTicket = True
-                    cmbcliente.Enabled = True
+                    'cmbcliente.Enabled = True
                 End If
             Else
                 MsgAtencion("Debe cargar al menos un articulo")

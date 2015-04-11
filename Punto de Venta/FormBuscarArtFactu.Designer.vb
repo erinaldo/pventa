@@ -47,7 +47,7 @@ Partial Class FormBuscarArtFactu
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(686, 65)
-        Me.GroupBox1.TabIndex = 7
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Búsqueda de articulos"
         '
@@ -56,7 +56,7 @@ Partial Class FormBuscarArtFactu
         Me.txtCod.Location = New System.Drawing.Point(55, 28)
         Me.txtCod.Name = "txtCod"
         Me.txtCod.Size = New System.Drawing.Size(68, 20)
-        Me.txtCod.TabIndex = 5
+        Me.txtCod.TabIndex = 6
         '
         'Label3
         '
@@ -90,14 +90,14 @@ Partial Class FormBuscarArtFactu
         Me.txtCodbar.Location = New System.Drawing.Point(536, 28)
         Me.txtCodbar.Name = "txtCodbar"
         Me.txtCodbar.Size = New System.Drawing.Size(129, 20)
-        Me.txtCodbar.TabIndex = 1
+        Me.txtCodbar.TabIndex = 2
         '
         'txtdescri
         '
         Me.txtdescri.Location = New System.Drawing.Point(201, 28)
         Me.txtdescri.Name = "txtdescri"
         Me.txtdescri.Size = New System.Drawing.Size(266, 20)
-        Me.txtdescri.TabIndex = 0
+        Me.txtdescri.TabIndex = 1
         '
         'GrillaArticulos
         '
@@ -110,7 +110,7 @@ Partial Class FormBuscarArtFactu
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GrillaArticulos.Size = New System.Drawing.Size(686, 361)
         Me.GrillaArticulos.StandardTab = True
-        Me.GrillaArticulos.TabIndex = 2
+        Me.GrillaArticulos.TabIndex = 3
         '
         'btnSeleccionar
         '
@@ -118,7 +118,7 @@ Partial Class FormBuscarArtFactu
         Me.btnSeleccionar.Location = New System.Drawing.Point(531, 467)
         Me.btnSeleccionar.Name = "btnSeleccionar"
         Me.btnSeleccionar.Size = New System.Drawing.Size(95, 46)
-        Me.btnSeleccionar.TabIndex = 3
+        Me.btnSeleccionar.TabIndex = 4
         Me.btnSeleccionar.UseVisualStyleBackColor = True
         '
         'btnCerrar
@@ -127,7 +127,7 @@ Partial Class FormBuscarArtFactu
         Me.btnCerrar.Location = New System.Drawing.Point(397, 467)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(95, 46)
-        Me.btnCerrar.TabIndex = 4
+        Me.btnCerrar.TabIndex = 5
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'FormBuscarArtFactu

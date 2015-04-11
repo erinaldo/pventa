@@ -57,13 +57,13 @@ Public Class FormBuscarArtFactu
     'End Sub
 
     Private Sub txtdescri_KeyUp(sender As Object, e As KeyEventArgs) Handles txtdescri.KeyUp
-
-        Dim result As List(Of Articulos) = (From art In lista
-                                            Where art.Descripcion.Contains(txtdescri.Text.ToUpper)
-                                            Select art).ToList
-        'CargarGrillaArticulos(result)
-        GrillaArticulos.DataSource = result
-
+        If e.KeyCode = Keys.Enter Then
+            Dim result As List(Of Articulos) = (From art In lista
+                                                        Where art.Descripcion.Contains(txtdescri.Text.ToUpper)
+                                                        Select art).ToList
+            'CargarGrillaArticulos(result)
+            GrillaArticulos.DataSource = result
+        End If
     End Sub
 
     Private Sub btnSeleccionar_Click(sender As Object, e As EventArgs) Handles btnSeleccionar.Click
@@ -80,11 +80,13 @@ Public Class FormBuscarArtFactu
     End Sub
 
     Private Sub txtCodbar_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCodbar.KeyUp
-        Dim result As List(Of Articulos) = (From art In lista
+        If e.KeyCode = Keys.Enter Then
+            Dim result As List(Of Articulos) = (From art In lista
                                     Where art.CodigoBarras.Contains(txtCodbar.Text.ToUpper)
                                     Select art).ToList
-        'CargarGrillaArticulos(result)
-        GrillaArticulos.DataSource = result
+            'CargarGrillaArticulos(result)
+            GrillaArticulos.DataSource = result
+        End If
     End Sub
 
     Private Sub GrillaArticulos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaArticulos.CellDoubleClick
@@ -92,26 +94,45 @@ Public Class FormBuscarArtFactu
     End Sub
 
     Private Sub txtCod_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCod.KeyUp
-        Dim result As List(Of Articulos) = (From art In lista
+        If e.KeyCode = Keys.Enter Then
+            Dim result As List(Of Articulos) = (From art In lista
                             Where art.Codigo.ToString.Contains(txtCod.Text)
                             Select art).ToList
-        'CargarGrillaArticulos(result)
-        GrillaArticulos.DataSource = result
+            'CargarGrillaArticulos(result)
+            GrillaArticulos.DataSource = result
+        End If
     End Sub
 
     Private Sub txtCod_Enter(sender As Object, e As EventArgs) Handles txtCod.Enter
-        txtCodbar.Text = ""
-        txtdescri.Text = ""
+        txtCod.Text = ""
     End Sub
 
     Private Sub txtdescri_Enter(sender As Object, e As EventArgs) Handles txtdescri.Enter
+        txtdescri.Text = ""
+    End Sub
+
+    Private Sub txtCodbar_Enter(sender As Object, e As EventArgs) Handles txtCodbar.Enter
+        txtCodbar.Text = ""
+    End Sub
+
+    Private Sub GrillaArticulos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles GrillaArticulos.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            btnSeleccionar_Click(sender, e)
+        End If
+    End Sub
+
+    Private Sub txtdescri_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtdescri.KeyPress
         txtCod.Text = ""
         txtCodbar.Text = ""
     End Sub
 
-    Private Sub txtCodbar_Enter(sender As Object, e As EventArgs) Handles txtCodbar.Enter
+    Private Sub txtCodbar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodbar.KeyPress
         txtCod.Text = ""
         txtdescri.Text = ""
     End Sub
 
+    Private Sub txtCod_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCod.KeyPress
+        txtCodbar.Text = ""
+        txtdescri.Text = ""
+    End Sub
 End Class
