@@ -35,7 +35,7 @@ Partial Class FormPrincipal
         'Button6
         '
         Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Location = New System.Drawing.Point(271, 240)
+        Me.Button6.Location = New System.Drawing.Point(235, 286)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(130, 130)
         Me.Button6.TabIndex = 5
@@ -45,7 +45,7 @@ Partial Class FormPrincipal
         'Button7
         '
         Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(448, 240)
+        Me.Button7.Location = New System.Drawing.Point(421, 286)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(130, 130)
         Me.Button7.TabIndex = 6
@@ -56,7 +56,7 @@ Partial Class FormPrincipal
         '
         Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrar.Image = Global.PuntoVenta.My.Resources.Resources.salir_de_mi_perfil_icono_3964_96
-        Me.btnCerrar.Location = New System.Drawing.Point(626, 240)
+        Me.btnCerrar.Location = New System.Drawing.Point(600, 286)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(130, 130)
         Me.btnCerrar.TabIndex = 7
@@ -69,7 +69,7 @@ Partial Class FormPrincipal
         Me.btnCerrarCaja.Enabled = False
         Me.btnCerrarCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarCaja.Image = Global.PuntoVenta.My.Resources.Resources.shop_closed
-        Me.btnCerrarCaja.Location = New System.Drawing.Point(104, 240)
+        Me.btnCerrarCaja.Location = New System.Drawing.Point(55, 286)
         Me.btnCerrarCaja.Name = "btnCerrarCaja"
         Me.btnCerrarCaja.Size = New System.Drawing.Size(130, 130)
         Me.btnCerrarCaja.TabIndex = 4
@@ -82,7 +82,7 @@ Partial Class FormPrincipal
         Me.btnRetiroDinero.Enabled = False
         Me.btnRetiroDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRetiroDinero.Image = Global.PuntoVenta.My.Resources.Resources.coin_delete_96x96
-        Me.btnRetiroDinero.Location = New System.Drawing.Point(626, 68)
+        Me.btnRetiroDinero.Location = New System.Drawing.Point(600, 106)
         Me.btnRetiroDinero.Name = "btnRetiroDinero"
         Me.btnRetiroDinero.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.btnRetiroDinero.Size = New System.Drawing.Size(130, 130)
@@ -96,7 +96,7 @@ Partial Class FormPrincipal
         Me.btnIngresoDinero.Enabled = False
         Me.btnIngresoDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnIngresoDinero.Image = Global.PuntoVenta.My.Resources.Resources.coin_add_96x96
-        Me.btnIngresoDinero.Location = New System.Drawing.Point(448, 68)
+        Me.btnIngresoDinero.Location = New System.Drawing.Point(421, 106)
         Me.btnIngresoDinero.Name = "btnIngresoDinero"
         Me.btnIngresoDinero.Size = New System.Drawing.Size(130, 130)
         Me.btnIngresoDinero.TabIndex = 2
@@ -109,7 +109,7 @@ Partial Class FormPrincipal
         Me.btnFacturacion.Enabled = False
         Me.btnFacturacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFacturacion.Image = Global.PuntoVenta.My.Resources.Resources.la_lucha_contra_la_caja_registradora_icono_4028_96
-        Me.btnFacturacion.Location = New System.Drawing.Point(271, 68)
+        Me.btnFacturacion.Location = New System.Drawing.Point(235, 106)
         Me.btnFacturacion.Name = "btnFacturacion"
         Me.btnFacturacion.Size = New System.Drawing.Size(130, 130)
         Me.btnFacturacion.TabIndex = 1
@@ -121,7 +121,7 @@ Partial Class FormPrincipal
         '
         Me.btnAbrirCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAbrirCaja.Image = Global.PuntoVenta.My.Resources.Resources.shop_open
-        Me.btnAbrirCaja.Location = New System.Drawing.Point(104, 68)
+        Me.btnAbrirCaja.Location = New System.Drawing.Point(55, 106)
         Me.btnAbrirCaja.Name = "btnAbrirCaja"
         Me.btnAbrirCaja.Size = New System.Drawing.Size(130, 130)
         Me.btnAbrirCaja.TabIndex = 0
@@ -133,7 +133,7 @@ Partial Class FormPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(890, 469)
+        Me.ClientSize = New System.Drawing.Size(784, 562)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.Button7)

@@ -26,7 +26,7 @@
             Me.Close()
             Exit Sub
         End If
-        tot = CDbl(txtprecio.Text) * dblcantidad
+        tot = CDbl(txtprecio.Text)
         Me.Dispose()
         Me.Close()
     End Sub

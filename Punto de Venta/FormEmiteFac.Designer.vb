@@ -29,13 +29,6 @@ Partial Class FormEmiteFac
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GrillaArticulos = New System.Windows.Forms.DataGridView()
-        Me.CodigoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.pcompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblCantidad = New System.Windows.Forms.Label()
         Me.TextPCompra = New System.Windows.Forms.TextBox()
         Me.lblTotal = New System.Windows.Forms.Label()
@@ -54,10 +47,17 @@ Partial Class FormEmiteFac
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.CodigoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pcompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmdCancelar = New System.Windows.Forms.Button()
         Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.cmdEliminar = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -78,12 +78,12 @@ Partial Class FormEmiteFac
         Me.GrillaArticulos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GrillaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaArticulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoArticulo, Me.DescripcionArticulo, Me.PrecioUnitario, Me.Cantidad, Me.Total, Me.Codbar, Me.pcompra})
-        Me.GrillaArticulos.Location = New System.Drawing.Point(12, 174)
+        Me.GrillaArticulos.Location = New System.Drawing.Point(12, 163)
         Me.GrillaArticulos.Name = "GrillaArticulos"
         Me.GrillaArticulos.ReadOnly = True
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -91,99 +91,45 @@ Partial Class FormEmiteFac
         Me.GrillaArticulos.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.GrillaArticulos.RowTemplate.Height = 100
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GrillaArticulos.Size = New System.Drawing.Size(900, 289)
+        Me.GrillaArticulos.Size = New System.Drawing.Size(760, 300)
         Me.GrillaArticulos.TabIndex = 102
-        '
-        'CodigoArticulo
-        '
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CodigoArticulo.DefaultCellStyle = DataGridViewCellStyle2
-        Me.CodigoArticulo.HeaderText = "Código"
-        Me.CodigoArticulo.Name = "CodigoArticulo"
-        Me.CodigoArticulo.ReadOnly = True
-        '
-        'DescripcionArticulo
-        '
-        Me.DescripcionArticulo.HeaderText = "Descripción"
-        Me.DescripcionArticulo.Name = "DescripcionArticulo"
-        Me.DescripcionArticulo.ReadOnly = True
-        Me.DescripcionArticulo.Width = 370
-        '
-        'PrecioUnitario
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.PrecioUnitario.DefaultCellStyle = DataGridViewCellStyle3
-        Me.PrecioUnitario.HeaderText = "P.Unitario"
-        Me.PrecioUnitario.Name = "PrecioUnitario"
-        Me.PrecioUnitario.ReadOnly = True
-        Me.PrecioUnitario.Width = 120
-        '
-        'Cantidad
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Cantidad.HeaderText = "Cantidad"
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.ReadOnly = True
-        '
-        'Total
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Width = 140
-        '
-        'Codbar
-        '
-        Me.Codbar.HeaderText = "Codbar"
-        Me.Codbar.Name = "Codbar"
-        Me.Codbar.ReadOnly = True
-        Me.Codbar.Visible = False
-        '
-        'pcompra
-        '
-        Me.pcompra.HeaderText = "pcompra"
-        Me.pcompra.Name = "pcompra"
-        Me.pcompra.ReadOnly = True
-        Me.pcompra.Visible = False
+        Me.GrillaArticulos.TabStop = False
         '
         'lblCantidad
         '
-        Me.lblCantidad.AutoSize = True
         Me.lblCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCantidad.ForeColor = System.Drawing.Color.Red
-        Me.lblCantidad.Location = New System.Drawing.Point(769, 510)
+        Me.lblCantidad.Location = New System.Drawing.Point(653, 507)
         Me.lblCantidad.Name = "lblCantidad"
         Me.lblCantidad.Size = New System.Drawing.Size(94, 37)
         Me.lblCantidad.TabIndex = 110
         Me.lblCantidad.Text = "Total"
+        Me.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TextPCompra
         '
-        Me.TextPCompra.Location = New System.Drawing.Point(608, 26)
+        Me.TextPCompra.Location = New System.Drawing.Point(478, 22)
         Me.TextPCompra.Name = "TextPCompra"
         Me.TextPCompra.Size = New System.Drawing.Size(76, 22)
         Me.TextPCompra.TabIndex = 108
+        Me.TextPCompra.TabStop = False
         Me.TextPCompra.Visible = False
         '
         'lblTotal
         '
-        Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotal.ForeColor = System.Drawing.Color.Red
-        Me.lblTotal.Location = New System.Drawing.Point(584, 510)
+        Me.lblTotal.Location = New System.Drawing.Point(475, 507)
         Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(94, 37)
+        Me.lblTotal.Size = New System.Drawing.Size(133, 37)
         Me.lblTotal.TabIndex = 107
         Me.lblTotal.Text = "Total"
+        Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label7
         '
-        Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(607, 476)
+        Me.Label7.Location = New System.Drawing.Point(518, 476)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(45, 17)
         Me.Label7.TabIndex = 106
@@ -191,17 +137,18 @@ Partial Class FormEmiteFac
         '
         'TextCodigo
         '
-        Me.TextCodigo.Location = New System.Drawing.Point(690, 26)
+        Me.TextCodigo.Location = New System.Drawing.Point(579, 22)
         Me.TextCodigo.Name = "TextCodigo"
         Me.TextCodigo.Size = New System.Drawing.Size(76, 22)
         Me.TextCodigo.TabIndex = 105
+        Me.TextCodigo.TabStop = False
         Me.TextCodigo.Visible = False
         '
         'cmbcliente
         '
         Me.cmbcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbcliente.FormattingEnabled = True
-        Me.cmbcliente.Location = New System.Drawing.Point(598, 17)
+        Me.cmbcliente.Location = New System.Drawing.Point(463, 18)
         Me.cmbcliente.Name = "cmbcliente"
         Me.cmbcliente.Size = New System.Drawing.Size(285, 23)
         Me.cmbcliente.TabIndex = 5
@@ -219,7 +166,7 @@ Partial Class FormEmiteFac
         Me.GroupBox1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(900, 82)
+        Me.GroupBox1.Size = New System.Drawing.Size(760, 82)
         Me.GroupBox1.TabIndex = 112
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Generales"
@@ -229,7 +176,7 @@ Partial Class FormEmiteFac
         Me.lblLista.AutoSize = True
         Me.lblLista.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLista.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.lblLista.Location = New System.Drawing.Point(595, 51)
+        Me.lblLista.Location = New System.Drawing.Point(460, 51)
         Me.lblLista.Name = "lblLista"
         Me.lblLista.Size = New System.Drawing.Size(0, 16)
         Me.lblLista.TabIndex = 7
@@ -239,7 +186,7 @@ Partial Class FormEmiteFac
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(492, 52)
+        Me.Label6.Location = New System.Drawing.Point(357, 52)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 15)
         Me.Label6.TabIndex = 6
@@ -250,7 +197,7 @@ Partial Class FormEmiteFac
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(542, 24)
+        Me.Label4.Location = New System.Drawing.Point(407, 25)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(49, 15)
         Me.Label4.TabIndex = 4
@@ -299,7 +246,7 @@ Partial Class FormEmiteFac
         'TextCodBar
         '
         Me.TextCodBar.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextCodBar.Location = New System.Drawing.Point(175, 24)
+        Me.TextCodBar.Location = New System.Drawing.Point(175, 20)
         Me.TextCodBar.Name = "TextCodBar"
         Me.TextCodBar.Size = New System.Drawing.Size(183, 26)
         Me.TextCodBar.TabIndex = 0
@@ -308,7 +255,7 @@ Partial Class FormEmiteFac
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(34, 27)
+        Me.Label14.Location = New System.Drawing.Point(34, 23)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(135, 18)
         Me.Label14.TabIndex = 0
@@ -316,13 +263,13 @@ Partial Class FormEmiteFac
         '
         'Label13
         '
-        Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(702, 476)
+        Me.Label13.Location = New System.Drawing.Point(627, 466)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(214, 15)
+        Me.Label13.Size = New System.Drawing.Size(145, 34)
         Me.Label13.TabIndex = 109
         Me.Label13.Text = "Cantidad de articulos facturados"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'GroupBox2
         '
@@ -334,35 +281,83 @@ Partial Class FormEmiteFac
         Me.GroupBox2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(12, 100)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(900, 68)
+        Me.GroupBox2.Size = New System.Drawing.Size(760, 57)
         Me.GroupBox2.TabIndex = 101
         Me.GroupBox2.TabStop = False
         '
-        'Button1
+        'CodigoArticulo
         '
-        Me.Button1.Image = Global.PuntoVenta.My.Resources.Resources.viewmag_icono_4318_16
-        Me.Button1.Location = New System.Drawing.Point(373, 24)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(36, 26)
-        Me.Button1.TabIndex = 18
-        Me.Button1.UseVisualStyleBackColor = True
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CodigoArticulo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.CodigoArticulo.HeaderText = "Código"
+        Me.CodigoArticulo.Name = "CodigoArticulo"
+        Me.CodigoArticulo.ReadOnly = True
+        Me.CodigoArticulo.Width = 75
+        '
+        'DescripcionArticulo
+        '
+        Me.DescripcionArticulo.HeaderText = "Descripción"
+        Me.DescripcionArticulo.Name = "DescripcionArticulo"
+        Me.DescripcionArticulo.ReadOnly = True
+        Me.DescripcionArticulo.Width = 340
+        '
+        'PrecioUnitario
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.PrecioUnitario.DefaultCellStyle = DataGridViewCellStyle3
+        Me.PrecioUnitario.HeaderText = "P.Unitario"
+        Me.PrecioUnitario.Name = "PrecioUnitario"
+        Me.PrecioUnitario.ReadOnly = True
+        Me.PrecioUnitario.Width = 105
+        '
+        'Cantidad
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Cantidad.HeaderText = "Cantidad"
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
+        Me.Cantidad.Width = 85
+        '
+        'Total
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        Me.Total.Width = 110
+        '
+        'Codbar
+        '
+        Me.Codbar.HeaderText = "Codbar"
+        Me.Codbar.Name = "Codbar"
+        Me.Codbar.ReadOnly = True
+        Me.Codbar.Visible = False
+        '
+        'pcompra
+        '
+        Me.pcompra.HeaderText = "pcompra"
+        Me.pcompra.Name = "pcompra"
+        Me.pcompra.ReadOnly = True
+        Me.pcompra.Visible = False
         '
         'cmdCancelar
         '
         Me.cmdCancelar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
-        Me.cmdCancelar.Location = New System.Drawing.Point(308, 508)
+        Me.cmdCancelar.Location = New System.Drawing.Point(256, 508)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(95, 46)
-        Me.cmdCancelar.TabIndex = 104
+        Me.cmdCancelar.TabIndex = 3
         Me.cmdCancelar.UseVisualStyleBackColor = True
         '
         'cmdAceptar
         '
         Me.cmdAceptar.Image = Global.PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32
-        Me.cmdAceptar.Location = New System.Drawing.Point(437, 508)
+        Me.cmdAceptar.Location = New System.Drawing.Point(357, 508)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(95, 46)
-        Me.cmdAceptar.TabIndex = 103
+        Me.cmdAceptar.TabIndex = 2
         Me.cmdAceptar.UseVisualStyleBackColor = True
         '
         'cmdEliminar
@@ -371,14 +366,23 @@ Partial Class FormEmiteFac
         Me.cmdEliminar.Location = New System.Drawing.Point(30, 508)
         Me.cmdEliminar.Name = "cmdEliminar"
         Me.cmdEliminar.Size = New System.Drawing.Size(95, 46)
-        Me.cmdEliminar.TabIndex = 111
+        Me.cmdEliminar.TabIndex = 4
         Me.cmdEliminar.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Image = Global.PuntoVenta.My.Resources.Resources.viewmag_icono_4318_16
+        Me.Button1.Location = New System.Drawing.Point(373, 20)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(36, 26)
+        Me.Button1.TabIndex = 1
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FormEmiteFac
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(928, 569)
+        Me.ClientSize = New System.Drawing.Size(784, 562)
         Me.Controls.Add(Me.GrillaArticulos)
         Me.Controls.Add(Me.lblCantidad)
         Me.Controls.Add(Me.lblTotal)
@@ -393,13 +397,12 @@ Partial Class FormEmiteFac
         Me.Name = "FormEmiteFac"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Punto de Venta"
-        CType(Me.GrillaArticulos,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox1.ResumeLayout(false)
-        Me.GroupBox1.PerformLayout
-        Me.GroupBox2.ResumeLayout(false)
-        Me.GroupBox2.PerformLayout
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.ResumeLayout(False)
 
 End Sub
     Friend WithEvents GrillaArticulos As System.Windows.Forms.DataGridView

@@ -102,6 +102,30 @@ Namespace My
                 Me("codificacion") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property puertoFiscal() As String
+            Get
+                Return CType(Me("puertoFiscal"),String)
+            End Get
+            Set
+                Me("puertoFiscal") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("FiscalPrinterLib.ModelosDeImpresoras.MODELO_615")>  _
+        Public Property impresoraFiscal() As String
+            Get
+                Return CType(Me("impresoraFiscal"),String)
+            End Get
+            Set
+                Me("impresoraFiscal") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

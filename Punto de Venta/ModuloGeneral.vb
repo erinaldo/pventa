@@ -3,18 +3,18 @@
 Module ModuloGeneral
 
 
-    Public Vuelto As Double
+    'Public Vuelto As Double
     Public Paga As Double
     Public AceptaPago As Boolean
     Public Descuento As Double
     Public TotalDto As Double
-    Public MontoDesc As Double
+    'Public MontoDesc As Double
     Public IdFormaPago As Integer
     Public FormaPago As String
     Public Origen As String
     Public CodartBuscado As Integer
     Public CodigoBarrasBuscado As String
-    Public dblcantidad As Double
+    'Public dblcantidad As Double
     Public TotalPcompra As Double
     Public PorcIva As Double = 21
     Public idUsuario As Double '=4

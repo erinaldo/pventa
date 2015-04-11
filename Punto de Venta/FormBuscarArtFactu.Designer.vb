@@ -56,7 +56,7 @@ Partial Class FormBuscarArtFactu
         Me.txtCod.Location = New System.Drawing.Point(55, 28)
         Me.txtCod.Name = "txtCod"
         Me.txtCod.Size = New System.Drawing.Size(68, 20)
-        Me.txtCod.TabIndex = 0
+        Me.txtCod.TabIndex = 5
         '
         'Label3
         '
@@ -90,14 +90,14 @@ Partial Class FormBuscarArtFactu
         Me.txtCodbar.Location = New System.Drawing.Point(536, 28)
         Me.txtCodbar.Name = "txtCodbar"
         Me.txtCodbar.Size = New System.Drawing.Size(129, 20)
-        Me.txtCodbar.TabIndex = 2
+        Me.txtCodbar.TabIndex = 1
         '
         'txtdescri
         '
         Me.txtdescri.Location = New System.Drawing.Point(201, 28)
         Me.txtdescri.Name = "txtdescri"
         Me.txtdescri.Size = New System.Drawing.Size(266, 20)
-        Me.txtdescri.TabIndex = 1
+        Me.txtdescri.TabIndex = 0
         '
         'GrillaArticulos
         '
@@ -109,8 +109,8 @@ Partial Class FormBuscarArtFactu
         Me.GrillaArticulos.ReadOnly = True
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GrillaArticulos.Size = New System.Drawing.Size(686, 361)
-        Me.GrillaArticulos.TabIndex = 4
-        Me.GrillaArticulos.TabStop = False
+        Me.GrillaArticulos.StandardTab = True
+        Me.GrillaArticulos.TabIndex = 2
         '
         'btnSeleccionar
         '

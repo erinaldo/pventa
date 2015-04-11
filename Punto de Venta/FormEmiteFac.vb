@@ -23,13 +23,15 @@ Public Class FormEmiteFac
         blnInicioTicket = True
         cmbcliente.Enabled = True
         'If pwiFacturacion.wflEmisionFactura_ExisteCajaAbierta(My.Settings.cadena, idUsuario, My.Settings.sucursal) Then
-        GrillaArticulos.Font = New Font("Arial ", 16, FontStyle.Regular)
+        GrillaArticulos.Font = New Font("Arial ", 14, FontStyle.Regular)
+        GrillaArticulos.Columns(2).DefaultCellStyle.Format = "N2"
+        GrillaArticulos.Columns(4).DefaultCellStyle.Format = "N2"
         listaCli = ModuloGeneral.ObtenerClientes()
         Cargar_Combobox(listaCli, cmbcliente)
         cmbcliente.SelectedValue = 1
         cmbcliente.Enabled = False
-        Me.lblLista.Text = "Consumidor Final" 'dstClientes.Tables(0).Rows(cmbcliente.SelectedIndex)("lpr_descripcion")
-        idListaSeleccionada = 1 'dstClientes.Tables(0).Rows(cmbcliente.SelectedIndex)("lpr_id")
+        Me.lblLista.Text = "Consumidor Final"
+        idListaSeleccionada = 1
         lblTotal.Text = FormatNumber("0", 2)
         lblCantidad.Text = 0
         Me.TextCodBar.Focus()
@@ -119,7 +121,7 @@ Public Class FormEmiteFac
                     LimpiarCajas()
                 Else
                     'Articulo = BuscarArticulo(TextCodBar.Text, idListaSeleccionada)
-                    'dblcantidad = 1
+                    'dblcantidad = intCantidad
                     Dim auxTot As Double = 0
                     FormPide.Cargar_Formulario(Articulo.Descripcion, auxTot)
 
@@ -186,20 +188,24 @@ Public Class FormEmiteFac
             Else
                 Button1_Click(sender, e)
             End If
-
         End If
 
     End Sub
 
     Private Sub FormEmiteFac_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
 
-        If e.KeyCode = 73 Then 'Presiona I-> Graba el ticket e imprime en impresora comun
-            Origen = "I"
-            cmdAceptar_Click(sender, e)
-        End If
+        'If e.KeyCode = 73 Then 'Presiona I-> Graba el ticket e imprime en impresora comun
+        '    Origen = "I"
+        '    cmdAceptar_Click(sender, e)
+        'End If
 
-        If e.KeyCode = 70 Then 'Presiona F-> Graba el ticket e imprime en impresora fiscal
-            Origen = "F"
+        'If e.KeyCode = 70 Then 'Presiona F-> Graba el ticket e imprime en impresora fiscal
+        '    Origen = "F"
+        '    cmdAceptar_Click(sender, e)
+        '    Exit Sub
+        'End If
+
+        If e.KeyCode = Keys.F1 Then
             cmdAceptar_Click(sender, e)
             Exit Sub
         End If
@@ -212,11 +218,13 @@ Public Class FormEmiteFac
         '    FormVentaDiaria.Show vbModal
         'End If
 
-        'If KeyCode = vbKeyF8 Then 'F2 Graba el ticket
-        '    HASAR1.Comenzar()
-        '    HASAR1.ReporteZ()
-        '    HASAR1.Finalizar()
-        'End If
+        If e.KeyCode = Keys.F8 Then 'F2 Graba el ticket
+            Button1_Click(sender, e)
+            Exit Sub
+            '    HASAR1.Comenzar()
+            '    HASAR1.ReporteZ()
+            '    HASAR1.Finalizar()
+        End If
 
         If e.KeyCode = 46 Then
             cmdEliminar_Click(sender, e)
@@ -238,81 +246,89 @@ Public Class FormEmiteFac
         Dim Iva As Double
         Dim objStreamWriter As StreamWriter
 
-        If Origen <> "" Then
-            If GrillaArticulos.Rows(0).Cells(0).Value <> "" Then
-                If CDbl(lblTotal.Text) > 0 Then
-                    graba = False
-                    AceptaPago = False
-                    FormVuelto.Abrir(Me.lblTotal.Text)
-                    If AceptaPago Then
-                        Dim intNroComprobante As Integer
-                        Dim intNroComprobanteFiscal As Integer
+        If GrillaArticulos.RowCount = 0 Then
+            Exit Sub
+        End If
+        'If Origen <> "" Then
+        If GrillaArticulos.Rows(0).Cells(0).Value <> "" Then
+            If CDbl(lblTotal.Text) > 0 Then
+                graba = False
+                AceptaPago = False
+                FormVuelto.Abrir(Me.lblTotal.Text)
+                If AceptaPago Then
+                    Dim intNroComprobante As Integer
+                    Dim intNroComprobanteFiscal As Integer
 
-                        intNroComprobante = obtenerNroComprobante()
+                    If Origen = "F" Then
                         intNroComprobanteFiscal = obtenerNroComprobanteFiscal() + 1
-
-                        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVenta.txt", True, System.Text.ASCIIEncoding.ASCII)
-
-                        Dim strComprobanteVenta As String
-
-                        Pbase = CDbl(Me.lblTotal.Text) / (1 + (PorcIva / 100))
-                        Iva = CDbl(Me.lblTotal.Text) - FormatNumber(Pbase, 2)
-                        'Cargo los datos generales del tiquet
-
-                        strComprobanteVenta = intNroComprobante & ";" & "0001-" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
-                            FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
-                            3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
-                            FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & FormaPago
-
-                        objStreamWriter.WriteLine(strComprobanteVenta)
-
-                        objStreamWriter.Close()
-
-                        'Cargo los elementos de la grilla
-                        Dim j As Integer = 0
-                        Dim strComprobanteVentaDetalle As String
-
-                        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVentaDetalle.txt", True)
-
-                        For j = 0 To GrillaArticulos.Rows.Count - 1
-
-                            strComprobanteVentaDetalle = intNroComprobante & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
-                                GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" & _
-                                GrillaArticulos.Rows(j).Cells("PrecioUnitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2)
-
-                            objStreamWriter.WriteLine(strComprobanteVentaDetalle)
-
-                        Next
-
-                        objStreamWriter.Close()
-
-
-                        If Origen = "F" Then
-                            'ImprimirImpresoraComun()
-                            ImprimirTicketFiscal(GrillaArticulos)
-                        Else
-                            'ImprimirImpresoraComun()
-                        End If
-                        LimpiarCajas()
-                        Me.lblCantidad.Text = "0"
-                        Me.lblTotal.Text = "0"
-                        Origen = ""
-                        GrillaArticulos.Rows.Clear()
-                        FormEmiteFac_Load(sender, e)
-                        '''''PrepararNuevoTicket()
-                        blnInicioTicket = True
-                        cmbcliente.Enabled = True
+                    ElseIf Origen = "I" Then
+                        intNroComprobanteFiscal = 0
                     End If
-                Else
-                    MsgAtencion("Debe cargar al menos un articulo")
+
+                    intNroComprobante = obtenerNroComprobante()
+
+                    objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVenta.txt", True, System.Text.ASCIIEncoding.ASCII)
+
+                    Dim strComprobanteVenta As String
+
+                    Pbase = CDbl(Me.lblTotal.Text) / (1 + (PorcIva / 100))
+                    Iva = CDbl(Me.lblTotal.Text) - FormatNumber(Pbase, 2)
+                    'Cargo los datos generales del tiquet
+
+                    strComprobanteVenta = intNroComprobante & ";" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
+                        FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
+                        3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
+                        FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & FormaPago
+
+                    objStreamWriter.WriteLine(strComprobanteVenta)
+
+                    objStreamWriter.Close()
+
+                    'Cargo los elementos de la grilla
+                    Dim j As Integer = 0
+                    Dim strComprobanteVentaDetalle As String
+
+                    objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVentaDetalle.txt", True)
+
+                    For j = 0 To GrillaArticulos.Rows.Count - 1
+
+                        strComprobanteVentaDetalle = intNroComprobante & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
+                            GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" & _
+                            GrillaArticulos.Rows(j).Cells("PrecioUnitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2)
+
+                        objStreamWriter.WriteLine(strComprobanteVentaDetalle)
+
+                    Next
+
+                    objStreamWriter.Close()
+
+
+                    If Origen = "F" Then
+                        'ImprimirImpresoraComun()
+                        ImprimirTicketFiscal(GrillaArticulos)
+                    Else
+                        'ImprimirImpresoraComun()
+                    End If
+                    LimpiarCajas()
+                    Me.lblCantidad.Text = "0"
+                    Me.lblTotal.Text = "0"
+                    Origen = ""
+                    GrillaArticulos.Rows.Clear()
+                    FormEmiteFac_Load(sender, e)
+                    '''''PrepararNuevoTicket()
+                    blnInicioTicket = True
+                    cmbcliente.Enabled = True
                 End If
             Else
-                MsgAtencion("No se puede guardar una factura con importe negativo")
+                MsgAtencion("Debe cargar al menos un articulo")
             End If
-
         Else
-            MsgAtencion("Presione I o F para guardar")
+            MsgAtencion("No se puede guardar una factura con importe negativo")
         End If
+
+        'Else
+        '    MsgAtencion("Presione I o F para guardar")
+        'End If
 
     End Sub
 
@@ -325,6 +341,7 @@ Public Class FormEmiteFac
             paso = True
             GuardarCancelado()
             GrillaArticulos.Rows.Clear()
+            Me.Dispose()
             Me.Close()
         End If
     End Sub
@@ -367,8 +384,8 @@ Public Class FormEmiteFac
                     Dim sele As Integer = GrillaArticulos.CurrentRow.Index
                     Me.lblTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(GrillaArticulos.CurrentRow.Cells("Total").Value), 2)
                     'TotalPCompra = TotalPCompra - (CDbl(GrillaArticulos.CurrentRow.Cells("cantidad").Value) * CDbl(GrillaArticulos.CurrentRow.Cells("punitario").Value))
-                    dblcantidad = GrillaArticulos.CurrentRow.Cells("cantidad").Value
-                    ContarArticulos(dblcantidad * -1)
+                    'dblcantidad = GrillaArticulos.CurrentRow.Cells("cantidad").Value
+                    ContarArticulos(GrillaArticulos.CurrentRow.Cells("cantidad").Value * -1)
                     GrillaArticulos.Rows.RemoveAt(sele)
 
                     Me.TextCodBar.Focus()

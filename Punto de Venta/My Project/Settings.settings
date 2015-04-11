@@ -14,5 +14,11 @@
     <Setting Name="codificacion" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="puertoFiscal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="impresoraFiscal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FiscalPrinterLib.ModelosDeImpresoras.MODELO_615</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
