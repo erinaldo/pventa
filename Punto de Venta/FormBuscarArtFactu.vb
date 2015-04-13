@@ -115,12 +115,6 @@ Public Class FormBuscarArtFactu
         txtCodbar.Text = ""
     End Sub
 
-    Private Sub GrillaArticulos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles GrillaArticulos.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
-            btnSeleccionar_Click(sender, e)
-        End If
-    End Sub
-
     Private Sub txtdescri_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtdescri.KeyPress
         txtCod.Text = ""
         txtCodbar.Text = ""
@@ -134,5 +128,11 @@ Public Class FormBuscarArtFactu
     Private Sub txtCod_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCod.KeyPress
         txtCodbar.Text = ""
         txtdescri.Text = ""
+    End Sub
+
+    Private Sub GrillaArticulos_KeyDown(sender As Object, e As KeyEventArgs) Handles GrillaArticulos.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnSeleccionar_Click(sender, e)
+        End If
     End Sub
 End Class

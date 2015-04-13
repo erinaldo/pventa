@@ -175,7 +175,7 @@ Module ModuloActualizacionBase
 
     Public Sub ImportDataTable(ByVal DataTable As DataTable, ByVal ServerTableName As String)
 
-        Using cn As New SqlConnection(My.Settings.cadena), _
+        Using cn As New SqlConnection(My.Settings.cadena & strUsuarioPassword), _
         bcp As New SqlBulkCopy(cn, SqlBulkCopyOptions.TableLock, Nothing)
 
             cn.Open()
@@ -187,7 +187,7 @@ Module ModuloActualizacionBase
 
     Public Sub ObtenerComprobanteVentaVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
 
-        Dim objConn As New SqlConnection(My.Settings.cadena)
+        Dim objConn As New SqlConnection(My.Settings.cadena & strUsuarioPassword)
         objConn.Open()
 
         ' Create an instance of a DataAdapter.
@@ -203,7 +203,7 @@ Module ModuloActualizacionBase
 
     Public Sub ObtenerComprobanteVentaDetalleVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
 
-        Dim objConn As New SqlConnection(My.Settings.cadena)
+        Dim objConn As New SqlConnection(My.Settings.cadena & strUsuarioPassword)
         objConn.Open()
 
         ' Create an instance of a DataAdapter.
@@ -218,7 +218,7 @@ Module ModuloActualizacionBase
 
     Public Sub ObtenerCajaDiariaVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
 
-        Dim objConn As New SqlConnection(My.Settings.cadena)
+        Dim objConn As New SqlConnection(My.Settings.cadena & strUsuarioPassword)
         objConn.Open()
 
         ' Create an instance of a DataAdapter.
@@ -233,7 +233,7 @@ Module ModuloActualizacionBase
 
     Public Sub ObtenerRendicionVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
 
-        Dim objConn As New SqlConnection(My.Settings.cadena)
+        Dim objConn As New SqlConnection(My.Settings.cadena & strUsuarioPassword)
         objConn.Open()
 
         ' Create an instance of a DataAdapter.

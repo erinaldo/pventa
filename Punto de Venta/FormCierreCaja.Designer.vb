@@ -22,11 +22,11 @@ Partial Class FormCierreCaja
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormCierreCaja))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblIdUsuario = New System.Windows.Forms.Label()
@@ -46,6 +46,7 @@ Partial Class FormCierreCaja
         Me.lblDiferencia = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvRendicion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -62,7 +63,7 @@ Partial Class FormCierreCaja
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(552, 68)
-        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabIndex = 15
         Me.GroupBox1.TabStop = False
         '
         'lblIdUsuario
@@ -71,7 +72,7 @@ Partial Class FormCierreCaja
         Me.lblIdUsuario.Location = New System.Drawing.Point(218, 16)
         Me.lblIdUsuario.Name = "lblIdUsuario"
         Me.lblIdUsuario.Size = New System.Drawing.Size(34, 13)
-        Me.lblIdUsuario.TabIndex = 5
+        Me.lblIdUsuario.TabIndex = 18
         Me.lblIdUsuario.Text = "idUsu"
         Me.lblIdUsuario.Visible = False
         '
@@ -81,7 +82,7 @@ Partial Class FormCierreCaja
         Me.lblUsuario.Location = New System.Drawing.Point(58, 16)
         Me.lblUsuario.Name = "lblUsuario"
         Me.lblUsuario.Size = New System.Drawing.Size(32, 13)
-        Me.lblUsuario.TabIndex = 4
+        Me.lblUsuario.TabIndex = 17
         Me.lblUsuario.Text = "xxxxx"
         '
         'lblCierre
@@ -90,7 +91,7 @@ Partial Class FormCierreCaja
         Me.lblCierre.Location = New System.Drawing.Point(339, 40)
         Me.lblCierre.Name = "lblCierre"
         Me.lblCierre.Size = New System.Drawing.Size(32, 13)
-        Me.lblCierre.TabIndex = 3
+        Me.lblCierre.TabIndex = 22
         Me.lblCierre.Text = "xxxxx"
         '
         'lblApertura
@@ -99,7 +100,7 @@ Partial Class FormCierreCaja
         Me.lblApertura.Location = New System.Drawing.Point(86, 40)
         Me.lblApertura.Name = "lblApertura"
         Me.lblApertura.Size = New System.Drawing.Size(32, 13)
-        Me.lblApertura.TabIndex = 2
+        Me.lblApertura.TabIndex = 20
         Me.lblApertura.Text = "xxxxx"
         '
         'Label3
@@ -108,7 +109,7 @@ Partial Class FormCierreCaja
         Me.Label3.Location = New System.Drawing.Point(272, 40)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 13)
-        Me.Label3.TabIndex = 2
+        Me.Label3.TabIndex = 21
         Me.Label3.Text = "Cierre Caja:"
         '
         'Label2
@@ -117,7 +118,7 @@ Partial Class FormCierreCaja
         Me.Label2.Location = New System.Drawing.Point(6, 40)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(74, 13)
-        Me.Label2.TabIndex = 1
+        Me.Label2.TabIndex = 19
         Me.Label2.Text = "Apertura Caja:"
         '
         'Label1
@@ -126,27 +127,28 @@ Partial Class FormCierreCaja
         Me.Label1.Location = New System.Drawing.Point(6, 16)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 13)
-        Me.Label1.TabIndex = 0
+        Me.Label1.TabIndex = 16
         Me.Label1.Text = "Usuario:"
         '
         'dgvRendicion
         '
         Me.dgvRendicion.AllowUserToAddRows = False
         Me.dgvRendicion.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvRendicion.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvRendicion.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.dgvRendicion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvRendicion.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.descripcion, Me.totalFacturado, Me.rendicion, Me.diferencia, Me.cantComprobantes, Me.tpoOperacion})
         Me.dgvRendicion.Location = New System.Drawing.Point(12, 86)
         Me.dgvRendicion.Name = "dgvRendicion"
         Me.dgvRendicion.Size = New System.Drawing.Size(552, 303)
-        Me.dgvRendicion.TabIndex = 8
+        Me.dgvRendicion.StandardTab = True
+        Me.dgvRendicion.TabIndex = 0
         '
         'descripcion
         '
@@ -157,8 +159,8 @@ Partial Class FormCierreCaja
         '
         'totalFacturado
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.totalFacturado.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.totalFacturado.DefaultCellStyle = DataGridViewCellStyle7
         Me.totalFacturado.HeaderText = "Total"
         Me.totalFacturado.Name = "totalFacturado"
         Me.totalFacturado.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -166,8 +168,8 @@ Partial Class FormCierreCaja
         '
         'rendicion
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.rendicion.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.rendicion.DefaultCellStyle = DataGridViewCellStyle8
         Me.rendicion.HeaderText = "Rendicion"
         Me.rendicion.Name = "rendicion"
         Me.rendicion.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -175,8 +177,8 @@ Partial Class FormCierreCaja
         '
         'diferencia
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.diferencia.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.diferencia.DefaultCellStyle = DataGridViewCellStyle9
         Me.diferencia.HeaderText = "Diferencia"
         Me.diferencia.Name = "diferencia"
         Me.diferencia.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -184,8 +186,8 @@ Partial Class FormCierreCaja
         '
         'cantComprobantes
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.cantComprobantes.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.cantComprobantes.DefaultCellStyle = DataGridViewCellStyle10
         Me.cantComprobantes.HeaderText = "Cant.Comprob."
         Me.cantComprobantes.Name = "cantComprobantes"
         Me.cantComprobantes.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -203,7 +205,7 @@ Partial Class FormCierreCaja
         Me.lblDiferencia.Location = New System.Drawing.Point(389, 398)
         Me.lblDiferencia.Name = "lblDiferencia"
         Me.lblDiferencia.Size = New System.Drawing.Size(164, 42)
-        Me.lblDiferencia.TabIndex = 9
+        Me.lblDiferencia.TabIndex = 24
         Me.lblDiferencia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label4
@@ -213,7 +215,7 @@ Partial Class FormCierreCaja
         Me.Label4.Location = New System.Drawing.Point(284, 410)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(99, 24)
-        Me.Label4.TabIndex = 10
+        Me.Label4.TabIndex = 23
         Me.Label4.Text = "Diferencia:"
         '
         'Button1
@@ -223,14 +225,24 @@ Partial Class FormCierreCaja
         Me.Button1.Location = New System.Drawing.Point(430, 450)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(95, 46)
-        Me.Button1.TabIndex = 7
+        Me.Button1.TabIndex = 1
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
+        Me.cmdCancelar.Location = New System.Drawing.Point(318, 450)
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(95, 46)
+        Me.cmdCancelar.TabIndex = 2
+        Me.cmdCancelar.UseVisualStyleBackColor = True
         '
         'FormCierreCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(576, 506)
+        Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lblDiferencia)
         Me.Controls.Add(Me.dgvRendicion)
@@ -265,4 +277,5 @@ Partial Class FormCierreCaja
     Friend WithEvents cantComprobantes As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tpoOperacion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblIdUsuario As System.Windows.Forms.Label
+    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
 End Class

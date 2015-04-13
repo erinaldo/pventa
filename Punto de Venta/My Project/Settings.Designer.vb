@@ -57,7 +57,7 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=138.36.236.215,1433;Network Library=DBMSSOCN;Initial Catalog=Facturac"& _ 
-            "ionSuper;User ID=creatif;Password=CreatifS;")>  _
+            "ionSuper;")>  _
         Public Property cadena() As String
             Get
                 Return CType(Me("cadena"),String)
@@ -117,7 +117,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("FiscalPrinterLib.ModelosDeImpresoras.MODELO_615")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("FiscalPrinterLib.ModelosDeImpresoras.MODELO_715")>  _
         Public Property impresoraFiscal() As String
             Get
                 Return CType(Me("impresoraFiscal"),String)

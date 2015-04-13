@@ -21,6 +21,7 @@ Module ModuloGeneral
     Public NomUsuario As String '= "Administrador"
     Public idPerfilUsuario As Integer
     Public blnEsSupervisor As Boolean
+    Public strUsuarioPassword As String = "User ID=creatif;Password=CreatifS;"
 
     Public Sub InsertarFilasEnGrilla(codart As String, descri As String, precio As Double, _
                                            cantidad As Double, total As Double, codbarra As String, costo As Double, _

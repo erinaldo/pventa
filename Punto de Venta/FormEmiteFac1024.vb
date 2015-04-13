@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Public Class FormEmiteFac
+Public Class FormEmiteFac1024
 
     Dim listaArt As New List(Of Articulos)
     Dim listaCli As New List(Of Clientes)
@@ -53,10 +53,10 @@ Public Class FormEmiteFac
     End Function
 
     Private Sub LimpiarCajas()
-        Me.TextCodBar.Text = ""
+        Me.textcodbar.Text = ""
         Me.TextCodigo.Text = "0"
-        Me.TextPCompra.Text = "0"
-        Me.TextCodBar.Focus()
+        Me.textPCompra.Text = "0"
+        Me.textcodbar.Focus()
     End Sub
 
     Private Sub ContarArticulos(cantidad As Double)
@@ -386,7 +386,7 @@ Public Class FormEmiteFac
                 If GrillaArticulos.CurrentRow.Cells.Count > 0 Then
                     codart = CLng(GrillaArticulos.CurrentRow.Cells("CodigoArticulo").Value)
                     Dim sele As Integer = GrillaArticulos.CurrentRow.Index
-                    Me.lblTotal.Text = FormatNumber(CDbl(lblTotal.Text) - CDbl(GrillaArticulos.CurrentRow.Cells("Total").Value), 2)
+                    Me.lblTotal.Text = lblTotal.Text - GrillaArticulos.CurrentRow.Cells("Total").Value
                     'TotalPCompra = TotalPCompra - (CDbl(GrillaArticulos.CurrentRow.Cells("cantidad").Value) * CDbl(GrillaArticulos.CurrentRow.Cells("punitario").Value))
                     'dblcantidad = GrillaArticulos.CurrentRow.Cells("cantidad").Value
                     ContarArticulos(GrillaArticulos.CurrentRow.Cells("cantidad").Value * -1)

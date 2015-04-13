@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Configuration
 
 Public Class FormPrincipal
     Dim listaCajaDia As New List(Of CajaDiaria)
@@ -15,8 +16,13 @@ Public Class FormPrincipal
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnFacturacion.Click
-        Dim frm As New FormEmiteFac
-        frm.ShowDialog()
+        If System.Windows.Forms.SystemInformation.PrimaryMonitorSize.Width >= 1024 Then
+            Dim frm As New FormEmiteFac1024
+            frm.ShowDialog()
+        Else
+            Dim frm As New FormEmiteFac
+            frm.ShowDialog()
+        End If
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
@@ -52,9 +58,13 @@ Public Class FormPrincipal
             Exit Sub
         End If
 
-        grabarCierreCaja()
+        'grabarCierreCaja()
 
         FormCierreCaja.ShowDialog()
+
+        If FormCierreCaja.DialogResult = Windows.Forms.DialogResult.Cancel Then
+            Exit Sub
+        End If
 
         listComprobanteVenta = ObtenerComprobanteVenta()
         listComprobanteVentaDetalle = ObtenerComprobanteVentaDetalle()
@@ -162,4 +172,5 @@ Public Class FormPrincipal
             MsgBox("Debe ingresar un monto válido", MsgBoxStyle.Information, "Mensaje al Operador")
         End Try
     End Sub
+
 End Class

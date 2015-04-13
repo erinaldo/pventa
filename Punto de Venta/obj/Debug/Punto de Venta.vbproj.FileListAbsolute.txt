@@ -21,26 +21,27 @@ C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.exe
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.xml
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.pdb
 C:\ProyectoPuntoVenta\Punto de Venta\obj\Debug\PuntoVenta.FormCierreCaja.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Debug\Punto de Venta.vbprojResolveAssemblyReference.cache
+D:\Punto_de_Venta\Punto de Venta\obj\Debug\Interop.FiscalPrinterLib.dll
+D:\Punto_de_Venta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.ResolveComReference.cache
 D:\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.exe.config
 D:\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.exe
 D:\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.pdb
 D:\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.xml
-D:\Punto_de_Venta\Punto de Venta\obj\Debug\Interop.FiscalPrinterLib.dll
-D:\Punto_de_Venta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.ResolveComReference.cache
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormAtencion.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormBuscarArtFactu.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormCierreCaja.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormConsulta.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormEmiteFac.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormEmiteFac1024.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormInicioSesion.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormPedidos.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormPide.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormPrincipal.resources
+D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormSupervisor.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormVuelto.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.Resources.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.GenerateResource.Cache
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.exe
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.xml
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.pdb
-D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormSupervisor.resources
-D:\Punto_de_Venta\Punto de Venta\obj\Debug\Punto de Venta.vbprojResolveAssemblyReference.cache
-D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormConsulta.resources

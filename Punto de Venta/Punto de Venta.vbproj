@@ -88,6 +88,12 @@
     <Compile Include="FormConsulta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormEmiteFac1024.Designer.vb">
+      <DependentUpon>FormEmiteFac1024.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmiteFac1024.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormSupervisor.Designer.vb">
       <DependentUpon>FormSupervisor.vb</DependentUpon>
     </Compile>
@@ -188,6 +194,9 @@
     <EmbeddedResource Include="FormEmiteFac.resx">
       <DependentUpon>FormEmiteFac.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmiteFac1024.resx">
+      <DependentUpon>FormEmiteFac1024.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicioSesion.resx">
       <DependentUpon>FormInicioSesion.vb</DependentUpon>

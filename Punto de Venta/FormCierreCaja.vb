@@ -21,10 +21,11 @@ Public Class FormCierreCaja
                             Select Caj.FechaHora).First.ToString
 
 
-        lblCierre.Text = (From Caj In lstCajaDaria
-                        Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.cierreCaja
-                        Select Caj.FechaHora).First.ToString
+        'lblCierre.Text = (From Caj In lstCajaDaria
+        '                Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.cierreCaja
+        '                Select Caj.FechaHora).First.ToString
 
+        lblCierre.Text = Date.Now
 
         row = New DataGridViewRow
 
@@ -123,6 +124,8 @@ Public Class FormCierreCaja
                 Dim objStreamWriter As StreamWriter
                 Dim strLine As String
 
+                grabarCierreCaja()
+
                 objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Rendicion.txt", True, System.Text.ASCIIEncoding.ASCII)
 
                 For Each row As DataGridViewRow In dgvRendicion.Rows
@@ -134,7 +137,8 @@ Public Class FormCierreCaja
 
                 Next
                 objStreamWriter.Close()
-
+                Me.DialogResult = Windows.Forms.DialogResult.OK
+                ' Me.Dispose()
                 Me.Close()
             End If
         Catch ex As Exception
@@ -165,4 +169,11 @@ Public Class FormCierreCaja
         lblDiferencia.Text = FormatNumber(lblDiferencia.Text, 2)
     End Sub
 
+    Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
+        If MsgBox("Esta seguro de cancelar la rendición?.", MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
+            Me.DialogResult = Windows.Forms.DialogResult.Cancel
+            ' Me.Dispose()
+            Me.Close()
+        End If
+    End Sub
 End Class
