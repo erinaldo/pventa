@@ -8,7 +8,7 @@
 
     Public Sub Abrir(dblTotFac As Double)
         Cargar_Combobox(ObtenerFormasPago, Me.cmbFormas)
-        Me.lblTot.Text = dblTotFac
+        Me.lblTot.Text = FormatNumber(dblTotFac, 2)
         'Me.txttotaldto.Text = dblTotFac
         'Me.textdto.Text = 0
         Me.txtAbona.Text = 0

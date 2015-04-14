@@ -231,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="fiscal051122.tlb" />
     <None Include="fiscal110423.tlb" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
@@ -244,6 +245,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Fiscal051122.Ocx" />
     <Content Include="Fiscal110423.Ocx" />
     <Content Include="Imagenes\abierto.png" />
     <Content Include="Imagenes\atencion2.jpg" />
@@ -264,8 +266,11 @@
     <None Include="Imagenes\viewmag-icono-4318-16.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
     <COMReference Include="FiscalPrinterLib">
-      <Guid>{9E6AF530-FACC-4E0C-BDD1-2FF1B640F2C1}</Guid>
+      <Guid>{9C5C9460-5789-11DA-8CFB-0000E856BC17}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
@@ -273,9 +278,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

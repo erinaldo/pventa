@@ -51,45 +51,90 @@ Public Class FormPedidos
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
 
-        ImprimirTicketFiscal(GrillaComprobanteVentaDetalle)
+        If MsgBox("Quiere imprimir el Ticket?", MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.No Then
+            Exit Sub
+        End If
 
-        Dim result As ComprobanteVenta = (From comp In listPedidosPendientes
-                                                 Where comp.Comprobante = intComprobante
-                                                 Select comp).First
+        Try
 
-        
-        result.Origen = "F"
+            ImprimirTicketFiscal(GrillaComprobanteVentaDetalle)
 
-        Dim objStreamWriter As StreamWriter
-        Dim strLine As String
+            Dim result As ComprobanteVenta = (From comp In listPedidosPendientes
+                                                     Where comp.Comprobante = intComprobante
+                                                     Select comp).First
 
-        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVenta.txt", False, System.Text.ASCIIEncoding.ASCII)
+            result.Origen = "F"
+            result.ComprobanteFiscal = obtenerNroComprobanteFiscal()
 
-        For Each compVent In listPedidosPendientes
-            strLine = compVent.Comprobante & ";" & compVent.ComprobanteFiscal & ";" & compVent.ComprobanteTipo & ";" & compVent.IdCliente & ";" & _
-                            FormatDateTime(compVent.FechaEmision, DateFormat.ShortDate) & ";" & _
-                            compVent.CondicionIva & ";" & compVent.PrecioBase & ";" & compVent.PorcentajeIva & ";" & compVent.TotalComprobante & ";" & compVent.IdUsuario & ";" & compVent.Origen & ";" & _
-                            compVent.Descuento & ";" & compVent.TotalDescuento & ";" & compVent.IdFormaPago & ";" & compVent.FormaPago
+            Dim objStreamWriter As StreamWriter
+            Dim strLine As String
+            Try
 
-            objStreamWriter.WriteLine(strLine)
 
-        Next
-        objStreamWriter.Close()
+                objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVenta.txt", False, System.Text.ASCIIEncoding.ASCII)
+
+                For Each compVent In listPedidosPendientes
+                    strLine = compVent.Comprobante & ";" & compVent.ComprobanteFiscal & ";" & compVent.ComprobanteTipo & ";" & compVent.IdCliente & ";" & _
+                                    FormatDateTime(compVent.FechaEmision, DateFormat.ShortDate) & ";" & _
+                                    compVent.CondicionIva & ";" & compVent.PrecioBase & ";" & compVent.PorcentajeIva & ";" & compVent.TotalComprobante & ";" & compVent.IdUsuario & ";" & compVent.Origen & ";" & _
+                                    compVent.Descuento & ";" & compVent.TotalDescuento & ";" & compVent.IdFormaPago & ";" & compVent.FormaPago
+
+                    objStreamWriter.WriteLine(strLine)
+
+                Next
+                objStreamWriter.Close()
+            Catch ex As Exception
+                MsgBox("Error al grabar los comprobantes.", MsgBoxStyle.Information, "Mensaje al Operador")
+            End Try
+        Catch ex As Exception
+            MsgBox("Error al imprimir el comprobante.", MsgBoxStyle.Information, "Mensaje al Operador")
+        End Try
 
     End Sub
 
     Private Sub GrillaPedidosPendientes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaPedidosPendientes.CellClick
+        Try
+            intComprobante = GrillaPedidosPendientes.CurrentRow.Cells("Comprobante").Value
 
-        intComprobante = GrillaPedidosPendientes.CurrentRow.Cells("Comprobante").Value
+            Dim result As List(Of ComprobanteVentaDetalle) = (From comp In listComprobanteVentaDetalle
+                                                             Where comp.Comprobante = intComprobante
+                                                             Select comp).ToList
 
-        Dim result As List(Of ComprobanteVentaDetalle) = (From comp In listComprobanteVentaDetalle
-                                                         Where comp.Comprobante = intComprobante
-                                                         Select comp).ToList
+            GrillaComprobanteVentaDetalle.DataSource = result
+        Catch ex As Exception
 
-        GrillaComprobanteVentaDetalle.DataSource = result
+        End Try
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+        Me.Dispose()
         Me.Close()
+    End Sub
+
+    Private Sub FormPedidos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress
+        If e.KeyChar = ChrW(Keys.Escape) Then
+            Me.Dispose()
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub GrillaPedidosPendientes_SelectionChanged(sender As Object, e As EventArgs) Handles GrillaPedidosPendientes.SelectionChanged
+        Try
+            intComprobante = GrillaPedidosPendientes.CurrentRow.Cells("Comprobante").Value
+
+            Dim result As List(Of ComprobanteVentaDetalle) = (From comp In listComprobanteVentaDetalle
+                                                             Where comp.Comprobante = intComprobante
+                                                             Select comp).ToList
+
+            GrillaComprobanteVentaDetalle.DataSource = result
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub GrillaPedidosPendientes_KeyDown(sender As Object, e As KeyEventArgs) Handles GrillaPedidosPendientes.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnImprimir_Click(sender, e)
+        End If
     End Sub
 End Class

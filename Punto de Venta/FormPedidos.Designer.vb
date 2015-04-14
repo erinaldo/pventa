@@ -40,7 +40,8 @@ Partial Class FormPedidos
         Me.GrillaPedidosPendientes.ReadOnly = True
         Me.GrillaPedidosPendientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GrillaPedidosPendientes.Size = New System.Drawing.Size(725, 199)
-        Me.GrillaPedidosPendientes.TabIndex = 5
+        Me.GrillaPedidosPendientes.StandardTab = True
+        Me.GrillaPedidosPendientes.TabIndex = 0
         '
         'btnImprimir
         '
@@ -48,7 +49,7 @@ Partial Class FormPedidos
         Me.btnImprimir.Location = New System.Drawing.Point(378, 445)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(95, 46)
-        Me.btnImprimir.TabIndex = 6
+        Me.btnImprimir.TabIndex = 2
         Me.btnImprimir.UseVisualStyleBackColor = True
         '
         'btnCerrar
@@ -57,7 +58,7 @@ Partial Class FormPedidos
         Me.btnCerrar.Location = New System.Drawing.Point(255, 445)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(95, 46)
-        Me.btnCerrar.TabIndex = 7
+        Me.btnCerrar.TabIndex = 3
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'GrillaComprobanteVentaDetalle
@@ -70,7 +71,7 @@ Partial Class FormPedidos
         Me.GrillaComprobanteVentaDetalle.ReadOnly = True
         Me.GrillaComprobanteVentaDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GrillaComprobanteVentaDetalle.Size = New System.Drawing.Size(725, 222)
-        Me.GrillaComprobanteVentaDetalle.TabIndex = 8
+        Me.GrillaComprobanteVentaDetalle.TabIndex = 1
         '
         'FormPedidos
         '
@@ -81,6 +82,7 @@ Partial Class FormPedidos
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.GrillaPedidosPendientes)
+        Me.KeyPreview = True
         Me.Name = "FormPedidos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pedidos Pendientes"

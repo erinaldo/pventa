@@ -19,6 +19,5 @@ D:\Punto_de_Venta\Punto de Venta\obj\Release\Punto de Venta.vbproj.GenerateResou
 D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.exe
 D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.xml
 D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.pdb
-D:\Punto_de_Venta\Punto de Venta\obj\Release\Punto de Venta.vbprojResolveAssemblyReference.cache
 D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormConsulta.resources
 D:\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormEmiteFac1024.resources

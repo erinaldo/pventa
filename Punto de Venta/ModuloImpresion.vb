@@ -6,8 +6,9 @@
         miOCX = New FiscalPrinterLib.HASAR
 
         Try
-            miOCX.Puerto = My.Settings.puertoFiscal
-            miOCX.Modelo = My.Settings.impresoraFiscal
+            miOCX.Puerto = 1
+            miOCX.Baudios = 9600
+            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_C)
@@ -36,7 +37,9 @@
 
             miOCX = New FiscalPrinterLib.HASAR
 
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = 1
+            miOCX.Baudios = 9600
+            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.ReporteZ()
@@ -53,7 +56,9 @@
 
             miOCX = New FiscalPrinterLib.HASAR
 
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = 1
+            miOCX.Baudios = 9600
+            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.ReporteX()
@@ -70,7 +75,9 @@
 
             miOCX = New FiscalPrinterLib.HASAR
 
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = 1
+            miOCX.Baudios = 9600
+            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             obtenerNroComprobanteFiscal = miOCX.UltimoDocumentoFiscalBC()
             miOCX.Finalizar()

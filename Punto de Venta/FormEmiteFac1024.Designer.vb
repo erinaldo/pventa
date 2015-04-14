@@ -22,13 +22,20 @@ Partial Class FormEmiteFac1024
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GrillaArticulos = New System.Windows.Forms.DataGridView()
+        Me.CodigoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pcompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblCantidad = New System.Windows.Forms.Label()
         Me.TextPCompra = New System.Windows.Forms.TextBox()
         Me.lblTotal = New System.Windows.Forms.Label()
@@ -54,13 +61,6 @@ Partial Class FormEmiteFac1024
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.CodigoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codbar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.pcompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -73,32 +73,88 @@ Partial Class FormEmiteFac1024
         '
         Me.GrillaArticulos.AllowUserToAddRows = False
         Me.GrillaArticulos.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GrillaArticulos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GrillaArticulos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GrillaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaArticulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoArticulo, Me.DescripcionArticulo, Me.PrecioUnitario, Me.Cantidad, Me.Total, Me.Codbar, Me.pcompra})
         Me.GrillaArticulos.Location = New System.Drawing.Point(12, 163)
         Me.GrillaArticulos.Name = "GrillaArticulos"
         Me.GrillaArticulos.ReadOnly = True
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GrillaArticulos.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GrillaArticulos.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.GrillaArticulos.RowTemplate.Height = 100
         Me.GrillaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GrillaArticulos.Size = New System.Drawing.Size(748, 443)
         Me.GrillaArticulos.StandardTab = True
         Me.GrillaArticulos.TabIndex = 3
+        '
+        'CodigoArticulo
+        '
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CodigoArticulo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.CodigoArticulo.HeaderText = "Código"
+        Me.CodigoArticulo.Name = "CodigoArticulo"
+        Me.CodigoArticulo.ReadOnly = True
+        Me.CodigoArticulo.Width = 75
+        '
+        'DescripcionArticulo
+        '
+        Me.DescripcionArticulo.HeaderText = "Descripción"
+        Me.DescripcionArticulo.Name = "DescripcionArticulo"
+        Me.DescripcionArticulo.ReadOnly = True
+        Me.DescripcionArticulo.Width = 330
+        '
+        'PrecioUnitario
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.PrecioUnitario.DefaultCellStyle = DataGridViewCellStyle3
+        Me.PrecioUnitario.HeaderText = "P.Unitario"
+        Me.PrecioUnitario.Name = "PrecioUnitario"
+        Me.PrecioUnitario.ReadOnly = True
+        Me.PrecioUnitario.Width = 105
+        '
+        'Cantidad
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Cantidad.HeaderText = "Cantidad"
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
+        Me.Cantidad.Width = 85
+        '
+        'Total
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        '
+        'Codbar
+        '
+        Me.Codbar.HeaderText = "Codbar"
+        Me.Codbar.Name = "Codbar"
+        Me.Codbar.ReadOnly = True
+        Me.Codbar.Visible = False
+        '
+        'pcompra
+        '
+        Me.pcompra.HeaderText = "pcompra"
+        Me.pcompra.Name = "pcompra"
+        Me.pcompra.ReadOnly = True
+        Me.pcompra.Visible = False
         '
         'lblCantidad
         '
@@ -331,7 +387,7 @@ Partial Class FormEmiteFac1024
         '
         'GroupBox3
         '
-        Me.GroupBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.GroupBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.GroupBox3.Controls.Add(Me.lblTotal)
         Me.GroupBox3.Controls.Add(Me.Label7)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -344,7 +400,7 @@ Partial Class FormEmiteFac1024
         '
         'GroupBox5
         '
-        Me.GroupBox5.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.GroupBox5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.GroupBox5.Controls.Add(Me.lblCantidad)
         Me.GroupBox5.Controls.Add(Me.Label13)
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -362,62 +418,6 @@ Partial Class FormEmiteFac1024
         Me.PictureBox1.Size = New System.Drawing.Size(239, 316)
         Me.PictureBox1.TabIndex = 115
         Me.PictureBox1.TabStop = False
-        '
-        'CodigoArticulo
-        '
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CodigoArticulo.DefaultCellStyle = DataGridViewCellStyle8
-        Me.CodigoArticulo.HeaderText = "Código"
-        Me.CodigoArticulo.Name = "CodigoArticulo"
-        Me.CodigoArticulo.ReadOnly = True
-        Me.CodigoArticulo.Width = 75
-        '
-        'DescripcionArticulo
-        '
-        Me.DescripcionArticulo.HeaderText = "Descripción"
-        Me.DescripcionArticulo.Name = "DescripcionArticulo"
-        Me.DescripcionArticulo.ReadOnly = True
-        Me.DescripcionArticulo.Width = 330
-        '
-        'PrecioUnitario
-        '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.PrecioUnitario.DefaultCellStyle = DataGridViewCellStyle9
-        Me.PrecioUnitario.HeaderText = "P.Unitario"
-        Me.PrecioUnitario.Name = "PrecioUnitario"
-        Me.PrecioUnitario.ReadOnly = True
-        Me.PrecioUnitario.Width = 105
-        '
-        'Cantidad
-        '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle10
-        Me.Cantidad.HeaderText = "Cantidad"
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.ReadOnly = True
-        Me.Cantidad.Width = 85
-        '
-        'Total
-        '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle11
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        '
-        'Codbar
-        '
-        Me.Codbar.HeaderText = "Codbar"
-        Me.Codbar.Name = "Codbar"
-        Me.Codbar.ReadOnly = True
-        Me.Codbar.Visible = False
-        '
-        'pcompra
-        '
-        Me.pcompra.HeaderText = "pcompra"
-        Me.pcompra.Name = "pcompra"
-        Me.pcompra.ReadOnly = True
-        Me.pcompra.Visible = False
         '
         'FormEmiteFac1024
         '
