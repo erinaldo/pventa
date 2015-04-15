@@ -67,7 +67,7 @@ Partial Class FormConsulta
         Me.KeyPreview = True
         Me.Name = "FormConsulta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Consulta"
+        Me.Text = "Consulta de Articulo"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

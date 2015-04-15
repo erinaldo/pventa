@@ -67,25 +67,6 @@ Public Class FormEmiteFac1024
         End If
     End Sub
 
-    Function BuscarArticulo(ByVal strCodBarra As String, ByVal intIdLista As Integer) As Articulos
-
-        Try
-
-            BuscarArticulo = New Articulos
-
-            'BuscarArticulo = (From art In listaArt
-            '                  Where art.CodigoBarras = strCodBarra And art.IdLista = intIdLista
-            '                  Select art).First
-
-            BuscarArticulo = (From art In listaArt
-                      Where art.CodigoBarras = strCodBarra
-                      Select art).First
-
-        Catch ex As Exception
-
-        End Try
-    End Function
-
     Private Sub agregarArticulo()
         Dim intCantidad As Integer
 
@@ -96,15 +77,22 @@ Public Class FormEmiteFac1024
 
         Articulo = New Articulos
         If TextCodBar.Text.Contains("*") Then
-            intCantidad = Mid(TextCodBar.Text, 1, InStr(TextCodBar.Text, "*", CompareMethod.Text) - 1)
-            CodigoBarrasBuscado = Mid(TextCodBar.Text.ToUpper, InStr(TextCodBar.Text, "*", CompareMethod.Text) + 1, Len(TextCodBar.Text))
+            Try
+                intCantidad = Mid(TextCodBar.Text, 1, InStr(TextCodBar.Text, "*", CompareMethod.Text) - 1)
+                CodigoBarrasBuscado = Mid(TextCodBar.Text.ToUpper, InStr(TextCodBar.Text, "*", CompareMethod.Text) + 1, Len(TextCodBar.Text))
+            Catch ex As Exception
+                FormAtencion.ShowDialog()
+                Me.TextCodBar.Text = ""
+                Me.TextCodBar.Focus()
+                Exit Sub
+            End Try
         Else
             intCantidad = 1
             CodigoBarrasBuscado = TextCodBar.Text.ToUpper
         End If
 
         If Mid(CodigoBarrasBuscado, 1, 1) <> "2" And Mid(CodigoBarrasBuscado, 2, 6) <> "900000" Then
-            Articulo = BuscarArticulo(CodigoBarrasBuscado, idListaSeleccionada)
+            Articulo = BuscarArticulo(listaArt, CodigoBarrasBuscado, idListaSeleccionada)
             If Not Articulo.CodigoBarras Is Nothing Then
                 '    inserto = False
                 If Len(CodigoBarrasBuscado) > 1 Then
@@ -151,33 +139,55 @@ Public Class FormEmiteFac1024
 
             End If
         Else
-            ' si el articulo es fiambre o producto propio
-            Dim PrecioFiambreAux As String
-            Dim CodigoFiambre As Integer
-            Dim preciofiambre As Double
-            CodigoFiambre = Mid(CodigoBarrasBuscado, 2, 6)
-            Articulo = BuscarArticulo(CodigoFiambre.ToString, idListaSeleccionada)
-            If Not Articulo.CodigoBarras Is Nothing Then
-                PrecioFiambreAux = Mid(CodigoBarrasBuscado, 8, 5)
-                preciofiambre = ConvertirPrecio(PrecioFiambreAux)
+            If Len(CodigoBarrasBuscado) > 6 Then
+                ' si el articulo es fiambre o producto propio
+                Dim PrecioFiambreAux As String
+                Dim CodigoFiambre As Integer
+                Dim preciofiambre As Double
+                CodigoFiambre = Mid(CodigoBarrasBuscado, 2, 6)
+                Articulo = BuscarArticulo(listaArt, CodigoFiambre.ToString, idListaSeleccionada)
+                If Not Articulo.CodigoBarras Is Nothing Then
+                    PrecioFiambreAux = Mid(CodigoBarrasBuscado, 8, 5)
+                    preciofiambre = ConvertirPrecio(PrecioFiambreAux)
 
-                '--------------------------------
-                Me.TextCodigo.Text = Articulo.Codigo
-                intCantidad = 1
-                Me.TextPCompra.Text = Articulo.PrecioCosto
+                    '--------------------------------
+                    Me.TextCodigo.Text = Articulo.Codigo
+                    intCantidad = 1
+                    Me.TextPCompra.Text = Articulo.PrecioCosto
 
-                '-----------------------------------
-                ModuloGeneral.InsertarFilasEnGrilla(Articulo.Codigo, Articulo.Descripcion, CDbl(preciofiambre), CDbl(intCantidad), CDbl(preciofiambre * CDbl(intCantidad)), CodigoBarrasBuscado, CDbl(Articulo.PrecioCosto), Me.GrillaArticulos)
-                Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(preciofiambre * CDbl(intCantidad))
-                TotalPCompra = TotalPCompra + (CDbl(Articulo.PrecioCosto) * CDbl(intCantidad))
-                ContarArticulos(CDbl(intCantidad))
+                    '-----------------------------------
+                    ModuloGeneral.InsertarFilasEnGrilla(Articulo.Codigo, Articulo.Descripcion, CDbl(preciofiambre), CDbl(intCantidad), CDbl(preciofiambre * CDbl(intCantidad)), CodigoBarrasBuscado, CDbl(Articulo.PrecioCosto), Me.GrillaArticulos)
+                    Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(preciofiambre * CDbl(intCantidad))
+                    TotalPCompra = TotalPCompra + (CDbl(Articulo.PrecioCosto) * CDbl(intCantidad))
+                    ContarArticulos(CDbl(intCantidad))
 
-                LimpiarCajas()
+                    LimpiarCajas()
+                Else
+                    FormAtencion.ShowDialog()
+                    Me.TextCodBar.Text = ""
+                    Me.TextCodBar.Focus()
+                End If
             Else
-                FormAtencion.ShowDialog()
-                Me.TextCodBar.Text = ""
-                Me.TextCodBar.Focus()
+                Articulo = BuscarArticulo(listaArt, CodigoBarrasBuscado, idListaSeleccionada)
+
+                If Not Articulo.CodigoBarras Is Nothing Then
+                    ModuloGeneral.InsertarFilasEnGrilla(Articulo.Codigo, Articulo.Descripcion, CDbl(Articulo.PrecioVenta), CDbl(intCantidad), CDbl(Articulo.PrecioVenta * intCantidad), Articulo.CodigoBarras, CDbl(Articulo.PrecioCosto), Me.GrillaArticulos)
+                    ''            'Actualizo el Total
+                    Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(Articulo.PrecioVenta * intCantidad)
+
+                    ''            'Lo calculo cuando lo guardo 
+                    TotalPCompra = TotalPCompra + (Val(Articulo.PrecioCosto) * Val(intCantidad))
+                    ''            'HASAR1.ImprimirItem Lbldescripcion.Caption, CDbl(TextCantidad.Text), CDbl(lblTotal.Caption), 21, 0
+                    ContarArticulos(intCantidad)
+                    LimpiarCajas()
+                Else
+                    FormAtencion.ShowDialog()
+                    Me.TextCodBar.Text = ""
+                    Me.TextCodBar.Focus()
+                End If
+
             End If
+
         End If
     End Sub
     Private Sub TextCodBar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextCodBar.KeyPress
@@ -218,27 +228,16 @@ Public Class FormEmiteFac1024
             FormPedidos.ShowDialog()
         End If
 
-        'If KeyCode = vbKeyF2 Then 'F2 Graba el ticket
-        '    FormVentaDiaria.Show vbModal
-        'End If
-
         If e.KeyCode = Keys.F8 Then 'F2 Graba el ticket
             Button1_Click(sender, e)
             Exit Sub
-            '    HASAR1.Comenzar()
-            '    HASAR1.ReporteZ()
-            '    HASAR1.Finalizar()
         End If
 
-        If e.KeyCode = 46 Then
+        If e.KeyCode = Keys.Delete Then
             cmdEliminar_Click(sender, e)
         End If
 
-        'If KeyCode = vbKeyF12 Then
-        '    FormReimprime.Cargar_Form()
-        'End If
-
-        If e.KeyCode = 27 Then
+        If e.KeyCode = Keys.Escape Then
             cmdCancelar_Click(sender, e)
         End If
 
@@ -337,14 +336,19 @@ Public Class FormEmiteFac1024
     End Sub
 
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
-        Dim paso As Boolean
+        'Dim paso As Boolean
 
-        paso = False
+        'paso = False
 
-        If MsgPregunta("ATENCION: Esta operación CANCELARA el ticket. CANCELA ?") = vbYes Then
-            paso = True
-            GuardarCancelado()
-            GrillaArticulos.Rows.Clear()
+        If GrillaArticulos.Rows.Count > 0 Then
+            If MsgPregunta("ATENCION: Esta operación CANCELARA el ticket. CANCELA ?") = vbYes Then
+                'paso = True
+                GuardarCancelado()
+                GrillaArticulos.Rows.Clear()
+                Me.Dispose()
+                Me.Close()
+            End If
+        Else
             Me.Dispose()
             Me.Close()
         End If

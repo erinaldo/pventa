@@ -33,36 +33,38 @@ Partial Class FormPide
         'lbldescart
         '
         Me.lbldescart.AutoSize = True
-        Me.lbldescart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbldescart.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbldescart.ForeColor = System.Drawing.Color.Red
-        Me.lbldescart.Location = New System.Drawing.Point(118, 78)
+        Me.lbldescart.Location = New System.Drawing.Point(134, 55)
         Me.lbldescart.Name = "lbldescart"
-        Me.lbldescart.Size = New System.Drawing.Size(55, 16)
+        Me.lbldescart.Size = New System.Drawing.Size(64, 19)
         Me.lbldescart.TabIndex = 9
         Me.lbldescart.Text = "Label3"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(28, 112)
+        Me.Label2.Font = New System.Drawing.Font("Bookman Old Style", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(29, 92)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(40, 13)
+        Me.Label2.Size = New System.Drawing.Size(53, 18)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Precio:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(28, 80)
+        Me.Label1.Font = New System.Drawing.Font("Bookman Old Style", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(29, 56)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(66, 13)
+        Me.Label1.Size = New System.Drawing.Size(90, 18)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Descripción:"
         '
         'btnCancelar
         '
         Me.btnCancelar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
-        Me.btnCancelar.Location = New System.Drawing.Point(48, 191)
+        Me.btnCancelar.Location = New System.Drawing.Point(44, 162)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(95, 46)
         Me.btnCancelar.TabIndex = 2
@@ -71,7 +73,7 @@ Partial Class FormPide
         'btnaceptar
         '
         Me.btnaceptar.Image = Global.PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32
-        Me.btnaceptar.Location = New System.Drawing.Point(179, 191)
+        Me.btnaceptar.Location = New System.Drawing.Point(175, 162)
         Me.btnaceptar.Name = "btnaceptar"
         Me.btnaceptar.Size = New System.Drawing.Size(95, 46)
         Me.btnaceptar.TabIndex = 1
@@ -79,16 +81,17 @@ Partial Class FormPide
         '
         'txtprecio
         '
-        Me.txtprecio.Location = New System.Drawing.Point(121, 112)
+        Me.txtprecio.Font = New System.Drawing.Font("Bookman Old Style", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtprecio.Location = New System.Drawing.Point(138, 89)
         Me.txtprecio.Name = "txtprecio"
-        Me.txtprecio.Size = New System.Drawing.Size(107, 20)
+        Me.txtprecio.Size = New System.Drawing.Size(107, 23)
         Me.txtprecio.TabIndex = 0
         '
         'FormPide
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(327, 261)
+        Me.ClientSize = New System.Drawing.Size(327, 244)
         Me.Controls.Add(Me.txtprecio)
         Me.Controls.Add(Me.lbldescart)
         Me.Controls.Add(Me.Label2)
