@@ -71,6 +71,7 @@ Partial Class FormPedidos
         Me.GrillaComprobanteVentaDetalle.ReadOnly = True
         Me.GrillaComprobanteVentaDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GrillaComprobanteVentaDetalle.Size = New System.Drawing.Size(725, 222)
+        Me.GrillaComprobanteVentaDetalle.StandardTab = True
         Me.GrillaComprobanteVentaDetalle.TabIndex = 1
         '
         'FormPedidos

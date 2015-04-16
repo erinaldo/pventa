@@ -261,6 +261,7 @@
     <Content Include="Imagenes\coin-delete.png" />
     <Content Include="Imagenes\coin-delete_96x96.png" />
     <None Include="Imagenes\la-lucha-contra-la-caja-registradora-icono-4028-32.png" />
+    <Content Include="Imagenes\Creatif_02.png" />
     <Content Include="Imagenes\shop-closed.png" />
     <Content Include="Imagenes\shop-open.png" />
     <Content Include="Imagenes\si-puede-aceptar-icono-7881-32.png" />

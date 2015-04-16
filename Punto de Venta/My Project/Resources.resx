@@ -124,14 +124,17 @@
   <data name="salir-de-mi-perfil-icono-3964-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\salir-de-mi-perfil-icono-3964-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="emptytrash-icono-9439-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\emptytrash-icono-9439-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="shop-closed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\shop-closed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="coin-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\coin-add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="la-lucha-contra-la-caja-registradora-icono-4028-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\la-lucha-contra-la-caja-registradora-icono-4028-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="coin-delete_96x96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\coin-delete_96x96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="coin-add_96x96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\coin-add_96x96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="si-puede-aceptar-icono-7881-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\si-puede-aceptar-icono-7881-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,11 +142,11 @@
   <data name="shop-open" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\shop-open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="coin-add_96x96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\coin-add_96x96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="coin-delete_96x96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\coin-delete_96x96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="emptytrash-icono-9439-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\emptytrash-icono-9439-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="coin-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\coin-add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="viewmag-icono-4318-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\viewmag-icono-4318-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,7 +154,7 @@
   <data name="la-lucha-contra-la-caja-registradora-icono-4028-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\la-lucha-contra-la-caja-registradora-icono-4028-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="la-lucha-contra-la-caja-registradora-icono-4028-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\la-lucha-contra-la-caja-registradora-icono-4028-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Creatif_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\Creatif_02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

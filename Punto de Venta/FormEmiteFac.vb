@@ -196,17 +196,6 @@ Public Class FormEmiteFac
 
     Private Sub FormEmiteFac_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
 
-        'If e.KeyCode = 73 Then 'Presiona I-> Graba el ticket e imprime en impresora comun
-        '    Origen = "I"
-        '    cmdAceptar_Click(sender, e)
-        'End If
-
-        'If e.KeyCode = 70 Then 'Presiona F-> Graba el ticket e imprime en impresora fiscal
-        '    Origen = "F"
-        '    cmdAceptar_Click(sender, e)
-        '    Exit Sub
-        'End If
-
         If e.KeyCode = Keys.F1 Then
             cmdAceptar_Click(sender, e)
             Exit Sub
@@ -220,25 +209,14 @@ Public Class FormEmiteFac
             FormPedidos.ShowDialog()
         End If
 
-        'If KeyCode = vbKeyF2 Then 'F2 Graba el ticket
-        '    FormVentaDiaria.Show vbModal
-        'End If
-
-        If e.KeyCode = Keys.F8 Then 'F2 Graba el ticket
+        If e.KeyCode = Keys.F8 Then
             Button1_Click(sender, e)
             Exit Sub
-            '    HASAR1.Comenzar()
-            '    HASAR1.ReporteZ()
-            '    HASAR1.Finalizar()
         End If
 
         If e.KeyCode = 46 Then
             cmdEliminar_Click(sender, e)
         End If
-
-        'If KeyCode = vbKeyF12 Then
-        '    FormReimprime.Cargar_Form()
-        'End If
 
         If e.KeyCode = Keys.Escape Then
             cmdCancelar_Click(sender, e)
@@ -332,19 +310,12 @@ Public Class FormEmiteFac
             MsgAtencion("No se puede guardar una factura con importe negativo")
         End If
 
-        'Else
-        '    MsgAtencion("Presione I o F para guardar")
-        'End If
-
     End Sub
 
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
-        'Dim paso As Boolean
 
-        'paso = False
         If GrillaArticulos.Rows.Count > 0 Then
-            If MsgPregunta("ATENCION: Esta operación CANCELARA el ticket. CANCELA ?") = vbYes Then
-                'paso = True
+            If MsgBox("ATENCION: Esta operación CANCELARA el ticket. CANCELA ?", MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
                 GuardarCancelado()
                 GrillaArticulos.Rows.Clear()
                 Me.Dispose()

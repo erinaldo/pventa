@@ -57,4 +57,5 @@
         textnombreusuario.Text = ""
         textcontrasenia.Text = ""
     End Sub
+
 End Class
