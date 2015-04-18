@@ -113,6 +113,18 @@ Public Class FormCierreCaja
 
         lblDiferencia.Text = 0
 
+        acomodarDiferencias()
+
+    End Sub
+
+    Private Sub acomodarDiferencias()
+
+        For Each row As DataGridViewRow In dgvRendicion.Rows
+            row.Cells(3).Value = row.Cells(2).Value - row.Cells(1).Value
+            row.Cells(3).Value = FormatNumber(row.Cells(3).Value, 2)
+            'ActualizarDiferencia()
+        Next
+        ActualizarDiferencia()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
