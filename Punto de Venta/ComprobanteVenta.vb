@@ -12,8 +12,8 @@
     Private strOrigen As String
     Private dblDescuento As Double
     Private dblTotalDescuento As Double
-    Private intIdFormaPago As Integer
-    Private strFormaPago As String
+    Private intIdSucursal As Integer
+    Private intIdPuntoVenta As Integer
 
     Public Property Comprobante() As Integer
         Get
@@ -132,21 +132,21 @@
         End Set
     End Property
 
-    Public Property IdFormaPago() As Integer
+    Public Property IdSucursal() As Integer
         Get
-            Return intIdFormaPago
+            Return intIdSucursal
         End Get
         Set(ByVal value As Integer)
-            intIdFormaPago = value
+            intIdSucursal = value
         End Set
     End Property
 
-    Public Property FormaPago() As String
+    Public Property IdPuntoVenta() As Integer
         Get
-            Return strFormaPago
+            Return intIdPuntoVenta
         End Get
-        Set(ByVal value As String)
-            strFormaPago = value
+        Set(ByVal value As Integer)
+            intIdPuntoVenta = value
         End Set
     End Property
 

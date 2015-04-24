@@ -1,23 +1,28 @@
 ﻿Public Class FormVuelto
     Dim dstFormas As New DataSet
+    Dim lstPagosAux As New List(Of Pagos)
+
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs)
         If MsgPregunta("¿Desea cancelar ?") = vbYes Then
             Me.Close()
         End If
     End Sub
 
-    Public Sub Abrir(dblTotFac As Double)
+    Public Sub Abrir(dblTotFac As Double, ByRef lstPagos As List(Of Pagos))
         Cargar_Combobox(ObtenerFormasPago, Me.cmbFormas)
         Me.lblTot.Text = FormatNumber(dblTotFac, 2)
         'Me.txttotaldto.Text = dblTotFac
         'Me.textdto.Text = 0
         Me.txtAbona.Text = 0
+        lstPagosAux = lstPagos
 
         lblVuelto.Text = CDbl(txtAbona.Text) - CDbl(lblTot.Text)
 
+        Me.txtAbona.Focus()
+
         ShowDialog()
 
-        Me.txtAbona.Focus()
+        lstPagos = lstPagosAux
 
     End Sub
 
@@ -45,21 +50,54 @@
             Exit Sub
         End If
 
+
         If CDbl(txtAbona.Text) <> 0 Then
             If CDbl(txtAbona.Text) >= CDbl(lblTot.Text) Then
                 'Vuelto = 0
-                Paga = 0
+                'Paga = 0
                 Descuento = 0 'CDbl(textdto.Text)
                 TotalDto = 0 'CDbl(txttotaldto.Text)
                 'MontoDesc = CDbl(lblTot.Text) - CDbl(txttotaldto.Text)
-                IdFormaPago = cmbFormas.SelectedValue
-                FormaPago = cmbFormas.Text
+                Dim pago As New Pagos
+                pago.IdPago = cmbFormas.SelectedValue
+                pago.DescripcionPago = cmbFormas.Text
+                pago.Monto = CDbl(lblTot.Text)
+                pago.Abonado = CDbl(txtAbona.Text)
+                lstPagosAux.Add(pago)
+                'IdFormaPago = cmbFormas.SelectedValue
+                'FormaPago = cmbFormas.Text
                 AceptaPago = True
-                Paga = CDbl(txtAbona.Text)
+
+                'Paga = CDbl(txtAbona.Text)
                 Me.Dispose()
                 Me.Close()
             Else
-                Me.txtAbona.SelectAll()
+                If cmbFormas.SelectedValue = 1 Then
+                    Me.txtAbona.SelectAll()
+                Else
+                    If MsgBox("Tiene una diferencia de $ " & CDbl(lblTot.Text) - CDbl(txtAbona.Text) & ". Abona en Efectivo?", MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
+                        Dim pago As New Pagos
+                        pago.IdPago = cmbFormas.SelectedValue
+                        pago.DescripcionPago = cmbFormas.Text
+                        pago.Monto = CDbl(txtAbona.Text)
+                        pago.Abonado = CDbl(txtAbona.Text)
+                        lstPagosAux.Add(pago)
+
+                        pago = New Pagos
+                        pago.IdPago = 1
+                        pago.DescripcionPago = "Efectivo"
+                        pago.Monto = CDbl(lblTot.Text) - CDbl(txtAbona.Text)
+                        pago.Abonado = CDbl(lblTot.Text) - CDbl(txtAbona.Text)
+                        lstPagosAux.Add(pago)
+
+                        AceptaPago = True
+
+                        Me.Dispose()
+                        Me.Close()
+                    Else
+                        Me.txtAbona.SelectAll()
+                    End If
+                End If
             End If
         Else
             MsgAtencion("Debe ingresar algun monto de pago")
@@ -92,7 +130,8 @@
         If cmbFormas.SelectedValue <> 1 Then
             txtAbona.Text = FormatNumber(CDbl(lblTot.Text), 2)
             lblVuelto.Text = FormatNumber(0, 2)
-            btnAceptar.Focus()
+            txtAbona.SelectAll()
+            txtAbona.Focus()
         Else
             txtAbona.Text = FormatNumber(0, 2)
             lblVuelto.Text = CDbl(txtAbona.Text) - CDbl(lblTot.Text)
@@ -115,7 +154,17 @@
             If txtAbona.Text.Contains(",") Then
                 e.Handled = True
                 Exit Sub
+            Else
+                e.Handled = False
+                Exit Sub
             End If
+        End If
+        If e.KeyChar = Convert.ToChar(Keys.Back) Then
+            e.Handled = False
+            Exit Sub
+        End If
+        If Not IsNumeric(e.KeyChar) Then
+            e.Handled = True
         End If
     End Sub
 
@@ -155,11 +204,11 @@
             Exit Sub
         End If
 
-        If e.KeyCode = Keys.F3 Then
-            cmbFormas.SelectedValue = 3
-            cmbFormas_DropDownClosed(sender, e)
-            Exit Sub
-        End If
+        'If e.KeyCode = Keys.F3 Then
+        '    cmbFormas.SelectedValue = 3
+        '    cmbFormas_DropDownClosed(sender, e)
+        '    Exit Sub
+        'End If
 
         If e.KeyCode = Keys.Enter Then
             If Origen = "" Then
@@ -169,4 +218,5 @@
         End If
 
     End Sub
+
 End Class

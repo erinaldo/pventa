@@ -20,5 +20,8 @@
     <Setting Name="impresoraFiscal" Type="System.String" Scope="User">
       <Value Profile="(Default)">FiscalPrinterLib.ModelosDeImpresoras.MODELO_715</Value>
     </Setting>
+    <Setting Name="puestoVenta" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -8,11 +8,17 @@ Public Class FormEmiteFac
     Dim Valido As Boolean
     Dim idListaSeleccionada As Integer
     Dim TotalPCompra As Double
-    Dim blnInicioTicket As Boolean
+    'Dim blnInicioTicket As Boolean
 
     Private Sub FormEmiteFac_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         listaArt = ObtenerArticulos()
+        listaCli = ObtenerClientes()
+
+        GrillaArticulos.Font = New Font("Arial ", 14, FontStyle.Regular)
+        GrillaArticulos.Columns(2).DefaultCellStyle.Format = "N2"
+        GrillaArticulos.Columns(4).DefaultCellStyle.Format = "N2"
+        Cargar_Combobox(listaCli, cmbcliente)
 
         AbrirFormulario()
 
@@ -20,27 +26,12 @@ Public Class FormEmiteFac
 
     Public Sub AbrirFormulario()
 
-        blnInicioTicket = True
-        cmbcliente.Enabled = True
-        'If pwiFacturacion.wflEmisionFactura_ExisteCajaAbierta(My.Settings.cadena, idUsuario, My.Settings.sucursal) Then
-        GrillaArticulos.Font = New Font("Arial ", 14, FontStyle.Regular)
-        GrillaArticulos.Columns(2).DefaultCellStyle.Format = "N2"
-        GrillaArticulos.Columns(4).DefaultCellStyle.Format = "N2"
-        listaCli = ModuloGeneral.ObtenerClientes()
-        Cargar_Combobox(listaCli, cmbcliente)
         cmbcliente.SelectedValue = 1
-        cmbcliente.Enabled = False
-        Me.lblLista.Text = "Consumidor Final"
         idListaSeleccionada = 1
         lblTotal.Text = FormatNumber("0", 2)
         lblCantidad.Text = 0
-        'Me.TextCodBar.Focus()
+        Me.TextCodBar.Focus()
 
-        'ShowDialog()
-        'Else
-        'MsgAtencion("El usuario actual no posee una caja abierta. Por favor abra una caja y vuelva a intenatrlo")
-
-        'End If
     End Sub
 
     Public Function Cargar_Combobox(ByVal lista As List(Of Clientes), ByRef cbx As Windows.Forms.ComboBox)
@@ -70,10 +61,10 @@ Public Class FormEmiteFac
     Private Sub agregarArticulo()
         Dim intCantidad As Integer
 
-        If blnInicioTicket Then
-            cmbcliente.Enabled = False
-            blnInicioTicket = False
-        End If
+        'If blnInicioTicket Then
+        '    cmbcliente.Enabled = False
+        '    blnInicioTicket = False
+        'End If
 
         Articulo = New Articulos
         If TextCodBar.Text.Contains("*") Then
@@ -229,6 +220,7 @@ Public Class FormEmiteFac
         Dim Pbase As Double
         Dim Iva As Double
         Dim objStreamWriter As StreamWriter
+        Dim lstPagos As New List(Of Pagos)
 
         If GrillaArticulos.RowCount = 0 Then
             Exit Sub
@@ -238,7 +230,7 @@ Public Class FormEmiteFac
             If CDbl(lblTotal.Text) > 0 Then
                 graba = False
                 AceptaPago = False
-                FormVuelto.Abrir(Me.lblTotal.Text)
+                FormVuelto.Abrir(Me.lblTotal.Text, lstPagos)
                 If AceptaPago Then
                     Dim intNroComprobante As Integer
                     Dim intNroComprobanteFiscal As Integer
@@ -262,9 +254,21 @@ Public Class FormEmiteFac
                     strComprobanteVenta = intNroComprobante & ";" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
                         FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
                         3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
-                        FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & IdFormaPago & ";" & FormaPago
+                        FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta ' & ";" & IdFormaPago & ";" & FormaPago
 
                     objStreamWriter.WriteLine(strComprobanteVenta)
+
+                    objStreamWriter.Close()
+
+                    'Agrego los pagos
+                    objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Pagos.txt", True, System.Text.ASCIIEncoding.ASCII)
+
+                    Dim strPagos As String
+
+                    For Each pagos In lstPagos
+                        strPagos = intNroComprobante & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta & ";" & pagos.IdPago & ";" & pagos.DescripcionPago & ";" & pagos.Monto
+                        objStreamWriter.WriteLine(strPagos)
+                    Next
 
                     objStreamWriter.Close()
 
@@ -276,7 +280,7 @@ Public Class FormEmiteFac
 
                     For j = 0 To GrillaArticulos.Rows.Count - 1
 
-                        strComprobanteVentaDetalle = intNroComprobante & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
+                        strComprobanteVentaDetalle = intNroComprobante & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
                             GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" & _
                             GrillaArticulos.Rows(j).Cells("PrecioUnitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2)
 
@@ -288,8 +292,7 @@ Public Class FormEmiteFac
 
 
                     If Origen = "F" Then
-                        'ImprimirImpresoraComun()
-                        ImprimirTicketFiscal(GrillaArticulos)
+                        ImprimirTicketFiscal(GrillaArticulos, lstPagos)
                     Else
                         'ImprimirImpresoraComun()
                     End If
@@ -298,9 +301,9 @@ Public Class FormEmiteFac
                     Me.lblTotal.Text = "0"
                     Origen = ""
                     GrillaArticulos.Rows.Clear()
-                    FormEmiteFac_Load(sender, e)
+                    AbrirFormulario()
                     '''''PrepararNuevoTicket()
-                    blnInicioTicket = True
+                    'blnInicioTicket = True
                     'cmbcliente.Enabled = True
                 End If
             Else

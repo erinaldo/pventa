@@ -126,6 +126,18 @@ Namespace My
                 Me("impresoraFiscal") = value
             End Set
         End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("2")> _
+        Public Property puestoVenta() As String
+            Get
+                Return CType(Me("puestoVenta"), String)
+            End Get
+            Set(value As String)
+                Me("puestoVenta") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

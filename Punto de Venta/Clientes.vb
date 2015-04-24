@@ -4,7 +4,11 @@
     Private strNombreFantasia As String
     'Private intIdLista As Integer
     'Private strListaDescripcion As String
+    Private strTpoTicket As String
+    Private strNroDocumento As String
+    Private strDomicilio As String
     Private intIdSucursal As Integer
+
 
     Public Property IdCliente() As Integer
         Get
@@ -41,6 +45,33 @@
     '        strListaDescripcion = value
     '    End Set
     'End Property
+
+    Public Property TpoTicket() As String
+        Get
+            Return strTpoTicket
+        End Get
+        Set(ByVal value As String)
+            strTpoTicket = value
+        End Set
+    End Property
+
+    Public Property NroDocumento() As String
+        Get
+            Return strNroDocumento
+        End Get
+        Set(ByVal value As String)
+            strNroDocumento = value
+        End Set
+    End Property
+
+    Public Property Domicilio() As String
+        Get
+            Return strDomicilio
+        End Get
+        Set(ByVal value As String)
+            strDomicilio = value
+        End Set
+    End Property
 
     Public Property IdSucursal() As Integer
         Get

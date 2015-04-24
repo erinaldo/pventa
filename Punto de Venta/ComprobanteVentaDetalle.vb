@@ -1,6 +1,8 @@
 ﻿Public Class ComprobanteVentaDetalle
 
     Private intNroComprobante As Integer
+    Private intIdSucursal As Integer
+    Private intIdPuntoVenta As Integer
     Private intCodArt As Integer
     Private strDescripcionArticulo As String
     Private intCantidad As Integer
@@ -13,6 +15,24 @@
         End Get
         Set(ByVal value As Integer)
             intNroComprobante = value
+        End Set
+    End Property
+
+    Public Property Sucursal() As Integer
+        Get
+            Return intIdSucursal
+        End Get
+        Set(ByVal value As Integer)
+            intIdSucursal = value
+        End Set
+    End Property
+
+    Public Property PuntoVenta() As Integer
+        Get
+            Return intIdPuntoVenta
+        End Get
+        Set(ByVal value As Integer)
+            intIdPuntoVenta = value
         End Set
     End Property
 

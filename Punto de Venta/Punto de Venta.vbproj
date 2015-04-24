@@ -173,6 +173,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ComprobanteVenta.vb" />
+    <Compile Include="Pagos.vb" />
     <Compile Include="Rendicion.vb" />
     <Compile Include="Usuarios.vb" />
   </ItemGroup>

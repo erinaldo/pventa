@@ -4,13 +4,13 @@ Module ModuloGeneral
 
 
     'Public Vuelto As Double
-    Public Paga As Double
+    'Public Paga As Double
     Public AceptaPago As Boolean
     Public Descuento As Double
     Public TotalDto As Double
     'Public MontoDesc As Double
-    Public IdFormaPago As Integer
-    Public FormaPago As String
+    'Public IdFormaPago As Integer
+    'Public FormaPago As String
     Public Origen As String
     Public CodartBuscado As Integer
     Public CodigoBarrasBuscado As String
@@ -145,7 +145,10 @@ Module ModuloGeneral
                 cli.NombreFantasia = Split(strLine, ";")(1)
                 'cli.IdLista = Split(strLine, ";")(2)
                 'cli.ListaDescripcion = Split(strLine, ";")(3)
-                cli.IdSucursal = Split(strLine, ";")(2)
+                cli.TpoTicket = Split(strLine, ";")(2)
+                cli.NroDocumento = Split(strLine, ";")(3)
+                cli.Domicilio = Split(strLine, ";")(4)
+                cli.IdSucursal = Split(strLine, ";")(5)
 
                 ObtenerClientes.Add(cli)
             Loop
@@ -310,8 +313,8 @@ Module ModuloGeneral
                 pedidoPendiente.Origen = Split(strLine, ";")(10)
                 pedidoPendiente.Descuento = Split(strLine, ";")(11)
                 pedidoPendiente.TotalDescuento = Split(strLine, ";")(12)
-                pedidoPendiente.IdFormaPago = Split(strLine, ";")(13)
-                pedidoPendiente.FormaPago = Split(strLine, ";")(14)
+                pedidoPendiente.IdSucursal = Split(strLine, ";")(13)
+                pedidoPendiente.IdPuntoVenta = Split(strLine, ";")(14)
 
                 ObtenerComprobanteVenta.Add(pedidoPendiente)
 
@@ -340,11 +343,13 @@ Module ModuloGeneral
                 strLine = objStreamReader.ReadLine
 
                 compVentDetalle.Comprobante = Split(strLine, ";")(0)
-                compVentDetalle.CodigoArticulo = Split(strLine, ";")(1)
-                compVentDetalle.DescripcionArticulo = Split(strLine, ";")(2)
-                compVentDetalle.Cantidad = Split(strLine, ";")(3)
-                compVentDetalle.PrecioUnitario = Split(strLine, ";")(4)
-                compVentDetalle.PrecioTotal = Split(strLine, ";")(5)
+                compVentDetalle.Sucursal = Split(strLine, ";")(1)
+                compVentDetalle.PuntoVenta = Split(strLine, ";")(2)
+                compVentDetalle.CodigoArticulo = Split(strLine, ";")(3)
+                compVentDetalle.DescripcionArticulo = Split(strLine, ";")(4)
+                compVentDetalle.Cantidad = Split(strLine, ";")(5)
+                compVentDetalle.PrecioUnitario = Split(strLine, ";")(6)
+                compVentDetalle.PrecioTotal = Split(strLine, ";")(7)
 
                 ObtenerComprobanteVentaDetalle.Add(compVentDetalle)
 
@@ -356,6 +361,40 @@ Module ModuloGeneral
             Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Comprobante Venta Detalle" + "|" + ex.Message)
         Catch ex As Exception
             Throw New Exception("Error en Modulo General." + " Obtener ComprobanteVentaDetalle" + "|" + ex.Message)
+        End Try
+    End Function
+
+    Public Function ObtenerPagos() As List(Of Pagos)
+        Dim objStreamReader As StreamReader
+        Dim strLine As String
+
+        Try
+            ObtenerPagos = New List(Of Pagos)
+
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Pagos.txt", System.Text.ASCIIEncoding.ASCII)
+
+            Do While Not objStreamReader.EndOfStream
+                Dim pago As New Pagos
+
+                strLine = objStreamReader.ReadLine
+
+                pago.Comprobante = Split(strLine, ";")(0)
+                pago.Sucursal = Split(strLine, ";")(1)
+                pago.PuntoVenta = Split(strLine, ";")(2)
+                pago.IdPago = Split(strLine, ";")(3)
+                pago.DescripcionPago = Split(strLine, ";")(4)
+                pago.Monto = Split(strLine, ";")(5)
+
+                ObtenerPagos.Add(pago)
+
+            Loop
+
+            objStreamReader.Close()
+
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Pagos" + "|" + ex.Message)
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General." + " Obtener Pagos" + "|" + ex.Message)
         End Try
     End Function
 
@@ -425,9 +464,9 @@ Module ModuloGeneral
         End Try
     End Function
 
-    Function ControlarCierreRealizado() As Boolean
+    'Function ControlarCierreRealizado() As Boolean
 
-    End Function
+    'End Function
 
     Public Function Decript(pass As String) As String
 

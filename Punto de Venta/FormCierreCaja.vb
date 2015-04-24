@@ -5,6 +5,7 @@ Public Class FormCierreCaja
     Dim lstCajaDaria As New List(Of CajaDiaria)
     Dim lstComprobanteVenta As New List(Of ComprobanteVenta)
     Dim lstFormasPago As New List(Of FormasPago)
+    Dim lstComprobantePago As New List(Of Pagos)
 
     Private Sub FormCierreCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim row As DataGridViewRow
@@ -75,6 +76,8 @@ Public Class FormCierreCaja
 
         lstComprobanteVenta = ObtenerComprobanteVenta()
 
+        lstComprobantePago = ObtenerPagos()
+
         For Each formPago In lstFormasPago
 
             row = New DataGridViewRow
@@ -84,12 +87,14 @@ Public Class FormCierreCaja
             row.Cells(0).Value = formPago.Descripcion
 
             row.Cells(1).Value = Aggregate vent In lstComprobanteVenta
-                                        Where vent.IdUsuario = idUsuario And vent.IdFormaPago = formPago.IdFormaPago And vent.FechaEmision = Now.Date
-                                        Into Sum(vent.TotalComprobante)
+                                 Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
+                                Where vent.IdUsuario = idUsuario And vent.FechaEmision = Now.Date And p.IdPago = formPago.IdFormaPago
+                                Into Sum(p.Monto)
 
             row.Cells(4).Value = Aggregate vent In lstComprobanteVenta
-                                       Where vent.IdUsuario = idUsuario And vent.IdFormaPago = formPago.IdFormaPago And vent.FechaEmision = Now.Date
-                                       Into Count(vent.TotalComprobante)
+                                  Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
+                                       Where vent.IdUsuario = idUsuario And vent.FechaEmision = Now.Date And p.IdPago = formPago.IdFormaPago
+                                       Into Count(p.Monto)
 
             row.Cells(5).Value = formPago.IdFormaPago
 

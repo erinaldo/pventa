@@ -38,6 +38,7 @@ Public Class FormPrincipal
         Dim listComprobanteVentaDetalle As New List(Of ComprobanteVentaDetalle)
         Dim listCajaDiaria As New List(Of CajaDiaria)
         Dim listRendicion As New List(Of Rendicion)
+        Dim listPagos As New List(Of Pagos)
 
         If MsgBox("Esta seguro que desea hacer el cierre de caja?", MsgBoxStyle.YesNo, "Cierre de Caja") = MsgBoxResult.No Then
             Exit Sub
@@ -70,6 +71,7 @@ Public Class FormPrincipal
         listComprobanteVentaDetalle = ObtenerComprobanteVentaDetalle()
         listCajaDiaria = ObtenerCajaDiaria()
         listRendicion = ObtenerRendicion()
+        listPagos = ObtenerPagos()
 
         If ActualizarComprobanteVenta(listComprobanteVenta) Then
             My.Computer.FileSystem.DeleteFile(My.Settings.rutaArchivos & "ComprobanteVenta.txt")
@@ -82,6 +84,9 @@ Public Class FormPrincipal
         End If
         If ActualizarRendicion(listRendicion) Then
             My.Computer.FileSystem.DeleteFile(My.Settings.rutaArchivos & "Rendicion.txt")
+        End If
+        If ActualizarPagos(listPagos) Then
+            My.Computer.FileSystem.DeleteFile(My.Settings.rutaArchivos & "Pagos.txt")
         End If
 
         btnFacturacion.Enabled = False

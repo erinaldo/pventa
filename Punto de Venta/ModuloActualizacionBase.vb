@@ -7,6 +7,7 @@ Module ModuloActualizacionBase
     Dim dsComprobanteVentaDetalle As New DataSet("ComprobanteVentaDetalle")
     Dim dsCajaDiaria As New DataSet("CajaDiaria")
     Dim dsRendicion As New DataSet("Rendicion")
+    Dim dsPagos As New DataSet("Pagos")
 
     Function ActualizarComprobanteVenta(ByVal listaComprobanteVenta As List(Of ComprobanteVenta)) As Boolean
 
@@ -39,8 +40,8 @@ Module ModuloActualizacionBase
                 drCurrent("cvt_origen") = compVent.Origen
                 drCurrent("cvt_dto") = compVent.Descuento
                 drCurrent("cvt_totaldto") = compVent.TotalDescuento
-                drCurrent("cvt_formapago") = compVent.IdFormaPago
-                drCurrent("cvt_idsucursal") = My.Settings.sucursal
+                drCurrent("cvt_idsucursal") = compVent.IdSucursal
+                drCurrent("cvt_idpuntoventa") = compVent.IdPuntoVenta
 
                 'Pass that new object into the Add method of the DataTable.Rows collection.
                 tblCompVenta.Rows.Add(drCurrent)
@@ -75,6 +76,8 @@ Module ModuloActualizacionBase
 
                 ' Set the DataRow field values as necessary.
                 drCurrent("cvd_nrocom") = compVent.Comprobante
+                drCurrent("cvd_idsucursal") = compVent.Sucursal
+                drCurrent("cvd_idpuntoventa") = compVent.PuntoVenta
                 drCurrent("cvd_codart") = compVent.CodigoArticulo
                 drCurrent("cvd_descart") = compVent.DescripcionArticulo
                 drCurrent("cvd_cantidad") = compVent.Cantidad
@@ -173,6 +176,45 @@ Module ModuloActualizacionBase
 
     End Function
 
+    Function ActualizarPagos(ByVal listaPagos As List(Of Pagos)) As Boolean
+
+        Try
+            ActualizarPagos = False
+
+            Dim tblPagos As New DataTable
+
+            ObtenerPagosVacio(tblPagos, "comprobantes_pagos")
+
+            tblPagos = dsPagos.Tables(0)
+
+            For Each pago In listaPagos
+
+                Dim drCurrent As DataRow
+                ' Obtain a new DataRow object from the DataTable.
+                drCurrent = tblPagos.NewRow()
+
+                ' Set the DataRow field values as necessary.
+                drCurrent("cp_nrocomprobante") = pago.Comprobante
+                drCurrent("cp_idSucursal") = pago.Sucursal
+                drCurrent("cp_idPuntoVenta") = pago.PuntoVenta
+                drCurrent("cp_idPago") = pago.IdPago
+                drCurrent("cp_descripcionPago") = pago.DescripcionPago
+                drCurrent("cp_Monto") = pago.Monto
+
+                'Pass that new object into the Add method of the DataTable.Rows collection.
+                tblPagos.Rows.Add(drCurrent)
+            Next
+
+            ImportDataTable(tblPagos, "comprobantes_pagos")
+
+            ActualizarPagos = True
+
+        Catch ex As Exception
+            ActualizarPagos = False
+        End Try
+
+    End Function
+
     Public Sub ImportDataTable(ByVal DataTable As DataTable, ByVal ServerTableName As String)
 
         Using cn As New SqlConnection(My.Settings.cadena & strUsuarioPassword), _
@@ -243,6 +285,22 @@ Module ModuloActualizacionBase
 
         daRendicion.FillSchema(dsRendicion, SchemaType.Source, "Rendicion")
         daRendicion.Fill(dsRendicion, "Rendicion")
+
+
+    End Sub
+
+    Public Sub ObtenerPagosVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
+
+        Dim objConn As New SqlConnection(My.Settings.cadena & strUsuarioPassword)
+        objConn.Open()
+
+        ' Create an instance of a DataAdapter.
+        Dim daPagos As New SqlDataAdapter("Select * From comprobantes_pagos Where cp_id = -1", objConn)
+
+        ' Create an instance of a DataSet, and retrieve data from the Authors table.
+
+        daPagos.FillSchema(dsPagos, SchemaType.Source, "comprobantes_pagos")
+        daPagos.Fill(dsPagos, "comprobantes_pagos")
 
 
     End Sub

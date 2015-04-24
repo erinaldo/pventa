@@ -4,6 +4,7 @@ Public Class FormPedidos
 
     Dim listPedidosPendientes As List(Of ComprobanteVenta)
     Dim listComprobanteVentaDetalle As List(Of ComprobanteVentaDetalle)
+    Dim listPagos As List(Of Pagos)
     Dim intComprobante As Integer
 
     Private Sub FormPedidos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -34,9 +35,11 @@ Public Class FormPedidos
             GrillaPedidosPendientes.DataSource = result
 
             Me.GrillaPedidosPendientes.Columns("ComprobanteTipo").Visible = False
+            Me.GrillaPedidosPendientes.Columns("IdSucursal").Visible = False
+            Me.GrillaPedidosPendientes.Columns("IdPuntoVenta").Visible = False
             Me.GrillaPedidosPendientes.Columns("CondicionIva").Visible = False
             Me.GrillaPedidosPendientes.Columns("IdCliente").Visible = False
-            Me.GrillaPedidosPendientes.Columns("IdFormaPago").Visible = False
+            'Me.GrillaPedidosPendientes.Columns("IdFormaPago").Visible = False
             Me.GrillaPedidosPendientes.Columns("IdUsuario").Visible = False
             Me.GrillaPedidosPendientes.Columns("Origen").Visible = False
             Me.GrillaPedidosPendientes.Columns("PorcentajeIva").Visible = False
@@ -57,7 +60,15 @@ Public Class FormPedidos
 
         Try
 
-            ImprimirTicketFiscal(GrillaComprobanteVentaDetalle)
+            listPagos = New List(Of Pagos)
+
+            listPagos = ObtenerPagos()
+
+            Dim lstPagos As List(Of Pagos) = (From pago In listPagos
+                                     Where pago.Comprobante = intComprobante
+                                     Select pago).ToList
+
+            ImprimirTicketFiscal(GrillaComprobanteVentaDetalle, lstPagos)
 
             Dim result As ComprobanteVenta = (From comp In listPedidosPendientes
                                                      Where comp.Comprobante = intComprobante
@@ -77,7 +88,7 @@ Public Class FormPedidos
                     strLine = compVent.Comprobante & ";" & compVent.ComprobanteFiscal & ";" & compVent.ComprobanteTipo & ";" & compVent.IdCliente & ";" & _
                                     FormatDateTime(compVent.FechaEmision, DateFormat.ShortDate) & ";" & _
                                     compVent.CondicionIva & ";" & compVent.PrecioBase & ";" & compVent.PorcentajeIva & ";" & compVent.TotalComprobante & ";" & compVent.IdUsuario & ";" & compVent.Origen & ";" & _
-                                    compVent.Descuento & ";" & compVent.TotalDescuento & ";" & compVent.IdFormaPago & ";" & compVent.FormaPago
+                                    compVent.Descuento & ";" & compVent.TotalDescuento & ";" & compVent.IdSucursal & ";" & compVent.IdPuntoVenta
 
                     objStreamWriter.WriteLine(strLine)
 
