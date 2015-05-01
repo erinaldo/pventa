@@ -1,6 +1,7 @@
 ﻿Public Class FormVuelto
     Dim dstFormas As New DataSet
     Dim lstPagosAux As New List(Of Pagos)
+    Dim clienteAux As New Clientes
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs)
         If MsgPregunta("¿Desea cancelar ?") = vbYes Then
@@ -8,8 +9,13 @@
         End If
     End Sub
 
-    Public Sub Abrir(dblTotFac As Double, ByRef lstPagos As List(Of Pagos))
+    Public Sub Abrir(dblTotFac As Double, ByRef lstPagos As List(Of Pagos), ByVal cliente As Clientes)
+
+        clienteAux = cliente
+        lstPagosAux = lstPagos
+
         Cargar_Combobox(ObtenerFormasPago, Me.cmbFormas)
+
         Me.lblTot.Text = FormatNumber(dblTotFac, 2)
         'Me.txttotaldto.Text = dblTotFac
         'Me.textdto.Text = 0
@@ -68,11 +74,17 @@
                 'FormaPago = cmbFormas.Text
                 AceptaPago = True
 
+                If cmbFormas.SelectedValue = 3 Then
+                    Pagada = 0
+                Else
+                    Pagada = 1
+                End If
+
                 'Paga = CDbl(txtAbona.Text)
                 Me.Dispose()
                 Me.Close()
             Else
-                If cmbFormas.SelectedValue = 1 Then
+                If cmbFormas.SelectedValue = 1 Or cmbFormas.SelectedValue = 3 Then
                     Me.txtAbona.SelectAll()
                 Else
                     If MsgBox("Tiene una diferencia de $ " & CDbl(lblTot.Text) - CDbl(txtAbona.Text) & ". Abona en Efectivo?", MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
@@ -89,6 +101,8 @@
                         pago.Monto = CDbl(lblTot.Text) - CDbl(txtAbona.Text)
                         pago.Abonado = CDbl(lblTot.Text) - CDbl(txtAbona.Text)
                         lstPagosAux.Add(pago)
+
+                        Pagada = 1
 
                         AceptaPago = True
 
@@ -204,11 +218,13 @@
             Exit Sub
         End If
 
-        'If e.KeyCode = Keys.F3 Then
-        '    cmbFormas.SelectedValue = 3
-        '    cmbFormas_DropDownClosed(sender, e)
-        '    Exit Sub
-        'End If
+        If e.KeyCode = Keys.F3 Then
+            If clienteAux.CuentaCorriente = 1 Then
+                cmbFormas.SelectedValue = 3
+                cmbFormas_DropDownClosed(sender, e)
+                Exit Sub
+            End If
+        End If
 
         If e.KeyCode = Keys.Enter Then
             If Origen = "" Then

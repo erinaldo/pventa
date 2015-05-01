@@ -8,7 +8,16 @@
     Private strNroDocumento As String
     Private strDomicilio As String
     Private intIdSucursal As Integer
+    Private intCuentaCorriente As Integer
 
+    Public Property CuentaCorriente() As Integer
+        Get
+            Return intCuentaCorriente
+        End Get
+        Set(ByVal value As Integer)
+            intCuentaCorriente = value
+        End Set
+    End Property
 
     Public Property IdCliente() As Integer
         Get

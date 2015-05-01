@@ -4,7 +4,7 @@ Module ModuloGeneral
 
 
     'Public Vuelto As Double
-    'Public Paga As Double
+    Public Pagada As Integer
     Public AceptaPago As Boolean
     Public Descuento As Double
     Public TotalDto As Double
@@ -143,12 +143,11 @@ Module ModuloGeneral
                 strLine = objStreamReader.ReadLine
                 cli.IdCliente = Split(strLine, ";")(0)
                 cli.NombreFantasia = Split(strLine, ";")(1)
-                'cli.IdLista = Split(strLine, ";")(2)
-                'cli.ListaDescripcion = Split(strLine, ";")(3)
                 cli.TpoTicket = Split(strLine, ";")(2)
                 cli.NroDocumento = Split(strLine, ";")(3)
                 cli.Domicilio = Split(strLine, ";")(4)
                 cli.IdSucursal = Split(strLine, ";")(5)
+                cli.CuentaCorriente = Split(strLine, ";")(6)
 
                 ObtenerClientes.Add(cli)
             Loop
@@ -315,6 +314,7 @@ Module ModuloGeneral
                 pedidoPendiente.TotalDescuento = Split(strLine, ";")(12)
                 pedidoPendiente.IdSucursal = Split(strLine, ";")(13)
                 pedidoPendiente.IdPuntoVenta = Split(strLine, ";")(14)
+                pedidoPendiente.Pagada = Split(strLine, ";")(15)
 
                 ObtenerComprobanteVenta.Add(pedidoPendiente)
 

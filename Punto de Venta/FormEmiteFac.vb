@@ -205,6 +205,12 @@ Public Class FormEmiteFac
             Exit Sub
         End If
 
+        If e.KeyCode = Keys.F10 Then
+            cmbcliente.DroppedDown = True
+            cmbcliente.Focus()
+            Exit Sub
+        End If
+
         If e.KeyCode = 46 Then
             cmdEliminar_Click(sender, e)
         End If
@@ -215,12 +221,23 @@ Public Class FormEmiteFac
 
     End Sub
 
+    Private Function datosCliente(ByVal idCliente As Integer) As Clientes
+
+        datosCliente = New Clientes
+
+        datosCliente = (From clie In listaCli
+                           Where clie.IdCliente = idCliente
+                           Select clie).First
+
+    End Function
+
     Private Sub cmdAceptar_Click(sender As Object, e As EventArgs) Handles cmdAceptar.Click
         Dim graba As Boolean
         Dim Pbase As Double
         Dim Iva As Double
         Dim objStreamWriter As StreamWriter
         Dim lstPagos As New List(Of Pagos)
+        Dim cliente As New Clientes
 
         If GrillaArticulos.RowCount = 0 Then
             Exit Sub
@@ -230,7 +247,11 @@ Public Class FormEmiteFac
             If CDbl(lblTotal.Text) > 0 Then
                 graba = False
                 AceptaPago = False
-                FormVuelto.Abrir(Me.lblTotal.Text, lstPagos)
+
+                cliente = datosCliente(cmbcliente.SelectedValue)
+
+                FormVuelto.Abrir(Me.lblTotal.Text, lstPagos, cliente)
+
                 If AceptaPago Then
                     Dim intNroComprobante As Integer
                     Dim intNroComprobanteFiscal As Integer
@@ -254,7 +275,8 @@ Public Class FormEmiteFac
                     strComprobanteVenta = intNroComprobante & ";" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
                         FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
                         3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
-                        FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta ' & ";" & IdFormaPago & ";" & FormaPago
+                        FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta _
+                        & ";" & Pagada  ' & ";" & IdFormaPago & ";" & FormaPago
 
                     objStreamWriter.WriteLine(strComprobanteVenta)
 
@@ -405,4 +427,7 @@ Public Class FormEmiteFac
 
     End Sub
 
+    Private Sub cmbcliente_DropDownClosed(sender As Object, e As EventArgs) Handles cmbcliente.DropDownClosed
+        Me.TextCodBar.Focus()
+    End Sub
 End Class

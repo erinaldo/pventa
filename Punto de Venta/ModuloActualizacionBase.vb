@@ -42,6 +42,7 @@ Module ModuloActualizacionBase
                 drCurrent("cvt_totaldto") = compVent.TotalDescuento
                 drCurrent("cvt_idsucursal") = compVent.IdSucursal
                 drCurrent("cvt_idpuntoventa") = compVent.IdPuntoVenta
+                drCurrent("cvt_pagada") = compVent.Pagada
 
                 'Pass that new object into the Add method of the DataTable.Rows collection.
                 tblCompVenta.Rows.Add(drCurrent)

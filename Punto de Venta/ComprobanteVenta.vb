@@ -14,6 +14,7 @@
     Private dblTotalDescuento As Double
     Private intIdSucursal As Integer
     Private intIdPuntoVenta As Integer
+    Private intPagada As Integer
 
     Public Property Comprobante() As Integer
         Get
@@ -147,6 +148,15 @@
         End Get
         Set(ByVal value As Integer)
             intIdPuntoVenta = value
+        End Set
+    End Property
+
+    Public Property Pagada() As Integer
+        Get
+            Return intPagada
+        End Get
+        Set(ByVal value As Integer)
+            intPagada = value
         End Set
     End Property
 
