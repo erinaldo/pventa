@@ -146,7 +146,8 @@ Public Class FormCierreCaja
                 objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Rendicion.txt", True, System.Text.ASCIIEncoding.ASCII)
 
                 For Each row As DataGridViewRow In dgvRendicion.Rows
-                    strLine = Now.Date & ";" & lblIdUsuario.Text & ";" & row.Cells("descripcion").Value & ";" & row.Cells("totalFacturado").Value & ";" & _
+                    strLine = Now.Date & ";" & lblIdUsuario.Text & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta & ";" & _
+                        row.Cells("descripcion").Value & ";" & row.Cells("totalFacturado").Value & ";" & _
                         CDbl(row.Cells("rendicion").Value) & ";" & CDbl(row.Cells("diferencia").Value) & ";" & row.Cells("cantComprobantes").Value & ";" & _
                         row.Cells("tpoOperacion").Value
 

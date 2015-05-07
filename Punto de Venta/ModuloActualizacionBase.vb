@@ -122,6 +122,7 @@ Module ModuloActualizacionBase
                 drCurrent("cd_tpooper") = cajaDia.Operacion
                 drCurrent("cd_idusuario") = cajaDia.Usuario
                 drCurrent("cd_idsucursal") = cajaDia.Sucursal
+                drCurrent("cd_idPuntoVenta") = cajaDia.PuntoVenta
 
                 'Pass that new object into the Add method of the DataTable.Rows collection.
                 tblCompVentaDet.Rows.Add(drCurrent)
@@ -157,6 +158,8 @@ Module ModuloActualizacionBase
                 ' Set the DataRow field values as necessary.
                 drCurrent("r_fecha") = rendicion.Fecha
                 drCurrent("r_idUsuario") = rendicion.Usuario
+                drCurrent("r_idSucursal") = rendicion.Sucursal
+                drCurrent("r_idPuntoVenta") = rendicion.PuntoVenta
                 drCurrent("r_total") = rendicion.Total
                 drCurrent("r_rendido") = rendicion.Rendido
                 drCurrent("r_diferencia") = rendicion.Diferencia

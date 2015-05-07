@@ -11,6 +11,16 @@
     Private idOperacion As Integer
     Private id_Usuario As Integer
     Private id_Sucursal As Integer
+    Private intIdPuntoVenta As Integer
+
+    Public Property PuntoVenta() As Integer
+        Get
+            Return intIdPuntoVenta
+        End Get
+        Set(ByVal value As Integer)
+            intIdPuntoVenta = value
+        End Set
+    End Property
 
     Public Property FechaHora() As DateTime
         Get

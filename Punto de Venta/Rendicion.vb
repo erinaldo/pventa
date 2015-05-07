@@ -8,6 +8,26 @@
     Private dblDiferencia As Double
     Private intComprobantes As Double
     Private intOperacion As Double
+    Private intIdSucursal As Integer
+    Private intIdPuntoVenta As Integer
+
+    Public Property PuntoVenta() As Integer
+        Get
+            Return intIdPuntoVenta
+        End Get
+        Set(ByVal value As Integer)
+            intIdPuntoVenta = value
+        End Set
+    End Property
+
+    Public Property Sucursal() As Integer
+        Get
+            Return intIdSucursal
+        End Get
+        Set(ByVal value As Integer)
+            intIdSucursal = value
+        End Set
+    End Property
 
     Public Property Operacion() As Integer
         Get

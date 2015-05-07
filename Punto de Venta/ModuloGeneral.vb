@@ -233,12 +233,14 @@ Module ModuloGeneral
                 strLine = objStreamReader.ReadLine
                 rend.Fecha = Split(strLine, ";")(0)
                 rend.Usuario = Split(strLine, ";")(1)
-                rend.Descripcion = Split(strLine, ";")(2)
-                rend.Total = Split(strLine, ";")(3)
-                rend.Rendido = Split(strLine, ";")(4)
-                rend.Diferencia = Split(strLine, ";")(5)
-                rend.Comprobantes = Split(strLine, ";")(6)
-                rend.Operacion = Split(strLine, ";")(7)
+                rend.Sucursal = Split(strLine, ";")(2)
+                rend.PuntoVenta = Split(strLine, ";")(3)
+                rend.Descripcion = Split(strLine, ";")(4)
+                rend.Total = Split(strLine, ";")(5)
+                rend.Rendido = Split(strLine, ";")(6)
+                rend.Diferencia = Split(strLine, ";")(7)
+                rend.Comprobantes = Split(strLine, ";")(8)
+                rend.Operacion = Split(strLine, ";")(9)
 
                 ObtenerRendicion.Add(rend)
             Loop
@@ -269,6 +271,7 @@ Module ModuloGeneral
                 caja.Operacion = Split(strLine, ";")(2)
                 caja.Usuario = Split(strLine, ";")(3)
                 caja.Sucursal = Split(strLine, ";")(4)
+                caja.PuntoVenta = Split(strLine, ";")(5)
 
                 ObtenerCajaDiaria.Add(caja)
             Loop
@@ -404,7 +407,7 @@ Module ModuloGeneral
         Try
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-            objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
+            objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
 
             objStreamWriter.Close()
         Catch ex As Exception
@@ -418,7 +421,7 @@ Module ModuloGeneral
         Try
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-            objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
+            objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
 
             objStreamWriter.Close()
         Catch ex As Exception
@@ -432,7 +435,7 @@ Module ModuloGeneral
         Try
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-            objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal)
+            objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
 
             objStreamWriter.Close()
         Catch ex As Exception
@@ -446,7 +449,7 @@ Module ModuloGeneral
         Try
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-            objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal)
+            objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
 
             objStreamWriter.Close()
         Catch ex As Exception
