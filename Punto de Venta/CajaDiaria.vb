@@ -6,12 +6,22 @@
         cierreCaja = 80
     End Enum
 
+    Private intNroCaja As Integer
     Private intFechaHora As DateTime
     Private dblImporte As Double
     Private idOperacion As Integer
     Private id_Usuario As Integer
     Private id_Sucursal As Integer
     Private intIdPuntoVenta As Integer
+
+    Public Property NroCaja() As Integer
+        Get
+            Return intNroCaja
+        End Get
+        Set(ByVal value As Integer)
+            intNroCaja = value
+        End Set
+    End Property
 
     Public Property PuntoVenta() As Integer
         Get

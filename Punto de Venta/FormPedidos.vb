@@ -88,7 +88,7 @@ Public Class FormPedidos
                     strLine = compVent.Comprobante & ";" & compVent.ComprobanteFiscal & ";" & compVent.ComprobanteTipo & ";" & compVent.IdCliente & ";" & _
                                     FormatDateTime(compVent.FechaEmision, DateFormat.ShortDate) & ";" & _
                                     compVent.CondicionIva & ";" & compVent.PrecioBase & ";" & compVent.PorcentajeIva & ";" & compVent.TotalComprobante & ";" & compVent.IdUsuario & ";" & compVent.Origen & ";" & _
-                                    compVent.Descuento & ";" & compVent.TotalDescuento & ";" & compVent.IdSucursal & ";" & compVent.IdPuntoVenta
+                                    compVent.Descuento & ";" & compVent.TotalDescuento & ";" & compVent.IdSucursal & ";" & compVent.IdPuntoVenta & ";" & compVent.Pagada
 
                     objStreamWriter.WriteLine(strLine)
 

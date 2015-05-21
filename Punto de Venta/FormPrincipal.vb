@@ -128,6 +128,8 @@ Public Class FormPrincipal
                 btnIngresoDinero.Enabled = True
                 btnRetiroDinero.Enabled = True
                 btnAbrirCaja.Enabled = False
+
+                NroCajaAbierta = obtenerNroCaja()
             Else
                 MsgBox("El usuario no puede volver a abrir una caja en el dia de hoy", MsgBoxStyle.Information, "Caja Cerrada")
                 btnFacturacion.Enabled = False

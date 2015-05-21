@@ -117,6 +117,7 @@ Module ModuloActualizacionBase
                 drCurrent = tblCompVentaDet.NewRow()
 
                 ' Set the DataRow field values as necessary.
+                drCurrent("cd_idCaja") = cajaDia.NroCaja
                 drCurrent("cd_fechahora") = cajaDia.FechaHora
                 drCurrent("cd_importe") = cajaDia.Importe
                 drCurrent("cd_tpooper") = cajaDia.Operacion
@@ -156,6 +157,7 @@ Module ModuloActualizacionBase
                 drCurrent = tblRendicion.NewRow()
 
                 ' Set the DataRow field values as necessary.
+                drCurrent("r_idCaja") = rendicion.NroCaja
                 drCurrent("r_fecha") = rendicion.Fecha
                 drCurrent("r_idUsuario") = rendicion.Usuario
                 drCurrent("r_idSucursal") = rendicion.Sucursal

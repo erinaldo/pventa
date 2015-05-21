@@ -2,6 +2,7 @@
     Dim dstFormas As New DataSet
     Dim lstPagosAux As New List(Of Pagos)
     Dim clienteAux As New Clientes
+    Dim PagadaAux As Integer
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs)
         If MsgPregunta("¿Desea cancelar ?") = vbYes Then
@@ -9,10 +10,11 @@
         End If
     End Sub
 
-    Public Sub Abrir(dblTotFac As Double, ByRef lstPagos As List(Of Pagos), ByVal cliente As Clientes)
+    Public Sub Abrir(dblTotFac As Double, ByRef lstPagos As List(Of Pagos), ByVal cliente As Clientes, ByRef Pagada As Integer)
 
         clienteAux = cliente
         lstPagosAux = lstPagos
+        PagadaAux = Pagada
 
         Cargar_Combobox(ObtenerFormasPago, Me.cmbFormas)
 
@@ -29,6 +31,7 @@
         ShowDialog()
 
         lstPagos = lstPagosAux
+        Pagada = PagadaAux
 
     End Sub
 
@@ -51,11 +54,16 @@
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
+        If cmbFormas.SelectedValue = 2 Then
+            Origen = "F"
+        End If
+
         If Origen = "" Then
             MsgAtencion("Presione I o F para guardar")
             Exit Sub
         End If
 
+        PagadaAux = 1
 
         If CDbl(txtAbona.Text) <> 0 Then
             If CDbl(txtAbona.Text) >= CDbl(lblTot.Text) Then
@@ -75,9 +83,9 @@
                 AceptaPago = True
 
                 If cmbFormas.SelectedValue = 3 Then
-                    Pagada = 0
+                    PagadaAux = 0
                 Else
-                    Pagada = 1
+                    PagadaAux = 1
                 End If
 
                 'Paga = CDbl(txtAbona.Text)
@@ -102,7 +110,7 @@
                         pago.Abonado = CDbl(lblTot.Text) - CDbl(txtAbona.Text)
                         lstPagosAux.Add(pago)
 
-                        Pagada = 1
+                        PagadaAux = 1
 
                         AceptaPago = True
 
@@ -208,12 +216,14 @@
 
         If e.KeyCode = Keys.F1 Then
             cmbFormas.SelectedValue = 1
+            Origen = ""
             cmbFormas_DropDownClosed(sender, e)
             Exit Sub
         End If
 
         If e.KeyCode = Keys.F2 Then
             cmbFormas.SelectedValue = 2
+            Origen = "F"
             cmbFormas_DropDownClosed(sender, e)
             Exit Sub
         End If
@@ -221,6 +231,7 @@
         If e.KeyCode = Keys.F3 Then
             If clienteAux.CuentaCorriente = 1 Then
                 cmbFormas.SelectedValue = 3
+                Origen = ""
                 cmbFormas_DropDownClosed(sender, e)
                 Exit Sub
             End If
@@ -229,6 +240,9 @@
         If e.KeyCode = Keys.Enter Then
             If Origen = "" Then
                 MsgAtencion("Presione I o F para guardar")
+                Exit Sub
+            Else
+                btnAceptar_Click(sender, e)
                 Exit Sub
             End If
         End If

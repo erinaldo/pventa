@@ -4,7 +4,7 @@ Module ModuloGeneral
 
 
     'Public Vuelto As Double
-    Public Pagada As Integer
+    'Public Pagada As Integer
     Public AceptaPago As Boolean
     Public Descuento As Double
     Public TotalDto As Double
@@ -22,6 +22,7 @@ Module ModuloGeneral
     Public idPerfilUsuario As Integer
     Public blnEsSupervisor As Boolean
     Public strUsuarioPassword As String = "User ID=creatif;Password=CreatifS;"
+    Public NroCajaAbierta As Integer
 
     Public Sub InsertarFilasEnGrilla(codart As String, descri As String, precio As Double, _
                                            cantidad As Double, total As Double, codbarra As String, costo As Double, _
@@ -75,12 +76,51 @@ Module ModuloGeneral
         Catch ex As FileNotFoundException
             Dim objStreamWriter As StreamWriter
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Comprobante.txt", True)
+            objStreamWriter.WriteLine(1)
             objStreamWriter.Close()
             obtenerNroComprobante()
         Catch ex As Exception
             Throw New Exception("Error en Modulo General." + " Obtener Comprobante" + "|" + ex.Message)
         End Try
     End Function
+
+    Public Function obtenerNroCaja() As Integer
+        Dim objStreamReader As StreamReader
+
+        Try
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "Caja.txt")
+
+            obtenerNroCaja = objStreamReader.ReadLine
+
+            objStreamReader.Close()
+
+        Catch ex As FileNotFoundException
+            Dim objStreamWriter As StreamWriter
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Caja.txt", True)
+            objStreamWriter.WriteLine(1)
+            objStreamWriter.Close()
+            obtenerNroCaja()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General." + " Obtener Caja" + "|" + ex.Message)
+        End Try
+    End Function
+
+    Public Sub agregarNroCaja()
+
+        Try
+
+            Dim objStreamWriter As StreamWriter
+
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Caja.txt", False)
+
+            objStreamWriter.WriteLine(NroCajaAbierta + 1)
+
+            objStreamWriter.Close()
+
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General." + " Obtener Caja" + "|" + ex.Message)
+        End Try
+    End Sub
 
     Public Function MsgAtencion(strMensaje As String) As MsgBoxStyle
         MsgAtencion = MsgBox(strMensaje, vbCritical + vbOKOnly, "Aviso al operador")
@@ -231,16 +271,17 @@ Module ModuloGeneral
                 Dim rend As New Rendicion
 
                 strLine = objStreamReader.ReadLine
-                rend.Fecha = Split(strLine, ";")(0)
-                rend.Usuario = Split(strLine, ";")(1)
-                rend.Sucursal = Split(strLine, ";")(2)
-                rend.PuntoVenta = Split(strLine, ";")(3)
-                rend.Descripcion = Split(strLine, ";")(4)
-                rend.Total = Split(strLine, ";")(5)
-                rend.Rendido = Split(strLine, ";")(6)
-                rend.Diferencia = Split(strLine, ";")(7)
-                rend.Comprobantes = Split(strLine, ";")(8)
-                rend.Operacion = Split(strLine, ";")(9)
+                rend.NroCaja = Split(strLine, ";")(0)
+                rend.Fecha = Split(strLine, ";")(1)
+                rend.Usuario = Split(strLine, ";")(2)
+                rend.Sucursal = Split(strLine, ";")(3)
+                rend.PuntoVenta = Split(strLine, ";")(4)
+                rend.Descripcion = Split(strLine, ";")(5)
+                rend.Total = Split(strLine, ";")(6)
+                rend.Rendido = Split(strLine, ";")(7)
+                rend.Diferencia = Split(strLine, ";")(8)
+                rend.Comprobantes = Split(strLine, ";")(9)
+                rend.Operacion = Split(strLine, ";")(10)
 
                 ObtenerRendicion.Add(rend)
             Loop
@@ -266,12 +307,13 @@ Module ModuloGeneral
                 Dim caja As New CajaDiaria
 
                 strLine = objStreamReader.ReadLine
-                caja.FechaHora = Split(strLine, ";")(0)
-                caja.Importe = Split(strLine, ";")(1)
-                caja.Operacion = Split(strLine, ";")(2)
-                caja.Usuario = Split(strLine, ";")(3)
-                caja.Sucursal = Split(strLine, ";")(4)
-                caja.PuntoVenta = Split(strLine, ";")(5)
+                caja.NroCaja = Split(strLine, ";")(0)
+                caja.FechaHora = Split(strLine, ";")(1)
+                caja.Importe = Split(strLine, ";")(2)
+                caja.Operacion = Split(strLine, ";")(3)
+                caja.Usuario = Split(strLine, ";")(4)
+                caja.Sucursal = Split(strLine, ";")(5)
+                caja.PuntoVenta = Split(strLine, ";")(6)
 
                 ObtenerCajaDiaria.Add(caja)
             Loop
@@ -405,11 +447,15 @@ Module ModuloGeneral
         Dim objStreamWriter As StreamWriter
 
         Try
+
+            NroCajaAbierta = obtenerNroCaja()
+
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-            objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
+            objStreamWriter.WriteLine(NroCajaAbierta & ";" & Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.aperturaCaja & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
 
             objStreamWriter.Close()
+
         Catch ex As Exception
             Throw New Exception("Error en Modulo General." + " Grabar Apertura de Caja" + "|" + ex.Message)
         End Try
@@ -421,7 +467,7 @@ Module ModuloGeneral
         Try
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-            objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
+            objStreamWriter.WriteLine(NroCajaAbierta & ";" & Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.ingresoDinero & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
 
             objStreamWriter.Close()
         Catch ex As Exception
@@ -435,7 +481,7 @@ Module ModuloGeneral
         Try
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-            objStreamWriter.WriteLine(Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
+            objStreamWriter.WriteLine(NroCajaAbierta & ";" & Date.Now & ";" & importe & ";" & CajaDiaria.tiposOperacion.retiroDinero & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
 
             objStreamWriter.Close()
         Catch ex As Exception
@@ -449,7 +495,7 @@ Module ModuloGeneral
         Try
             objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
 
-            objStreamWriter.WriteLine(Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
+            objStreamWriter.WriteLine(NroCajaAbierta & ";" & Date.Now & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & idUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
 
             objStreamWriter.Close()
         Catch ex As Exception

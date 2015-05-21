@@ -50,6 +50,23 @@ Public Class FormEmiteFac
         Me.TextCodBar.Focus()
     End Sub
 
+    Private Sub retiroDinero()
+
+        Dim dblRetiro As String
+
+        Try
+            FormSupervisor.ShowDialog()
+            If blnEsSupervisor Then
+                dblRetiro = InputBox("Ingrese el importe.", "Retiro de Dinero")
+                If CDbl(dblRetiro) <> 0 Then
+                    grabarRetiroDinero(CDbl(dblRetiro))
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("Debe ingresar un monto válido", MsgBoxStyle.Information, "Mensaje al Operador")
+        End Try
+    End Sub
+
     Private Sub ContarArticulos(cantidad As Double)
         If Articulo.Unidad <> 2 Then
             Me.lblCantidad.Text = CDbl(lblCantidad.Text) + cantidad
@@ -200,6 +217,11 @@ Public Class FormEmiteFac
             FormPedidos.ShowDialog()
         End If
 
+        If e.KeyCode = Keys.F7 Then
+            retiroDinero()
+            Exit Sub
+        End If
+
         If e.KeyCode = Keys.F8 Then
             Button1_Click(sender, e)
             Exit Sub
@@ -238,6 +260,7 @@ Public Class FormEmiteFac
         Dim objStreamWriter As StreamWriter
         Dim lstPagos As New List(Of Pagos)
         Dim cliente As New Clientes
+        Dim Pagada As Integer
 
         If GrillaArticulos.RowCount = 0 Then
             Exit Sub
@@ -250,7 +273,7 @@ Public Class FormEmiteFac
 
                 cliente = datosCliente(cmbcliente.SelectedValue)
 
-                FormVuelto.Abrir(Me.lblTotal.Text, lstPagos, cliente)
+                FormVuelto.Abrir(Me.lblTotal.Text, lstPagos, cliente, Pagada)
 
                 If AceptaPago Then
                     Dim intNroComprobante As Integer

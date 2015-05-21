@@ -1,5 +1,6 @@
 ﻿Public Class Rendicion
 
+    Private intNroCaja As Integer
     Private intFecha As Date
     Private id_Usuario As Integer
     Private strDescripcion As String
@@ -10,6 +11,15 @@
     Private intOperacion As Double
     Private intIdSucursal As Integer
     Private intIdPuntoVenta As Integer
+
+    Public Property NroCaja() As Integer
+        Get
+            Return intNroCaja
+        End Get
+        Set(ByVal value As Integer)
+            intNroCaja = value
+        End Set
+    End Property
 
     Public Property PuntoVenta() As Integer
         Get

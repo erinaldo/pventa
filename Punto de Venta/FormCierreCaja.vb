@@ -133,8 +133,8 @@ Public Class FormCierreCaja
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Try
 
+        Try
 
             If MsgBox("Esta seguro de grabar la rendicion?", MsgBoxStyle.YesNo, "Rendicion") = MsgBoxResult.Yes Then
 
@@ -146,7 +146,7 @@ Public Class FormCierreCaja
                 objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "Rendicion.txt", True, System.Text.ASCIIEncoding.ASCII)
 
                 For Each row As DataGridViewRow In dgvRendicion.Rows
-                    strLine = Now.Date & ";" & lblIdUsuario.Text & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta & ";" & _
+                    strLine = NroCajaAbierta & ";" & Now.Date & ";" & lblIdUsuario.Text & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta & ";" & _
                         row.Cells("descripcion").Value & ";" & row.Cells("totalFacturado").Value & ";" & _
                         CDbl(row.Cells("rendicion").Value) & ";" & CDbl(row.Cells("diferencia").Value) & ";" & row.Cells("cantComprobantes").Value & ";" & _
                         row.Cells("tpoOperacion").Value
@@ -154,11 +154,16 @@ Public Class FormCierreCaja
                     objStreamWriter.WriteLine(strLine)
 
                 Next
+
                 objStreamWriter.Close()
+
+                agregarNroCaja()
+
                 Me.DialogResult = Windows.Forms.DialogResult.OK
                 ' Me.Dispose()
                 Me.Close()
             End If
+
         Catch ex As Exception
 
         End Try
