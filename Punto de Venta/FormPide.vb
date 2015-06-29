@@ -45,4 +45,15 @@
             txtprecio.Text = 0
         End Try
     End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Me.Close()
+    End Sub
+
+    Private Sub FormPide_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
+        If e.KeyValue = Keys.Escape Then
+            Me.Dispose()
+            Me.Close()
+        End If
+    End Sub
 End Class

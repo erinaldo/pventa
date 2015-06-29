@@ -139,6 +139,7 @@ Partial Class FormBuscarArtFactu
         Me.Controls.Add(Me.btnSeleccionar)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.GrillaArticulos)
+        Me.KeyPreview = True
         Me.Name = "FormBuscarArtFactu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Buscar Articulo"

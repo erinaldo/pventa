@@ -88,12 +88,12 @@ Public Class FormCierreCaja
 
             row.Cells(1).Value = Aggregate vent In lstComprobanteVenta
                                  Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
-                                Where vent.IdUsuario = idUsuario And vent.FechaEmision = Now.Date And p.IdPago = formPago.IdFormaPago
+                                Where vent.IdUsuario = idUsuario And vent.FechaEmision.Date = Now.Date And p.IdPago = formPago.IdFormaPago
                                 Into Sum(p.Monto)
 
             row.Cells(4).Value = Aggregate vent In lstComprobanteVenta
                                   Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
-                                       Where vent.IdUsuario = idUsuario And vent.FechaEmision = Now.Date And p.IdPago = formPago.IdFormaPago
+                                       Where vent.IdUsuario = idUsuario And vent.FechaEmision.Date = Now.Date And p.IdPago = formPago.IdFormaPago
                                        Into Count(p.Monto)
 
             row.Cells(5).Value = formPago.IdFormaPago

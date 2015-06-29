@@ -4,6 +4,13 @@ Public Class FormBuscarArtFactu
 
     Private lista As List(Of Articulos)
 
+    Private Sub FormBuscarArtFactu_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
+        If e.KeyValue = Keys.Escape Then
+            Me.Close()
+        End If
+
+    End Sub
+
     Public Sub abrirFormulario(ByVal listaArt As List(Of Articulos), ByVal intIdLista As Integer)
 
 

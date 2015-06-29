@@ -281,6 +281,9 @@ Public Class FormEmiteFac
 
                     If Origen = "F" Then
                         intNroComprobanteFiscal = obtenerNroComprobanteFiscal() + 1
+                        If Not ImprimirTicketFiscal(GrillaArticulos, lstPagos) Then
+                            Exit Sub
+                        End If
                     ElseIf Origen = "I" Then
                         intNroComprobanteFiscal = 0
                     End If
@@ -296,7 +299,7 @@ Public Class FormEmiteFac
                     'Cargo los datos generales del tiquet
 
                     strComprobanteVenta = intNroComprobante & ";" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
-                        FormatDateTime(DtFechaEmi.Value, DateFormat.ShortDate) & ";" & _
+                        Date.Now & ";" & _
                         3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
                         FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta _
                         & ";" & Pagada  ' & ";" & IdFormaPago & ";" & FormaPago
@@ -335,12 +338,6 @@ Public Class FormEmiteFac
 
                     objStreamWriter.Close()
 
-
-                    If Origen = "F" Then
-                        ImprimirTicketFiscal(GrillaArticulos, lstPagos)
-                    Else
-                        'ImprimirImpresoraComun()
-                    End If
                     LimpiarCajas()
                     Me.lblCantidad.Text = "0"
                     Me.lblTotal.Text = "0"

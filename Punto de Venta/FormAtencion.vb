@@ -7,10 +7,4 @@
         
     End Sub
 
-
-    Private Sub FormAtencion_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        If e.KeyValue = Keys.Enter Then
-            Me.Close()
-        End If
-    End Sub
 End Class

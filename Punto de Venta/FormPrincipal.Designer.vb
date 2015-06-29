@@ -30,6 +30,7 @@ Partial Class FormPrincipal
         Me.btnIngresoDinero = New System.Windows.Forms.Button()
         Me.btnFacturacion = New System.Windows.Forms.Button()
         Me.btnAbrirCaja = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button6
@@ -47,7 +48,7 @@ Partial Class FormPrincipal
         Me.Button7.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button7.Location = New System.Drawing.Point(421, 286)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(130, 130)
+        Me.Button7.Size = New System.Drawing.Size(130, 62)
         Me.Button7.TabIndex = 6
         Me.Button7.Text = "Reporte Z"
         Me.Button7.UseVisualStyleBackColor = True
@@ -129,12 +130,23 @@ Partial Class FormPrincipal
         Me.btnAbrirCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnAbrirCaja.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(421, 354)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(130, 62)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Reporte Z" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "por Numero"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FormPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 542)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
@@ -159,4 +171,5 @@ Partial Class FormPrincipal
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

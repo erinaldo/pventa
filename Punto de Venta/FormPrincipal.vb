@@ -11,6 +11,7 @@ Public Class FormPrincipal
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         If MsgBox("Esta seguro de imprimir el Reporte Z?", MsgBoxStyle.YesNo, "Reporte Z") = MsgBoxResult.Yes Then
+
             ImprimirReporteZ()
         End If
     End Sub
@@ -182,5 +183,24 @@ Public Class FormPrincipal
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim intNumeroZ As Integer
+
+        Try
+            FormSupervisor.ShowDialog()
+            If blnEsSupervisor Then
+                intNumeroZ = InputBox("Ingrese el Número de Z, que desea imprimir.", "Impresión de Z por Número")
+                If intNumeroZ <> 0 Then
+
+                    If ImprimirReporteZPorNumero(intNumeroZ) Then
+                        MsgBox("Se imprimio correctamente", MsgBoxStyle.Information, "Mensaje al Operador")
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("Debe ingresar un número válido", MsgBoxStyle.Information, "Mensaje al Operador")
+        End Try
     End Sub
 End Class

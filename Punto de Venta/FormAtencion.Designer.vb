@@ -52,6 +52,7 @@ Partial Class FormAtencion
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(684, 362)
+        Me.ControlBox = False
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label1)
         Me.ForeColor = System.Drawing.Color.Red

@@ -25,9 +25,9 @@ Partial Class FormPide
         Me.lbldescart = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtprecio = New System.Windows.Forms.TextBox()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnaceptar = New System.Windows.Forms.Button()
-        Me.txtprecio = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'lbldescart
@@ -61,6 +61,14 @@ Partial Class FormPide
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Descripción:"
         '
+        'txtprecio
+        '
+        Me.txtprecio.Font = New System.Drawing.Font("Bookman Old Style", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtprecio.Location = New System.Drawing.Point(138, 89)
+        Me.txtprecio.Name = "txtprecio"
+        Me.txtprecio.Size = New System.Drawing.Size(107, 23)
+        Me.txtprecio.TabIndex = 0
+        '
         'btnCancelar
         '
         Me.btnCancelar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
@@ -79,14 +87,6 @@ Partial Class FormPide
         Me.btnaceptar.TabIndex = 1
         Me.btnaceptar.UseVisualStyleBackColor = True
         '
-        'txtprecio
-        '
-        Me.txtprecio.Font = New System.Drawing.Font("Bookman Old Style", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtprecio.Location = New System.Drawing.Point(138, 89)
-        Me.txtprecio.Name = "txtprecio"
-        Me.txtprecio.Size = New System.Drawing.Size(107, 23)
-        Me.txtprecio.TabIndex = 0
-        '
         'FormPide
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -98,6 +98,7 @@ Partial Class FormPide
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnaceptar)
+        Me.KeyPreview = True
         Me.Name = "FormPide"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ingrese Monto"
