@@ -223,8 +223,8 @@ Module ModuloActualizacionBase
 
     Public Sub ImportDataTable(ByVal DataTable As DataTable, ByVal ServerTableName As String)
 
-        Using cn As New SqlConnection(My.Settings.cadena & strUsuarioPassword), _
-        bcp As New SqlBulkCopy(cn, SqlBulkCopyOptions.TableLock, Nothing)
+        Using cn As New SqlConnection(My.Settings.cadena & strUsuarioPassword),
+        bcp As New SqlBulkCopy(cn, SqlBulkCopyOptions.FireTriggers Or SqlBulkCopyOptions.TableLock, Nothing)
 
             cn.Open()
             bcp.DestinationTableName = ServerTableName

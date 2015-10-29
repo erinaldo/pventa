@@ -6,6 +6,7 @@ Public Class FormCierreCaja
     Dim lstComprobanteVenta As New List(Of ComprobanteVenta)
     Dim lstFormasPago As New List(Of FormasPago)
     Dim lstComprobantePago As New List(Of Pagos)
+    Dim dblTotalFacturado As Double
 
     Private Sub FormCierreCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim row As DataGridViewRow
@@ -28,55 +29,57 @@ Public Class FormCierreCaja
 
         lblCierre.Text = Date.Now
 
-        row = New DataGridViewRow
+        'row = New DataGridViewRow
 
-        row.CreateCells(dgvRendicion)
+        'row.CreateCells(dgvRendicion)
 
-        row.Cells(0).Value = "Ingreso Dinero"
+        'row.Cells(0).Value = "Ingreso Dinero"
 
-        row.Cells(4).Value = Aggregate Caj In lstCajaDaria
-                                 Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.ingresoDinero
-                                 Into Count(Caj.Importe)
+        'row.Cells(4).Value = Aggregate Caj In lstCajaDaria
+        '                         Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.ingresoDinero
+        '                         Into Count(Caj.Importe)
 
-        row.Cells(1).Value = Aggregate Caj In lstCajaDaria
-                         Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.ingresoDinero
+        lblIngreso.Text = Aggregate Caj In lstCajaDaria
+                         Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.ingresoDinero And Caj.NroCaja = NroCajaAbierta
                          Into Sum(Caj.Importe)
 
-        row.Cells(5).Value = CajaDiaria.tiposOperacion.ingresoDinero
+        'row.Cells(5).Value = CajaDiaria.tiposOperacion.ingresoDinero
 
-        row.Cells(3).Value = 0
+        'row.Cells(3).Value = 0
 
-        row.Cells(2).Value = 0
+        'row.Cells(2).Value = 0
 
-        dgvRendicion.Rows.Add(row)
+        'dgvRendicion.Rows.Add(row)
 
-        row = New DataGridViewRow
+        'row = New DataGridViewRow
 
-        row.CreateCells(dgvRendicion)
+        'row.CreateCells(dgvRendicion)
 
-        row.Cells(0).Value = "Retiros Dinero"
+        'row.Cells(0).Value = "Retiros Dinero"
 
-        row.Cells(4).Value = Aggregate Caj In lstCajaDaria
-                                Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.retiroDinero
-                                Into Count(Caj.Importe)
+        'row.Cells(4).Value = Aggregate Caj In lstCajaDaria
+        '                        Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.retiroDinero
+        '                        Into Count(Caj.Importe)
 
-        row.Cells(1).Value = Aggregate Caj In lstCajaDaria
-                                 Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.retiroDinero
+        lblRetiro.Text = Aggregate Caj In lstCajaDaria
+                                 Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.retiroDinero And Caj.NroCaja = NroCajaAbierta
                                  Into Sum(Caj.Importe)
 
-        row.Cells(5).Value = CajaDiaria.tiposOperacion.retiroDinero
+        'row.Cells(5).Value = CajaDiaria.tiposOperacion.retiroDinero
 
-        row.Cells(3).Value = 0
+        'row.Cells(3).Value = 0
 
-        row.Cells(2).Value = 0
+        'row.Cells(2).Value = 0
 
-        dgvRendicion.Rows.Add(row)
+        'dgvRendicion.Rows.Add(row)
 
         lstFormasPago = ObtenerFormasPago()
 
         lstComprobanteVenta = ObtenerComprobanteVenta()
 
         lstComprobantePago = ObtenerPagos()
+
+        dblTotalFacturado = 0
 
         For Each formPago In lstFormasPago
 
@@ -90,6 +93,8 @@ Public Class FormCierreCaja
                                  Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
                                 Where vent.IdUsuario = idUsuario And vent.FechaEmision.Date = Now.Date And p.IdPago = formPago.IdFormaPago
                                 Into Sum(p.Monto)
+
+            dblTotalFacturado = dblTotalFacturado + row.Cells(1).Value
 
             row.Cells(4).Value = Aggregate vent In lstComprobanteVenta
                                   Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
@@ -106,6 +111,8 @@ Public Class FormCierreCaja
 
         Next
 
+        lblIngreso.Text = FormatNumber(lblIngreso.Text, 2)
+        lblRetiro.Text = FormatNumber(lblRetiro.Text, 2)
 
         dgvRendicion.Columns(0).ReadOnly = True
         dgvRendicion.Columns(1).ReadOnly = True
@@ -148,7 +155,7 @@ Public Class FormCierreCaja
                 For Each row As DataGridViewRow In dgvRendicion.Rows
                     strLine = NroCajaAbierta & ";" & Now.Date & ";" & lblIdUsuario.Text & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta & ";" & _
                         row.Cells("descripcion").Value & ";" & row.Cells("totalFacturado").Value & ";" & _
-                        CDbl(row.Cells("rendicion").Value) & ";" & CDbl(row.Cells("diferencia").Value) & ";" & row.Cells("cantComprobantes").Value & ";" & _
+                        row.Cells("rendicion").Value & ";" & row.Cells("diferencia").Value & ";" & row.Cells("cantComprobantes").Value & ";" & _
                         row.Cells("tpoOperacion").Value
 
                     objStreamWriter.WriteLine(strLine)
@@ -165,7 +172,8 @@ Public Class FormCierreCaja
             End If
 
         Catch ex As Exception
-
+            MsgBox("Error CC10 - Por favor informe este error a servicio tecnico.", MsgBoxStyle.Critical, "Mensaje al Operador")
+            Me.DialogResult = Windows.Forms.DialogResult.Cancel
         End Try
 
     End Sub
@@ -185,11 +193,14 @@ Public Class FormCierreCaja
     End Sub
 
     Private Sub ActualizarDiferencia()
-        lblDiferencia.Text = 0
+        Dim dblTotalRendido As Double
+
+        dblTotalRendido = 0
+
         For Each row As DataGridViewRow In dgvRendicion.Rows
-            lblDiferencia.Text = lblDiferencia.Text + CDbl(row.Cells(3).Value)
+            dblTotalRendido = dblTotalRendido + CDbl(row.Cells(2).Value)
         Next
-        lblDiferencia.Text = FormatNumber(lblDiferencia.Text, 2)
+        lblDiferencia.Text = FormatNumber(lblIngreso.Text - lblRetiro.Text + dblTotalFacturado - dblTotalrendido, 2)
     End Sub
 
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click

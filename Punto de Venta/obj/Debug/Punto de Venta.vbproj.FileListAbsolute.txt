@@ -45,3 +45,45 @@ D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.exe
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.xml
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.pdb
 D:\Punto_de_Venta\Punto de Venta\obj\Debug\Punto de Venta.vbprojResolveAssemblyReference.cache
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.exe.config
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\Interop.FiscalPrinterLib.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.ResolveComReference.cache
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.exe
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.xml
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.pdb
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.exe
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.pdb
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\PuntoVenta.xml
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.Shared.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Debug\stdole.dll
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormAtencion.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormBuscarArtFactu.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormCierreCaja.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormConsulta.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormEmiteFac.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormEmiteFac1024.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormFaltaPapel.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormInicioSesion.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormPedidos.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormPide.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormPrincipal.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormSupervisor.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormVuelto.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.Resources.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\Punto de Venta.vbproj.GenerateResource.Cache
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormClienteNvo.resources
+C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Debug\PuntoVenta.FormClientes.resources

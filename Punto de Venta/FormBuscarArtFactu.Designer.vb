@@ -114,6 +114,7 @@ Partial Class FormBuscarArtFactu
         '
         'btnSeleccionar
         '
+        Me.btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSeleccionar.Image = Global.PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32
         Me.btnSeleccionar.Location = New System.Drawing.Point(531, 467)
         Me.btnSeleccionar.Name = "btnSeleccionar"
@@ -123,6 +124,7 @@ Partial Class FormBuscarArtFactu
         '
         'btnCerrar
         '
+        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCerrar.Image = Global.PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32
         Me.btnCerrar.Location = New System.Drawing.Point(397, 467)
         Me.btnCerrar.Name = "btnCerrar"

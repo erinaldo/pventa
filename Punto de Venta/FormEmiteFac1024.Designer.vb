@@ -41,8 +41,9 @@ Partial Class FormEmiteFac1024
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TextCodigo = New System.Windows.Forms.TextBox()
-        Me.cmbcliente = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblIdCliente = New System.Windows.Forms.Label()
+        Me.lblCliente = New System.Windows.Forms.Label()
         Me.lblLista = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -62,6 +63,7 @@ Partial Class FormEmiteFac1024
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.GrillaArticulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -207,21 +209,12 @@ Partial Class FormEmiteFac1024
         Me.TextCodigo.TabStop = False
         Me.TextCodigo.Visible = False
         '
-        'cmbcliente
-        '
-        Me.cmbcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbcliente.FormattingEnabled = True
-        Me.cmbcliente.Location = New System.Drawing.Point(463, 18)
-        Me.cmbcliente.Name = "cmbcliente"
-        Me.cmbcliente.Size = New System.Drawing.Size(272, 23)
-        Me.cmbcliente.TabIndex = 100
-        Me.cmbcliente.TabStop = False
-        '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblIdCliente)
+        Me.GroupBox1.Controls.Add(Me.lblCliente)
         Me.GroupBox1.Controls.Add(Me.lblLista)
         Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.cmbcliente)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -234,6 +227,26 @@ Partial Class FormEmiteFac1024
         Me.GroupBox1.TabIndex = 112
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Generales"
+        '
+        'lblIdCliente
+        '
+        Me.lblIdCliente.AutoSize = True
+        Me.lblIdCliente.Location = New System.Drawing.Point(337, 26)
+        Me.lblIdCliente.Name = "lblIdCliente"
+        Me.lblIdCliente.Size = New System.Drawing.Size(14, 15)
+        Me.lblIdCliente.TabIndex = 103
+        Me.lblIdCliente.Text = "1"
+        Me.lblIdCliente.Visible = False
+        '
+        'lblCliente
+        '
+        Me.lblCliente.AutoSize = True
+        Me.lblCliente.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCliente.Location = New System.Drawing.Point(420, 23)
+        Me.lblCliente.Name = "lblCliente"
+        Me.lblCliente.Size = New System.Drawing.Size(145, 19)
+        Me.lblCliente.TabIndex = 102
+        Me.lblCliente.Text = "Consumidor Final"
         '
         'lblLista
         '
@@ -260,10 +273,10 @@ Partial Class FormEmiteFac1024
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(407, 25)
+        Me.Label4.Font = New System.Drawing.Font("Arial", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(357, 24)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(49, 15)
+        Me.Label4.Size = New System.Drawing.Size(57, 17)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Cliente:"
         '
@@ -425,18 +438,30 @@ Partial Class FormEmiteFac1024
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(12, 609)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(449, 13)
+        Me.Label5.Size = New System.Drawing.Size(617, 13)
         Me.Label5.TabIndex = 116
-        Me.Label5.Text = "F1 = Facturar. F4 = Consultar Precio. F5 = Reimprimir. F7 = Retiro. F8 = Buscar. " & _
-    "F10 = Clientes"
+        Me.Label5.Text = "F1 = Facturar. F3 = Ticket en Espera. F4 = Consultar Precio. F5 = Reimprimir. F7 " &
+    "= Retiro. F8 = Buscar. F10 = Clientes/Empleados"
+        '
+        'Label8
+        '
+        Me.Label8.Font = New System.Drawing.Font("Bookman Old Style", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(776, 23)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(220, 71)
+        Me.Label8.TabIndex = 117
+        Me.Label8.Text = "Ticket en Espera"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label8.Visible = False
         '
         'FormEmiteFac1024
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1008, 690)
-        Me.ControlBox = false
+        Me.ControlBox = False
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.GroupBox5)
@@ -473,7 +498,6 @@ End Sub
     Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents cmdEliminar As System.Windows.Forms.Button
-    Friend WithEvents cmbcliente As System.Windows.Forms.ComboBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents lblLista As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
@@ -497,5 +521,7 @@ End Sub
     Friend WithEvents Codbar As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents pcompra As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label5 As System.Windows.Forms.Label
-
+    Friend WithEvents lblIdCliente As Label
+    Friend WithEvents lblCliente As Label
+    Friend WithEvents Label8 As Label
 End Class

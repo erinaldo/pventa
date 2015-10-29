@@ -9,6 +9,7 @@
     Private strDomicilio As String
     Private intIdSucursal As Integer
     Private intCuentaCorriente As Integer
+    Private intIdEsEmpleado As Integer
 
     Public Property CuentaCorriente() As Integer
         Get
@@ -91,4 +92,12 @@
         End Set
     End Property
 
+    Public Property esEmpleado() As Integer
+        Get
+            Return intIdEsEmpleado
+        End Get
+        Set(ByVal value As Integer)
+            intIdEsEmpleado = value
+        End Set
+    End Property
 End Class

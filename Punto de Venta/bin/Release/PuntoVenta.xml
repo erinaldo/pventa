@@ -6,70 +6,85 @@ PuntoVenta
 </name>
 </assembly>
 <members>
+<member name="T:PuntoVenta.My.Resources.Resources">
+<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+</summary>
+</member>
 <member name="P:PuntoVenta.My.Resources.Resources.ResourceManager">
-	<summary>
+<summary>
   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.Culture">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.Culture">
+<summary>
   Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.boton_de_cancelacion_de_icono_6056_32">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.coin_add">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.coin_add">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.coin_add_96x96">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.coin_add_96x96">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.coin_delete_96x96">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.coin_delete_96x96">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.Creatif_02">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.Creatif_02">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.emptytrash_icono_9439_32">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.emptytrash_icono_9439_32">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.la_lucha_contra_la_caja_registradora_icono_4028_32">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.la_lucha_contra_la_caja_registradora_icono_4028_32">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.la_lucha_contra_la_caja_registradora_icono_4028_96">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.la_lucha_contra_la_caja_registradora_icono_4028_96">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.salir_de_mi_perfil_icono_3964_96">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.salir_de_mi_perfil_icono_3964_96">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.shop_closed">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.shop_closed">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.shop_open">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.shop_open">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.si_puede_aceptar_icono_7881_32">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:PuntoVenta.My.Resources.Resources.viewmag_icono_4318_16">
-	<summary>
+</member>
+<member name="P:PuntoVenta.My.Resources.Resources.viewmag_icono_4318_16">
+<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
-</member><member name="T:PuntoVenta.My.Resources.Resources">
-	<summary>
-  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
 </summary>
 </member>
 </members>

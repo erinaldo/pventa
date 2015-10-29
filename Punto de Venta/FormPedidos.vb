@@ -5,6 +5,7 @@ Public Class FormPedidos
     Dim listPedidosPendientes As List(Of ComprobanteVenta)
     Dim listComprobanteVentaDetalle As List(Of ComprobanteVentaDetalle)
     Dim listPagos As List(Of Pagos)
+    Dim listaCli As List(Of Clientes)
     Dim intComprobante As Integer
 
     Private Sub FormPedidos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -59,23 +60,47 @@ Public Class FormPedidos
         End If
 
         Try
+            Dim cliente As New Clientes
 
             listPagos = New List(Of Pagos)
+            listaCli = New List(Of Clientes)
 
+            listaCli = ObtenerClientes()
             listPagos = ObtenerPagos()
 
             Dim lstPagos As List(Of Pagos) = (From pago In listPagos
-                                     Where pago.Comprobante = intComprobante
-                                     Select pago).ToList
+                                              Where pago.Comprobante = intComprobante
+                                              Select pago).ToList
 
-            ImprimirTicketFiscal(GrillaComprobanteVentaDetalle, lstPagos)
+
+
+            'ImprimirTicketFiscal(GrillaComprobanteVentaDetalle, lstPagos)
 
             Dim result As ComprobanteVenta = (From comp In listPedidosPendientes
-                                                     Where comp.Comprobante = intComprobante
-                                                     Select comp).First
+                                              Where comp.Comprobante = intComprobante
+                                              Select comp).First
+
+            cliente = datosCliente(result.IdCliente)
+
+            If cliente.TpoTicket = "A" Then
+                result.ComprobanteFiscal = obtenerNroComprobanteFiscalA() + 1
+                If Not ImprimirTicketFiscalA(cliente, GrillaComprobanteVentaDetalle, lstPagos) Then
+                    Exit Sub
+                End If
+            Else
+                result.ComprobanteFiscal = obtenerNroComprobanteFiscalBC() + 1
+                If cliente.TpoTicket = "B" Then
+                    If Not ImprimirTicketFiscalB(cliente, GrillaComprobanteVentaDetalle, lstPagos) Then
+                        Exit Sub
+                    End If
+                Else
+                    If Not ImprimirTicketFiscalC(GrillaComprobanteVentaDetalle, lstPagos) Then
+                        Exit Sub
+                    End If
+                End If
+            End If
 
             result.Origen = "F"
-            result.ComprobanteFiscal = obtenerNroComprobanteFiscal()
 
             Dim objStreamWriter As StreamWriter
             Dim strLine As String
@@ -85,15 +110,16 @@ Public Class FormPedidos
                 objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVenta.txt", False, System.Text.ASCIIEncoding.ASCII)
 
                 For Each compVent In listPedidosPendientes
-                    strLine = compVent.Comprobante & ";" & compVent.ComprobanteFiscal & ";" & compVent.ComprobanteTipo & ";" & compVent.IdCliente & ";" & _
-                                    FormatDateTime(compVent.FechaEmision, DateFormat.ShortDate) & ";" & _
-                                    compVent.CondicionIva & ";" & compVent.PrecioBase & ";" & compVent.PorcentajeIva & ";" & compVent.TotalComprobante & ";" & compVent.IdUsuario & ";" & compVent.Origen & ";" & _
+                    strLine = compVent.Comprobante & ";" & compVent.ComprobanteFiscal & ";" & compVent.ComprobanteTipo & ";" & compVent.IdCliente & ";" &
+                                    compVent.FechaEmision & ";" &
+                                    compVent.CondicionIva & ";" & compVent.PrecioBase & ";" & compVent.PorcentajeIva & ";" & compVent.TotalComprobante & ";" & compVent.IdUsuario & ";" & compVent.Origen & ";" &
                                     compVent.Descuento & ";" & compVent.TotalDescuento & ";" & compVent.IdSucursal & ";" & compVent.IdPuntoVenta & ";" & compVent.Pagada
 
                     objStreamWriter.WriteLine(strLine)
 
                 Next
                 objStreamWriter.Close()
+                Me.Close()
             Catch ex As Exception
                 MsgBox("Error al grabar los comprobantes.", MsgBoxStyle.Information, "Mensaje al Operador")
             End Try
@@ -102,6 +128,16 @@ Public Class FormPedidos
         End Try
 
     End Sub
+
+    Private Function datosCliente(ByVal idCliente As Integer) As Clientes
+
+        datosCliente = New Clientes
+
+        datosCliente = (From clie In listaCli
+                        Where clie.IdCliente = idCliente
+                        Select clie).First
+
+    End Function
 
     Private Sub GrillaPedidosPendientes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaPedidosPendientes.CellClick
         Try

@@ -15,18 +15,26 @@ Public Class FormEmiteFac1024
         listaArt = ObtenerArticulos()
         listaCli = ObtenerClientes()
 
-        GrillaArticulos.Font = New Font("Arial ", 14, FontStyle.Regular)
+        GrillaArticulos.Font = New Font("Arial ", 12, FontStyle.Regular)
         GrillaArticulos.Columns(2).DefaultCellStyle.Format = "N2"
         GrillaArticulos.Columns(4).DefaultCellStyle.Format = "N2"
-        Cargar_Combobox(listaCli, cmbcliente)
+        'Cargar_Combobox(listaCli, cmbcliente)
 
         AbrirFormulario()
 
     End Sub
 
     Public Sub AbrirFormulario()
+        Dim cliente As New Clientes
 
-        cmbcliente.SelectedValue = 1
+        If File.Exists(My.Settings.rutaArchivos & "ComprobanteVentaEnEspera.txt") Then
+            Me.Label8.Visible = True
+        Else
+            Me.Label8.Visible = False
+        End If
+        cliente = datosCliente(1)
+        lblCliente.Text = cliente.NombreFantasia
+        lblIdCliente.Text = cliente.IdCliente
         idListaSeleccionada = 1
         lblTotal.Text = FormatNumber("0", 2)
         lblCantidad.Text = 0
@@ -34,14 +42,14 @@ Public Class FormEmiteFac1024
 
     End Sub
 
-    Public Function Cargar_Combobox(ByVal lista As List(Of Clientes), ByRef cbx As Windows.Forms.ComboBox)
+    'Public Function Cargar_Combobox(ByVal lista As List(Of Clientes), ByRef cbx As Windows.Forms.ComboBox)
 
-        cbx.DataSource = lista
-        cbx.DisplayMember = "NombreFantasia"
-        cbx.ValueMember = "IdCliente"
+    '    cbx.DataSource = lista
+    '    cbx.DisplayMember = "NombreFantasia"
+    '    cbx.ValueMember = "IdCliente"
 
-        Return Nothing
-    End Function
+    '    Return Nothing
+    'End Function
 
     Private Sub LimpiarCajas()
         Me.textcodbar.Text = ""
@@ -58,8 +66,11 @@ Public Class FormEmiteFac1024
             FormSupervisor.ShowDialog()
             If blnEsSupervisor Then
                 dblRetiro = InputBox("Ingrese el importe.", "Retiro de Dinero")
+                dblRetiro = Replace(dblRetiro, ".", ",")
                 If CDbl(dblRetiro) <> 0 Then
-                    grabarRetiroDinero(CDbl(dblRetiro))
+                    If MsgBox("Es correcto el RETIRO de dinero por: $" & FormatNumber(dblRetiro, 2), MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
+                        grabarRetiroDinero(CDbl(dblRetiro))
+                    End If
                 End If
             End If
         Catch ex As Exception
@@ -231,9 +242,37 @@ Public Class FormEmiteFac1024
             Exit Sub
         End If
 
+        If e.KeyCode = Keys.F3 Then
+            If File.Exists(My.Settings.rutaArchivos & "ComprobanteVentaEnEspera.txt") Then
+                If GrillaArticulos.RowCount > 0 Then
+                    MsgBox("Ya posee un ticket en espera.", MsgBoxStyle.Information, "Mensaje al Operador")
+                    Exit Sub
+                Else
+                    recuperarTickteEnEspera()
+                    Me.Label8.Visible = False
+                End If
+            Else
+                If GrillaArticulos.RowCount > 0 Then
+                    If MsgBox("Esta seguro de dejar el ticket en espera?", MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
+                        guardarTickteEnEspera()
+                        Me.Label8.Visible = True
+                    End If
+                End If
+            End If
+            Exit Sub
+        End If
+
         If e.KeyCode = Keys.F10 Then
-            cmbcliente.DroppedDown = True
-            cmbcliente.Focus()
+            Dim cliente As New Clientes
+            Dim frm As New FormClientes
+
+            frm.Abrir(listaCli)
+
+            If frm.DialogResult = DialogResult.OK Then
+                cliente = datosCliente(frm.IdCliente)
+                lblCliente.Text = cliente.NombreFantasia
+                lblIdCliente.Text = cliente.IdCliente
+            End If
             Exit Sub
         End If
 
@@ -252,10 +291,104 @@ Public Class FormEmiteFac1024
         datosCliente = New Clientes
 
         datosCliente = (From clie In listaCli
-                           Where clie.IdCliente = idCliente
-                           Select clie).First
+                        Where clie.IdCliente = idCliente
+                        Select clie).First
 
     End Function
+
+    Private Sub guardarTickteEnEspera()
+        Dim j As Integer = 0
+        Dim strComprobanteVentaDetalle As String
+        Dim objStreamWriter As StreamWriter
+
+        Try
+
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVentaEnEspera.txt", False)
+
+            For j = 0 To GrillaArticulos.Rows.Count - 1
+
+                strComprobanteVentaDetalle = GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" &
+                    GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("PrecioUnitario").Value & ";" &
+                    GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" & GrillaArticulos.Rows(j).Cells("Total").Value & ";" &
+                    GrillaArticulos.Rows(j).Cells("Codbar").Value & ";" & GrillaArticulos.Rows(j).Cells("pcompra").Value
+
+                objStreamWriter.WriteLine(strComprobanteVentaDetalle)
+
+            Next
+
+            objStreamWriter.Close()
+            LimpiarCajas()
+            Me.lblCantidad.Text = "0"
+            Me.lblTotal.Text = FormatNumber("0", 2)
+            Origen = ""
+            GrillaArticulos.Rows.Clear()
+            Me.TextCodBar.Text = ""
+            Me.TextCodBar.Focus()
+
+        Catch ex As Exception
+            MsgBox("Error en el guardado del ticket", MsgBoxStyle.Information, "Mensaje al Operador")
+        End Try
+    End Sub
+
+    Private Sub recuperarTickteEnEspera()
+
+        Dim objStreamReader As StreamReader
+        Dim strLine As String
+
+        Try
+            LimpiarCajas()
+            Me.lblCantidad.Text = "0"
+            Me.lblTotal.Text = FormatNumber("0", 2)
+            TotalPCompra = 0
+            Origen = ""
+            GrillaArticulos.Rows.Clear()
+
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "ComprobanteVentaEnEspera.txt")
+
+            Do While Not objStreamReader.EndOfStream
+                Dim row As New DataGridViewRow
+
+                strLine = objStreamReader.ReadLine
+
+                row.CreateCells(GrillaArticulos)
+
+                row.Cells(0).Value = Split(strLine, ";")(0)
+                row.Cells(1).Value = Split(strLine, ";")(1)
+                row.Cells(2).Value = Split(strLine, ";")(2)
+                row.Cells(3).Value = Split(strLine, ";")(3)
+                row.Cells(4).Value = Split(strLine, ";")(4)
+                row.Cells(5).Value = Split(strLine, ";")(5)
+                row.Cells(6).Value = Split(strLine, ";")(6)
+                'row.Cells(7).Value = Split(strLine, ";")(7)
+
+                GrillaArticulos.Rows.Add(row)
+
+                TotalPCompra = TotalPCompra + row.Cells(6).Value
+
+                Me.lblTotal.Text = CDbl(Me.lblTotal.Text) + CDbl(row.Cells(4).Value)
+                Me.lblTotal.Text = FormatNumber(Me.lblTotal.Text, 2)
+                'lblCantidad.Text = CDbl(lblCantidad.Text) + row.Cells(3).Value
+
+                Articulo = New Articulos
+
+                Articulo = BuscarArticulo(listaArt, row.Cells(5).Value, 1)
+
+                ContarArticulos(CDbl(row.Cells(3).Value))
+
+                LimpiarCajas()
+            Loop
+
+            objStreamReader.Close()
+
+            File.Delete(My.Settings.rutaArchivos & "ComprobanteVentaEnEspera.txt")
+
+            Me.TextCodBar.Text = ""
+            Me.TextCodBar.Focus()
+
+        Catch ex As Exception
+            MsgBox("Error en el guardado del ticket", MsgBoxStyle.Information, "Mensaje al Operador")
+        End Try
+    End Sub
 
     Private Sub cmdAceptar_Click(sender As Object, e As EventArgs) Handles cmdAceptar.Click
         Dim graba As Boolean
@@ -274,7 +407,7 @@ Public Class FormEmiteFac1024
             If CDbl(lblTotal.Text) > 0 Then
                 graba = False
                 AceptaPago = False
-                cliente = datosCliente(cmbcliente.SelectedValue)
+                cliente = datosCliente(lblIdCliente.Text)
 
                 FormVuelto.Abrir(Me.lblTotal.Text, lstPagos, cliente, Pagada)
                 If AceptaPago Then
@@ -282,9 +415,22 @@ Public Class FormEmiteFac1024
                     Dim intNroComprobanteFiscal As Integer
 
                     If Origen = "F" Then
-                        intNroComprobanteFiscal = obtenerNroComprobanteFiscal() + 1
-                        If Not ImprimirTicketFiscal(GrillaArticulos, lstPagos) Then
-                            Exit Sub
+                        If cliente.TpoTicket = "A" Then
+                            intNroComprobanteFiscal = obtenerNroComprobanteFiscalA() + 1
+                            If Not ImprimirTicketFiscalA(cliente, GrillaArticulos, lstPagos) Then
+                                Exit Sub
+                            End If
+                        Else
+                            intNroComprobanteFiscal = obtenerNroComprobanteFiscalBC() + 1
+                            If cliente.TpoTicket = "B" Then
+                                If Not ImprimirTicketFiscalB(cliente, GrillaArticulos, lstPagos) Then
+                                    Exit Sub
+                                End If
+                            Else
+                                If Not ImprimirTicketFiscalC(GrillaArticulos, lstPagos) Then
+                                    Exit Sub
+                                End If
+                            End If
                         End If
                     ElseIf Origen = "I" Then
                         intNroComprobanteFiscal = 0
@@ -300,11 +446,10 @@ Public Class FormEmiteFac1024
                     Iva = CDbl(Me.lblTotal.Text) - FormatNumber(Pbase, 2)
 
                     'Cargo los datos generales del tiquet
-                    strComprobanteVenta = intNroComprobante & ";" & intNroComprobanteFiscal & ";" & 5 & ";" & cmbcliente.SelectedValue & ";" & _
-                        Date.Now & ";" & _
-                        3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" & _
-                        FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta _
-                        & ";" & Pagada ' & ";" & IdFormaPago & ";" & FormaPago
+                    strComprobanteVenta = intNroComprobante & ";" & intNroComprobanteFiscal & ";" & 5 & ";" & lblIdCliente.Text & ";" & Date.Now & ";" &
+                        3 & ";" & FormatNumber(Pbase, 2) & ";" & PorcIva & ";" & FormatNumber(CDbl(Me.lblTotal.Text), 2) & ";" & idUsuario & ";" & Origen & ";" &
+                        FormatNumber(Descuento, 2) & ";" & FormatNumber(TotalDto, 2) & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta &
+                        ";" & Pagada ' & ";" & IdFormaPago & ";" & FormaPago
 
                     objStreamWriter.WriteLine(strComprobanteVenta)
 
@@ -342,7 +487,7 @@ Public Class FormEmiteFac1024
 
                     LimpiarCajas()
                     Me.lblCantidad.Text = "0"
-                    Me.lblTotal.Text = "0"
+                    Me.lblTotal.Text = FormatNumber("0", 2)
                     Origen = ""
                     GrillaArticulos.Rows.Clear()
                     FormEmiteFac_Load(sender, e)
@@ -432,22 +577,22 @@ Public Class FormEmiteFac1024
         End If
     End Sub
 
-    Private Sub cmbcliente_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbcliente.SelectionChangeCommitted
-        'Dim idCli As Integer
+    'Private Sub cmbcliente_SelectionChangeCommitted(sender As Object, e As EventArgs)
+    'Dim idCli As Integer
 
-        'idCli = cmbcliente.SelectedValue
+    'idCli = cmbcliente.SelectedValue
 
-        'For Each cli In listaCli
-        '    If cli.IdCliente = idCli Then
-        '        Me.lblLista.Text = cli.ListaDescripcion
-        '        idListaSeleccionada = cli.IdLista
-        '        Exit For
-        '    End If
-        'Next
+    'For Each cli In listaCli
+    '    If cli.IdCliente = idCli Then
+    '        Me.lblLista.Text = cli.ListaDescripcion
+    '        idListaSeleccionada = cli.IdLista
+    '        Exit For
+    '    End If
+    'Next
 
-    End Sub
+    'End Sub
 
-    Private Sub cmbcliente_DropDownClosed(sender As Object, e As EventArgs) Handles cmbcliente.DropDownClosed
+    Private Sub cmbcliente_DropDownClosed(sender As Object, e As EventArgs)
         Me.TextCodBar.Focus()
     End Sub
 End Class

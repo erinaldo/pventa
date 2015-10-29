@@ -41,6 +41,11 @@ Public Class FormPrincipal
         Dim listRendicion As New List(Of Rendicion)
         Dim listPagos As New List(Of Pagos)
 
+        If File.Exists(My.Settings.rutaArchivos & "ComprobanteVentaEnEspera.txt") Then
+            MsgBox("Posee un ticket en espera. No puede cerrar caja.", MsgBoxStyle.Information, "Mensaje al Operador")
+            Exit Sub
+        End If
+
         If MsgBox("Esta seguro que desea hacer el cierre de caja?", MsgBoxStyle.YesNo, "Cierre de Caja") = MsgBoxResult.No Then
             Exit Sub
         End If
@@ -106,11 +111,17 @@ Public Class FormPrincipal
         'MsgBox("No se ha realizado el cierre anterior. P
         'End If
 
+        NroCajaAbierta = obtenerNroCaja()
+
         listaCajaDia = ObtenerCajaDiaria()
 
+        'Dim caja As List(Of CajaDiaria) = (From caj In listaCajaDia
+        '                          Where caj.Usuario = idUsuario And caj.FechaHora.Date = Now.Date
+        '                          Select caj).ToList
+
         Dim caja As List(Of CajaDiaria) = (From caj In listaCajaDia
-                                  Where caj.Usuario = idUsuario And caj.FechaHora.Date = Now.Date
-                                  Select caj).ToList
+                                           Where caj.NroCaja = NroCajaAbierta
+                                           Select caj).ToList
 
         If caja.Count = 0 Then
             btnFacturacion.Enabled = False
@@ -119,26 +130,32 @@ Public Class FormPrincipal
             btnRetiroDinero.Enabled = False
             btnAbrirCaja.Enabled = True
         Else
-            Dim intCaja As Integer = (From c In caja
-                                        Where c.Operacion = CajaDiaria.tiposOperacion.cierreCaja
-                                        Select c).Count
 
-            If intCaja = 0 Then
+            Dim CajaDia As CajaDiaria = (From c In caja
+                                         Where c.Usuario = idUsuario And c.FechaHora.Date = Now.Date And c.Operacion = CajaDiaria.tiposOperacion.aperturaCaja
+                                         Select c).FirstOrDefault
+
+            If CajaDia Is Nothing Then
+
+                Dim CajaAnterior As CajaDiaria = (From c In caja
+                                                  Where c.Operacion = CajaDiaria.tiposOperacion.aperturaCaja
+                                                  Select c).FirstOrDefault
+
+                grabarCierreCaja(CajaAnterior.FechaHora.Date & " 23:59:00", CajaAnterior.Usuario)
+
+                agregarNroCaja()
+
+                btnFacturacion.Enabled = False
+                btnCerrarCaja.Enabled = False
+                btnIngresoDinero.Enabled = False
+                btnRetiroDinero.Enabled = False
+                btnAbrirCaja.Enabled = True
+            Else
                 btnFacturacion.Enabled = True
                 btnCerrarCaja.Enabled = True
                 btnIngresoDinero.Enabled = True
                 btnRetiroDinero.Enabled = True
                 btnAbrirCaja.Enabled = False
-
-                NroCajaAbierta = obtenerNroCaja()
-            Else
-                MsgBox("El usuario no puede volver a abrir una caja en el dia de hoy", MsgBoxStyle.Information, "Caja Cerrada")
-                btnFacturacion.Enabled = False
-                btnCerrarCaja.Enabled = False
-                btnIngresoDinero.Enabled = False
-                btnRetiroDinero.Enabled = False
-                btnAbrirCaja.Enabled = False
-                Exit Sub
             End If
 
         End If
@@ -160,7 +177,21 @@ Public Class FormPrincipal
 
     Private Sub btnIngresoDinero_Click(sender As Object, e As EventArgs) Handles btnIngresoDinero.Click
 
-        grabarIngresoDinero(CDbl(InputBox("Ingrese el importe.", "Ingreso de Dinero")))
+        Dim dblIngreso As String
+
+        Try
+
+            dblIngreso = InputBox("Ingrese el importe.", "Ingreso de Dinero")
+            dblIngreso = Replace(dblIngreso, ".", ",")
+            If CDbl(dblIngreso) <> 0 Then
+                If MsgBox("Es correcto el Ingreso de dinero por: $" & FormatNumber(dblIngreso, 2), MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
+                    grabarIngresoDinero(CDbl(dblIngreso))
+                End If
+            End If
+
+        Catch ex As Exception
+            MsgBox("Debe ingresar un monto válido", MsgBoxStyle.Information, "Mensaje al Operador")
+        End Try
 
     End Sub
 
@@ -172,17 +203,16 @@ Public Class FormPrincipal
             FormSupervisor.ShowDialog()
             If blnEsSupervisor Then
                 dblRetiro = InputBox("Ingrese el importe.", "Retiro de Dinero")
+                dblRetiro = Replace(dblRetiro, ".", ",")
                 If CDbl(dblRetiro) <> 0 Then
-                    grabarRetiroDinero(CDbl(dblRetiro))
+                    If MsgBox("Es correcto el RETIRO de dinero por: $" & FormatNumber(dblRetiro, 2), MsgBoxStyle.YesNo, "Mensaje al Operador") = MsgBoxResult.Yes Then
+                        grabarRetiroDinero(CDbl(dblRetiro))
+                    End If
                 End If
             End If
         Catch ex As Exception
             MsgBox("Debe ingresar un monto válido", MsgBoxStyle.Information, "Mensaje al Operador")
         End Try
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click

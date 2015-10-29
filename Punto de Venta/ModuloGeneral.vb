@@ -162,9 +162,35 @@ Module ModuloGeneral
 
             objStreamReader.Close()
         Catch ex As FileNotFoundException
-            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Articulos" + "|" + ex.Message)
+            MsgBox("No se encontró el archivo de Articulos. Solamente podra realizar ventas como Varios.", MsgBoxStyle.Information, "Aviso al Operador")
+            ObtenerArticulos = New List(Of Articulos)
+            Dim art As New Articulos
+
+            art.Codigo = 12658
+            art.Descripcion = "VARIOS"
+            art.CodigoBarras = "V"
+            art.PrecioCosto = 1
+            art.PrecioVenta = 1
+            art.Unidad = 1
+            art.CostoGranel = 0
+            art.UnidadGranel = 0
+
+            ObtenerArticulos.Add(art)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General." + " Obtener Articulos" + "|" + ex.Message)
+            MsgBox("Error en el archivo de Articulos. Solamente podra realizar ventas como Varios.", MsgBoxStyle.Information, "Aviso al Operador")
+            ObtenerArticulos = New List(Of Articulos)
+            Dim art As New Articulos
+
+            art.Codigo = 12658
+            art.Descripcion = "VARIOS"
+            art.CodigoBarras = "V"
+            art.PrecioCosto = 1
+            art.PrecioVenta = 1
+            art.Unidad = 1
+            art.CostoGranel = 0
+            art.UnidadGranel = 0
+
+            ObtenerArticulos.Add(art)
         End Try
     End Function
 
@@ -188,15 +214,42 @@ Module ModuloGeneral
                 cli.Domicilio = Split(strLine, ";")(4)
                 cli.IdSucursal = Split(strLine, ";")(5)
                 cli.CuentaCorriente = Split(strLine, ";")(6)
+                cli.esEmpleado = Split(strLine, ";")(7)
 
                 ObtenerClientes.Add(cli)
             Loop
 
             objStreamReader.Close()
         Catch ex As FileNotFoundException
-            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Clientes" + "|" + ex.Message)
+            MsgBox("No se encontró el archivo de Clientes. Solamente podra realizar ventas a Consumidor Final.", MsgBoxStyle.Information, "Aviso al Operador")
+            ObtenerClientes = New List(Of Clientes)
+            Dim cli As New Clientes
+
+            cli.IdCliente = 1
+            cli.NombreFantasia = "Consumidor Final"
+            cli.TpoTicket = "C"
+            cli.NroDocumento = 1
+            cli.Domicilio = 1
+            cli.IdSucursal = My.Settings.sucursal
+            cli.CuentaCorriente = 0
+            cli.esEmpleado = 0
+
+            ObtenerClientes.Add(cli)
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General." + " Obtener Clientes" + "|" + ex.Message)
+            MsgBox("Error en el archivo de Clientes. Solamente podra realizar ventas a Consumidor Final.", MsgBoxStyle.Information, "Aviso al Operador")
+            ObtenerClientes = New List(Of Clientes)
+            Dim cli As New Clientes
+
+            cli.IdCliente = 1
+            cli.NombreFantasia = "Consumidor Final"
+            cli.TpoTicket = "C"
+            cli.NroDocumento = 1
+            cli.Domicilio = 1
+            cli.IdSucursal = My.Settings.sucursal
+            cli.CuentaCorriente = 0
+            cli.esEmpleado = 0
+
+            ObtenerClientes.Add(cli)
         End Try
     End Function
 
@@ -224,9 +277,11 @@ Module ModuloGeneral
 
             objStreamReader.Close()
         Catch ex As FileNotFoundException
-            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Usuarios" + "|" + ex.Message)
+            MsgBox("Error USUFILENOTFOUND. Comuniquese con Administración", MsgBoxStyle.Information, "Aviso al Operador")
+            Exit Function
         Catch ex As Exception
-            Throw New Exception("Error en Modulo General." + " Obtener Usuarios" + "|" + ex.Message)
+            MsgBox("Error USUEXCEPTION. Comuniquese con Administración", MsgBoxStyle.Information, "Aviso al Operador")
+            Exit Function
         End Try
     End Function
 
@@ -503,6 +558,20 @@ Module ModuloGeneral
         End Try
     End Sub
 
+    Public Sub grabarCierreCaja(ByVal dtmFecha As DateTime, ByVal intIdUsuario As Integer)
+        Dim objStreamWriter As StreamWriter
+
+        Try
+            objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "CajaDiaria.txt", True)
+
+            objStreamWriter.WriteLine(NroCajaAbierta & ";" & dtmFecha & ";" & 0 & ";" & CajaDiaria.tiposOperacion.cierreCaja & ";" & intIdUsuario & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta)
+
+            objStreamWriter.Close()
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General." + " Grabar Cierre de Caja" + "|" + ex.Message)
+        End Try
+    End Sub
+
     Function existeArchivo(ByVal strArchivo As String) As Boolean
         Try
 
@@ -512,10 +581,6 @@ Module ModuloGeneral
             existeArchivo = False
         End Try
     End Function
-
-    'Function ControlarCierreRealizado() As Boolean
-
-    'End Function
 
     Public Function Decript(pass As String) As String
 

@@ -8,3 +8,7 @@ D:\Punto_de_Venta\Verificador\obj\Release\Verificador.exe
 D:\Punto_de_Venta\Verificador\obj\Release\Verificador.xml
 D:\Punto_de_Venta\Verificador\obj\Release\Verificador.pdb
 D:\Punto_de_Venta\Verificador\obj\Release\Verificador.FormVerificador.resources
+C:\Proyectos\Punto_de_Venta\Verificador\bin\Release\Verificador.exe.config
+C:\Proyectos\Punto_de_Venta\Verificador\obj\Release\Verificador.exe
+C:\Proyectos\Punto_de_Venta\Verificador\obj\Release\Verificador.xml
+C:\Proyectos\Punto_de_Venta\Verificador\obj\Release\Verificador.pdb

@@ -149,6 +149,10 @@
     End Sub
 
     Private Sub cmbFormas_DropDownClosed(sender As Object, e As EventArgs) Handles cmbFormas.DropDownClosed
+        If cmbFormas.SelectedValue = 3 And clienteAux.CuentaCorriente <> 1 Then
+            cmbFormas.SelectedValue = 1
+            Exit Sub
+        End If
         If cmbFormas.SelectedValue <> 1 Then
             txtAbona.Text = FormatNumber(CDbl(lblTot.Text), 2)
             lblVuelto.Text = FormatNumber(0, 2)

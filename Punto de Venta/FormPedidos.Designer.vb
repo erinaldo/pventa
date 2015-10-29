@@ -36,6 +36,7 @@ Partial Class FormPedidos
         Me.GrillaPedidosPendientes.AllowUserToDeleteRows = False
         Me.GrillaPedidosPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaPedidosPendientes.Location = New System.Drawing.Point(12, 12)
+        Me.GrillaPedidosPendientes.MultiSelect = False
         Me.GrillaPedidosPendientes.Name = "GrillaPedidosPendientes"
         Me.GrillaPedidosPendientes.ReadOnly = True
         Me.GrillaPedidosPendientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -67,6 +68,7 @@ Partial Class FormPedidos
         Me.GrillaComprobanteVentaDetalle.AllowUserToDeleteRows = False
         Me.GrillaComprobanteVentaDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaComprobanteVentaDetalle.Location = New System.Drawing.Point(12, 217)
+        Me.GrillaComprobanteVentaDetalle.MultiSelect = False
         Me.GrillaComprobanteVentaDetalle.Name = "GrillaComprobanteVentaDetalle"
         Me.GrillaComprobanteVentaDetalle.ReadOnly = True
         Me.GrillaComprobanteVentaDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
