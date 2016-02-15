@@ -8,6 +8,7 @@ Module ModuloActualizacionBase
     Dim dsCajaDiaria As New DataSet("CajaDiaria")
     Dim dsRendicion As New DataSet("Rendicion")
     Dim dsPagos As New DataSet("Pagos")
+    Dim dsComprobanteCancelado As New DataSet("ComprobanteCancelado")
 
     Function ActualizarComprobanteVenta(ByVal listaComprobanteVenta As List(Of ComprobanteVenta)) As Boolean
 
@@ -221,6 +222,48 @@ Module ModuloActualizacionBase
 
     End Function
 
+    Function ActualizarComprobanteCancelado(ByVal listaComprobanteCancelado As List(Of ComprobanteCancelado)) As Boolean
+
+        Try
+            ActualizarComprobanteCancelado = False
+
+            Dim tblCompCanc As New DataTable
+
+            ObtenerComprobanteCanceladoVacio(tblCompCanc, "Comprobantes_Cancelados")
+
+            tblCompCanc = dsComprobanteCancelado.Tables(0)
+
+            For Each compCanc In listaComprobanteCancelado
+
+                Dim drCurrent As DataRow
+                ' Obtain a new DataRow object from the DataTable.
+                drCurrent = tblCompCanc.NewRow()
+
+                ' Set the DataRow field values as necessary.
+                drCurrent("cc_fecha") = compCanc.Fecha
+                drCurrent("cc_idsucursal") = compCanc.Sucursal
+                drCurrent("cc_idpuntoventa") = compCanc.PuntoVenta
+                drCurrent("cc_codart") = compCanc.CodigoArticulo
+                drCurrent("cc_descart") = compCanc.DescripcionArticulo
+                drCurrent("cc_cantidad") = compCanc.Cantidad
+                drCurrent("cc_precunit") = compCanc.PrecioUnitario
+                drCurrent("cc_totart") = compCanc.PrecioTotal
+                drCurrent("cc_usuario") = compCanc.Usuario
+
+                'Pass that new object into the Add method of the DataTable.Rows collection.
+                tblCompCanc.Rows.Add(drCurrent)
+            Next
+
+            ImportDataTable(tblCompCanc, "Comprobantes_Cancelados")
+
+            ActualizarComprobanteCancelado = True
+
+        Catch ex As Exception
+            ActualizarComprobanteCancelado = False
+        End Try
+
+    End Function
+
     Public Sub ImportDataTable(ByVal DataTable As DataTable, ByVal ServerTableName As String)
 
         Using cn As New SqlConnection(My.Settings.cadena & strUsuarioPassword),
@@ -308,6 +351,21 @@ Module ModuloActualizacionBase
         daPagos.FillSchema(dsPagos, SchemaType.Source, "comprobantes_pagos")
         daPagos.Fill(dsPagos, "comprobantes_pagos")
 
+
+    End Sub
+
+    Public Sub ObtenerComprobanteCanceladoVacio(ByRef DataTable As DataTable, ByVal ServerTableName As String)
+
+        Dim objConn As New SqlConnection(My.Settings.cadena & strUsuarioPassword)
+        objConn.Open()
+
+        ' Create an instance of a DataAdapter.
+        Dim daComprobanteCancelado As New SqlDataAdapter("Select * From Comprobantes_Cancelados Where cc_id = -1", objConn)
+
+        ' Create an instance of a DataSet, and retrieve data from the Authors table.
+
+        daComprobanteCancelado.FillSchema(dsComprobanteCancelado, SchemaType.Source, "Comprobantes_Cancelados")
+        daComprobanteCancelado.Fill(dsComprobanteCancelado, "Comprobantes_Cancelados")
 
     End Sub
 

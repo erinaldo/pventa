@@ -498,6 +498,43 @@ Module ModuloGeneral
         End Try
     End Function
 
+    Public Function ObtenerComprobanteCancelado() As List(Of ComprobanteCancelado)
+        Dim objStreamReader As StreamReader
+        Dim strLine As String
+
+        Try
+            ObtenerComprobanteCancelado = New List(Of ComprobanteCancelado)
+
+            objStreamReader = New StreamReader(My.Settings.rutaArchivos & "ComprobanteVentaCanc.txt", System.Text.ASCIIEncoding.ASCII)
+
+            Do While Not objStreamReader.EndOfStream
+                Dim compVentCancelado As New ComprobanteCancelado
+
+                strLine = objStreamReader.ReadLine
+
+                compVentCancelado.Fecha = Split(strLine, ";")(0)
+                compVentCancelado.Sucursal = Split(strLine, ";")(1)
+                compVentCancelado.PuntoVenta = Split(strLine, ";")(2)
+                compVentCancelado.CodigoArticulo = Split(strLine, ";")(3)
+                compVentCancelado.DescripcionArticulo = Split(strLine, ";")(4)
+                compVentCancelado.Cantidad = Split(strLine, ";")(5)
+                compVentCancelado.PrecioUnitario = Split(strLine, ";")(6)
+                compVentCancelado.PrecioTotal = Split(strLine, ";")(7)
+                compVentCancelado.usuario = Split(strLine, ";")(8)
+
+                ObtenerComprobanteCancelado.Add(compVentCancelado)
+
+            Loop
+
+            objStreamReader.Close()
+
+        Catch ex As FileNotFoundException
+            Throw New Exception("Error en Modulo General." + " No se encontro el archivo de Comprobante Cancelado" + "|" + ex.Message)
+        Catch ex As Exception
+            Throw New Exception("Error en Modulo General." + " Obtener ComprobanteVentaDetalle" + "|" + ex.Message)
+        End Try
+    End Function
+
     Public Sub grabarAperturaCaja()
         Dim objStreamWriter As StreamWriter
 

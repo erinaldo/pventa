@@ -18,9 +18,9 @@
         miOCX = New FiscalPrinterLib.HASAR
 
         Try
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_C)
@@ -71,9 +71,9 @@
         miOCX = New FiscalPrinterLib.HASAR
 
         Try
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.DatosCliente(cliente.NombreFantasia, cliente.NroDocumento, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.MONOTRIBUTO, cliente.Domicilio)
@@ -124,9 +124,9 @@
         miOCX = New FiscalPrinterLib.HASAR
 
         Try
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.DatosCliente(cliente.NombreFantasia, cliente.NroDocumento, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_INSCRIPTO, cliente.Domicilio)
@@ -173,14 +173,46 @@
 
     End Function
 
+    Function ImprimirCuponCtaCte() As Boolean
+        'miOCX = New FiscalPrinterLib.HASAR
+
+        'Try
+        '    miOCX.Puerto = CInt(My.Settings.puertoFiscal)
+        '    miOCX.Baudios = 9600
+        '    'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+        '    miOCX.Comenzar()
+        '    miOCX.TratarDeCancelarTodo()
+        '    miOCX.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosNoFiscales.t)
+
+
+
+        '    miOCX.CerrarComprobanteFiscal()
+
+        '    If miOCX.HuboFaltaPapel Then
+        '        Dim frm As New FormFaltaPapel
+        '        frm.ShowDialog()
+        '    End If
+
+        '    miOCX.Finalizar()
+
+        '    ImprimirCuponCtaCte = True
+
+        'Catch ex As Exception
+        '    miOCX.TratarDeCancelarTodo()
+        '    MsgBox("Error al imprimir TICKET C" & " - " & ex.Message)
+        '    ImprimirCuponCtaCte = False
+        'End Try
+
+    End Function
+
     Function ImprimirReporteZ() As Boolean
         Try
 
             miOCX = New FiscalPrinterLib.HASAR
 
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.ReporteZ()
@@ -197,9 +229,9 @@
 
             miOCX = New FiscalPrinterLib.HASAR
 
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             'miOCX.ReporteZIndividualPorNumero(intNumeroZ)
@@ -217,9 +249,9 @@
 
             miOCX = New FiscalPrinterLib.HASAR
 
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.ReporteX()
@@ -236,9 +268,9 @@
 
             miOCX = New FiscalPrinterLib.HASAR
 
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             obtenerNroComprobanteFiscalBC = miOCX.UltimoDocumentoFiscalBC()
             miOCX.Finalizar()
@@ -253,9 +285,9 @@
 
             miOCX = New FiscalPrinterLib.HASAR
 
-            miOCX.Puerto = My.Settings.puertoFiscal
+            miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
             miOCX.Comenzar()
             obtenerNroComprobanteFiscalA = miOCX.UltimoDocumentoFiscalA()
             miOCX.Finalizar()

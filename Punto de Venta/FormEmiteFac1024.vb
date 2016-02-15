@@ -524,12 +524,12 @@ Public Class FormEmiteFac1024
         Dim strComprobanteVentaDetalle As String
         Dim objStreamWriter As StreamWriter
 
-        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVentaCa.txt", True)
+        objStreamWriter = New StreamWriter(My.Settings.rutaArchivos & "ComprobanteVentaCanc.txt", True)
 
         For j = 0 To GrillaArticulos.Rows.Count - 1
 
-            strComprobanteVentaDetalle = Date.Now & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" & _
-                GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" & _
+            strComprobanteVentaDetalle = Date.Now & ";" & My.Settings.sucursal & ";" & My.Settings.puestoVenta & ";" & GrillaArticulos.Rows(j).Cells("CodigoArticulo").Value & ";" &
+                GrillaArticulos.Rows(j).Cells("DescripcionArticulo").Value & ";" & GrillaArticulos.Rows(j).Cells("Cantidad").Value & ";" &
                 GrillaArticulos.Rows(j).Cells("PrecioUnitario").Value & ";" & FormatNumber(GrillaArticulos.Rows(j).Cells("Total").Value, 2) & ";" & NomUsuario
 
             objStreamWriter.WriteLine(strComprobanteVentaDetalle)

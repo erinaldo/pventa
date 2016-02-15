@@ -64,3 +64,9 @@ C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.xml
 C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.pdb
 C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormClienteNvo.resources
 C:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.FormClientes.resources
+D:\Proyectos\Punto_de_Venta\Punto de Venta\bin\Release\PuntoVenta.exe.config
+D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\Interop.FiscalPrinterLib.dll
+D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\Punto de Venta.vbproj.ResolveComReference.cache
+D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.exe
+D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.xml
+D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\Release\PuntoVenta.pdb

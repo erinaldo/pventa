@@ -40,6 +40,7 @@ Public Class FormPrincipal
         Dim listCajaDiaria As New List(Of CajaDiaria)
         Dim listRendicion As New List(Of Rendicion)
         Dim listPagos As New List(Of Pagos)
+        Dim listComprobanteCancelado As New List(Of ComprobanteCancelado)
 
         If File.Exists(My.Settings.rutaArchivos & "ComprobanteVentaEnEspera.txt") Then
             MsgBox("Posee un ticket en espera. No puede cerrar caja.", MsgBoxStyle.Information, "Mensaje al Operador")
@@ -94,6 +95,13 @@ Public Class FormPrincipal
         If ActualizarPagos(listPagos) Then
             My.Computer.FileSystem.DeleteFile(My.Settings.rutaArchivos & "Pagos.txt")
         End If
+        If existeArchivo("ComprobanteVentaCanc.txt") Then
+            listComprobanteCancelado = ObtenerComprobanteCancelado()
+            If ActualizarComprobanteCancelado(listComprobanteCancelado) Then
+                My.Computer.FileSystem.DeleteFile(My.Settings.rutaArchivos & "ComprobanteVentaCanc.txt")
+            End If
+        End If
+
 
         btnFacturacion.Enabled = False
         btnCerrarCaja.Enabled = False
@@ -233,4 +241,5 @@ Public Class FormPrincipal
             MsgBox("Debe ingresar un número válido", MsgBoxStyle.Information, "Mensaje al Operador")
         End Try
     End Sub
+
 End Class

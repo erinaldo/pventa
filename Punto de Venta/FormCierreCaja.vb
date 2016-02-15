@@ -94,7 +94,7 @@ Public Class FormCierreCaja
                                 Where vent.IdUsuario = idUsuario And vent.FechaEmision.Date = Now.Date And p.IdPago = formPago.IdFormaPago
                                 Into Sum(p.Monto)
 
-            dblTotalFacturado = dblTotalFacturado + row.Cells(1).Value
+            dblTotalFacturado = CDbl(dblTotalFacturado + row.Cells(1).Value)
 
             row.Cells(4).Value = Aggregate vent In lstComprobanteVenta
                                   Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
@@ -186,6 +186,9 @@ Public Class FormCierreCaja
 
     Private Sub dgvRendicion_CellValidated(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRendicion.CellValidated
         Try
+            If IsNothing(dgvRendicion.Rows(e.RowIndex).Cells(2).Value) Then
+                dgvRendicion.Rows(e.RowIndex).Cells(2).Value = 0
+            End If
             dgvRendicion.Rows(e.RowIndex).Cells(2).Value = FormatNumber(Replace(dgvRendicion.Rows(e.RowIndex).Cells(2).Value, ".", ","), 2)
         Catch ex As Exception
             dgvRendicion.Rows(e.RowIndex).Cells(2).Value = 0
