@@ -149,7 +149,11 @@ Public Class FormPrincipal
                                                   Where c.Operacion = CajaDiaria.tiposOperacion.aperturaCaja
                                                   Select c).FirstOrDefault
 
-                grabarCierreCaja(CajaAnterior.FechaHora.Date & " 23:59:00", CajaAnterior.Usuario)
+                If CajaAnterior.FechaHora.Date = Date.Now.Date Then
+                    grabarCierreCaja(Date.Now, CajaAnterior.Usuario)
+                Else
+                    grabarCierreCaja(CajaAnterior.FechaHora.Date & " 23:59:00", CajaAnterior.Usuario)
+                End If
 
                 agregarNroCaja()
 

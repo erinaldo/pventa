@@ -36,3 +36,4 @@ D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\x86\Release\PuntoVenta.FormVuelto
 D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\x86\Release\PuntoVenta.Resources.resources
 D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\x86\Release\Punto de Venta.vbproj.GenerateResource.Cache
 D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\x86\Release\PuntoVenta.exe
+D:\Proyectos\Punto_de_Venta\Punto de Venta\obj\x86\Release\Punto de Venta.vbprojResolveAssemblyReference.cache

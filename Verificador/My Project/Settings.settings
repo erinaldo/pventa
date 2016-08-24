@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="rutaArchivos" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\</Value>
+      <Value Profile="(Default)">D:\Proyectos\Marcelo\</Value>
     </Setting>
     <Setting Name="espera" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5000</Value>

@@ -18,9 +18,10 @@
         miOCX = New FiscalPrinterLib.HASAR
 
         Try
+
             miOCX.Puerto = CInt(My.Settings.puertoFiscal)
             miOCX.Baudios = 9600
-            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+            'miOCX.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715_403
             miOCX.Comenzar()
             miOCX.TratarDeCancelarTodo()
             miOCX.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_C)
@@ -35,7 +36,7 @@
 
             For i = 0 To filas
                 If grilla.Rows(i).Cells("PrecioUnitario").Value() < 0 Then
-                    miOCX.DevolucionDescuento(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), grilla.Rows(i).Cells("Cantidad").Value() * grilla.Rows(i).Cells("PrecioUnitario").Value(), 21, 0, True, FiscalPrinterLib.TiposDeDescuentos.DEVOLUCION_DE_ENVASES)
+                    miOCX.DescuentoGeneral(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), (grilla.Rows(i).Cells("Cantidad").Value() * grilla.Rows(i).Cells("PrecioUnitario").Value()) * -1, True)
                 End If
             Next i
 
@@ -89,7 +90,8 @@
 
             For i = 0 To filas
                 If grilla.Rows(i).Cells("PrecioUnitario").Value() < 0 Then
-                    miOCX.DevolucionDescuento(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), grilla.Rows(i).Cells("Cantidad").Value() * grilla.Rows(i).Cells("PrecioUnitario").Value(), 21, 0, True, FiscalPrinterLib.TiposDeDescuentos.DEVOLUCION_DE_ENVASES)
+                    miOCX.DescuentoGeneral(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), (grilla.Rows(i).Cells("Cantidad").Value() * grilla.Rows(i).Cells("PrecioUnitario").Value()) * -1, True)
+                    'miOCX.DevolucionDescuento(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), grilla.Rows(i).Cells("Cantidad").Value() * grilla.Rows(i).Cells("PrecioUnitario").Value(), 21, 0, True, FiscalPrinterLib.TiposDeDescuentos.DEVOLUCION_DE_ENVASES)
                 End If
             Next i
 
@@ -142,7 +144,8 @@
 
             For i = 0 To filas
                 If grilla.Rows(i).Cells("PrecioUnitario").Value() < 0 Then
-                    miOCX.DevolucionDescuento(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), grilla.Rows(i).Cells("Cantidad").Value() * grilla.Rows(i).Cells("PrecioUnitario").Value(), 21, 0, True, FiscalPrinterLib.TiposDeDescuentos.DEVOLUCION_DE_ENVASES)
+                    miOCX.DescuentoGeneral(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), (grilla.Rows(i).Cells("Cantidad").Value() * grilla.Rows(i).Cells("PrecioUnitario").Value()) * -1, True)
+                    'miOCX.DevolucionDescuento(Mid(grilla.Rows(i).Cells("DescripcionArticulo").Value(), 1, 15), grilla.Rows(i).Cells("Cantidad").Value() * grilla.Rows(i).Cells("PrecioUnitario").Value(), 21, 0, True, FiscalPrinterLib.TiposDeDescuentos.DEVOLUCION_DE_ENVASES)
                 End If
             Next i
 

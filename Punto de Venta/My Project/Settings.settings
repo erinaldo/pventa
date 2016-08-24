@@ -8,19 +8,19 @@
     <Setting Name="sucursal" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="rutaArchivos" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\</Value>
-    </Setting>
     <Setting Name="codificacion" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="puertoFiscal" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="impresoraFiscal" Type="System.String" Scope="User">
       <Value Profile="(Default)">FiscalPrinterLib.ModelosDeImpresoras.MODELO_715</Value>
     </Setting>
     <Setting Name="puestoVenta" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="rutaArchivos" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Proyectos\Marcelo\</Value>
+    </Setting>
+    <Setting Name="puertoFiscal" Type="System.String" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
   </Settings>

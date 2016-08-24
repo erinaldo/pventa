@@ -9,3 +9,13 @@ C:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.vbproj.GenerateRes
 C:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.exe
 C:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.xml
 C:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.pdb
+D:\Proyectos\Punto_de_Venta\Verificador\bin\Debug\Verificador.exe.config
+D:\Proyectos\Punto_de_Venta\Verificador\bin\Debug\Verificador.exe
+D:\Proyectos\Punto_de_Venta\Verificador\bin\Debug\Verificador.pdb
+D:\Proyectos\Punto_de_Venta\Verificador\bin\Debug\Verificador.xml
+D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.FormVerificador.resources
+D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.Resources.resources
+D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.vbproj.GenerateResource.Cache
+D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.exe
+D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.xml
+D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.pdb

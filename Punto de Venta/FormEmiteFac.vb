@@ -414,6 +414,7 @@ Public Class FormEmiteFac
                     Dim intNroComprobanteFiscal As Integer
 
                     If Origen = "F" Then
+                        TextCodBar.Enabled = False
                         If cliente.TpoTicket = "A" Then
                             intNroComprobanteFiscal = obtenerNroComprobanteFiscalA() + 1
                             If Not ImprimirTicketFiscalA(cliente, GrillaArticulos, lstPagos) Then
@@ -483,6 +484,8 @@ Public Class FormEmiteFac
                     Next
 
                     objStreamWriter.Close()
+
+                    TextCodBar.Enabled = True
 
                     LimpiarCajas()
                     Me.lblCantidad.Text = "0"

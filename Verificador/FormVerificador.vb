@@ -76,6 +76,7 @@ Public Class FormVerificador
 
         Label1.Text = ""
         Label2.Text = ""
+        listaArt = ObtenerArticulos()
         TextBox1.SelectAll()
         TextBox1.Text = ""
         TextBox1.Focus()

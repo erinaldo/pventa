@@ -16,7 +16,6 @@ D:\Proyectos\Punto_de_Venta\Verificador\bin\Release\Verificador.exe.config
 D:\Proyectos\Punto_de_Venta\Verificador\bin\Release\Verificador.exe
 D:\Proyectos\Punto_de_Venta\Verificador\bin\Release\Verificador.pdb
 D:\Proyectos\Punto_de_Venta\Verificador\bin\Release\Verificador.xml
-D:\Proyectos\Punto_de_Venta\Verificador\obj\Release\Verificador.vbprojResolveAssemblyReference.cache
 D:\Proyectos\Punto_de_Venta\Verificador\obj\Release\Verificador.FormVerificador.resources
 D:\Proyectos\Punto_de_Venta\Verificador\obj\Release\Verificador.Resources.resources
 D:\Proyectos\Punto_de_Venta\Verificador\obj\Release\Verificador.vbproj.GenerateResource.Cache
