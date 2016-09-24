@@ -19,59 +19,18 @@ Public Class FormCierreCaja
         lstCajaDaria = ObtenerCajaDiaria()
 
         lblApertura.Text = (From Caj In lstCajaDaria
-                            Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.aperturaCaja
+                            Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.aperturaCaja And Caj.NroCaja = NroCajaAbierta
                             Select Caj.FechaHora).First.ToString
 
-
-        'lblCierre.Text = (From Caj In lstCajaDaria
-        '                Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.cierreCaja
-        '                Select Caj.FechaHora).First.ToString
-
         lblCierre.Text = Date.Now
-
-        'row = New DataGridViewRow
-
-        'row.CreateCells(dgvRendicion)
-
-        'row.Cells(0).Value = "Ingreso Dinero"
-
-        'row.Cells(4).Value = Aggregate Caj In lstCajaDaria
-        '                         Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.ingresoDinero
-        '                         Into Count(Caj.Importe)
 
         lblIngreso.Text = Aggregate Caj In lstCajaDaria
                          Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.ingresoDinero And Caj.NroCaja = NroCajaAbierta
                          Into Sum(Caj.Importe)
 
-        'row.Cells(5).Value = CajaDiaria.tiposOperacion.ingresoDinero
-
-        'row.Cells(3).Value = 0
-
-        'row.Cells(2).Value = 0
-
-        'dgvRendicion.Rows.Add(row)
-
-        'row = New DataGridViewRow
-
-        'row.CreateCells(dgvRendicion)
-
-        'row.Cells(0).Value = "Retiros Dinero"
-
-        'row.Cells(4).Value = Aggregate Caj In lstCajaDaria
-        '                        Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.retiroDinero
-        '                        Into Count(Caj.Importe)
-
         lblRetiro.Text = Aggregate Caj In lstCajaDaria
                                  Where Caj.Usuario = idUsuario And Caj.FechaHora.Date = Now.Date And Caj.Operacion = CajaDiaria.tiposOperacion.retiroDinero And Caj.NroCaja = NroCajaAbierta
                                  Into Sum(Caj.Importe)
-
-        'row.Cells(5).Value = CajaDiaria.tiposOperacion.retiroDinero
-
-        'row.Cells(3).Value = 0
-
-        'row.Cells(2).Value = 0
-
-        'dgvRendicion.Rows.Add(row)
 
         lstFormasPago = ObtenerFormasPago()
 
@@ -89,16 +48,27 @@ Public Class FormCierreCaja
 
             row.Cells(0).Value = formPago.Descripcion
 
+            'row.Cells(1).Value = Aggregate vent In lstComprobanteVenta
+            '                     Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
+            '                    Where vent.IdUsuario = idUsuario And vent.FechaEmision.Date = Now.Date And p.IdPago = formPago.IdFormaPago
+            '                    Into Sum(p.Monto)
+
             row.Cells(1).Value = Aggregate vent In lstComprobanteVenta
                                  Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
-                                Where vent.IdUsuario = idUsuario And vent.FechaEmision.Date = Now.Date And p.IdPago = formPago.IdFormaPago
+                                Where vent.IdUsuario = idUsuario And vent.FechaEmision > lblApertura.Text And vent.FechaEmision < lblCierre.Text And p.IdPago = formPago.IdFormaPago
                                 Into Sum(p.Monto)
 
             dblTotalFacturado = CDbl(dblTotalFacturado + row.Cells(1).Value)
 
+            'row.Cells(4).Value = Aggregate vent In lstComprobanteVenta
+            '                      Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
+            '                           Where vent.IdUsuario = idUsuario And vent.FechaEmision.Date = Now.Date And p.IdPago = formPago.IdFormaPago
+            '                           Into Count(p.Monto)
+
+
             row.Cells(4).Value = Aggregate vent In lstComprobanteVenta
                                   Join p In lstComprobantePago On vent.Comprobante Equals p.Comprobante
-                                       Where vent.IdUsuario = idUsuario And vent.FechaEmision.Date = Now.Date And p.IdPago = formPago.IdFormaPago
+                                       Where vent.IdUsuario = idUsuario And vent.FechaEmision > lblApertura.Text And vent.FechaEmision < lblCierre.Text And p.IdPago = formPago.IdFormaPago
                                        Into Count(p.Monto)
 
             row.Cells(5).Value = formPago.IdFormaPago

@@ -19,3 +19,4 @@ D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.vbproj.GenerateRes
 D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.exe
 D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.xml
 D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.pdb
+D:\Proyectos\Punto_de_Venta\Verificador\obj\Debug\Verificador.vbprojResolveAssemblyReference.cache
